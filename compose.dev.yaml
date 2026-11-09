@@ -1,0 +1,43 @@
+# Local run of the production image, with the same hardening used on TrueNAS.
+#   docker compose -f compose.dev.yaml up --build
+# then open http://localhost:3000
+services:
+  vocab:
+    build: .
+    image: vocabwebapp:dev
+    user: '568:568'
+    ports:
+      - '3000:3000'
+    environment:
+      ORIGIN: 'http://localhost:3000'
+      DATA_DIR: /data
+      TZ: America/Chicago
+      SETUP_TOKEN: 'dev-setup-token'
+      TRUST_PROXY: 'false'
+    volumes:
+      - vocab-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+
+volumes:
+  vocab-data:

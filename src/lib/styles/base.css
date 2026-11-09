@@ -1,0 +1,25 @@
+/* Minimal base styles. The design tokens and components arrive in Phase 3. */
+
+:root {
+	color-scheme: light dark;
+	font-family: system-ui, sans-serif;
+	line-height: 1.5;
+}
+
+body {
+	margin: 0;
+	background: light-dark(#fbfaf7, #16181d);
+	color: light-dark(#1d2129, #e8eaee);
+}
+
+/* The wrapper in app.html must not affect layout. A class is used instead of an
+   inline style attribute so the page works under `style-src 'self'`. */
+.app-root {
+	display: contents;
+}
+
+main {
+	max-inline-size: 40rem;
+	margin-inline: auto;
+	padding: 2rem 1rem;
+}

@@ -1,0 +1,3 @@
+# Private app: ask crawlers to stay out.
+User-agent: *
+Disallow: /
