@@ -10,7 +10,10 @@
 export function securityHeaders(options: { https: boolean }): Record<string, string> {
 	const headers: Record<string, string> = {
 		'X-Content-Type-Options': 'nosniff',
-		'Referrer-Policy': 'no-referrer',
+		// Never tell other websites where a visitor came from. This must not be the stricter
+		// "no-referrer": browsers then send "Origin: null" on ordinary form posts, and
+		// SvelteKit's CSRF check would reject every form submitted without JavaScript.
+		'Referrer-Policy': 'same-origin',
 		'Cross-Origin-Opener-Policy': 'same-origin',
 		'Cross-Origin-Resource-Policy': 'same-origin',
 		// Legacy equivalent of the CSP `frame-ancestors 'none'` directive.
@@ -28,7 +31,6 @@ export function securityHeaders(options: { https: boolean }): Record<string, str
 
 const DISABLED_FEATURES = [
 	'accelerometer',
-	'bluetooth',
 	'browsing-topics',
 	'camera',
 	'display-capture',

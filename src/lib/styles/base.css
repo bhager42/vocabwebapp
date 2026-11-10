@@ -1,25 +1,232 @@
-/* Minimal base styles. The design tokens and components arrive in Phase 3. */
+/* Base styles: element defaults, the page shell and a few utilities.
+ * Component styles live with their components in src/lib/components. */
 
-:root {
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* ---- Theme ----
+ * hooks.server.ts writes data-theme on <html> from the theme cookie, so the right
+ * theme is in the first byte of HTML and the page never flashes the wrong one.
+ * "system" follows the device setting. */
+html {
 	color-scheme: light dark;
-	font-family: system-ui, sans-serif;
-	line-height: 1.5;
+}
+
+html[data-theme='light'] {
+	color-scheme: light;
+}
+
+html[data-theme='dark'] {
+	color-scheme: dark;
+}
+
+html {
+	background: var(--color-bg);
+	color: var(--color-text);
+	accent-color: var(--color-accent);
+	font-family: var(--font-body);
+	font-weight: var(--weight-normal);
+	line-height: 1.6;
+	text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	scrollbar-gutter: stable;
 }
 
 body {
 	margin: 0;
-	background: light-dark(#fbfaf7, #16181d);
-	color: light-dark(#1d2129, #e8eaee);
+	min-block-size: 100dvb;
+	font-size: var(--text-md);
 }
 
 /* The wrapper in app.html must not affect layout. A class is used instead of an
-   inline style attribute so the page works under `style-src 'self'`. */
+   inline style attribute so the page works under a strict style-src policy. */
 .app-root {
 	display: contents;
 }
 
-main {
-	max-inline-size: 40rem;
+/* ---- Text ---- */
+h1,
+h2,
+h3 {
+	margin-block: 0 var(--space-3);
+	line-height: 1.2;
+	font-weight: var(--weight-bold);
+	text-wrap: balance;
+}
+
+h1 {
+	font-size: var(--text-2xl);
+}
+
+h2 {
+	font-size: var(--text-xl);
+}
+
+h3 {
+	font-size: var(--text-lg);
+}
+
+p {
+	margin-block: 0 var(--space-4);
+	max-inline-size: 65ch;
+	text-wrap: pretty;
+}
+
+a {
+	color: var(--color-accent-text);
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.2em;
+}
+
+svg {
+	display: block;
+}
+
+/* ---- Focus ----
+ * One visible focus style for everything, shown for keyboard use. */
+:focus-visible {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 3px;
+}
+
+/* Elements focused by a script (such as <main> after the skip link) need no ring. */
+[tabindex='-1']:focus {
+	outline: none;
+}
+
+/* ---- Form fields ---- */
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+.field {
+	display: grid;
+	gap: var(--space-2);
+}
+
+.field > label {
+	font-weight: var(--weight-bold);
+}
+
+.field > .hint {
+	color: var(--color-text-muted);
+	font-size: var(--text-sm);
+}
+
+.field > input {
+	inline-size: 100%;
+	min-block-size: var(--target-min);
+	padding: var(--space-3) var(--space-4);
+	border: 2px solid var(--color-border-strong);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	font-size: var(--text-lg);
+}
+
+/* ---- Page shell ---- */
+.skip-link {
+	position: absolute;
+	inset-block-start: var(--space-2);
+	inset-inline-start: var(--space-2);
+	z-index: 10;
+	padding: var(--space-2) var(--space-4);
+	border-radius: var(--radius-sm);
+	background: var(--color-surface);
+	font-weight: var(--weight-bold);
+	transform: translateY(-200%);
+}
+
+.skip-link:focus {
+	transform: none;
+}
+
+.site-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	max-inline-size: var(--page-max);
 	margin-inline: auto;
-	padding: 2rem 1rem;
+	padding: var(--space-3) var(--page-gutter);
+}
+
+.wordmark {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: var(--target-min);
+	color: var(--color-text);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-bold);
+	text-decoration: none;
+}
+
+main {
+	max-inline-size: var(--page-max);
+	margin-inline: auto;
+	padding: var(--space-5) var(--page-gutter) var(--space-8);
+}
+
+/* ---- Utilities ---- */
+.visually-hidden {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Vertical rhythm between direct children. */
+.stack {
+	display: grid;
+	gap: var(--space-4);
+}
+
+.stack-lg {
+	display: grid;
+	gap: var(--space-6);
+}
+
+.muted {
+	color: var(--color-text-muted);
+}
+
+/* ---- Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ---- Answer choices ----
+ * One column on a phone, two when the list itself (not the screen) is wide enough.
+ * A container query is used so this works wherever the list is placed. */
+.choice-list {
+	container-type: inline-size;
+}
+
+.choice-list > .grid {
+	display: grid;
+	gap: var(--space-4);
+}
+
+@container (inline-size >= 38rem) {
+	.choice-list > .grid {
+		grid-template-columns: 1fr 1fr;
+	}
 }

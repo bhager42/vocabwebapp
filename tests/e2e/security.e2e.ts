@@ -9,7 +9,7 @@ test.describe('security headers on pages', () => {
 		const headers = response.headers();
 
 		expect(headers['x-content-type-options']).toBe('nosniff');
-		expect(headers['referrer-policy']).toBe('no-referrer');
+		expect(headers['referrer-policy']).toBe('same-origin');
 		expect(headers['cross-origin-opener-policy']).toBe('same-origin');
 		expect(headers['cross-origin-resource-policy']).toBe('same-origin');
 		expect(headers['x-frame-options']).toBe('DENY');

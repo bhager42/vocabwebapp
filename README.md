@@ -3,7 +3,7 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phases 1 and 2 (scaffold, word lists) are complete. TrueNAS install instructions arrive in Phase 7.
+Status: Phases 1 to 3 (scaffold, word lists, design system) are complete. TrueNAS install instructions arrive in Phase 7.
 
 ## Develop
 
@@ -27,6 +27,12 @@ npm run dev          # http://localhost:5173, database in ./data
 
 Migrations in `drizzle/` are applied automatically when the app starts, and the built-in word
 lists in `content/` (120 words each for grades 3 to 6) are loaded or updated at the same time.
+
+## Design system
+
+Colors, sizes and timings are defined once in `src/lib/styles/tokens.css`; the components are in
+`src/lib/components`. Start the app and open `/styleguide` to see all of them together. The
+light, dark and match-this-device themes are switched with the buttons at the top of every page.
 
 ## Run the production image locally
 

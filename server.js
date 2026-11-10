@@ -55,7 +55,7 @@ const server = http.createServer((req, res) => {
 	req.headers[HOST_HEADER] = origin.host;
 
 	res.setHeader('X-Content-Type-Options', 'nosniff');
-	res.setHeader('Referrer-Policy', 'no-referrer');
+	res.setHeader('Referrer-Policy', 'same-origin');
 	res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
 	if (isHttps) {
 		res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');

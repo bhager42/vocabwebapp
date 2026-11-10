@@ -6,7 +6,7 @@ describe('securityHeaders', () => {
 		const headers = securityHeaders({ https: false });
 
 		expect(headers['X-Content-Type-Options']).toBe('nosniff');
-		expect(headers['Referrer-Policy']).toBe('no-referrer');
+		expect(headers['Referrer-Policy']).toBe('same-origin');
 		expect(headers['Cross-Origin-Opener-Policy']).toBe('same-origin');
 		expect(headers['Cross-Origin-Resource-Policy']).toBe('same-origin');
 		expect(headers['X-Frame-Options']).toBe('DENY');
