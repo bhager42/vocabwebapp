@@ -5,11 +5,13 @@ import { ORIGIN } from '$app/env/private';
 import {
 	isPrivatePath,
 	LOGIN_PATH,
+	requiresChild,
 	requiresParent,
 	sessionCookie
 } from '#lib/server/auth/access.ts';
 import { getParent } from '#lib/server/auth/parent.ts';
 import { readSession } from '#lib/server/auth/session.ts';
+import { getChild } from '#lib/server/children.ts';
 import { loadContent } from '#lib/server/content/load.ts';
 import { seedBuiltinWords } from '#lib/server/content/seed.ts';
 import { getDb } from '#lib/server/db/index.ts';
@@ -54,12 +56,32 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	}
 
+	locals.child = null;
+	const childCookie = sessionCookie('child', url);
+	const childToken = cookies.get(childCookie.name);
+	if (childToken) {
+		const db = getDb();
+		const session = readSession(db, childToken, 'child');
+		const who = session && getChild(db, session.subjectId);
+		// An archived child is signed out on their next request.
+		if (who && !who.archivedAt) {
+			locals.child = { id: who.id, name: who.name };
+		} else {
+			cookies.delete(childCookie.name, childCookie.options);
+		}
+	}
+
 	// ---- Are they allowed here? ----
 	// This is the one place that guards everything under /parent, whatever the method.
 	// Each page's load function and actions check again (see auth/guard.ts), so a route
 	// is still safe if it is ever moved out from under this prefix.
 	if (requiresParent(url.pathname) && !locals.parent) {
 		redirect(303, LOGIN_PATH);
+	}
+	// A child's session opens only the name page and practice. It is a different cookie
+	// of a different kind, so it can never stand in for a parent's.
+	if (requiresChild(url.pathname) && !locals.child) {
+		redirect(303, '/');
 	}
 
 	const response = await resolve(event, {

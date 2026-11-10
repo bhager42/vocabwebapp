@@ -116,6 +116,16 @@ export function getChild(db: Db, id: number): Child | null {
 	return row ? toChild(row) : null;
 }
 
+/** The child a typed name belongs to. Archived children are not found. */
+export function findChildByName(db: Db, name: string): Child | null {
+	const row = db
+		.select()
+		.from(child)
+		.where(eq(child.nameNormalized, normalizeName(name)))
+		.get();
+	return row && !row.archivedAt ? toChild(row) : null;
+}
+
 export type SaveResult = { ok: true; child: Child } | { ok: false; reason: 'name-taken' };
 
 function nameTaken(db: Db, name: string, exceptId?: number): boolean {

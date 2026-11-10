@@ -3,8 +3,9 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phases 1 to 4 (scaffold, word lists, design system, parent account and children) are
-complete. TrueNAS install instructions arrive in Phase 7.
+Status: Phases 1 to 5 are complete: a child can type their name and practice, and a parent can
+sign in and manage children. The parent dashboard arrives in Phase 6 and TrueNAS install
+instructions in Phase 7.
 
 ## Develop
 
@@ -41,6 +42,17 @@ afterwards. There is no password reset by email: if the password is lost, delete
 
 Sign-in allows 5 wrong attempts per network address in 15 minutes. A parent is signed out after
 12 hours without use and always after 7 days.
+
+## How practice works
+
+A child types their first name on the front page and presses Start. A session is ten questions
+by default: reviews that are due, then up to four new words, then extra looks at the same words
+asked in other ways. A right answer moves a word up one of five boxes and makes it wait longer
+before it returns (1, 3, 7, then 21 days); a wrong answer sends it back to the first box and
+asks it again a little later in the same session. The rules live in `src/lib/server/srs.ts`
+and `src/lib/server/questions.ts`, and section 2 of [PLAN.md](PLAN.md) explains them.
+
+Set `TZ` to your time zone: "due tomorrow", streaks and the daily limit all follow local days.
 
 ## Design system
 

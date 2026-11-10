@@ -13,3 +13,18 @@ export function requireParent(locals: App.Locals): ParentAccount {
 	if (!locals.parent) redirect(303, LOGIN_PATH);
 	return locals.parent;
 }
+
+export interface ChildIdentity {
+	id: number;
+	name: string;
+}
+
+/**
+ * Returns the signed-in child or sends the browser to the name page. Everything a child
+ * can do is keyed on this id, taken from their session and never from the request, so one
+ * child can never read or change another child's practice.
+ */
+export function requireChild(locals: App.Locals): ChildIdentity {
+	if (!locals.child) redirect(303, '/');
+	return locals.child;
+}

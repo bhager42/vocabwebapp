@@ -74,7 +74,7 @@ test('the page loads and hydrates without any CSP violation', async ({ page }) =
 	page.on('pageerror', (error) => problems.push(error.message));
 
 	await page.goto('/');
-	await expect(page.getByRole('heading', { level: 1, name: 'Vocab' })).toBeVisible();
+	await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 	await page.waitForLoadState('networkidle');
 
 	expect(problems).toEqual([]);

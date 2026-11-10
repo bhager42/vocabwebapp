@@ -12,6 +12,8 @@ declare global {
 			parent: ParentAccount | null;
 			/** Hash of the parent session token in use, so "sign out everywhere else" can keep it. */
 			parentSession: string | null;
+			/** The signed-in child, or null. Set on every request by hooks.server.ts. */
+			child: { id: number; name: string } | null;
 		}
 		// interface PageData {}
 		// interface PageState {}

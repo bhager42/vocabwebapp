@@ -16,6 +16,12 @@ const boolean = (name: string) => integer(name, { mode: 'boolean' });
 export const QUESTION_TYPES = ['word_to_def', 'def_to_word', 'cloze', 'spell'] as const;
 export type QuestionType = (typeof QUESTION_TYPES)[number];
 
+/** One planned question in a practice session. */
+export interface PlanItem {
+	wordId: number;
+	type: QuestionType;
+}
+
 /** The single parent (admin) account. */
 export const parent = sqliteTable('parent', {
 	id: integer('id').primaryKey({ autoIncrement: true }),
@@ -121,7 +127,13 @@ export const practiceSession = sqliteTable(
 		/** Sum of gaps between events, each gap capped (see PLAN.md section 5). */
 		activeMs: integer('active_ms').notNull().default(0),
 		questionCount: integer('question_count').notNull().default(0),
-		completed: boolean('completed').notNull().default(false)
+		completed: boolean('completed').notNull().default(false),
+		/**
+		 * The questions this session will ask, in order. Decided when the session starts;
+		 * a missed word is added again further along. The next one to serve is the item at
+		 * the index equal to the number of questions served so far.
+		 */
+		planJson: text('plan_json', { mode: 'json' }).$type<PlanItem[]>().notNull().default([])
 	},
 	(t) => [index('practice_session_child_idx').on(t.childId, t.startedAt)]
 );
@@ -168,11 +180,15 @@ export const loginAttempt = sqliteTable(
 	'login_attempt',
 	{
 		id: integer('id').primaryKey({ autoIncrement: true }),
+		/** What was being attempted: a parent sign-in (or setup), or a child typing a name. */
+		scope: text('scope', { enum: ['parent', 'name'] })
+			.notNull()
+			.default('parent'),
 		ip: text('ip').notNull(),
 		at: timestamp('at').notNull(),
 		success: boolean('success').notNull()
 	},
-	(t) => [index('login_attempt_ip_idx').on(t.ip, t.at)]
+	(t) => [index('login_attempt_ip_idx').on(t.scope, t.ip, t.at)]
 );
 
 export const setting = sqliteTable('setting', {

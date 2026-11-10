@@ -10,9 +10,20 @@ export function requiresParent(pathname: string): boolean {
 	return path === '/parent' || path.startsWith('/parent/');
 }
 
+/** True for every path that only a signed-in child may reach. */
+export function requiresChild(pathname: string): boolean {
+	return pathname === '/play' || pathname.startsWith('/play/');
+}
+
 /** Pages whose responses must never be stored by the browser or a proxy. */
 export function isPrivatePath(pathname: string): boolean {
-	return pathname === '/parent' || pathname.startsWith('/parent/') || pathname.startsWith('/setup');
+	return (
+		pathname === '/' || // greets a signed-in child by name
+		pathname === '/parent' ||
+		pathname.startsWith('/parent/') ||
+		pathname.startsWith('/setup') ||
+		requiresChild(pathname)
+	);
 }
 
 /**

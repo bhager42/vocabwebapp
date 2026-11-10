@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../db/client.ts';
 import { loginAttempt } from '../db/schema.ts';
 import { createTestDb } from '../test-db.ts';
-import { enterGate, failureDelayMs, markSuccess, minutesLeft } from './rate-limit.ts';
+import { enterGate, failureDelayMs, markSuccess, minutesLeft, NAME_LIMIT } from './rate-limit.ts';
 
 const MINUTE = 60_000;
 const start = new Date('2026-11-09T12:00:00Z');
@@ -92,6 +92,27 @@ describe('sign-in rate limit', () => {
 		}
 
 		expect(delays).toEqual([0, 250, 500, 1000, 2000]);
+	});
+});
+
+describe('name lookup limit', () => {
+	it('allows 20 wrong names before making the address wait', () => {
+		for (let index = 0; index < 20; index++) {
+			expect(enterGate(db, '10.0.0.1', after(index * 1000), NAME_LIMIT).allowed).toBe(true);
+		}
+		expect(enterGate(db, '10.0.0.1', after(30_000), NAME_LIMIT).allowed).toBe(false);
+	});
+
+	it('is counted separately from parent sign-in', () => {
+		// A child mistyping their name must never lock the parent out, or the reverse.
+		for (let index = 0; index < 20; index++) {
+			enterGate(db, '10.0.0.1', after(index * 1000), NAME_LIMIT);
+		}
+		expect(enterGate(db, '10.0.0.1', after(30_000)).allowed).toBe(true);
+
+		fail('10.0.0.2', 5);
+		expect(enterGate(db, '10.0.0.2', after(30_000)).allowed).toBe(false);
+		expect(enterGate(db, '10.0.0.2', after(30_000), NAME_LIMIT).allowed).toBe(true);
 	});
 });
 

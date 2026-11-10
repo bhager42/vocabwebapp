@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { isPrivatePath, requiresParent, secretsMatch, sessionCookie } from './access.ts';
+import {
+	isPrivatePath,
+	requiresChild,
+	requiresParent,
+	secretsMatch,
+	sessionCookie
+} from './access.ts';
 
 describe('requiresParent', () => {
 	it('protects /parent and everything under it', () => {
@@ -24,13 +30,24 @@ describe('requiresParent', () => {
 	});
 });
 
+describe('requiresChild', () => {
+	it('protects practice and nothing else', () => {
+		for (const path of ['/play', '/play/', '/play/done', '/play/__data.json']) {
+			expect(requiresChild(path), path).toBe(true);
+		}
+		for (const path of ['/', '/player', '/parent', '/parent/login', '/setup']) {
+			expect(requiresChild(path), path).toBe(false);
+		}
+	});
+});
+
 describe('isPrivatePath', () => {
-	it('covers the parent area and setup, but not public pages', () => {
-		expect(isPrivatePath('/parent')).toBe(true);
-		expect(isPrivatePath('/parent/login')).toBe(true);
-		expect(isPrivatePath('/setup')).toBe(true);
-		expect(isPrivatePath('/')).toBe(false);
+	it('covers every page that shows something about the family', () => {
+		for (const path of ['/', '/parent', '/parent/login', '/setup', '/play', '/play/done']) {
+			expect(isPrivatePath(path), path).toBe(true);
+		}
 		expect(isPrivatePath('/styleguide')).toBe(false);
+		expect(isPrivatePath('/healthz')).toBe(false);
 	});
 });
 

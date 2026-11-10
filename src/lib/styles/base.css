@@ -341,3 +341,19 @@ main {
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
+/* ---- Moving between practice screens ----
+ * The play page asks the browser for a view transition; this keeps it short, and
+ * switches it off for people who prefer no motion. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: var(--duration-normal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

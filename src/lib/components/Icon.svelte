@@ -1,5 +1,6 @@
 <script lang="ts" module>
-	export type IconName = 'check' | 'close' | 'retry' | 'sun' | 'moon' | 'monitor' | 'speaker';
+	export type IconName =
+		'check' | 'close' | 'retry' | 'sun' | 'moon' | 'monitor' | 'speaker' | 'star';
 </script>
 
 <script lang="ts">
@@ -29,6 +30,8 @@
 	{:else if name === 'speaker'}
 		<path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4H4z" />
 		<path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
+	{:else if name === 'star'}
+		<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z" />
 	{/if}
 </svg>
 

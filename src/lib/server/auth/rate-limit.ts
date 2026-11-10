@@ -2,20 +2,39 @@ import { and, desc, eq, gt, lt } from 'drizzle-orm';
 import type { Db } from '../db/client.ts';
 import { loginAttempt } from '../db/schema.ts';
 
-/** After this many failures from one address... */
-export const MAX_FAILURES = 5;
-/** ...within this long, that address has to wait. */
-export const WINDOW_MS = 15 * 60_000;
+export interface Limit {
+	/** Attempts of different kinds are counted separately. */
+	scope: 'parent' | 'name';
+	/** After this many failures from one address... */
+	maxFailures: number;
+	/** ...within this long, that address has to wait. */
+	windowMs: number;
+}
+
+/** Parent sign-in and first-run setup: strict, because a password is being guessed at. */
+export const PARENT_LIMIT: Limit = { scope: 'parent', maxFailures: 5, windowMs: 15 * 60_000 };
+
+/**
+ * A child typing a name: generous, because children mistype, but still bounded so the
+ * page cannot be used to discover which names exist by trying thousands of them.
+ */
+export const NAME_LIMIT: Limit = { scope: 'name', maxFailures: 20, windowMs: 15 * 60_000 };
 
 const KEEP_ATTEMPTS_MS = 24 * 60 * 60_000;
 
 /** Failures from this address inside the window, counted since its last success. */
-function recentFailures(db: Db, ip: string, now: Date): Date[] {
-	const windowStart = new Date(now.getTime() - WINDOW_MS);
+function recentFailures(db: Db, ip: string, now: Date, limit: Limit): Date[] {
+	const windowStart = new Date(now.getTime() - limit.windowMs);
 	const rows = db
 		.select({ at: loginAttempt.at, success: loginAttempt.success })
 		.from(loginAttempt)
-		.where(and(eq(loginAttempt.ip, ip), gt(loginAttempt.at, windowStart)))
+		.where(
+			and(
+				eq(loginAttempt.scope, limit.scope),
+				eq(loginAttempt.ip, ip),
+				gt(loginAttempt.at, windowStart)
+			)
+		)
 		.orderBy(desc(loginAttempt.at), desc(loginAttempt.id))
 		.all();
 
@@ -37,12 +56,12 @@ export type Gate = { allowed: true; attemptId: number } | { allowed: false; retr
  * Recording first means a burst of simultaneous guesses cannot all slip past the limit.
  * This function is synchronous, so two requests can never interleave inside it.
  */
-export function enterGate(db: Db, ip: string, now = new Date()): Gate {
-	const failures = recentFailures(db, ip, now);
-	if (failures.length >= MAX_FAILURES) {
-		// The lock lifts when the oldest of the last MAX_FAILURES failures leaves the window.
-		const oldest = failures[MAX_FAILURES - 1];
-		return { allowed: false, retryAfterMs: oldest.getTime() + WINDOW_MS - now.getTime() };
+export function enterGate(db: Db, ip: string, now = new Date(), limit = PARENT_LIMIT): Gate {
+	const failures = recentFailures(db, ip, now, limit);
+	if (failures.length >= limit.maxFailures) {
+		// The lock lifts when the oldest of the counted failures leaves the window.
+		const oldest = failures[limit.maxFailures - 1];
+		return { allowed: false, retryAfterMs: oldest.getTime() + limit.windowMs - now.getTime() };
 	}
 
 	db.delete(loginAttempt)
@@ -51,7 +70,7 @@ export function enterGate(db: Db, ip: string, now = new Date()): Gate {
 
 	const { id } = db
 		.insert(loginAttempt)
-		.values({ ip, at: now, success: false })
+		.values({ scope: limit.scope, ip, at: now, success: false })
 		.returning({ id: loginAttempt.id })
 		.get();
 	return { allowed: true, attemptId: id };
@@ -65,8 +84,8 @@ export function markSuccess(db: Db, attemptId: number): void {
  * How long to hold the response to a failed attempt: nothing for the first, then
  * 0.25s, 0.5s, 1s and 2s. Slows down guessing without bothering someone who mistyped once.
  */
-export function failureDelayMs(db: Db, ip: string, now = new Date()): number {
-	const failures = recentFailures(db, ip, now).length;
+export function failureDelayMs(db: Db, ip: string, now = new Date(), limit = PARENT_LIMIT): number {
+	const failures = recentFailures(db, ip, now, limit).length;
 	return failures <= 1 ? 0 : Math.min(2000, 250 * 2 ** (failures - 2));
 }
 

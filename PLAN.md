@@ -36,12 +36,12 @@ This plan is written to be executed by Claude Code one phase at a time. Each pha
 
 Definition plus multiple choice is the right foundation for this age, but on its own it only trains recognition. The app uses four question types and introduces the harder ones as a word becomes familiar:
 
-| Type          | Prompt                             | Answer                              | Used when                                               |
-| ------------- | ---------------------------------- | ----------------------------------- | ------------------------------------------------------- |
-| `word_to_def` | The word                           | Pick the definition (4 choices)     | Word is new                                             |
-| `def_to_word` | The definition                     | Pick the word (4 choices)           | Word is somewhat known                                  |
-| `cloze`       | Example sentence with a blank      | Pick the word that fits (4 choices) | Word is mostly known                                    |
-| `spell`       | Definition plus a "hear it" button | Type the word                       | Word is nearly mastered (parent can turn this type off) |
+| Type          | Prompt                                                                 | Answer                              | Used when                                               |
+| ------------- | ---------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------- |
+| `word_to_def` | The word                                                               | Pick the definition (4 choices)     | Word is new                                             |
+| `def_to_word` | The definition                                                         | Pick the word (4 choices)           | Word is somewhat known                                  |
+| `cloze`       | Example sentence with a blank                                          | Pick the word that fits (4 choices) | Word is mostly known                                    |
+| `spell`       | Definition, the sentence with a blank, the first letter and the length | Type the word                       | Word is nearly mastered (parent can turn this type off) |
 
 Rules for wrong choices (distractors): same grade list, same part of speech, never a synonym of the correct answer, shuffled order on every serve.
 
@@ -58,8 +58,12 @@ Each child/word pair sits in a box from 1 to 5.
 | 5   | 21 days                                  | `spell` (or `cloze` if spelling is off) |
 
 - Correct: move up one box. Wrong: back to box 1, and the word is asked again later in the same session.
-- A word is **mastered** when it is answered correctly out of box 5.
+- A word is **mastered** when it is answered correctly out of box 5. A mastered word comes back every 60 days so it is not forgotten; a wrong answer sends it back to box 1 like any other.
+- Due dates fall on local midnight in the app's time zone, so a word answered on Monday evening is due first thing Tuesday, not 24 hours later.
 - A session is 10 questions: due reviews first, then at most 4 new words. Both numbers are parent settings.
+- When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back to box 1.
+- A missed word is added to the session again two questions later, unless it is already coming up, and a word is asked at most four times in one session.
+- The spelling question has no "hear it" button: reading the word aloud would mean sending the answer to the browser before it is given. The first letter and the length point to the wanted word instead.
 
 ### 2.3 Feedback and motivation
 
@@ -137,10 +141,10 @@ vocabwebapp/
 | `word_list`        | `id`, `name`, `grade`, `source` (`builtin`/`custom`), `active`                                                          |
 | `word`             | `id`, `list_id`, `word`, `part_of_speech`, `definition`, `sentence`, `synonyms_json`, `active`                          |
 | `word_progress`    | `child_id`, `word_id`, `box`, `due_at`, `times_seen`, `times_correct`, `first_seen_at`, `mastered_at`                   |
-| `practice_session` | `id`, `child_id`, `started_at`, `ended_at`, `active_ms`, `question_count`, `completed`                                  |
+| `practice_session` | `id`, `child_id`, `started_at`, `ended_at`, `active_ms`, `question_count`, `completed`, `plan_json`                     |
 | `question`         | `id`, `practice_session_id`, `word_id`, `type`, `choices_json`, `correct_choice`, `served_at`                           |
 | `answer`           | `question_id`, `chosen`, `is_correct`, `response_ms`, `is_retry`, `answered_at`                                         |
-| `login_attempt`    | `ip`, `at`, `success` (for rate limiting)                                                                               |
+| `login_attempt`    | `scope`, `ip`, `at`, `success` (for rate limiting)                                                                      |
 | `setting`          | `key`, `value`                                                                                                          |
 
 The `question` row is written when a question is served and holds the correct answer on the server. The browser receives only the question id and the shuffled choices, and the answer is checked server-side. This keeps the metrics trustworthy.
@@ -166,7 +170,7 @@ The `question` row is written when a question is served and holds the correct an
 - An unknown name gets "Hmm, I don't know that name yet — ask a grown-up", and never creates a profile. This stops typos from creating junk profiles and splitting his stats.
 - A successful match sets a 30-day child session cookie, so on his usual device he lands straight on "Welcome back". A "Not you?" button switches child.
 - A child session can reach only `/` and `/play`. It can never read `/parent` or any other child's data.
-- The name lookup is rate limited and the response does not list valid names.
+- The name lookup is rate limited (20 wrong names per network address in 15 minutes, counted separately from parent sign-in) and the response does not list valid names.
 
 Accepted trade-off: anyone on the home network who knows his name can practice as him. The worst case is skewed stats, and the parent can delete a practice session from the dashboard.
 
