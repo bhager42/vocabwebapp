@@ -2,16 +2,27 @@ import { error } from '@sveltejs/kit';
 import { requireParent } from '#lib/server/auth/guard.ts';
 import { listChildren, setArchived } from '#lib/server/children.ts';
 import { getDb } from '#lib/server/db/index.ts';
+import { practiceDays, scopeFor } from '#lib/server/metrics.ts';
+import { appTimeZone, formatDay } from '#lib/server/time.ts';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ locals }) => {
 	requireParent(locals);
-	const children = listChildren(getDb()).map(({ id, name, grade, archivedAt }) => ({
-		id,
-		name,
-		grade,
-		archived: archivedAt !== null
-	}));
+	const db = getDb();
+	const now = new Date();
+	const timeZone = appTimeZone();
+
+	const children = listChildren(db).map(({ id, name, grade, archivedAt }) => {
+		const practice = practiceDays(db, scopeFor(id, 'all', now, timeZone));
+		return {
+			id,
+			name,
+			grade,
+			archived: archivedAt !== null,
+			streak: practice.currentStreak,
+			lastPracticed: practice.lastDay && formatDay(practice.lastDay)
+		};
+	});
 	return {
 		children: children.filter((child) => !child.archived),
 		archived: children.filter((child) => child.archived)

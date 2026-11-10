@@ -87,3 +87,68 @@ export function currentStreak(practicedDays: Set<string>, todayKey: string): num
 	}
 	return streak;
 }
+
+/** The hour of the day on the zone's clock, 0 to 23. */
+export function localHour(date: Date, timeZone: string): number {
+	return wallClock(date.getTime(), timeZone).hour;
+}
+
+/** The longest run of consecutive days in the set. */
+export function longestStreak(practicedDays: Set<string>): number {
+	let longest = 0;
+	for (const day of practicedDays) {
+		// Only count from the first day of each run.
+		if (practicedDays.has(shiftDayKey(day, -1))) continue;
+		let length = 1;
+		while (practicedDays.has(shiftDayKey(day, length))) length++;
+		longest = Math.max(longest, length);
+	}
+	return longest;
+}
+
+/** Every `YYYY-MM-DD` key from `first` to `last`, both included. */
+export function dayKeysBetween(first: string, last: string): string[] {
+	const keys: string[] = [];
+	for (let key = first; key <= last; key = shiftDayKey(key, 1)) keys.push(key);
+	return keys;
+}
+
+// ---- Text for people ----
+// Dates are turned into text on the server, in the app's time zone, so a page reads the
+// same wherever the parent's browser happens to be.
+
+const dayFormat = new Intl.DateTimeFormat('en-US', {
+	timeZone: 'UTC',
+	weekday: 'short',
+	month: 'short',
+	day: 'numeric'
+});
+const shortDayFormat = new Intl.DateTimeFormat('en-US', {
+	timeZone: 'UTC',
+	month: 'short',
+	day: 'numeric'
+});
+
+const keyToUtc = (key: string) => new Date(`${key}T00:00:00Z`);
+
+/** A `YYYY-MM-DD` key as "Tue, Nov 10". */
+export const formatDay = (key: string) => dayFormat.format(keyToUtc(key));
+/** A `YYYY-MM-DD` key as "Nov 10". */
+export const formatShortDay = (key: string) => shortDayFormat.format(keyToUtc(key));
+
+/** An instant as "Nov 10, 2026, 4:05 PM" on the zone's clock. */
+export function formatDateTime(date: Date, timeZone: string): string {
+	return new Intl.DateTimeFormat('en-US', {
+		timeZone,
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: '2-digit'
+	}).format(date);
+}
+
+/** An hour of the day (0 to 23) as "4 PM". */
+export function formatHour(hour: number): string {
+	return `${hour % 12 || 12} ${hour < 12 ? 'AM' : 'PM'}`;
+}

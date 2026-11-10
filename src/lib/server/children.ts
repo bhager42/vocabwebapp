@@ -178,6 +178,11 @@ export function updateChild(db: Db, id: number, input: EditChildInput): SaveResu
 	return { ok: true, child: toChild(row) };
 }
 
+/** Changes only the grade, leaving name and settings alone. */
+export function setGrade(db: Db, id: number, grade: number): boolean {
+	return db.update(child).set({ grade }).where(eq(child.id, id)).run().changes > 0;
+}
+
 /**
  * Archiving hides a child from practice and from the main list but keeps all of their
  * history. Restoring brings them back exactly as they were.

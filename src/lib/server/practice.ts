@@ -98,7 +98,8 @@ function wordInfo(db: Reader, id: number): WordInfo {
 
 // ---- Sessions ----
 
-function lastActivity(db: Reader, session: SessionRow): Date {
+/** When the child last did anything in a session: was served a question, or answered one. */
+export function lastActivity(db: Reader, session: Pick<SessionRow, 'id' | 'startedAt'>): Date {
 	const last = db
 		.select({ servedAt: question.servedAt, answeredAt: answer.answeredAt })
 		.from(question)

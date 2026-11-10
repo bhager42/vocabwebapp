@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { resolve } from '$app/paths';
 	import Button from '#lib/components/Button.svelte';
 	import CheckField from '#lib/components/CheckField.svelte';
 	import Dialog from '#lib/components/Dialog.svelte';
@@ -17,14 +16,11 @@
 </script>
 
 <svelte:head>
-	<title>{child.name} · Vocab</title>
+	<title>Settings for {child.name} · Vocab</title>
 </svelte:head>
 
 <div class="narrow stack-lg">
-	<header>
-		<p><a href={resolve('/parent/(app)')}>← All children</a></p>
-		<h1>{child.name}</h1>
-	</header>
+	<h1>Settings for {child.name}</h1>
 
 	{#if child.archived}
 		<div class="notice notice-info stack">

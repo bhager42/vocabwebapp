@@ -8,17 +8,13 @@ import {
 	updateChild
 } from '#lib/server/children.ts';
 import { getDb } from '#lib/server/db/index.ts';
+import { idParam } from '#lib/server/params.ts';
 import { parseForm } from '#lib/server/validation.ts';
 import type { Actions, PageServerLoad } from './$types';
 
-function childId(param: string): number {
-	if (!/^\d{1,9}$/.test(param)) error(404, 'Child not found');
-	return Number(param);
-}
-
 export const load: PageServerLoad = ({ locals, params }) => {
 	requireParent(locals);
-	const child = getChild(getDb(), childId(params.id));
+	const child = getChild(getDb(), idParam(params.id));
 	if (!child) error(404, 'Child not found');
 
 	return {
@@ -36,7 +32,7 @@ export const load: PageServerLoad = ({ locals, params }) => {
 export const actions: Actions = {
 	save: async ({ locals, params, request }) => {
 		requireParent(locals);
-		const id = childId(params.id);
+		const id = idParam(params.id);
 
 		const parsed = parseForm(editChildSchema, await request.formData());
 		if (!parsed.ok) return fail(400, { errors: parsed.errors });
@@ -51,13 +47,13 @@ export const actions: Actions = {
 
 	archive: ({ locals, params }) => {
 		requireParent(locals);
-		if (!setArchived(getDb(), childId(params.id), true)) error(404, 'Child not found');
+		if (!setArchived(getDb(), idParam(params.id), true)) error(404, 'Child not found');
 		redirect(303, '/parent');
 	},
 
 	restore: ({ locals, params }) => {
 		requireParent(locals);
-		if (!setArchived(getDb(), childId(params.id), false)) error(404, 'Child not found');
+		if (!setArchived(getDb(), idParam(params.id), false)) error(404, 'Child not found');
 		return { restored: true };
 	}
 };

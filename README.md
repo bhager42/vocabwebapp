@@ -3,9 +3,9 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phases 1 to 5 are complete: a child can type their name and practice, and a parent can
-sign in and manage children. The parent dashboard arrives in Phase 6 and TrueNAS install
-instructions in Phase 7.
+Status: Phases 1 to 6 are complete: a child can type their name and practice, and a parent can
+sign in, manage children and see each child's progress. Custom word lists, backups and TrueNAS
+install instructions arrive in Phase 7.
 
 ## Develop
 
@@ -53,6 +53,22 @@ asks it again a little later in the same session. The rules live in `src/lib/ser
 and `src/lib/server/questions.ts`, and section 2 of [PLAN.md](PLAN.md) explains them.
 
 Set `TZ` to your time zone: "due tomorrow", streaks and the daily limit all follow local days.
+
+## Parent dashboard
+
+Each child has four tabs under **For parents**:
+
+- **Progress**: accuracy, time practiced, days and streaks, sessions, where the words stand,
+  trouble words, results by kind of question, retention, guessing and time of day, for the last
+  7 days, the last 30 days or all time. Every chart has the same numbers in a table. The page
+  also offers the move to the next grade, and a CSV download of every answer.
+- **Sessions**: each session with its questions and answers. A session that should not count
+  can be deleted.
+- **Words**: every word the child has met, and every answer given for each.
+- **Settings**: name, grade and practice settings.
+
+"Time practiced" is active time: gaps between actions count only up to one minute, so a tablet
+left open does not add to it. Days and hours follow the `TZ` setting.
 
 ## Design system
 

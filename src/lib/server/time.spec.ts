@@ -1,5 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { currentStreak, localDayKey, shiftDayKey, startOfLocalDay } from './time.ts';
+import {
+	currentStreak,
+	dayKeysBetween,
+	formatDateTime,
+	formatDay,
+	formatHour,
+	formatShortDay,
+	localDayKey,
+	localHour,
+	longestStreak,
+	shiftDayKey,
+	startOfLocalDay
+} from './time.ts';
 
 const CHICAGO = 'America/Chicago';
 
@@ -126,5 +138,69 @@ describe('currentStreak', () => {
 
 	it('runs across a month end', () => {
 		expect(currentStreak(days('2026-10-30', '2026-10-31', '2026-11-01'), '2026-11-01')).toBe(3);
+	});
+});
+
+describe('longestStreak', () => {
+	const days = (...keys: string[]) => new Set(keys);
+
+	it('is zero with no practice and one for a single day', () => {
+		expect(longestStreak(days())).toBe(0);
+		expect(longestStreak(days('2026-11-10'))).toBe(1);
+	});
+
+	it('finds the longest run, wherever it is', () => {
+		expect(
+			longestStreak(
+				days('2026-10-30', '2026-10-31', '2026-11-01', '2026-11-03', '2026-11-09', '2026-11-10')
+			)
+		).toBe(3);
+	});
+
+	it('does not join runs across a gap', () => {
+		expect(longestStreak(days('2026-11-01', '2026-11-03', '2026-11-05'))).toBe(1);
+	});
+});
+
+describe('dayKeysBetween', () => {
+	it('lists every day, both ends included', () => {
+		expect(dayKeysBetween('2026-10-30', '2026-11-02')).toEqual([
+			'2026-10-30',
+			'2026-10-31',
+			'2026-11-01',
+			'2026-11-02'
+		]);
+		expect(dayKeysBetween('2026-11-10', '2026-11-10')).toEqual(['2026-11-10']);
+	});
+
+	it('is empty when the end is before the start', () => {
+		expect(dayKeysBetween('2026-11-10', '2026-11-09')).toEqual([]);
+	});
+});
+
+describe('localHour', () => {
+	it("is the hour on the zone's clock", () => {
+		expect(localHour(new Date('2026-11-10T22:30:00Z'), 'America/Chicago')).toBe(16);
+		// Daylight saving time: one hour later on the clock for the same UTC time.
+		expect(localHour(new Date('2026-07-10T22:30:00Z'), 'America/Chicago')).toBe(17);
+		expect(localHour(new Date('2026-11-10T06:00:00Z'), 'America/Chicago')).toBe(0);
+		expect(localHour(new Date('2026-11-10T22:30:00Z'), 'UTC')).toBe(22);
+	});
+});
+
+describe('text for people', () => {
+	it('formats a day key without shifting it by a time zone', () => {
+		expect(formatDay('2026-11-10')).toBe('Tue, Nov 10');
+		expect(formatShortDay('2026-11-01')).toBe('Nov 1');
+	});
+
+	it("formats an instant on the zone's clock", () => {
+		const text = formatDateTime(new Date('2026-11-10T22:05:00Z'), 'America/Chicago');
+		// Some versions put a narrow space before PM; any white space will do.
+		expect(text.replace(/\s/g, ' ')).toBe('Nov 10, 2026, 4:05 PM');
+	});
+
+	it('formats hours on a 12-hour clock', () => {
+		expect([0, 9, 12, 16, 23].map(formatHour)).toEqual(['12 AM', '9 AM', '12 PM', '4 PM', '11 PM']);
 	});
 });

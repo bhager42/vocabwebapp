@@ -231,6 +231,20 @@ Everything below is computed from the `answer`, `question`, `practice_session` a
 | Guessing signal           | Share of wrong answers given in under 1.5 seconds                                              |
 | Best time of day          | Accuracy by hour, once there is enough data                                                    |
 
+How the definitions above are applied (decided in Phase 6):
+
+- A **first attempt** is the first time a word is asked in a session. Retries after a miss, and the second looks that fill out a short session, are easier and are left out of every accuracy figure. Response time and trouble words count every answer.
+- **7 days** means today and the six calendar days before it in the `TZ` zone, not the last 168 hours. A session belongs to the day it started on.
+- Charts show one point per day up to 60 days and one per week (Monday to Sunday) beyond that.
+- **Abandoned** covers sessions stopped early and sessions walked away from. A session still open and touched within the last hour is counted as in progress instead.
+- **Word status** and **grade progress** describe today and do not change with the period switch. Only words that can be asked are counted.
+- **Trouble words:** when the wrong choice was another word's definition, the dashboard names that word.
+- **Guessing signal** leaves out spelling questions, which nobody can type in 1.5 seconds.
+- **Best time of day** is named only after 50 first attempts, with at least two hours of the day having 10 each.
+- **Deleting a session** removes its questions and answers from every figure. The boxes its words reached are kept, since undoing them would mean replaying everything since.
+- **Grade progression:** when 80% is reached and automatic move-up is off, the progress page offers a "Move up to grade N" button.
+- **CSV export** is per child. Cells that a spreadsheet would run as a formula are prefixed with an apostrophe, because spelling answers are typed by the child. The full database backup download is part of Phase 7.
+
 **Active time** is not wall-clock time. It is the sum of gaps between consecutive events in a session (question served, answered, next), with each gap capped at 60 seconds. Walking away from the tablet does not inflate the number.
 
 **Other parent features**

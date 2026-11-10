@@ -27,14 +27,30 @@
 				<li class="card">
 					<div>
 						<h2>{child.name}</h2>
-						<p class="muted">Grade {child.grade}</p>
+						<p class="muted">
+							Grade {child.grade} ·
+							{#if child.lastPracticed}
+								last practiced {child.lastPracticed}{child.streak > 1
+									? `, ${child.streak} days in a row`
+									: ''}
+							{:else}
+								has not practiced yet
+							{/if}
+						</p>
 					</div>
-					<Button
-						variant="secondary"
-						href={resolve('/parent/(app)/children/[id]', { id: String(child.id) })}
-					>
-						Edit <span class="visually-hidden">{child.name}</span>
-					</Button>
+					<div class="actions">
+						<Button
+							href={resolve('/parent/(app)/children/[id]/progress', { id: String(child.id) })}
+						>
+							Progress <span class="visually-hidden">for {child.name}</span>
+						</Button>
+						<Button
+							variant="secondary"
+							href={resolve('/parent/(app)/children/[id]', { id: String(child.id) })}
+						>
+							Edit <span class="visually-hidden">{child.name}</span>
+						</Button>
+					</div>
 				</li>
 			{/each}
 		</ul>
