@@ -1,20 +1,5 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
-
-const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
-
-/**
- * Runs axe and insists that it really measured color contrast. If axe cannot work out
- * a color it files the element under "incomplete" instead of failing, which would let
- * unreadable text slip through.
- */
-async function expectAccessible(page: Page) {
-	const results = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
-
-	expect(results.violations).toEqual([]);
-	expect(results.incomplete.filter((result) => result.id === 'color-contrast')).toEqual([]);
-	expect(results.passes.some((result) => result.id === 'color-contrast')).toBe(true);
-}
+import { expectAccessible } from './helpers.ts';
 
 /** Relative luminance of the page background, 0 (black) to 1 (white). */
 async function backgroundLuminance(page: Page): Promise<number> {
@@ -357,6 +342,8 @@ test.describe('layout', () => {
 		const tooSmall = await page.evaluate(() =>
 			[...document.querySelectorAll<HTMLElement>('button, a.button, input:not([type=hidden])')]
 				.filter((element) => element.checkVisibility())
+				// A checkbox is pressed through the label wrapped around it.
+				.map((element) => element.closest<HTMLElement>('label.check') ?? element)
 				.map((element) => ({ element, box: element.getBoundingClientRect() }))
 				.filter(({ box }) => box.width < 44 || box.height < 44)
 				.map(({ element, box }) => `${element.outerHTML.slice(0, 60)} ${box.width}x${box.height}`)

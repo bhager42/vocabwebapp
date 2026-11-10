@@ -1,6 +1,11 @@
+<script lang="ts">
+	import { resolve } from '$app/paths';
+</script>
+
 <svelte:head>
 	<title>Vocab</title>
 </svelte:head>
 
 <h1>Vocab</h1>
-<p>The app is running. Practice and the parent dashboard arrive in later phases.</p>
+<p>The app is running. Practice arrives in the next phase.</p>
+<p><a href={resolve('/parent/(app)')}>For parents</a></p>

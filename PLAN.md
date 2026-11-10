@@ -235,7 +235,7 @@ Everything below is computed from the `answer`, `question`, `practice_session` a
 - Session log: each session with its questions and answers; delete a session.
 - Manage children: add, rename, set grade, archive.
 - Manage words: disable built-in words, create custom lists, paste a list of words and fill in definition and sentence.
-- Settings: questions per session, new words per session, spelling questions on/off, daily cap, auto-unlock next grade.
+- Settings, kept per child: questions per session, new words per session, spelling questions on/off, daily cap, auto-unlock next grade.
 - Export: CSV of answers and a full database backup download.
 
 ---

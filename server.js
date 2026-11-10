@@ -48,6 +48,16 @@ process.env.PROTOCOL_HEADER = PROTOCOL_HEADER;
 process.env.HOST_HEADER = HOST_HEADER;
 delete process.env.PORT_HEADER;
 
+// Behind a reverse proxy (TRUST_PROXY=true) the visitor's address is the last entry the
+// proxy added to X-Forwarded-For. Without one, that header is whatever the client typed,
+// so it is ignored and the socket address is used. Sign-in rate limiting depends on this.
+if (process.env.TRUST_PROXY === 'true') {
+	process.env.ADDRESS_HEADER = 'x-forwarded-for';
+	process.env.XFF_DEPTH ??= '1';
+} else {
+	delete process.env.ADDRESS_HEADER;
+}
+
 const { handler } = await import('./build/handler.js');
 
 const server = http.createServer((req, res) => {

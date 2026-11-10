@@ -120,7 +120,14 @@ textarea {
 	font-size: var(--text-sm);
 }
 
-.field > input {
+.field > .error {
+	color: var(--color-danger);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-bold);
+}
+
+.field > input,
+.field > select {
 	inline-size: 100%;
 	min-block-size: var(--target-min);
 	padding: var(--space-3) var(--space-4);
@@ -128,6 +135,86 @@ textarea {
 	border-radius: var(--radius-md);
 	background: var(--color-surface);
 	font-size: var(--text-lg);
+}
+
+.field > input[type='number'] {
+	max-inline-size: 8rem;
+}
+
+.field > [aria-invalid='true'] {
+	border-color: var(--color-danger);
+	/* Not color alone: an invalid field also gets a thicker edge. */
+	border-width: 3px;
+}
+
+/* A checkbox: the label wraps the box so the whole row can be tapped. */
+.check {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	min-block-size: var(--target-min);
+	font-weight: var(--weight-bold);
+	cursor: pointer;
+}
+
+.check > input {
+	flex: none;
+	inline-size: 1.75rem;
+	block-size: 1.75rem;
+	margin: 0;
+}
+
+.check-field > .hint {
+	display: block;
+	padding-inline-start: calc(1.75rem + var(--space-3));
+	color: var(--color-text-muted);
+	font-size: var(--text-sm);
+}
+
+fieldset {
+	min-inline-size: 0;
+	margin: 0;
+	padding: var(--space-5);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	background: var(--color-surface);
+}
+
+legend {
+	padding-inline: var(--space-2);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-bold);
+}
+
+/* ---- Messages ---- */
+.notice {
+	margin: 0;
+	max-inline-size: none;
+	padding: var(--space-3) var(--space-4);
+	border: 2px solid var(--color-danger);
+	border-radius: var(--radius-md);
+	background: var(--color-danger-soft);
+	font-weight: var(--weight-bold);
+}
+
+.notice-ok {
+	border-color: var(--color-correct);
+	background: var(--color-correct-soft);
+}
+
+.notice-info {
+	border-color: var(--color-border-strong);
+	background: var(--color-surface);
+	font-weight: var(--weight-normal);
+}
+
+.notice p {
+	margin: 0;
+}
+
+code {
+	font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+	font-size: 0.9em;
 }
 
 /* ---- Page shell ---- */
@@ -171,6 +258,30 @@ main {
 	max-inline-size: var(--page-max);
 	margin-inline: auto;
 	padding: var(--space-5) var(--page-gutter) var(--space-8);
+}
+
+/* A single column for forms and other pages that read better narrow. */
+.narrow {
+	max-inline-size: 32rem;
+}
+
+.page-header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+}
+
+.page-header h1 {
+	margin: 0;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-3);
 }
 
 /* ---- Utilities ---- */

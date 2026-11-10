@@ -2,11 +2,14 @@
 	// A gallery of every design-system component. It is not linked from the app; it exists
 	// so the components can be seen together and checked by the accessibility tests.
 	import Button from '#lib/components/Button.svelte';
+	import CheckField from '#lib/components/CheckField.svelte';
 	import ChoiceCard from '#lib/components/ChoiceCard.svelte';
 	import Dialog from '#lib/components/Dialog.svelte';
 	import FeedbackPanel from '#lib/components/FeedbackPanel.svelte';
+	import Field from '#lib/components/Field.svelte';
 	import Icon from '#lib/components/Icon.svelte';
 	import ProgressBar from '#lib/components/ProgressBar.svelte';
+	import SelectField from '#lib/components/SelectField.svelte';
 
 	const choices = [
 		{ label: 'A', text: 'very, very big' },
@@ -128,12 +131,40 @@
 	</section>
 
 	<section class="stack" aria-labelledby="sg-fields">
-		<h2 id="sg-fields">Form field</h2>
+		<h2 id="sg-fields">Form fields and messages</h2>
 		<div class="sample">
-			<div class="field">
-				<label for="sg-name">What's your name?</label>
-				<input id="sg-name" type="text" autocomplete="off" aria-describedby="sg-name-hint" />
-				<span class="hint" id="sg-name-hint">Type your first name.</span>
+			<div class="stack">
+				<Field
+					label="What's your name?"
+					name="sg-name"
+					autocomplete="off"
+					hint="Type your first name."
+				/>
+				<Field
+					label="Password"
+					name="sg-password"
+					type="password"
+					autocomplete="off"
+					error="A password needs at least 12 characters."
+				/>
+				<SelectField
+					label="Grade"
+					name="sg-grade"
+					value="3"
+					options={[
+						{ value: '3', label: 'Grade 3' },
+						{ value: '4', label: 'Grade 4' }
+					]}
+				/>
+				<CheckField
+					label="Spelling questions"
+					name="sg-spelling"
+					checked={true}
+					hint="Words that are nearly mastered are asked by typing the word."
+				/>
+				<p class="notice" role="alert">Nothing was saved. Please fix the problem above.</p>
+				<p class="notice notice-ok">Saved.</p>
+				<p class="notice notice-info">No children yet.</p>
 			</div>
 		</div>
 	</section>

@@ -3,7 +3,8 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phases 1 to 3 (scaffold, word lists, design system) are complete. TrueNAS install instructions arrive in Phase 7.
+Status: Phases 1 to 4 (scaffold, word lists, design system, parent account and children) are
+complete. TrueNAS install instructions arrive in Phase 7.
 
 ## Develop
 
@@ -28,6 +29,19 @@ npm run dev          # http://localhost:5173, database in ./data
 Migrations in `drizzle/` are applied automatically when the app starts, and the built-in word
 lists in `content/` (120 words each for grades 3 to 6) are loaded or updated at the same time.
 
+## First run
+
+1. Start the app with `SETUP_TOKEN` set (for `npm run dev`, add `SETUP_TOKEN=some-long-code` to `.env`).
+2. Open `/setup`, enter that code, and choose a username and a password of at least 12 characters.
+3. You are signed in and taken to `/parent`, where you add each child and set their grade.
+
+The setup page closes for good once the parent account exists, so `SETUP_TOKEN` can be removed
+afterwards. There is no password reset by email: if the password is lost, delete the row in the
+`parent` table and run setup again (children and their progress are kept).
+
+Sign-in allows 5 wrong attempts per network address in 15 minutes. A parent is signed out after
+12 hours without use and always after 7 days.
+
 ## Design system
 
 Colors, sizes and timings are defined once in `src/lib/styles/tokens.css`; the components are in
@@ -45,14 +59,14 @@ filesystem; `/data` is the only writable path.
 
 ## Configuration
 
-| Variable      | Required   | Purpose                                                              |
-| ------------- | ---------- | -------------------------------------------------------------------- |
-| `ORIGIN`      | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080` |
-| `DATA_DIR`    | no         | Directory for the database (default `./data`, `/data` in the image)  |
-| `TZ`          | no         | Time zone for day boundaries, e.g. `America/Chicago`                 |
-| `SETUP_TOKEN` | first run  | One-time token for creating the parent account (used from Phase 4)   |
-| `TRUST_PROXY` | no         | `true` when behind a reverse proxy (used from Phase 4)               |
-| `PORT`        | no         | Listen port (default `3000`)                                         |
+| Variable      | Required   | Purpose                                                                           |
+| ------------- | ---------- | --------------------------------------------------------------------------------- |
+| `ORIGIN`      | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080`              |
+| `DATA_DIR`    | no         | Directory for the database (default `./data`, `/data` in the image)               |
+| `TZ`          | no         | Time zone for day boundaries, e.g. `America/Chicago`                              |
+| `SETUP_TOKEN` | first run  | One-time code for creating the parent account at `/setup`                         |
+| `TRUST_PROXY` | no         | `true` only behind a reverse proxy: read visitor addresses from `X-Forwarded-For` |
+| `PORT`        | no         | Listen port (default `3000`)                                                      |
 
 `ORIGIN` must match what is in the browser's address bar exactly (scheme, host and port).
 Form submissions from any other origin are rejected with a 403.
