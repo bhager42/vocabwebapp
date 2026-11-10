@@ -8,3 +8,6 @@ bun.lockb
 # Miscellaneous
 /static/
 /drizzle/
+
+# Word lists are kept one entry per line so they are easy to review
+/content/

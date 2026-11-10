@@ -25,6 +25,7 @@ RUN mkdir /data && chown 568:568 /data
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/build ./build
 COPY --from=build /app/drizzle ./drizzle
+COPY --from=build /app/content ./content
 COPY package.json server.js ./
 
 USER 568:568

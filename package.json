@@ -21,7 +21,9 @@
 		"test:e2e": "playwright install chromium && playwright test",
 		"db:generate": "drizzle-kit generate",
 		"db:studio": "drizzle-kit studio",
-		"start": "node server.js"
+		"start": "node server.js",
+		"content:check": "node scripts/content-check.ts",
+		"db:seed": "node scripts/seed.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "10.0.1",

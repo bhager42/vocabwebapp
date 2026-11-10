@@ -3,7 +3,7 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phase 1 (scaffold and tooling) is complete. TrueNAS install instructions arrive in Phase 7.
+Status: Phases 1 and 2 (scaffold, word lists) are complete. TrueNAS install instructions arrive in Phase 7.
 
 ## Develop
 
@@ -14,16 +14,19 @@ npm install
 npm run dev          # http://localhost:5173, database in ./data
 ```
 
-| Command               | What it does                                                    |
-| --------------------- | --------------------------------------------------------------- |
-| `npm run check`       | Type-check TypeScript and Svelte                                |
-| `npm run lint`        | Prettier and ESLint                                             |
-| `npm run test:unit`   | Vitest unit tests (watch mode; add `-- --run` for a single run) |
-| `npm run test:e2e`    | Build, start `server.js`, run Playwright tests against it       |
-| `npm test`            | Unit tests, then end-to-end tests                               |
-| `npm run db:generate` | Write a new SQL migration after editing the schema              |
+| Command                 | What it does                                                    |
+| ----------------------- | --------------------------------------------------------------- |
+| `npm run check`         | Type-check TypeScript and Svelte                                |
+| `npm run lint`          | Prettier and ESLint                                             |
+| `npm run test:unit`     | Vitest unit tests (watch mode; add `-- --run` for a single run) |
+| `npm run test:e2e`      | Build, start `server.js`, run Playwright tests against it       |
+| `npm test`              | Unit tests, then end-to-end tests                               |
+| `npm run db:generate`   | Write a new SQL migration after editing the schema              |
+| `npm run content:check` | Validate the word lists in `content/`                           |
+| `npm run db:seed`       | Load the word lists into the database by hand                   |
 
-Migrations in `drizzle/` are applied automatically when the app starts.
+Migrations in `drizzle/` are applied automatically when the app starts, and the built-in word
+lists in `content/` (120 words each for grades 3 to 6) are loaded or updated at the same time.
 
 ## Run the production image locally
 
