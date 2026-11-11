@@ -1,0 +1,48 @@
+# Vocab on TrueNAS SCALE 25.10.
+#
+# Paste this into Apps > Discover Apps > (three dots) > Install via YAML, after changing
+# the three lines marked CHANGE. README.md walks through every step.
+services:
+  vocab:
+    image: ghcr.io/bhager42/vocabwebapp:1.0.0
+    # The TrueNAS "apps" user. The dataset below must belong to it.
+    user: '568:568'
+    restart: unless-stopped
+    ports:
+      - '30080:3000'
+    environment:
+      # CHANGE: exactly what you type in the browser to reach the app. No slash at the end.
+      ORIGIN: 'http://192.168.1.10:30080'
+      DATA_DIR: /data
+      # CHANGE if you do not live in US Central time. Days and streaks follow this.
+      TZ: America/Chicago
+      # CHANGE: a long random code. It is asked for once, when you create your account.
+      SETUP_TOKEN: 'change-me-to-a-long-random-code'
+      # Set to 'true' only if a reverse proxy sits in front of the app.
+      TRUST_PROXY: 'false'
+    volumes:
+      # CHANGE the part before the colon if your pool or dataset has another name.
+      - /mnt/tank/apps/vocab:/data
+    # Nothing in the container can be written to except /data and a scratch /tmp.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - "fetch('http://127.0.0.1:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M

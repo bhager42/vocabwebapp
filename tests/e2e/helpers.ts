@@ -20,13 +20,18 @@ export function withDb<T>(fn: (db: Database.Database) => T): T {
 	}
 }
 
-/** Back to a fresh install: no parent, no children, no practice, nobody signed in or locked out. */
+/**
+ * Back to a fresh install: no parent, no children, no practice, nobody signed in or locked
+ * out, and only the built-in word lists, all switched on.
+ */
 export function resetAccounts() {
 	withDb((db) =>
 		db.exec(
 			`delete from answer; delete from question; delete from practice_session;
 			 delete from word_progress; delete from auth_session; delete from login_attempt;
-			 delete from child; delete from parent;`
+			 delete from child; delete from parent;
+			 delete from word_list where source = 'custom';
+			 update word_list set active = 1; update word set active = 1;`
 		)
 	);
 }

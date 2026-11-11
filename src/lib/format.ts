@@ -26,6 +26,12 @@ export function plural(count: number, one: string, many = `${one}s`): string {
 	return `${count} ${count === 1 ? one : many}`;
 }
 
+/** A file size as "12 KB" or "3.4 MB". */
+export function fileSize(bytes: number): string {
+	if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+	return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 export const QUESTION_TYPE_LABELS = {
 	word_to_def: 'Pick the meaning',
 	def_to_word: 'Pick the word',

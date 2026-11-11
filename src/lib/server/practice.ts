@@ -229,14 +229,26 @@ export function startPractice(db: Db, who: PracticeChild, clock: Clock): StartRe
 			.all()
 			.filter((row) => eligible.has(row.wordId));
 		const seen = new Set(progress.map((row) => row.wordId));
+		const custom = new Set(
+			tx
+				.select({ id: wordList.id })
+				.from(wordList)
+				.where(eq(wordList.source, 'custom'))
+				.all()
+				.map((list) => list.id)
+		);
 
 		const plan = composePlan({
 			due: progress.filter((row) => row.dueAt <= now),
 			early: progress.filter((row) => row.dueAt > now && !row.masteredAt),
+			// New words come in no particular order, except that the parent's own lists go
+			// first: those are usually this week's words from school.
 			fresh: shuffle(
 				words.filter((entry) => entry.grade === who.grade && !seen.has(entry.id)),
 				rng
-			).map((entry) => entry.id),
+			)
+				.sort((a, b) => Number(custom.has(b.listId)) - Number(custom.has(a.listId)))
+				.map((entry) => entry.id),
 			questionsPerSession: who.settings.questionsPerSession,
 			newWordsPerSession: who.settings.newWordsPerSession,
 			spellingEnabled: who.settings.spellingEnabled

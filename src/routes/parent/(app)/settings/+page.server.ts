@@ -5,13 +5,26 @@ import { changePassword } from '#lib/server/auth/parent.ts';
 import { changePasswordSchema } from '#lib/server/auth/schemas.ts';
 import { deleteSessionsFor } from '#lib/server/auth/session.ts';
 import { endParentSession } from '#lib/server/auth/start-session.ts';
-import { getDb } from '#lib/server/db/index.ts';
+import { listBackups } from '#lib/server/backup.ts';
+import { backupDir, getDb } from '#lib/server/db/index.ts';
+import { appTimeZone, formatDateTime } from '#lib/server/time.ts';
 import { parseForm } from '#lib/server/validation.ts';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ locals }) => {
 	const parent = requireParent(locals);
-	return { username: parent.username };
+	const timeZone = appTimeZone();
+	return {
+		username: parent.username,
+		backups: listBackups(backupDir())
+			.filter((backup) => backup.kind !== 'download')
+			.map((backup) => ({
+				name: backup.name,
+				kind: backup.kind,
+				created: formatDateTime(backup.createdAt, timeZone),
+				bytes: backup.bytes
+			}))
+	};
 };
 
 export const actions: Actions = {

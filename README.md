@@ -3,9 +3,9 @@
 A self-hosted vocabulary practice app for kids, with a parent dashboard. It runs as a single
 container with a SQLite database. See [PLAN.md](PLAN.md) for the full design and build phases.
 
-Status: Phases 1 to 6 are complete: a child can type their name and practice, and a parent can
-sign in, manage children and see each child's progress. Custom word lists, backups and TrueNAS
-install instructions arrive in Phase 7.
+It is built for one family on a home network: a child types their first name and practices,
+and a parent signs in to see how it is going. To put it on a TrueNAS server, go to
+[Install on TrueNAS SCALE](#install-on-truenas-scale-2510).
 
 ## Develop
 
@@ -70,6 +70,19 @@ Each child has four tabs under **For parents**:
 "Time practiced" is active time: gaps between actions count only up to one minute, so a tablet
 left open does not add to it. Days and hours follow the `TZ` setting.
 
+## Word lists
+
+**Word lists** in the parent menu shows the four built-in lists (grades 3 to 6, 120 words each)
+and any lists of your own.
+
+- Any list, or any single word, can be switched off so it is no longer asked.
+- **Make your own list** for a grade, then paste words (one per line or separated by commas) and
+  fill in a kind of word, a short meaning and a sentence for each. The meaning must not use the
+  word, and the sentence must use it exactly once.
+- New words from your own lists are given before new words from the built-in lists.
+- A word or list can be deleted until a child has been asked it. After that it can only be
+  switched off, so the child's history stays whole.
+
 ## Design system
 
 Colors, sizes and timings are defined once in `src/lib/styles/tokens.css`; the components are in
@@ -82,15 +95,16 @@ light, dark and match-this-device themes are switched with the buttons at the to
 docker compose -f compose.dev.yaml up --build   # or: podman compose ...
 ```
 
-Then open <http://localhost:3000>. The container runs as UID 568 with a read-only root
-filesystem; `/data` is the only writable path.
+Then open <http://localhost:3000> (the setup code is `dev-setup-token`). The container runs as
+UID 568 with a read-only root filesystem; `/data` is the only writable path. The image has no
+shell or package manager in it, only Node and the app.
 
 ## Configuration
 
 | Variable      | Required   | Purpose                                                                           |
 | ------------- | ---------- | --------------------------------------------------------------------------------- |
 | `ORIGIN`      | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080`              |
-| `DATA_DIR`    | no         | Directory for the database (default `./data`, `/data` in the image)               |
+| `DATA_DIR`    | no         | Directory for the database and backups (default `./data`, `/data` in the image)   |
 | `TZ`          | no         | Time zone for day boundaries, e.g. `America/Chicago`                              |
 | `SETUP_TOKEN` | first run  | One-time code for creating the parent account at `/setup`                         |
 | `TRUST_PROXY` | no         | `true` only behind a reverse proxy: read visitor addresses from `X-Forwarded-For` |
@@ -98,3 +112,132 @@ filesystem; `/data` is the only writable path.
 
 `ORIGIN` must match what is in the browser's address bar exactly (scheme, host and port).
 Form submissions from any other origin are rejected with a 403.
+
+## Install on TrueNAS SCALE 25.10
+
+TrueNAS runs a ready-made image; it does not build one. So the image is published first, then
+installed from [compose.truenas.yaml](compose.truenas.yaml).
+
+### 1. Publish the image
+
+Pushing a version tag makes GitHub Actions test, scan and publish the image:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.0.0`.
+A new package on GitHub starts out private. Either make it public (on GitHub: your profile →
+Packages → vocabwebapp → Package settings → Change visibility), or give TrueNAS a sign-in for
+`ghcr.io` (Apps → Configuration → Sign-in to a Docker registry) using a GitHub token that has
+the `read:packages` permission.
+
+Without a registry: build on this machine and copy the image across, then add
+`pull_policy: never` under `image:` in the compose file.
+
+```sh
+docker build -t ghcr.io/bhager42/vocabwebapp:1.0.0 .
+docker save ghcr.io/bhager42/vocabwebapp:1.0.0 | ssh admin@NAS_ADDRESS sudo docker load
+```
+
+### 2. Make a place for the data
+
+1. In TrueNAS, go to **Datasets** and add a dataset, for example `tank/apps/vocab`, using the
+   **Apps** preset. The preset makes the `apps` user (number 568) the owner, which the
+   container runs as. If you make the dataset another way, set its owner and group to `apps`.
+2. Use a dataset on a pool in the NAS itself. Do not point the app at an SMB or NFS share:
+   the database does not work reliably over a network share.
+
+### 3. Install the app
+
+1. Open [compose.truenas.yaml](compose.truenas.yaml) and change the lines marked `CHANGE`:
+   - `ORIGIN`: exactly what you will type in the browser, such as `http://192.168.1.10:30080`.
+   - `SETUP_TOKEN`: a long random code of your own.
+   - `TZ`, if you are not in US Central time.
+   - The dataset path, if yours is not `/mnt/tank/apps/vocab`.
+2. In TrueNAS, go to **Apps → Discover Apps**, open the three-dot menu and choose
+   **Install via YAML**. Name the app `vocab`, paste the file in, and save.
+3. Wait for the app to show as running.
+
+### 4. First run
+
+1. On any device on your network, open `http://NAS_ADDRESS:30080/setup`.
+2. Enter the setup code, then choose a username and a password of at least 12 characters.
+3. Add your child under **Children** and set their grade.
+4. On the device your child will use, open `http://NAS_ADDRESS:30080`, type their name and play
+   a session. Then sign in as the parent from a different device and look at **Progress**.
+
+Once your account exists the setup page is closed for good, and `SETUP_TOKEN` can be removed
+from the app's YAML.
+
+Two things to know:
+
+- **Use the address in `ORIGIN`, always.** If the NAS is reached by another name or address,
+  pages open but every form is refused with a 403.
+- **Wrong-password limits are per network address.** If, after one device types a wrong
+  password five times, every device is told to wait, the app is seeing one address for the
+  whole network. That is safe, only inconvenient: wait 15 minutes.
+
+For HTTPS, put a reverse proxy in front of the app, set `ORIGIN` to the `https://` address and
+set `TRUST_PROXY` to `'true'`.
+
+### Update to a new version
+
+1. Publish the new version (step 1, with the new number).
+2. In TrueNAS, go to **Apps → vocab → Edit**, change the number at the end of the `image:`
+   line, and save.
+
+Before a new version changes the structure of the database, the app saves a copy as
+`backups/pre-migrate-<date>-<time>.db`. To go back, put the old number back in the `image:`
+line and restore that file as described below.
+
+## Backups
+
+Everything the app knows is in one file, `vocab.db`, in the data folder. Copies are kept in
+its `backups` folder:
+
+| File                    | Made                                              | Kept      |
+| ----------------------- | ------------------------------------------------- | --------- |
+| `nightly-<time>.db`     | Once a day while the app runs                     | Newest 14 |
+| `pre-migrate-<time>.db` | Before an update changes the database's structure | Newest 5  |
+
+Times in the file names are UTC. You can also download a copy at any moment from **Account →
+Backups** in the parent area. A backup holds your children's names and results and your
+(hashed) password, so keep it somewhere private.
+
+These copies sit on the same disks as the original. To guard against losing the pool, also add
+a **Periodic Snapshot Task** for the dataset (Data Protection in TrueNAS) and, if you can,
+replicate it or copy a downloaded backup elsewhere now and then.
+
+### Restore from a backup
+
+1. In TrueNAS, stop the app (**Apps → vocab → Stop**).
+2. Open a shell on the NAS (**System → Shell**) and put the backup in place of the database:
+
+   ```sh
+   cd /mnt/tank/apps/vocab
+   mv vocab.db vocab.db.before-restore
+   rm -f vocab.db-wal vocab.db-shm
+   cp backups/nightly-20261110-080000.db vocab.db    # the copy you want back
+   chown apps:apps vocab.db
+   ```
+
+   To restore a file you downloaded, copy it to the dataset first and use its name instead.
+
+3. Start the app again and sign in.
+
+The two `rm`'d files hold changes not yet written into the old `vocab.db`; left behind, they
+would be applied to the restored file and damage it. Everything after the backup was made is
+lost, which is why the old file is kept as `vocab.db.before-restore` until you are sure.
+
+This procedure was carried out against the production image on 10 November 2026: an account and
+a child were created, a backup was downloaded, the data volume was destroyed, the backup was
+put back as `vocab.db`, and the same username and password signed in and showed the child.
+
+## Continuous integration
+
+[.github/workflows/ci.yml](.github/workflows/ci.yml) runs on every push and pull request:
+formatting and lint, type check, word-list check, unit tests, end-to-end tests, then an image
+build that is started with the TrueNAS restrictions, scanned with Trivy (any high or critical
+finding fails the run) and listed in an SBOM. A `v*.*.*` tag also publishes the image to GHCR.

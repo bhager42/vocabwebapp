@@ -127,7 +127,8 @@ textarea {
 }
 
 .field > input,
-.field > select {
+.field > select,
+.field > textarea {
 	inline-size: 100%;
 	min-block-size: var(--target-min);
 	padding: var(--space-3) var(--space-4);
@@ -135,6 +136,12 @@ textarea {
 	border-radius: var(--radius-md);
 	background: var(--color-surface);
 	font-size: var(--text-lg);
+}
+
+.field > textarea {
+	min-block-size: 8rem;
+	font-size: var(--text-md);
+	resize: vertical;
 }
 
 .field > input[type='number'] {

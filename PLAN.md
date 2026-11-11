@@ -196,6 +196,7 @@ Accepted trade-off: anyone on the home network who knows his name can practice a
 ### 4.4 Container hardening
 
 - Multi-stage build; final image has production dependencies and build output only.
+- The final image is distroless (`gcr.io/distroless/nodejs26-debian13`, pinned by digest): Node and its libraries, with no shell, package manager or npm. Chosen in Phase 7 after the Debian slim image showed high-severity findings with no fix available; the distroless image scans clean.
 - Runs as UID/GID 568 (the TrueNAS `apps` user), never root.
 - `read_only: true` root filesystem, `/tmp` as tmpfs, `/data` the only writable mount.
 - `cap_drop: [ALL]`, `security_opt: [no-new-privileges:true]`, memory and CPU limits.
@@ -292,7 +293,7 @@ Installed through **Apps → Discover Apps → ⋮ → Install via YAML**.
 ```yaml
 services:
   vocab:
-    image: ghcr.io/OWNER/vocabwebapp:1.0.0
+    image: ghcr.io/bhager42/vocabwebapp:1.0.0
     user: '568:568'
     restart: unless-stopped
     ports:
@@ -375,6 +376,15 @@ services:
 - Word management UI and custom lists.
 - Pre-migration backup, nightly backup job, backup download.
 - `compose.truenas.yaml`, GitHub Actions workflow (lint, test, build, Trivy scan, SBOM, push on tag), `README.md` with step-by-step TrueNAS install, update, backup and restore instructions.
+
+Decided in Phase 7:
+
+- **Custom words** follow the same rules as built-in ones: a single word of letters, a meaning of at most 15 words that does not use the word, a sentence that uses it exactly once. Up to 30 can be pasted at a time; they are saved all together or not at all.
+- **New words from custom lists are given before built-in ones** for the same grade, since they are usually this week's words from school.
+- **Nothing a child has been asked is deleted.** A custom word or list can be deleted until one of its words has been asked; after that it can only be switched off, and a practiced word's spelling cannot change.
+- **Backups** are made with `VACUUM INTO`, written under a temporary name and renamed when complete. Nightly: checked hourly, made when the newest is a day old, newest 14 kept. Pre-migration: only when an existing database has migrations to run, newest 5 kept.
+- **Backup download** is a POST from the Account page, so it cannot be triggered by a link or from another site. The copy is made at that moment and removed from disk after sending.
+- **CI** pins every action to a commit. The scan fails on any high or critical finding, fixed or not. The image is published only for a `v*.*.*` tag, after tests and scan pass.
 
 **Accepts when:** CI is green; the image scan has no high or critical findings; a restore from a backup file is performed and documented; the app is installed on the NAS from the compose file and a full child session and parent login succeed from another device.
 

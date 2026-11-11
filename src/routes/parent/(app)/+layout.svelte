@@ -8,6 +8,7 @@
 
 	const links = [
 		{ href: resolve('/parent/(app)'), label: 'Children', exact: true },
+		{ href: resolve('/parent/(app)/words'), label: 'Word lists', exact: false },
 		{ href: resolve('/parent/(app)/settings'), label: 'Account', exact: false }
 	];
 

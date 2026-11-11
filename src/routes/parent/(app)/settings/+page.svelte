@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { resolve } from '$app/paths';
 	import Button from '#lib/components/Button.svelte';
 	import { clearPasswordsOnFailure } from '#lib/forms.ts';
 	import Field from '#lib/components/Field.svelte';
+	import TableWrap from '#lib/components/TableWrap.svelte';
+	import { fileSize } from '#lib/format.ts';
 	import type { PageProps } from './$types';
 
 	let { data, form }: PageProps = $props();
@@ -57,6 +60,48 @@
 			/>
 			<div><Button>Change password</Button></div>
 		</form>
+	</section>
+
+	<section class="stack" aria-labelledby="backup-heading">
+		<h2 id="backup-heading">Backups</h2>
+		<p class="muted">
+			A backup is one file holding everything: children, their progress, your word lists and your
+			account. Keep it somewhere private.
+		</p>
+		<form method="POST" action={resolve('/parent/(app)/settings/backup')}>
+			<Button variant="secondary">Download a backup now</Button>
+		</form>
+		{#if data.backups.length === 0}
+			<p class="muted">
+				The app also saves a copy every day in its data folder. There are none yet; the first is
+				made a minute after the app starts.
+			</p>
+		{:else}
+			<p class="muted">
+				The app also saves a copy every day in the <code>backups</code> folder of its data folder, and
+				keeps the newest 14.
+			</p>
+			<TableWrap label="Saved backups">
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th scope="col">Made</th>
+							<th scope="col">Kind</th>
+							<th scope="col">Size</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each data.backups as backup (backup.name)}
+							<tr>
+								<th scope="row">{backup.created}</th>
+								<td>{backup.kind === 'nightly' ? 'Daily' : 'Before an update'}</td>
+								<td>{fileSize(backup.bytes)}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</TableWrap>
+		{/if}
 	</section>
 
 	<section class="stack" aria-labelledby="sessions-heading">
