@@ -6,7 +6,7 @@ import process from 'node:process';
 import { loadContent } from '../src/lib/server/content/load.ts';
 import { validateContent } from '../src/lib/server/content/validate.ts';
 
-export const EXPECTED_GRADES = [3, 4, 5, 6, 7, 8, 9, 10, 11];
+export const EXPECTED_GRADES = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 export const WORDS_PER_GRADE = 120;
 
 const grades = loadContent(path.resolve('content'));
