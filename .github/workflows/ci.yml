@@ -51,8 +51,14 @@ jobs:
       - name: Unit tests
         run: npx vitest --run
 
+      # The runner image already has most of what Chromium needs. If Ubuntu's package mirror
+      # cannot be reached, install just the browser and let the tests show whether it runs.
       - name: Install the test browser
-        run: npx playwright install --with-deps chromium
+        run: |
+          npx playwright install --with-deps chromium || {
+            echo "::warning::Could not install the browser's system packages; installing the browser alone."
+            npx playwright install chromium
+          }
 
       - name: End-to-end tests
         run: npx playwright test
