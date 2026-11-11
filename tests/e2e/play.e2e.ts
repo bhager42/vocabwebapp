@@ -440,7 +440,11 @@ test.describe('kinds of question', () => {
 		await expect(page.getByText('Type the word that means this.')).toBeVisible();
 		await expect(page.getByRole('heading', { level: 1, name: 'very, very big' })).toBeVisible();
 		await expect(page.getByText('It starts with “e” and has 8 letters.')).toBeVisible();
-		// The word itself is nowhere on the page, and cannot be listened to.
+		// The word itself is nowhere on the page, and cannot be listened to. The page is
+		// loaded afresh first: the data sent with the first page stays in it after moving on,
+		// and the word may have been one of the choices offered for an earlier question.
+		await page.reload();
+		await expect(page.getByText('Type the word that means this.')).toBeVisible();
 		expect(await page.content()).not.toMatch(/enormous/i);
 		await expect(page.getByRole('button', { name: /^Hear/ })).toHaveCount(0);
 		await expect(page.getByLabel('Your answer')).toHaveAttribute('spellcheck', 'false');
