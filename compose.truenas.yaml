@@ -4,7 +4,7 @@
 # the lines marked CHANGE. README.md walks through every step.
 services:
   vocab:
-    image: ghcr.io/bhager42/vocabwebapp:1.1.0
+    image: ghcr.io/bhager42/vocabwebapp:1.1.1
     # The TrueNAS "apps" user.
     user: '568:568'
     restart: unless-stopped

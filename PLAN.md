@@ -294,7 +294,7 @@ Installed through **Apps → Discover Apps → ⋮ → Install via YAML**.
 ```yaml
 services:
   vocab:
-    image: ghcr.io/bhager42/vocabwebapp:1.1.0
+    image: ghcr.io/bhager42/vocabwebapp:1.1.1
     user: '568:568'
     restart: unless-stopped
     ports:
