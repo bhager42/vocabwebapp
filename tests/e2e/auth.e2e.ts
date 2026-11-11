@@ -484,7 +484,7 @@ test.describe('children', () => {
 	test('a grade without a word list cannot be forced in', async ({ page, baseURL }) => {
 		const response = await page.request.post('/parent/children/new', {
 			headers: { ...form, origin: baseURL! },
-			data: 'name=Sam&grade=9'
+			data: 'name=Sam&grade=13'
 		});
 		expect(response.status()).toBe(400);
 		expect(withDb((db) => db.prepare('select count(*) as n from child').get())).toEqual({ n: 0 });

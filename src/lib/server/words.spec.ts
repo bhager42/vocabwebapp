@@ -146,7 +146,7 @@ describe('checkList', () => {
 			errors: { name: 'Please give the list a name.' }
 		});
 		expect(checkList({ name: 'x'.repeat(41), grade: '3' })).toMatchObject({ ok: false });
-		expect(checkList({ name: 'Week 12', grade: '9' })).toMatchObject({
+		expect(checkList({ name: 'Week 12', grade: '13' })).toMatchObject({
 			ok: false,
 			errors: { grade: 'Please choose a grade.' }
 		});
