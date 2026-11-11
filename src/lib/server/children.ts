@@ -5,7 +5,7 @@ import { child } from './db/schema.ts';
 import { checkbox, wholeNumber } from './validation.ts';
 
 /** Grades that have a built-in word list. */
-export const GRADES = [3, 4, 5, 6, 7] as const;
+export const GRADES = [3, 4, 5, 6, 7, 8] as const;
 
 /** Per-child practice settings. See PLAN.md sections 2.2 to 2.4. */
 export interface ChildSettings {

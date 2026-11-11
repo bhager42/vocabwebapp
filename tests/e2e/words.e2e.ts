@@ -65,8 +65,15 @@ test.describe('built-in lists', () => {
 		await expect(page.getByRole('heading', { level: 1, name: 'Word lists' })).toBeVisible();
 
 		const rows = page.getByRole('group', { name: 'Word lists' }).getByRole('row');
-		await expect(rows).toHaveCount(6);
-		for (const [index, grade] of [3, 4, 5, 6, 7].entries()) {
+		const grades = withDb((db) =>
+			db
+				.prepare("select grade from word_list where source = 'builtin' order by grade")
+				.all()
+				.map((row) => (row as { grade: number }).grade)
+		);
+		expect(grades[0]).toBe(3);
+		await expect(rows).toHaveCount(grades.length + 1);
+		for (const [index, grade] of grades.entries()) {
 			await expect(rows.nth(index + 1)).toContainText(`Grade ${grade}`);
 			await expect(rows.nth(index + 1)).toContainText('(built in)');
 			await expect(rows.nth(index + 1)).toContainText('120 of 120');
