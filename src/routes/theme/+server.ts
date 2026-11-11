@@ -16,19 +16,19 @@ export const POST: RequestHandler = async ({ request, cookies, url }) => {
 	const theme = form.get('theme');
 	if (!isTheme(theme)) error(400, 'Unknown theme');
 
-	if (theme === 'system') {
-		cookies.delete(THEME_COOKIE, { path: '/' });
-	} else {
-		cookies.set(THEME_COOKIE, theme, {
-			path: '/',
-			maxAge: ONE_YEAR,
-			httpOnly: true,
-			sameSite: 'lax',
-			// The app may be served over plain HTTP on a home network, where a Secure
-			// cookie would be silently dropped by the browser.
-			secure: url.protocol === 'https:'
-		});
-	}
+	// Setting and deleting must use the same flags. In particular `secure` is always
+	// given: SvelteKit otherwise marks the cookie Secure on any host but localhost, and
+	// on a plain-HTTP home network the browser silently ignores that, so choosing
+	// "Match this device" would leave the old light or dark cookie in place.
+	const options = {
+		path: '/',
+		httpOnly: true,
+		sameSite: 'lax',
+		secure: url.protocol === 'https:'
+	} as const;
+
+	if (theme === 'system') cookies.delete(THEME_COOKIE, options);
+	else cookies.set(THEME_COOKIE, theme, { ...options, maxAge: ONE_YEAR });
 
 	if (request.headers.get('accept')?.includes('application/json')) {
 		return new Response(null, { status: 204 });
