@@ -1,11 +1,11 @@
 # Vocab on TrueNAS SCALE 25.10.
 #
 # Paste this into Apps > Discover Apps > (three dots) > Install via YAML, after changing
-# the three lines marked CHANGE. README.md walks through every step.
+# the lines marked CHANGE. README.md walks through every step.
 services:
   vocab:
     image: ghcr.io/bhager42/vocabwebapp:1.0.0
-    # The TrueNAS "apps" user. The dataset below must belong to it.
+    # The TrueNAS "apps" user.
     user: '568:568'
     restart: unless-stopped
     ports:
@@ -14,15 +14,17 @@ services:
       # CHANGE: exactly what you type in the browser to reach the app. No slash at the end.
       ORIGIN: 'http://192.168.1.10:30080'
       DATA_DIR: /data
-      # CHANGE if you do not live in US Central time. Days and streaks follow this.
-      TZ: America/Chicago
+      # CHANGE if you do not live in US Eastern time. Days and streaks follow this.
+      TZ: America/New_York
       # CHANGE: a long random code. It is asked for once, when you create your account.
       SETUP_TOKEN: 'change-me-to-a-long-random-code'
       # Set to 'true' only if a reverse proxy sits in front of the app.
       TRUST_PROXY: 'false'
     volumes:
-      # CHANGE the part before the colon if your pool or dataset has another name.
-      - /mnt/tank/apps/vocab:/data
+      # A volume TrueNAS keeps with its other app data, under /mnt/.ix-apps. To keep the
+      # data in a dataset of your own instead, put its path here, such as
+      # /mnt/tank/apps/vocab:/data, and remove the volumes section at the end.
+      - vocab-data:/data
     # Nothing in the container can be written to except /data and a scratch /tmp.
     read_only: true
     tmpfs:
@@ -46,3 +48,6 @@ services:
         limits:
           cpus: '1.0'
           memory: 512M
+
+volumes:
+  vocab-data:

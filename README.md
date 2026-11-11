@@ -105,7 +105,7 @@ shell or package manager in it, only Node and the app.
 | ------------- | ---------- | --------------------------------------------------------------------------------- |
 | `ORIGIN`      | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080`              |
 | `DATA_DIR`    | no         | Directory for the database and backups (default `./data`, `/data` in the image)   |
-| `TZ`          | no         | Time zone for day boundaries, e.g. `America/Chicago`                              |
+| `TZ`          | no         | Time zone for day boundaries, e.g. `America/New_York`                             |
 | `SETUP_TOKEN` | first run  | One-time code for creating the parent account at `/setup`                         |
 | `TRUST_PROXY` | no         | `true` only behind a reverse proxy: read visitor addresses from `X-Forwarded-For` |
 | `PORT`        | no         | Listen port (default `3000`)                                                      |
@@ -141,26 +141,85 @@ docker build -t ghcr.io/bhager42/vocabwebapp:1.0.0 .
 docker save ghcr.io/bhager42/vocabwebapp:1.0.0 | ssh admin@NAS_ADDRESS sudo docker load
 ```
 
-### 2. Make a place for the data
+### 2. Install the app
 
-1. In TrueNAS, go to **Datasets** and add a dataset, for example `tank/apps/vocab`, using the
-   **Apps** preset. The preset makes the `apps` user (number 568) the owner, which the
-   container runs as. If you make the dataset another way, set its owner and group to `apps`.
-2. Use a dataset on a pool in the NAS itself. Do not point the app at an SMB or NFS share:
-   the database does not work reliably over a network share.
+This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml):
 
-### 3. Install the app
+```yaml
+# Vocab on TrueNAS SCALE 25.10.
+#
+# Paste this into Apps > Discover Apps > (three dots) > Install via YAML, after changing
+# the lines marked CHANGE. README.md walks through every step.
+services:
+  vocab:
+    image: ghcr.io/bhager42/vocabwebapp:1.0.0
+    # The TrueNAS "apps" user.
+    user: '568:568'
+    restart: unless-stopped
+    ports:
+      - '30080:3000'
+    environment:
+      # CHANGE: exactly what you type in the browser to reach the app. No slash at the end.
+      ORIGIN: 'http://192.168.1.10:30080'
+      DATA_DIR: /data
+      # CHANGE if you do not live in US Eastern time. Days and streaks follow this.
+      TZ: America/New_York
+      # CHANGE: a long random code. It is asked for once, when you create your account.
+      SETUP_TOKEN: 'change-me-to-a-long-random-code'
+      # Set to 'true' only if a reverse proxy sits in front of the app.
+      TRUST_PROXY: 'false'
+    volumes:
+      # A volume TrueNAS keeps with its other app data, under /mnt/.ix-apps. To keep the
+      # data in a dataset of your own instead, put its path here, such as
+      # /mnt/tank/apps/vocab:/data, and remove the volumes section at the end.
+      - vocab-data:/data
+    # Nothing in the container can be written to except /data and a scratch /tmp.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - "fetch('http://127.0.0.1:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
-1. Open [compose.truenas.yaml](compose.truenas.yaml) and change the lines marked `CHANGE`:
+volumes:
+  vocab-data:
+```
+
+1. Copy the YAML above and change the lines marked `CHANGE`:
    - `ORIGIN`: exactly what you will type in the browser, such as `http://192.168.1.10:30080`.
    - `SETUP_TOKEN`: a long random code of your own.
-   - `TZ`, if you are not in US Central time.
-   - The dataset path, if yours is not `/mnt/tank/apps/vocab`.
+   - `TZ`, if you are not in US Eastern time.
 2. In TrueNAS, go to **Apps → Discover Apps**, open the three-dot menu and choose
-   **Install via YAML**. Name the app `vocab`, paste the file in, and save.
+   **Install via YAML**. Name the app `vocab`, paste the YAML in, and save.
 3. Wait for the app to show as running.
 
-### 4. First run
+The data is kept in a volume named `vocab-data` that TrueNAS stores with its other app data,
+in the hidden `ix-apps` dataset (`/mnt/.ix-apps`). Nothing needs to be set up for it. It is
+kept when the app is stopped or updated, and removed if the app is deleted with its volumes.
+
+To keep the data in a dataset of your own instead, add one with the **Apps** preset (so the
+`apps` user, number 568, owns it), put its path in place of `vocab-data` in the `volumes:` line,
+such as `/mnt/tank/apps/vocab:/data`, and remove the `volumes:` section at the end of the file.
+Use a pool in the NAS itself, not an SMB or NFS share: the database does not work reliably over
+a network share.
+
+### 3. First run
 
 1. On any device on your network, open `http://NAS_ADDRESS:30080/setup`.
 2. Enter the setup code, then choose a username and a password of at least 12 characters.
@@ -207,25 +266,34 @@ Backups** in the parent area. A backup holds your children's names and results a
 (hashed) password, so keep it somewhere private.
 
 These copies sit on the same disks as the original. To guard against losing the pool, also add
-a **Periodic Snapshot Task** for the dataset (Data Protection in TrueNAS) and, if you can,
-replicate it or copy a downloaded backup elsewhere now and then.
+a **Periodic Snapshot Task** (Data Protection in TrueNAS) for the `ix-apps` dataset on your
+apps pool, or for your own dataset if you chose one, and, if you can, replicate it or copy a
+downloaded backup elsewhere now and then.
 
 ### Restore from a backup
 
 1. In TrueNAS, stop the app (**Apps → vocab → Stop**).
-2. Open a shell on the NAS (**System → Shell**) and put the backup in place of the database:
+2. Open a shell on the NAS (**System → Shell**) and find the data folder. With the default
+   volume, ask Docker where it is; with your own dataset, it is that dataset's path.
 
    ```sh
-   cd /mnt/tank/apps/vocab
+   sudo docker volume ls | grep vocab-data          # the full name, e.g. ix-vocab_vocab-data
+   sudo docker volume inspect ix-vocab_vocab-data --format '{{ .Mountpoint }}'
+   ```
+
+3. Become root (`sudo -i`), go to that folder and put the backup in place of the database:
+
+   ```sh
+   cd /mnt/.ix-apps/docker/volumes/ix-vocab_vocab-data/_data    # the folder from step 2
    mv vocab.db vocab.db.before-restore
    rm -f vocab.db-wal vocab.db-shm
    cp backups/nightly-20261110-080000.db vocab.db    # the copy you want back
    chown apps:apps vocab.db
    ```
 
-   To restore a file you downloaded, copy it to the dataset first and use its name instead.
+   To restore a file you downloaded, copy it to that folder first and use its name instead.
 
-3. Start the app again and sign in.
+4. Start the app again and sign in.
 
 The two `rm`'d files hold changes not yet written into the old `vocab.db`; left behind, they
 would be applied to the restored file and damage it. Everything after the backup was made is

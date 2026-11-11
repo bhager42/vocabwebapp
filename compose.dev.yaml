@@ -11,7 +11,7 @@ services:
     environment:
       ORIGIN: 'http://localhost:3000'
       DATA_DIR: /data
-      TZ: America/Chicago
+      TZ: America/New_York
       SETUP_TOKEN: 'dev-setup-token'
       TRUST_PROXY: 'false'
     volumes:

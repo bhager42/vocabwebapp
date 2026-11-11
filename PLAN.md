@@ -267,15 +267,16 @@ How the definitions above are applied (decided in Phase 6):
 | ------------- | ----------------------------------------------------------- | ------------------------------------------------ |
 | `ORIGIN`      | `https://vocab.home.example` or `http://192.168.1.10:30080` | CSRF origin check, cookie flags, HSTS            |
 | `DATA_DIR`    | `/data`                                                     | SQLite file and backups                          |
-| `TZ`          | `America/Chicago`                                           | Day boundaries for streaks and charts            |
+| `TZ`          | `America/New_York`                                          | Day boundaries for streaks and charts            |
 | `SETUP_TOKEN` | long random string                                          | One-time first-run setup                         |
 | `TRUST_PROXY` | `true` / `false`                                            | Whether to read client IP from `X-Forwarded-For` |
 | `PORT`        | `3000`                                                      | Listen port inside the container                 |
 
 ### 6.2 Storage
 
-- Create a dataset, for example `tank/apps/vocab`, owned by `apps:apps` (568:568), and mount it at `/data`.
-- Local ZFS dataset only. Do not put the SQLite file on an SMB or NFS share.
+- By default `/data` is a named volume, `vocab-data`, which TrueNAS keeps in its `ix-apps` dataset (`/mnt/.ix-apps/docker/volumes/`). The image's `/data` belongs to 568, and Docker copies that ownership into a new, empty volume, so nothing has to be set up by hand.
+- Alternative: a dataset of your own, for example `tank/apps/vocab`, owned by `apps:apps` (568:568), mounted at `/data`.
+- Local ZFS only. Do not put the SQLite file on an SMB or NFS share.
 - Migrations run automatically on startup, after the app copies the database to `/data/backups/pre-migrate-<timestamp>.db`.
 - A nightly in-app job writes a consistent copy with `VACUUM INTO` to `/data/backups/` and keeps the last 14. Add a periodic ZFS snapshot task on the dataset as well.
 
@@ -301,11 +302,11 @@ services:
     environment:
       ORIGIN: 'http://NAS_IP:30080'
       DATA_DIR: /data
-      TZ: America/Chicago
+      TZ: America/New_York
       SETUP_TOKEN: 'CHANGE_ME'
       TRUST_PROXY: 'false'
     volumes:
-      - /mnt/tank/apps/vocab:/data
+      - vocab-data:/data
     read_only: true
     tmpfs:
       - /tmp
@@ -318,6 +319,9 @@ services:
         limits:
           cpus: '1.0'
           memory: 512M
+
+volumes:
+  vocab-data:
 ```
 
 ---
