@@ -127,8 +127,9 @@ git tag v1.1.1
 git push origin v1.1.1
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.1`.
-A new package on GitHub starts out private. Either make it public (on GitHub: your profile →
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.1`,
+and a GitHub release for the tag lists what changed since the previous one. A new package on
+GitHub starts out private. Either make it public (on GitHub: your profile →
 Packages → vocabwebapp → Package settings → Change visibility), or give TrueNAS a sign-in for
 `ghcr.io` (Apps → Configuration → Sign-in to a Docker registry) using a GitHub token that has
 the `read:packages` permission.
