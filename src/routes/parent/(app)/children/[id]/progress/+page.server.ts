@@ -77,6 +77,11 @@ export const load: PageServerLoad = ({ locals, params, url }) => {
 		days,
 		grades,
 		moveUpTo: current ? nextGrade(child.grade, current.known) : null,
+		// Most of the highest grade is known: there is nowhere further to go.
+		finishedLastGrade:
+			child.grade === GRADES[GRADES.length - 1] &&
+			current !== undefined &&
+			current.known >= UNLOCK_SHARE,
 		movesUpAutomatically: child.settings.autoUnlockNextGrade,
 		trouble: troubleWords(db, scope),
 		retention: retention(db, scope),

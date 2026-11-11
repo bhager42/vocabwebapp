@@ -4,6 +4,7 @@ import {
 	createChild,
 	DEFAULT_SETTINGS,
 	editChildSchema,
+	GRADES,
 	getChild,
 	listChildren,
 	newChildSchema,
@@ -66,8 +67,10 @@ describe('child name and grade rules', () => {
 	});
 
 	it('accepts only grades that have a word list', () => {
-		expect(messages(newChildSchema, { name: 'Sam', grade: '6' })).toEqual([]);
-		for (const grade of ['2', '7', '', 'three', '3.5']) {
+		for (const grade of GRADES) {
+			expect(messages(newChildSchema, { name: 'Sam', grade: String(grade) })).toEqual([]);
+		}
+		for (const grade of ['2', String(GRADES[GRADES.length - 1] + 1), '', 'three', '3.5']) {
 			expect(messages(newChildSchema, { name: 'Sam', grade }), grade).toEqual([
 				'Please choose a grade.'
 			]);

@@ -167,16 +167,65 @@ describe('seedBuiltinWords', () => {
 		expect(rowCounts()).toEqual({ lists: 3, words: 4 });
 	});
 
-	it('seeds the shipped content: 480 words, the same after a second run', () => {
+	it('seeds the shipped content: 120 words a grade, the same after a second run', () => {
 		const shipped = loadContent(path.resolve('content'));
+		const total = shipped.length * 120;
 
-		expect(seedBuiltinWords(db, shipped)).toMatchObject({ listsCreated: 4, inserted: 480 });
+		expect(seedBuiltinWords(db, shipped)).toMatchObject({
+			listsCreated: shipped.length,
+			inserted: total
+		});
 		expect(seedBuiltinWords(db, shipped)).toMatchObject({
 			listsCreated: 0,
 			inserted: 0,
 			updated: 0,
-			unchanged: 480
+			unchanged: total
 		});
-		expect(rowCounts()).toEqual({ lists: 4, words: 480 });
+		expect(rowCounts()).toEqual({ lists: shipped.length, words: total });
+	});
+
+	it('adds a new grade to a database in use without touching anything already there', () => {
+		seedBuiltinWords(db, content());
+		const kid = db
+			.insert(child)
+			.values({ name: 'Sam', nameNormalized: 'sam', createdAt: new Date() })
+			.returning()
+			.get();
+		const apple = wordRow('apple');
+		db.insert(wordProgress)
+			.values({
+				childId: kid.id,
+				wordId: apple.id,
+				box: 4,
+				dueAt: new Date(),
+				firstSeenAt: new Date()
+			})
+			.run();
+		db.update(word).set({ active: false }).where(eq(word.word, 'boat')).run();
+		db.update(wordList).set({ active: false }).where(eq(wordList.grade, 4)).run();
+		const wordsBefore = db.select().from(word).all();
+		const listsBefore = db.select().from(wordList).all();
+		const progressBefore = db.select().from(wordProgress).all();
+
+		const result = seedBuiltinWords(db, [
+			...content(),
+			{ grade: 5, words: [entry('desk'), entry('eagle')] }
+		]);
+
+		expect(result).toEqual({
+			listsCreated: 1,
+			inserted: 2,
+			updated: 0,
+			unchanged: 3,
+			deactivated: 0
+		});
+		expect(db.select().from(word).all().slice(0, wordsBefore.length)).toEqual(wordsBefore);
+		expect(db.select().from(wordList).all().slice(0, listsBefore.length)).toEqual(listsBefore);
+		expect(db.select().from(wordProgress).all()).toEqual(progressBefore);
+		expect(db.select().from(wordList).where(eq(wordList.grade, 5)).get()).toMatchObject({
+			name: 'Grade 5',
+			source: 'builtin',
+			active: true
+		});
 	});
 });

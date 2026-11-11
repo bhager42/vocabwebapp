@@ -65,8 +65,8 @@ test.describe('built-in lists', () => {
 		await expect(page.getByRole('heading', { level: 1, name: 'Word lists' })).toBeVisible();
 
 		const rows = page.getByRole('group', { name: 'Word lists' }).getByRole('row');
-		await expect(rows).toHaveCount(5);
-		for (const [index, grade] of [3, 4, 5, 6].entries()) {
+		await expect(rows).toHaveCount(6);
+		for (const [index, grade] of [3, 4, 5, 6, 7].entries()) {
 			await expect(rows.nth(index + 1)).toContainText(`Grade ${grade}`);
 			await expect(rows.nth(index + 1)).toContainText('(built in)');
 			await expect(rows.nth(index + 1)).toContainText('120 of 120');
@@ -83,7 +83,7 @@ test.describe('built-in lists', () => {
 		await expect(row).toContainText('Off');
 		expect(one('select active from word_list where name = ?', 'Grade 5')).toEqual({ active: 0 });
 		// The other lists are untouched.
-		expect(one('select count(*) as n from word_list where active = 1')).toEqual({ n: 3 });
+		expect(one('select count(*) as n from word_list where active = 0')).toEqual({ n: 1 });
 
 		await row.getByRole('button', { name: 'Switch on Grade 5' }).click();
 		await expect(row).toContainText('On');
@@ -388,7 +388,9 @@ test.describe('backups', () => {
 		const copy = new Database(file, { readonly: true });
 		expect(copy.pragma('integrity_check', { simple: true })).toBe('ok');
 		expect(copy.prepare('select name from child').all()).toEqual([{ name: 'Sam' }]);
-		expect(copy.prepare('select count(*) as n from word').get()).toEqual({ n: 480 });
+		expect(copy.prepare('select count(*) as n from word').get()).toEqual(
+			one('select count(*) as n from word')
+		);
 		expect(copy.prepare('select username from parent').all()).toEqual([{ username: 'parent' }]);
 		copy.close();
 

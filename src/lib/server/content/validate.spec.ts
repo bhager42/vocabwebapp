@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { loadContent, parseGradeFile } from './load.ts';
+import { GRADES } from '../children.ts';
 import {
 	countWord,
 	isDistractorFor,
@@ -198,8 +199,8 @@ describe('parseGradeFile', () => {
 describe('the shipped word lists in ./content', () => {
 	const grades = loadContent(path.resolve('content'));
 
-	it('cover grades 3 to 6', () => {
-		expect(grades.map((content) => content.grade)).toEqual([3, 4, 5, 6]);
+	it('cover every grade a child can be set to, and no others', () => {
+		expect(grades.map((content) => content.grade)).toEqual([...GRADES]);
 	});
 
 	it('pass every validation rule with 120 words per grade', () => {

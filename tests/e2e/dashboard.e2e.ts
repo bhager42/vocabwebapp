@@ -232,6 +232,23 @@ test.describe('moving up a grade', () => {
 			grade: 3
 		});
 	});
+
+	test('stops at the last grade', async ({ page }) => {
+		const { last } = withDb(
+			(db) =>
+				db.prepare("select max(grade) as last from word_list where source = 'builtin'").get() as {
+					last: number;
+				}
+		);
+		withDb((db) => db.prepare('update child set grade = ? where id = ?').run(last, sam));
+		knowWords(sam, last, 120);
+
+		await page.goto(`/parent/children/${sam}/progress`);
+		await expect(
+			page.getByText(`Sam knows most of the grade ${last} words, the last grade there is.`)
+		).toBeVisible();
+		await expect(page.getByRole('button', { name: /Move up/ })).toHaveCount(0);
+	});
 });
 
 test.describe('sessions', () => {
