@@ -267,6 +267,14 @@ main {
 	padding: var(--space-5) var(--page-gutter) var(--space-8);
 }
 
+.site-footer {
+	max-inline-size: var(--page-max);
+	margin-inline: auto;
+	padding: 0 var(--page-gutter) var(--space-5);
+	color: var(--color-text-muted);
+	font-size: var(--text-sm);
+}
+
 /* A single column for forms and other pages that read better narrow. */
 .narrow {
 	max-inline-size: 32rem;

@@ -309,3 +309,15 @@ put back as `vocab.db`, and the same username and password signed in and showed 
 formatting and lint, type check, word-list check, unit tests, end-to-end tests, then an image
 build that is started with the TrueNAS restrictions, scanned with Trivy (any high or critical
 finding fails the run) and listed in an SBOM. A `v*.*.*` tag also publishes the image to GHCR.
+
+## License
+
+Copyright (C) 2026 Brad Hager
+
+This program is free software: you can redistribute it and/or modify it under the terms of the
+GNU Affero General Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version. It is distributed in the hope that it will
+be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See [LICENSE](LICENSE) for the full text.
+
+The bundled Atkinson Hyperlegible font keeps its own license, the SIL Open Font License.

@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitest/config';
 import adapter from '@sveltejs/adapter-node';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { readFileSync } from 'node:fs';
+
+const { version } = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
 
 export default defineConfig({
 	plugins: [
@@ -11,6 +14,8 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 			adapter: adapter(),
+			// Shown in the page footer; read with `version` from $app/env.
+			version: { name: version },
 			// See PLAN.md section 4.3. SvelteKit adds a per-request nonce to script-src
 			// (and to style-src for any inline <style> it generates).
 			csp: {

@@ -1,5 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { expectAccessible } from './helpers.ts';
+
+const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
 
 /** Relative luminance of the page background, 0 (black) to 1 (white). */
 async function backgroundLuminance(page: Page): Promise<number> {
@@ -350,4 +353,17 @@ test.describe('layout', () => {
 		);
 		expect(tooSmall).toEqual([]);
 	});
+});
+
+test('every page shows the version and links to the source code, as the AGPL asks', async ({
+	page
+}) => {
+	for (const path of ['/', '/parent/login', '/no-such-page']) {
+		await page.goto(path);
+		await expect(page.getByRole('contentinfo'), path).toContainText(`Vocab ${pkg.version}`);
+		await expect(
+			page.getByRole('contentinfo').getByRole('link', { name: 'Source code' }),
+			path
+		).toHaveAttribute('href', 'https://github.com/bhager42/vocabwebapp');
+	}
 });
