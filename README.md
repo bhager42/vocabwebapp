@@ -28,7 +28,7 @@ npm run dev          # http://localhost:5173, database in ./data
 | `npm run db:seed`       | Load the word lists into the database by hand                   |
 
 Migrations in `drizzle/` are applied automatically when the app starts, and the built-in word
-lists in `content/` (120 words each for grades 3 to 6) are loaded or updated at the same time.
+lists in `content/` (120 words each for grades 3 to 12) are loaded or updated at the same time.
 
 ## First run
 
@@ -72,7 +72,7 @@ left open does not add to it. Days and hours follow the `TZ` setting.
 
 ## Word lists
 
-**Word lists** in the parent menu shows the four built-in lists (grades 3 to 6, 120 words each)
+**Word lists** in the parent menu shows the ten built-in lists (grades 3 to 12, 120 words each)
 and any lists of your own.
 
 - Any list, or any single word, can be switched off so it is no longer asked.
@@ -123,11 +123,11 @@ installed from [compose.truenas.yaml](compose.truenas.yaml).
 Pushing a version tag makes GitHub Actions test, scan and publish the image:
 
 ```sh
-git tag v1.0.1
-git push origin v1.0.1
+git tag v1.1.0
+git push origin v1.1.0
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.0.1`.
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.0`.
 A new package on GitHub starts out private. Either make it public (on GitHub: your profile →
 Packages → vocabwebapp → Package settings → Change visibility), or give TrueNAS a sign-in for
 `ghcr.io` (Apps → Configuration → Sign-in to a Docker registry) using a GitHub token that has
@@ -137,8 +137,8 @@ Without a registry: build on this machine and copy the image across, then add
 `pull_policy: never` under `image:` in the compose file.
 
 ```sh
-docker build -t ghcr.io/bhager42/vocabwebapp:1.0.1 .
-docker save ghcr.io/bhager42/vocabwebapp:1.0.1 | ssh admin@NAS_ADDRESS sudo docker load
+docker build -t ghcr.io/bhager42/vocabwebapp:1.1.0 .
+docker save ghcr.io/bhager42/vocabwebapp:1.1.0 | ssh admin@NAS_ADDRESS sudo docker load
 ```
 
 ### 2. Install the app
@@ -152,7 +152,7 @@ This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml)
 # the lines marked CHANGE. README.md walks through every step.
 services:
   vocab:
-    image: ghcr.io/bhager42/vocabwebapp:1.0.1
+    image: ghcr.io/bhager42/vocabwebapp:1.1.0
     # The TrueNAS "apps" user.
     user: '568:568'
     restart: unless-stopped
