@@ -127,19 +127,20 @@ git tag v1.1.1
 git push origin v1.1.1
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.1`,
-and a GitHub release for the tag lists what changed since the previous one. A new package on
-GitHub starts out private. Either make it public (on GitHub: your profile →
-Packages → vocabwebapp → Package settings → Change visibility), or give TrueNAS a sign-in for
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.1`
+and also at `:latest`, which the YAML below uses. A GitHub release for the tag lists what
+changed since the previous one. A new package on GitHub starts out private. Either make it
+public (on GitHub: your profile → Packages → vocabwebapp → Package settings → Change
+visibility), or give TrueNAS a sign-in for
 `ghcr.io` (Apps → Configuration → Sign-in to a Docker registry) using a GitHub token that has
 the `read:packages` permission.
 
-Without a registry: build on this machine and copy the image across, then add
-`pull_policy: never` under `image:` in the compose file.
+Without a registry: build on this machine and copy the image across, then change
+`pull_policy: always` to `pull_policy: never` in the compose file.
 
 ```sh
-docker build -t ghcr.io/bhager42/vocabwebapp:1.1.1 .
-docker save ghcr.io/bhager42/vocabwebapp:1.1.1 | ssh admin@NAS_ADDRESS sudo docker load
+docker build -t ghcr.io/bhager42/vocabwebapp:latest .
+docker save ghcr.io/bhager42/vocabwebapp:latest | ssh admin@NAS_ADDRESS sudo docker load
 ```
 
 ### 2. Install the app
@@ -153,7 +154,11 @@ This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml)
 # the lines marked CHANGE. README.md walks through every step.
 services:
   vocab:
-    image: ghcr.io/bhager42/vocabwebapp:1.1.1
+    # Always the newest published version. To stay on one version, put its number in
+    # place of latest, such as :1.1.1.
+    image: ghcr.io/bhager42/vocabwebapp:latest
+    # Fetch the newest image whenever the app is started or saved.
+    pull_policy: always
     # The TrueNAS "apps" user.
     user: '568:568'
     restart: unless-stopped
@@ -245,12 +250,17 @@ set `TRUST_PROXY` to `'true'`.
 ### Update to a new version
 
 1. Publish the new version (step 1, with the new number).
-2. In TrueNAS, go to **Apps → vocab → Edit**, change the number at the end of the `image:`
-   line, and save.
+2. In TrueNAS, go to **Apps → vocab → Edit** and save without changing anything. Because the
+   YAML uses `:latest` with `pull_policy: always`, the app fetches the newest image and
+   restarts on it. The footer of every page shows the version now running.
+
+The app also fetches the newest image whenever it starts, such as after the NAS reboots. To
+stay on one version instead, put its number in place of `latest` in the `image:` line, such as
+`ghcr.io/bhager42/vocabwebapp:1.1.1`.
 
 Before a new version changes the structure of the database, the app saves a copy as
-`backups/pre-migrate-<date>-<time>.db`. To go back, put the old number back in the `image:`
-line and restore that file as described below.
+`backups/pre-migrate-<date>-<time>.db`. To go back, put the old version's number in place of
+`latest` in the `image:` line and restore that file as described below.
 
 ## Backups
 
