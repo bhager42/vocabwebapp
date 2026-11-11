@@ -60,6 +60,43 @@ if (process.env.TRUST_PROXY === 'true') {
 
 const { handler } = await import('./build/handler.js');
 
+// SvelteKit refuses a form sent from any address other than ORIGIN, which is right, but
+// says only "Cross-site POST form submissions are forbidden". Nearly always the cause is
+// that the app was opened at a different address than ORIGIN, so for a form sent without
+// JavaScript the same refusal is given here with directions. (With JavaScript, SvelteKit
+// answers and src/routes/+error.svelte explains.) This mirrors SvelteKit's own rule, which
+// still runs for every request this lets through.
+const FORM_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
+const FORM_TYPES = [
+	'application/x-www-form-urlencoded',
+	'multipart/form-data',
+	'text/plain',
+	'application/x-sveltekit-formdata'
+];
+
+function isRefusedForm(req) {
+	if (!FORM_METHODS.has(req.method ?? '')) return false;
+	if (req.headers.accept === 'application/json') return false;
+	const type = (req.headers['content-type'] ?? '').split(';')[0].trim().toLowerCase();
+	if (type && !FORM_TYPES.includes(type)) return false;
+	return req.headers.origin !== origin.origin;
+}
+
+// Plain text, never HTML: the address the form came from is not repeated, since a page on
+// another site could be the one that sent it.
+const WRONG_ADDRESS = [
+	'This form was refused because the page was not opened at the address this app is',
+	`set up for, which is ${origin.origin}.`,
+	'',
+	`Open ${origin.origin} in your browser and try again.`,
+	'',
+	'If that is not the address you use to reach the app, change ORIGIN in the app’s',
+	'settings (on TrueNAS: Apps > vocab > Edit) to exactly what your browser shows before the',
+	'first single slash, such as http://192.168.1.10:30080, then save and try again. http and',
+	'https count as different, and so do a name and a number for the same machine.',
+	''
+].join('\n');
+
 const server = http.createServer((req, res) => {
 	req.headers[PROTOCOL_HEADER] = protocol;
 	req.headers[HOST_HEADER] = origin.host;
@@ -69,6 +106,15 @@ const server = http.createServer((req, res) => {
 	res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
 	if (isHttps) {
 		res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+	}
+
+	if (isRefusedForm(req)) {
+		req.resume();
+		res.statusCode = 403;
+		res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+		res.setHeader('Cache-Control', 'no-store');
+		res.end(WRONG_ADDRESS);
+		return;
 	}
 
 	handler(req, res, () => {

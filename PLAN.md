@@ -1,6 +1,6 @@
 # Vocab Web App — Development Plan
 
-A self-hosted vocabulary practice app for a third grader (growing through grade 6), with a parent dashboard. Runs as a single container on TrueNAS SCALE 25.10.
+A self-hosted vocabulary practice app for a third grader (growing through grade 6 in v1, and through grade 12 once Phase 9 is done), with a parent dashboard. Runs as a single container on TrueNAS SCALE 25.10.
 
 This plan is written to be executed by Claude Code one phase at a time. Each phase ends with acceptance criteria; do not start the next phase until they pass.
 
@@ -14,7 +14,7 @@ This plan is written to be executed by Claude Code one phase at a time. Each pha
 
 - Child types his first name and starts practicing. No username, no password.
 - Short practice sessions (about 10 questions, 5–10 minutes) with immediate, encouraging feedback.
-- Grade-appropriate word lists for grades 3, 4, 5 and 6, starting at grade 3.
+- Grade-appropriate word lists for grades 3, 4, 5 and 6, starting at grade 3; grades 7 to 12 follow in Phase 9.
 - Words come back on a schedule (spaced repetition) so they are actually remembered.
 - Parent logs in with a password and sees progress, accuracy, time spent and trouble words.
 - Parent can add custom word lists (for example the weekly list from school).
@@ -81,7 +81,7 @@ Each child/word pair sits in a box from 1 to 5.
 
 ### 2.5 Word content
 
-- v1 ships 120 words per grade for grades 3–6 (480 total), as JSON seed files in `content/grade-N.json`.
+- v1 ships 120 words per grade for grades 3–6 (480 total), as JSON seed files in `content/grade-N.json`. Phase 9 adds grades 7–12 the same way (720 more, 1,200 in all).
 - Each entry: `word`, `partOfSpeech`, `definition` (written for the grade's reading level, 15 words or fewer, must not contain the word itself), `sentence` (contains the word exactly once), `synonyms` (used only to exclude bad distractors).
 - All definitions and sentences are originally written. Do not copy from commercial dictionaries or published word lists.
 - A validation script (`npm run content:check`) enforces: no duplicate words across grades, definition does not contain the word, sentence contains the word exactly once, at least 3 same-part-of-speech distractor candidates exist per word, no profanity (simple blocklist).
@@ -294,7 +294,7 @@ Installed through **Apps → Discover Apps → ⋮ → Install via YAML**.
 ```yaml
 services:
   vocab:
-    image: ghcr.io/bhager42/vocabwebapp:1.0.0
+    image: ghcr.io/bhager42/vocabwebapp:1.0.1
     user: '568:568'
     restart: unless-stopped
     ports:
@@ -402,6 +402,19 @@ Pick individually after a few weeks of real use:
 - Weekly summary page ("this week he learned 14 words").
 - Extra question types: synonym/antonym matching, picture prompts.
 - Printable review sheet of trouble words.
+
+### Phase 9 — Grades 7 to 12
+
+Extends the built-in words from grade 6 up to grade 12, so a child can keep going through high school. Nothing about how practice works changes.
+
+- **Content:** write `content/grade-7.json` through `grade-12.json`, 120 words each, to the rules in 2.5. Definitions stay at 15 words or fewer and are written for that grade's reading level; sentences suit the age without being childish. Grades 9–12 lean on academic and test-prep vocabulary (words like _ambiguous_, _meticulous_, _pragmatic_), not obscure rarities. No word may repeat one from an earlier grade.
+- **Write in batches:** one grade per commit, each passing `npm run content:check` before the next is started, so the parent can review a grade at a time.
+- **Grade range:** `GRADES` in `src/lib/server/children.ts` becomes 3–12. Every grade picker (child form, custom list form) offers the new grades. The "Move up to grade N" suggestion and automatic move-up stop at 12; at 12 the progress page says the last grade has been reached instead of offering a move.
+- **Existing installs:** the startup seed already creates a list for any new `grade-N.json` file and leaves existing words, progress and the parent's on/off choices alone, so updating the image is all it takes. A unit test confirms that seeding grades 7–12 onto a database holding grade 3–6 progress changes none of it.
+- **Checks to review:** the spelling question's length limit (`SPELLING_MAX_LENGTH`) and the "starts with … and has N letters" hint for long words; distractors still come from the same grade and part of speech; the word-status bar and dashboard tables still read well with twelve grades' worth of words.
+- **Grade 3 starting point:** the default grade for a new child stays 3. The placement quiz in Phase 8 becomes more useful with this range; it can be done either before or after this phase.
+
+**Accepts when:** `npm run content:check` passes for all ten grades with 120 words in each and no duplicates across grades; the parent has reviewed each new grade; a child can be set to any grade from 3 to 12; a child at grade 12 who reaches 80% is not offered a grade 13; an existing database updated to the new image keeps every child's progress and every word the parent switched off; all unit and end-to-end tests pass, including new ones for the grade range and the seed.
 
 ---
 
