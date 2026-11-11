@@ -63,7 +63,7 @@ Each child/word pair sits in a box from 1 to 5.
 - A session is 10 questions: due reviews first, then at most 4 new words. Both numbers are parent settings.
 - When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back to box 1.
 - A missed word is added to the session again two questions later, unless it is already coming up, and a word is asked at most four times in one session.
-- The spelling question has no "hear it" button: reading the word aloud would mean sending the answer to the browser before it is given. The first letter and the length point to the wanted word instead.
+- The spelling question has no "hear it" button: reading the word aloud would mean sending the answer to the browser before it is given. The first letter and the length point to the wanted word instead. Phase 10 adds dictation, with audio made ahead of time and served so the word never reaches the page.
 
 ### 2.3 Feedback and motivation
 
@@ -414,6 +414,31 @@ Extends the built-in words from grade 6 up to grade 12, so a child can keep goin
 - **Grade 3 starting point:** the default grade for a new child stays 3. The placement quiz in Phase 8 becomes more useful with this range; it can be done either before or after this phase.
 
 **Accepts when:** `npm run content:check` passes for all ten grades with 120 words in each and no duplicates across grades; the parent has reviewed each new grade; a child can be set to any grade from 3 to 12; a child at grade 12 who reaches 80% is not offered a grade 13; an existing database updated to the new image keeps every child's progress and every word the parent switched off; all unit and end-to-end tests pass, including new ones for the grade range and the seed.
+
+### Phase 10 — Dictation audio for spelling
+
+Turns the spelling question into real dictation: the child hears the word, then a sentence using it, then the word again, and types it. The audio comes from the server, so the word never reaches the page as text before it is answered (the reason 2.2 gives for having no "hear it" button on spelling today). Nothing else about practice changes: the question still comes from box 5, and is still marked and scheduled the same way.
+
+- **Audio is made ahead of time, not in the container.** A script, `npm run audio:build`, voices every built-in word with an offline neural text-to-speech engine (Piper, run on the dev machine only) and writes one clip per word: the word, the sentence from the content file, the word again. The clips are committed under `content/audio/`, named by a hash of the word, so the running app needs no speech engine, makes no outbound calls and keeps its distroless image. Expect roughly 1,200 clips of 2–4 seconds each, about 10–25 MB in all.
+- **Format:** mono MP3 at a low bit rate, which every target browser plays (Chromebook, iPad Safari, desktop). All metadata tags are stripped so a clip carries no title or file name that spells the word.
+- **Voice:** one English voice for every clip, chosen by listening to a sample of hard words from each grade. Its model license must allow sharing the generated audio; the README records it next to the font license.
+- **Pronunciation fixes:** a content entry may carry an optional `pronounce` field, a respelling fed to the engine instead of the word (for example a word the voice says wrongly). `content:check` confirms every built-in word has a clip and that no clip is stale (made from an older sentence or `pronounce`).
+- **Serving without giving the answer away:** clips are not in `static/`. They are served only through `/play/audio`, which returns the clip for the child's current, unanswered spelling question in their own session, and 404 for anything else: another child's question, an answered one, a question that is not spelling, or a guessed word. The URL holds no word and no file name. Responses are `Cache-Control: no-store`. The CSP already allows same-origin media through `default-src 'self'`; add an explicit `media-src 'self'`.
+- **The question:** "Listen, then type the word." A large "Play" button (and "Play slowly", at 0.75× speed) can be pressed as often as the child likes, and the clip plays once by itself when the question opens. The definition stays on screen as support; the first-letter and length hint is dropped, since the word has been heard. Without JavaScript, a plain `<audio controls>` element plays the same clip.
+- **When there is no clip:** custom words the parent adds, a built-in word the parent marks as badly voiced, or audio that fails to load all fall back to today's written spelling question (definition, sentence with a blank, first letter and length). The child is never stuck.
+- **Parent side:** each built-in word's page gets a play button so the parent can check how it sounds, and a "Voice is wrong" switch that sends that word back to the written spelling question until a fixed clip ships. Each child's settings gain a choice between "Hear and spell" (the default once this ships) and "Read and spell" (today's question). The answer history and CSV mark which kind of spelling question was asked.
+- **Feedback and other "hear it" buttons:** after a dictation answer, the feedback panel replays the clip. The other "hear it" buttons keep the browser's own voice; switching them to the clips is optional and can be done later.
+
+**Choices to confirm before starting:**
+
+| Choice                | Default in this phase                | Alternative                                                                                               |
+| --------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| Where speech is made  | On the dev machine, clips committed  | Put Piper and a voice in the image so custom words get audio too (bigger image, not distroless)           |
+| What a clip says      | Word, sentence, word                 | The word alone                                                                                            |
+| Default spelling kind | "Hear and spell" for every child     | Stay on "Read and spell" until the parent switches it on                                                  |
+| Custom words          | Written spelling question (no audio) | Parent records the word in the browser (needs microphone permission, a CSP and Permissions-Policy change) |
+
+**Accepts when:** every built-in word has a current clip and `content:check` passes; the parent has listened to a sample from each grade and fixed or switched off any word the voice gets wrong; a dictation question's HTML, page data, URL and response headers never contain the word or its hash (an end-to-end test checks all four); `/play/audio` returns 404 for another child's question, an answered question, a non-spelling question and a made-up id; a clip plays in Chromium and on the child's own device, with and without JavaScript; a custom word and a word marked "Voice is wrong" get the written spelling question instead; the per-child setting and the CSV column work; the image is still distroless, makes no outbound calls and passes the Trivy scan; axe reports no violations on the dictation question in both themes; all unit and end-to-end tests pass.
 
 ---
 
