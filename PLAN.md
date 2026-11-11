@@ -180,7 +180,7 @@ Accepted trade-off: anyone on the home network who knows his name can practice a
 - Password: minimum 12 characters, hashed with Argon2id using current OWASP parameters.
 - Login rate limit: 5 failures per 15 minutes per IP, with increasing delay. Uniform error message and timing.
 - Parent session: 12 hours idle, 7 days absolute; rotated on login; "log out everywhere" in settings.
-- Passkey (WebAuthn) login is a Phase 8 option. It needs HTTPS and a stable hostname, so it is not in the base build.
+- Passkey (WebAuthn) login is not planned; the parent signs in with a password only.
 
 ### 4.3 Web security baseline
 
@@ -204,7 +204,7 @@ Accepted trade-off: anyone on the home network who knows his name can practice a
 
 ### 4.5 HTTPS
 
-The container serves plain HTTP on one port. Recommended: put it behind a reverse proxy that already runs on the NAS (Nginx Proxy Manager, Caddy or Traefik) with a real certificate for a hostname such as `vocab.home.example`. HTTPS is required for `Secure` cookies, the service worker, home-screen install and passkeys. Without it the app still works over `http://nas-ip:port`, with those features off.
+The container serves plain HTTP on one port. Recommended: put it behind a reverse proxy that already runs on the NAS (Nginx Proxy Manager, Caddy or Traefik) with a real certificate for a hostname such as `vocab.home.example`. HTTPS is required for `Secure` cookies, the service worker and home-screen install. Without it the app still works over `http://nas-ip:port`, with those features off.
 
 Do not port-forward this app to the internet. For access away from home use Tailscale or WireGuard.
 
@@ -396,7 +396,6 @@ Decided in Phase 7:
 
 Pick individually after a few weeks of real use:
 
-- Passkey login for the parent (needs HTTPS).
 - Service worker for app-shell caching and home-screen install polish.
 - Placement quiz to pick a starting grade.
 - Weekly summary page ("this week he learned 14 words").
@@ -422,11 +421,11 @@ Extends the built-in words from grade 6 up to grade 12, so a child can keep goin
 
 Defaults are in place for each; change any of them now and the plan adjusts.
 
-| Decision                    | Default in this plan                       | Alternative                                                                         |
-| --------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
-| Unknown name typed by child | Rejected; parent creates profiles          | Auto-create a profile for any new name                                              |
-| Image delivery              | GitHub Actions to GHCR                     | Build locally and `docker load` on the NAS                                          |
-| HTTPS                       | Plain HTTP port, reverse proxy recommended | Require HTTPS from day one and enable passkeys and service worker in the base build |
-| Next-grade unlock           | Parent approves suggestion                 | Automatic at 80%                                                                    |
-| Spelling questions          | On, parent can turn off                    | Off until parent turns on                                                           |
-| Words per grade in v1       | 120                                        | More at launch, at the cost of review time for the parent                           |
+| Decision                    | Default in this plan                       | Alternative                                                                |
+| --------------------------- | ------------------------------------------ | -------------------------------------------------------------------------- |
+| Unknown name typed by child | Rejected; parent creates profiles          | Auto-create a profile for any new name                                     |
+| Image delivery              | GitHub Actions to GHCR                     | Build locally and `docker load` on the NAS                                 |
+| HTTPS                       | Plain HTTP port, reverse proxy recommended | Require HTTPS from day one and enable the service worker in the base build |
+| Next-grade unlock           | Parent approves suggestion                 | Automatic at 80%                                                           |
+| Spelling questions          | On, parent can turn off                    | Off until parent turns on                                                  |
+| Words per grade in v1       | 120                                        | More at launch, at the cost of review time for the parent                  |
