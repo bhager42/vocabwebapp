@@ -1,0 +1,436 @@
+{
+	"grade": 3,
+	"stories": [
+		{
+			"id": "the-roof-garden",
+			"title": "The Roof Garden",
+			"paragraphs": [
+				"Priya lived with her grandpa on the top floor of a tall apartment building. There was no yard, but there was a flat roof with a sunny corner. One spring morning, Grandpa carried six clay pots up the stairs. \"Today we start a garden,\" he said with a wink.",
+				"Priya filled each pot with dark soil. She pressed tiny tomato seeds into the dirt and gave them a drink of water. Every day after school, she climbed up to check on them. After one week, small green sprouts poked out of the soil. Priya cheered so loudly that Grandpa came up to see what was wrong.",
+				"The next morning, three of the pots were empty. Only a few torn leaves were left. A gray pigeon sat on the edge of the roof and puffed out its chest. Priya frowned at the bird. Then she ran down the stairs to tell Grandpa.",
+				"Grandpa thought for a moment. Then he pulled an old badminton net out of the hall closet. Together they stretched it over the pots and tied it to a chair. The pigeon walked around the net and pecked at it, but it could not get in. Priya planted new seeds in the empty pots.",
+				"By the end of summer, the plants were taller than Priya. They were heavy with red tomatoes. Priya picked a big basket full. She and Grandpa knocked on doors and gave tomatoes to everyone on their floor. \"Next year,\" said Mrs. Lee from across the hall, \"I want to help with the garden.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Priya plant in the pots?",
+					"correct": "Tomato seeds",
+					"wrong": [
+						"Flower seeds",
+						"Bean seeds",
+						"Carrot seeds"
+					],
+					"explanation": "The story says she pressed tiny tomato seeds into the dirt.",
+					"evidence": [
+						"pressed tiny tomato seeds into the dirt"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Priya cheer so loudly?",
+					"correct": "She was excited that her seeds had started to grow.",
+					"wrong": [
+						"She wanted to wake Grandpa up for breakfast.",
+						"She saw a pigeon land on the edge of the roof.",
+						"She was happy that school was over for the year."
+					],
+					"explanation": "She cheered right after the first green sprouts poked out of the soil, so she was excited to see her seeds growing.",
+					"evidence": [
+						"small green sprouts poked out of the soil",
+						"Priya cheered so loudly"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What most likely happened to the sprouts in the three empty pots?",
+					"correct": "A pigeon ate them.",
+					"wrong": [
+						"Grandpa moved them inside.",
+						"Priya forgot to water them.",
+						"The wind blew them off the roof."
+					],
+					"explanation": "The story never says who took them, but torn leaves were left behind and a pigeon was sitting right there. Later, Grandpa covers the pots so the pigeon cannot get in.",
+					"evidence": [
+						"Only a few torn leaves were left",
+						"A gray pigeon sat on the edge of the roof"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did Grandpa use to keep the pigeon away?",
+					"correct": "An old badminton net",
+					"wrong": [
+						"A tall fence",
+						"A plastic cover",
+						"A scarecrow"
+					],
+					"explanation": "Grandpa pulled an old badminton net out of the closet and they stretched it over the pots.",
+					"evidence": [
+						"pulled an old badminton net out of the hall closet"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is this story mostly about?",
+					"correct": "A girl and her grandpa grow a garden and solve a problem.",
+					"wrong": [
+						"A girl wants to keep a pigeon as a pet.",
+						"A grandpa moves to a new apartment building.",
+						"Some neighbors play badminton on the roof."
+					],
+					"explanation": "Most of the story is about Priya and Grandpa growing tomatoes, and how they kept the pigeon away from them.",
+					"evidence": [
+						"Today we start a garden",
+						"Together they stretched it over the pots"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-missing-library-book",
+			"title": "The Missing Library Book",
+			"paragraphs": [
+				"Leo's library book was due on Friday. It was a book about sharks, and he had already read it three times because he loved the photographs. On Thursday night, he went to put it in his backpack, but the book was not on his shelf.",
+				"Leo looked under his bed, where he found two dusty socks and a toy car, but no book. He searched the kitchen and checked behind the couch cushions. He even looked in the bathtub. \"Mom, have you seen my shark book?\" he called. Mom shook her head. \"Where did you have it last?\" she asked.",
+				"Leo thought hard about the last time he had held it. He remembered reading it on the front porch on Sunday afternoon, so he hurried outside. The porch was empty. Now he was starting to worry. What would he tell Ms. Brooks, the librarian?",
+				"When Leo went back inside, he heard a small voice coming from his sister's room. He peeked through the door. Nina was four years old. She sat on the floor with her stuffed animals in a circle around her. She was holding his shark book open and pointing at the pictures. \"This shark has very big teeth,\" she told a teddy bear. \"Do not worry. He lives far away in the ocean.\"",
+				"Leo laughed. Nina could not read yet, but she was telling the story her own way. \"Can I have my book back?\" he asked. Nina's face fell. Then Leo had an idea. \"Tomorrow we can go to the library together,\" he said. \"You can pick out a book of your own.\" Nina clapped her hands and gave him the book."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "When was Leo's library book due?",
+					"correct": "On Friday",
+					"wrong": [
+						"On Thursday",
+						"On Sunday",
+						"On Monday"
+					],
+					"explanation": "The first sentence says the book was due on Friday.",
+					"evidence": [
+						"was due on Friday"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where did Leo find his book?",
+					"correct": "In his sister's room",
+					"wrong": [
+						"Under his bed",
+						"On the porch",
+						"Behind the couch"
+					],
+					"explanation": "Leo peeked into his sister's room and saw Nina holding his shark book.",
+					"evidence": [
+						"coming from his sister's room",
+						"holding his shark book open"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why was Leo starting to worry?",
+					"correct": "He thought the book might be lost.",
+					"wrong": [
+						"He was afraid of sharks.",
+						"He had not finished reading the book.",
+						"He was late for school."
+					],
+					"explanation": "He had looked everywhere and the porch was empty too, and he wondered what he would tell the librarian. So he was afraid the book was lost.",
+					"evidence": [
+						"the porch was empty",
+						"What would he tell Ms. Brooks"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Nina's face fall?",
+					"correct": "She did not want to give the book back.",
+					"wrong": [
+						"She was scared of the pictures of sharks.",
+						"She could not find her teddy bear.",
+						"She was tired of playing with Leo."
+					],
+					"explanation": "Her face fell right when Leo asked for his book back, and she cheered up once she was promised a book of her own.",
+					"evidence": [
+						"Can I have my book back?",
+						"Nina's face fell",
+						"Nina clapped her hands"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these did Leo do first?",
+					"correct": "He looked under his bed.",
+					"wrong": [
+						"He asked Mom about the book.",
+						"He checked the front porch.",
+						"He peeked into Nina's room."
+					],
+					"explanation": "The first place Leo looked was under his bed. After that he searched the kitchen, asked Mom, checked the porch and then found Nina.",
+					"evidence": [
+						"Leo looked under his bed"
+					]
+				}
+			]
+		},
+		{
+			"id": "busy-builders",
+			"title": "Busy Builders",
+			"paragraphs": [
+				"Beavers are some of the best builders in nature. These furry animals live in streams and ponds in many parts of North America. A beaver has a wide, flat tail and strong front teeth that never stop growing. Its back feet are webbed, like a duck's feet. They help it swim fast.",
+				"Beavers build dams across streams. First, they chew through small trees with their sharp teeth. Then they drag the logs and branches into the water. They pile up sticks, rocks, and mud until the water is blocked. Slowly, the water behind the dam fills up and becomes a deep, quiet pond.",
+				"Out in the pond, beavers often build a home called a lodge. A lodge looks like a big pile of sticks, but inside there is a dry room above the water. The doors to the lodge are under the water. Beavers can swim in and out, but most other animals cannot.",
+				"Beavers help other living things, too. The ponds they make become homes for fish, frogs, ducks, and bugs. When beavers leave an old pond, the mud at the bottom turns into rich soil, and new plants grow there. A beaver may be small, but its work can change a whole valley."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What do beavers use to build dams?",
+					"correct": "Sticks, rocks, and mud",
+					"wrong": [
+						"Sand, shells, and grass",
+						"Leaves, feathers, and string",
+						"Bricks, boards, and nails"
+					],
+					"explanation": "The passage says beavers pile up sticks, rocks, and mud until the water is blocked.",
+					"evidence": [
+						"They pile up sticks, rocks, and mud"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is a lodge?",
+					"correct": "A beaver's home in a pond",
+					"wrong": [
+						"A kind of tree",
+						"A deep stream",
+						"A beaver's tail"
+					],
+					"explanation": "The passage says beavers build a home called a lodge out in the pond.",
+					"evidence": [
+						"build a home called a lodge"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What helps a beaver swim fast?",
+					"correct": "Its webbed back feet",
+					"wrong": [
+						"Its long whiskers",
+						"Its strong front teeth",
+						"Its thick fur"
+					],
+					"explanation": "The passage says a beaver's back feet are webbed and that they help it swim fast.",
+					"evidence": [
+						"Its back feet are webbed",
+						"They help it swim fast"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why are the doors to a lodge under the water?",
+					"correct": "To keep the beavers safe from other animals",
+					"wrong": [
+						"To keep the lodge cool in the summer",
+						"Because beavers are not able to climb",
+						"So that fish can visit the beavers"
+					],
+					"explanation": "Beavers can swim in through the doors, but most other animals cannot. That keeps the beavers safe inside.",
+					"evidence": [
+						"The doors to the lodge are under the water",
+						"most other animals cannot"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What would most likely happen to the pond if the dam broke?",
+					"correct": "Much of the water would flow away.",
+					"wrong": [
+						"The pond would get deeper.",
+						"More fish would come to live there.",
+						"The lodge would float to the top."
+					],
+					"explanation": "The pond only formed because the dam blocked the water. Without the dam, the water would flow on down the stream.",
+					"evidence": [
+						"until the water is blocked",
+						"the water behind the dam fills up"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-fun-run",
+			"title": "The Fun Run",
+			"paragraphs": [
+				"Every spring, Hill Street School has a fun run. Kids race two times around the big field while their families cheer. This year, Rosa wanted to win more than anything. She had practiced every evening for a month. Her best friend, Ava, was running too.",
+				"On the day of the race, the sun was bright and warm. Coach Dean blew his whistle, and everyone took off. Rosa ran fast. By the end of the first lap, she was in the lead. She could hear her dad shouting her name.",
+				"Halfway through the second lap, Rosa's shoelace came loose. Her foot caught on it, and she fell down on the grass. Her knee stung, and her eyes filled with tears. One runner passed her, then another, then three more.",
+				"Then Ava stopped beside her. \"Are you okay?\" Ava asked, and she held out her hand. Rosa nodded and wiped her eyes. Ava waited while Rosa tied her shoe in a double knot. Then the two girls ran the rest of the way side by side.",
+				"They crossed the finish line together, near the back of the group. Rosa did not get a ribbon this year. But when Ava's mom took a picture of the two friends, Rosa had the biggest smile of anyone on the field."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Why did Rosa fall?",
+					"correct": "Her foot caught on her loose shoelace.",
+					"wrong": [
+						"Another runner pushed her.",
+						"She slipped in a puddle.",
+						"She tripped over a rock."
+					],
+					"explanation": "Rosa's shoelace came loose, and her foot caught on it.",
+					"evidence": [
+						"Rosa's shoelace came loose",
+						"Her foot caught on it"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How did Rosa get ready for the race?",
+					"correct": "She practiced every evening for a month.",
+					"wrong": [
+						"She bought new running shoes.",
+						"She ran with Coach Dean every morning.",
+						"She watched races on TV."
+					],
+					"explanation": "The story says she had practiced every evening for a month.",
+					"evidence": [
+						"She had practiced every evening for a month"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ava stop running?",
+					"correct": "She wanted to help Rosa.",
+					"wrong": [
+						"She was too tired to keep going.",
+						"Coach Dean told her to stop.",
+						"She hurt her own knee."
+					],
+					"explanation": "Ava stopped right beside Rosa, asked if she was okay, and held out her hand to help her up.",
+					"evidence": [
+						"Ava stopped beside her",
+						"Are you okay?",
+						"held out her hand"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Rosa tie her shoe in a double knot?",
+					"correct": "So it would not come undone again",
+					"wrong": [
+						"Because Ava told her to do it",
+						"So that her shoe would look nicer",
+						"Because her knee was hurting"
+					],
+					"explanation": "Her shoelace had come loose and made her fall. A double knot holds tighter, so it would not happen again.",
+					"evidence": [
+						"Rosa's shoelace came loose",
+						"tied her shoe in a double knot"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main lesson of this story?",
+					"correct": "Being a good friend can matter more than winning.",
+					"wrong": [
+						"The fastest runner always wins the race.",
+						"You should never run in a race.",
+						"New shoes help you run faster."
+					],
+					"explanation": "Rosa did not win, but Ava helped her and they finished together. Rosa ended up with the biggest smile on the field.",
+					"evidence": [
+						"Rosa did not get a ribbon this year",
+						"Rosa had the biggest smile of anyone on the field"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-picnic-mystery",
+			"title": "The Picnic Mystery",
+			"paragraphs": [
+				"On Saturday, the Okafor family had a picnic in the park. Dad spread a blue blanket on the grass near a big oak tree. Chidi opened the basket and took out the food. There were apples, cheese, a jug of lemonade, and four sandwiches wrapped in paper. Their dog, Biscuit, lay in the grass and watched every move.",
+				"Before lunch, the whole family walked over to the playground. Chidi and his little brother, Emeka, took turns on the slide while Mom and Dad pushed the swings. Biscuit stayed behind, resting in the shade of the oak. When they came back, Chidi counted the sandwiches. There were only three. \"Someone took a sandwich!\" he said.",
+				"Chidi decided to be a detective. He looked closely at the blanket. There were crumbs near the corner, and a piece of paper was torn into strips. Next to the blanket, he saw paw prints in a patch of soft dirt. They pointed toward the oak tree.",
+				"Chidi followed the prints. Behind the tree, Biscuit was lying very still with his head on his paws. He would not look at Chidi. A little bit of bread was stuck to his whiskers, and his tail gave one slow, small wag.",
+				"Dad started to laugh. \"I think we found our thief,\" he said. Mom cut one sandwich in half so that everyone had enough to eat. Biscuit got a dog treat instead. From then on, the Okafors always kept the picnic basket closed."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How many sandwiches were left when the family came back?",
+					"correct": "Three",
+					"wrong": [
+						"Two",
+						"Four",
+						"One"
+					],
+					"explanation": "Chidi counted the sandwiches, and there were only three.",
+					"evidence": [
+						"There were only three"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What clue did Chidi find next to the blanket?",
+					"correct": "Paw prints in the dirt",
+					"wrong": [
+						"A lost shoe",
+						"A bird feather",
+						"An empty lemonade jug"
+					],
+					"explanation": "Next to the blanket, he saw paw prints in a patch of soft dirt.",
+					"evidence": [
+						"he saw paw prints in a patch of soft dirt"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Who most likely took the sandwich?",
+					"correct": "Biscuit, the family's dog",
+					"wrong": [
+						"Emeka, Chidi's little brother",
+						"Dad, as a joke",
+						"A bird from the tree"
+					],
+					"explanation": "The story never says it, but the clues do: the paw prints led to Biscuit, and he had bread stuck to his whiskers. Emeka and Dad were at the playground the whole time.",
+					"evidence": [
+						"They pointed toward the oak tree",
+						"A little bit of bread was stuck to his whiskers"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why would Biscuit not look at Chidi?",
+					"correct": "He knew he had done something wrong.",
+					"wrong": [
+						"He was afraid of the playground.",
+						"He did not know who Chidi was.",
+						"He wanted to go home right away."
+					],
+					"explanation": "Biscuit had eaten the sandwich. Lying very still and looking away is how a dog often acts when it knows it is in trouble.",
+					"evidence": [
+						"He would not look at Chidi",
+						"Biscuit was lying very still"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened right after the family came back from the playground?",
+					"correct": "Chidi counted the sandwiches.",
+					"wrong": [
+						"Dad gave Biscuit a treat.",
+						"Chidi followed the paw prints.",
+						"Mom cut a sandwich in half."
+					],
+					"explanation": "When they came back, the first thing Chidi did was count the sandwiches.",
+					"evidence": [
+						"When they came back, Chidi counted the sandwiches"
+					]
+				}
+			]
+		}
+	]
+}

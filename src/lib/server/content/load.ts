@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import type { GradeStories, Story } from './reading.ts';
 import { PARTS_OF_SPEECH, type ContentEntry, type GradeContent } from './validate.ts';
 
 const isString = (value: unknown): value is string => typeof value === 'string' && value !== '';
@@ -57,4 +58,23 @@ export function loadContent(dir: string): GradeContent[] {
 
 	if (grades.length === 0) throw new Error(`No grade-N.json files found in ${dir}`);
 	return grades;
+}
+
+/**
+ * Loads every `grade-N.json` file of reading stories in `dir`, sorted by grade. Only the
+ * outline is checked here; validateStories in reading.ts checks each story in full.
+ */
+export function loadReading(dir: string): GradeStories[] {
+	return readdirSync(dir)
+		.filter((name) => /^grade-\d+\.json$/.test(name))
+		.map((name) => {
+			const data: unknown = JSON.parse(readFileSync(path.join(dir, name), 'utf8'));
+			const { grade, stories } = (data ?? {}) as Record<string, unknown>;
+			if (name !== `grade-${grade}.json`) {
+				throw new Error(`${name}: file name does not match "grade": ${String(grade)}`);
+			}
+			if (!Array.isArray(stories)) throw new Error(`${name}: "stories" must be an array`);
+			return { grade: grade as number, stories: stories as Story[] };
+		})
+		.sort((a, b) => a.grade - b.grade);
 }

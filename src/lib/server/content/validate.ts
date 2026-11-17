@@ -76,6 +76,11 @@ export function countWord(text: string, word: string): number {
  * True when `candidate` may be shown as a wrong choice for `target`:
  * a different word with the same part of speech that is not a synonym in either direction.
  */
+/** The blocked words that appear in `text`, as whole words. */
+export function blockedWords(text: string): string[] {
+	return BLOCKLIST.filter((blocked) => countWord(text, blocked) > 0);
+}
+
 export function isDistractorFor(target: ContentEntry, candidate: ContentEntry): boolean {
 	return (
 		candidate.word !== target.word &&

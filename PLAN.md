@@ -18,6 +18,7 @@ This plan is written to be executed by Claude Code one phase at a time. Each pha
 - Words come back on a schedule (spaced repetition) so they are actually remembered.
 - Parent logs in with a password and sees progress, accuracy, time spent and trouble words.
 - Parent can add custom word lists (for example the weekly list from school).
+- Reading comprehension (Phase 12): short stories with questions on what is stated and what has to be inferred, starting at grade 3.
 - Light and dark mode, accessible, works well on a tablet, Chromebook or desktop.
 - One container, one SQLite file, no external services, no telemetry. The one exception is the optional weekly summary email (Phase 11), which is off until the parent turns it on and talks only to Gmail.
 
@@ -482,6 +483,71 @@ A short email to the parent every Monday morning about the week before.
 Email settings (`summary.enabled`, `summary.to`, `summary.lastWeek`, `summary.lastSentAt`, `summary.lastError`, `summary.tries`) go in the existing `setting` table.
 
 **Accepts when:** unit tests cover the quiz staircase (pass up, fail down, stop at 3 and at 12, the result rule), word choice preferring unseen words, and that a quiz changes no `word_progress`, `question`, `answer` or `practice_session` rows; an end-to-end test runs a full quiz with JavaScript on and another with it off, and checks the correct answer is not in any response before it is answered; the parent can start, cancel and apply a quiz, and a child can reach only their own quiz; unit tests cover the weekly figures against a fixture, the Monday 7:00 rule across a `TZ` boundary, no double send after a restart, retries, and HTML escaping of a child's name; the message that would be sent is checked with nodemailer's stream transport, so tests never contact Gmail; the settings section hides the form when the environment variables are missing; a test email arrives from the real Gmail account on the NAS; axe reports no violations on the new pages in both themes; all unit and end-to-end tests pass, the image is still distroless and passes the Trivy scan.
+
+### Phase 12 — Reading comprehension
+
+A second activity next to word practice: the child reads a short story of several paragraphs and answers questions about it. Some answers are stated in the story; others have to be worked out from it. It starts at grade 3.
+
+**Stories are written and reviewed ahead of time, not fetched or generated while the app runs.** Like the word lists (2.5), Claude writes them during development, checks them with a script, reviews each one, and the parent reviews each grade before it ships. Published reading passages (ReadWorks, CommonLit, state test samples) are copyrighted and are not used. Public-domain readers are dated, uneven in level and come without questions, so they are not used either.
+
+**Content format.** `content/reading/grade-N.json` holds that grade's stories. Each story has:
+
+- `id`: a short slug, unique across all grades, kept for good once shipped (progress is stored against it).
+- `title`, and `paragraphs`: an array of plain-text paragraphs.
+- `questions`: five multiple-choice questions, each with `kind`, `prompt`, `correct`, `wrong` (exactly three), `explanation` (one or two sentences shown afterwards, saying where in the story the answer comes from) and `evidence` (one or more phrases copied exactly from the story that support the answer).
+
+**Question kinds.** Every story has five questions: at least two `literal` (the answer is stated in the story), at least two `inference` (the answer is not stated and has to be worked out, such as why a character did something, how they probably felt, or what will likely happen next), and one of `vocabulary` (what a word means here), `main_idea` or `sequence`.
+
+**Size and level per grade.** Checked by the script:
+
+| Grade | Paragraphs | Words   | Readability (Flesch-Kincaid grade) |
+| ----- | ---------- | ------- | ---------------------------------- |
+| 3     | 3–5        | 200–400 | 2.0–4.0                            |
+| 4     | 3–6        | 250–500 | 3.0–5.0                            |
+| 5     | 4–6        | 300–600 | 4.0–6.0                            |
+| 6     | 4–7        | 350–700 | 5.0–7.0                            |
+
+Grades 7 to 12 follow the same pattern when they are written. Readability is computed by the check script itself (sentence and syllable counts), so no dependency is added. It is a guide that flags a story worth a second look, not a measure of quality.
+
+**`npm run reading:check`** enforces: every field present; unique ids; the paragraph, word and readability ranges above; five questions with the kinds above; four distinct choices per question; every question has at least one `evidence` phrase and each appears word for word in the story (whether the evidence really supports the answer is part of the review below); an `inference` question's correct answer does not appear word for word in the story; the right answer is not much longer than the longest wrong one (a long right answer gives itself away); and the same blocklist as the words.
+
+**Claude's review of each story**, recorded in `content/reading/REVIEW.md`, one entry per story with what was checked and anything changed:
+
+- The story holds together: names, places, the order of events and facts do not contradict each other, and it has a clear beginning, middle and end.
+- Each literal answer is really in the story, and each inference answer is the one best answer the story supports.
+- No wrong answer could also be argued to be right. This is the most common flaw in comprehension questions, so each wrong answer is checked against the story on its own.
+- No question can be answered without reading the story (from general knowledge alone).
+- Words, sentence length and themes suit the grade. Nothing frightening, violent, romantic, or about death, illness or family breakup at grades 3 to 5. Characters and settings are varied, and no group is made fun of.
+- The stories are original. No retelling of a known book, film or game.
+
+The review is a strong first filter, not a guarantee; the parent reviewing each grade stays part of the process.
+
+**Pilot first.** Before any app code: the content format, `reading:check` and 5 grade-3 stories with their review entries. The parent reads them and judges story quality and question style. Changes to the format or the rules are made then, while they are cheap. After that, grade 3 is filled to 15 stories, and the app is built. More grades (4, 5, 6, …) follow later, one grade per batch, as in Phase 9.
+
+**In the app**
+
+- **Home page:** a child sees "Practice words" and "Read a story". A placement quiz the parent has asked for still comes first.
+- **Which story:** the next unread story at the child's reading grade. When every story in the grade has been read, the one read longest ago comes back. A story can be stopped and picked up later.
+- **Reading screen:** the story at the top, with a "Read it to me" button per paragraph using the browser's speech (as the "hear it" buttons do), then the questions one at a time underneath. The story stays on screen while answering; looking back at the text is part of reading comprehension.
+- **Questions and feedback:** choices are shuffled on every serve, and the correct answer stays on the server until the child has answered, as in practice. After each answer, the same encouraging feedback as practice, plus the explanation. At the end: how many were right, without separating literal and inference for the child.
+- **Reading grade:** each child gets a reading grade apart from their word grade (default 3), since the two skills can differ. When the child's last 5 stories at their reading grade average 80% or more, with at least 70% on inference questions, the parent is offered "Move up to reading grade N", or it happens automatically if the parent chose that, as with words (2.4).
+- **Daily limit:** reading time counts toward the same daily limit as word practice.
+- **Parent side:** a **Reading** tab per child: stories read, minutes, accuracy overall and separately for stated and inferred answers (the gap between the two shows whether the child understands or only remembers what was read), and each story with every answer given. Story lists appear under **Word lists** as **Stories**, where any story can be switched off. The weekly summary email gains a reading line per child.
+- **Data model:** `reading_story` (`id`, `slug`, `grade`, `title`, `paragraphs_json`, `active`) and `reading_question` (`id`, `story_id`, `position`, `kind`, `prompt`, `correct`, `wrong_json`, `explanation`), seeded from the content files at startup like the words; `reading_attempt` (`id`, `child_id`, `story_id`, `started_at`, `ended_at`, `completed`, `active_ms`); `reading_answer` (`id`, `attempt_id`, `question_id`, `choices_json`, `correct_choice`, `served_at`, `chosen`, `is_correct`, `response_ms`, `answered_at`). These are separate from word practice, so no word figure changes.
+
+**Choices to confirm before building the app (after the pilot):**
+
+| Choice              | Default in this phase                  | Alternative                                          |
+| ------------------- | -------------------------------------- | ---------------------------------------------------- |
+| Reading grade       | Separate from the word grade, starts 3 | Follow the word grade                                |
+| Feedback            | After each question, with explanation  | All at the end, so earlier answers cannot give hints |
+| Daily limit         | Reading counts toward it               | Reading has its own limit, or none                   |
+| Grade 3 at launch   | 15 stories                             | More at launch, at the cost of review time           |
+| Questions per story | 5                                      | 4 for grade 3, rising to 6 for older grades          |
+
+**Accepts when (pilot):** `reading:check` passes on 5 grade-3 stories, its rules are unit-tested, each story has a review entry, and the parent has read them and approved the format.
+
+**Accepts when (feature):** grade 3 has 15 stories that pass `reading:check`, each reviewed by Claude and by the parent; a child can read a story and answer its questions with JavaScript on and off; the correct answer is not in any response before it is answered (an end-to-end test); a child can reach only their own attempts; stopping and picking up works; reading figures match hand-worked values on a fixture, including literal versus inference accuracy; the reading-grade suggestion and automatic move-up work; word practice figures are unchanged by reading; axe reports no violations on the new pages in both themes; all unit and end-to-end tests pass.
 
 ---
 

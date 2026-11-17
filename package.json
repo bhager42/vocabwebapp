@@ -24,7 +24,8 @@
 		"db:studio": "drizzle-kit studio",
 		"start": "node server.js",
 		"content:check": "node scripts/content-check.ts",
-		"db:seed": "node scripts/seed.ts"
+		"db:seed": "node scripts/seed.ts",
+		"reading:check": "node scripts/reading-check.ts"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "4.14.0",
