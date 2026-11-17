@@ -19,7 +19,7 @@ This plan is written to be executed by Claude Code one phase at a time. Each pha
 - Parent logs in with a password and sees progress, accuracy, time spent and trouble words.
 - Parent can add custom word lists (for example the weekly list from school).
 - Light and dark mode, accessible, works well on a tablet, Chromebook or desktop.
-- One container, one SQLite file, no external services, no telemetry.
+- One container, one SQLite file, no external services, no telemetry. The one exception is the optional weekly summary email (Phase 11), which is off until the parent turns it on and talks only to Gmail.
 
 **Non-goals for v1**
 
@@ -190,7 +190,7 @@ Accepted trade-off: anyone on the home network who knows his name can practice a
 - **Other headers:** `X-Content-Type-Options: nosniff`, `Referrer-Policy: same-origin` (not `no-referrer`, which makes browsers send `Origin: null` on plain form posts and so breaks the CSRF check for forms submitted without JavaScript), `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Resource-Policy: same-origin`, a `Permissions-Policy` that disables camera, microphone, geolocation and the rest. `Strict-Transport-Security` only when `ORIGIN` is https.
 - **Input:** every form and parameter validated with Valibot; only parameterized queries through Drizzle; Svelte's default output escaping, with `{@html}` banned by a lint rule.
 - **Authorization:** checked centrally in `hooks.server.ts` by route group, and again in each load function and action. Tests cover child-to-parent and child-to-other-child access.
-- **Privacy:** only a first name is stored for the child. No analytics, no outbound network calls at runtime, no logging of names or answers to stdout.
+- **Privacy:** only a first name is stored for the child. No analytics, no outbound network calls at runtime, no logging of names or answers to stdout. The one exception is the weekly summary email (Phase 11): when the parent turns it on, the app connects to Gmail's mail server once a week to send the parent a summary that includes each child's first name and figures.
 - **Supply chain:** exact-pinned lockfile, `npm ci`, `npm audit` and a Trivy image scan in CI, base images pinned by digest, SBOM generated at build.
 
 ### 4.4 Container hardening
@@ -263,14 +263,16 @@ How the definitions above are applied (decided in Phase 6):
 
 ### 6.1 Configuration
 
-| Variable      | Example                                                     | Purpose                                          |
-| ------------- | ----------------------------------------------------------- | ------------------------------------------------ |
-| `ORIGIN`      | `https://vocab.home.example` or `http://192.168.1.10:30080` | CSRF origin check, cookie flags, HSTS            |
-| `DATA_DIR`    | `/data`                                                     | SQLite file and backups                          |
-| `TZ`          | `America/New_York`                                          | Day boundaries for streaks and charts            |
-| `SETUP_TOKEN` | long random string                                          | One-time first-run setup                         |
-| `TRUST_PROXY` | `true` / `false`                                            | Whether to read client IP from `X-Forwarded-For` |
-| `PORT`        | `3000`                                                      | Listen port inside the container                 |
+| Variable             | Example                                                     | Purpose                                                                  |
+| -------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `ORIGIN`             | `https://vocab.home.example` or `http://192.168.1.10:30080` | CSRF origin check, cookie flags, HSTS                                    |
+| `DATA_DIR`           | `/data`                                                     | SQLite file and backups                                                  |
+| `TZ`                 | `America/New_York`                                          | Day boundaries for streaks and charts                                    |
+| `SETUP_TOKEN`        | long random string                                          | One-time first-run setup                                                 |
+| `TRUST_PROXY`        | `true` / `false`                                            | Whether to read client IP from `X-Forwarded-For`                         |
+| `PORT`               | `3000`                                                      | Listen port inside the container                                         |
+| `GMAIL_USER`         | `family.vocab@gmail.com`                                    | Gmail account the weekly summary is sent from (Phase 11). Optional       |
+| `GMAIL_APP_PASSWORD` | 16-letter app password                                      | That account's Google app password. Optional; email stays off without it |
 
 ### 6.2 Storage
 
@@ -398,8 +400,8 @@ Decided in Phase 7:
 Pick individually after a few weeks of real use:
 
 - Service worker for app-shell caching and home-screen install polish.
-- Placement quiz to pick a starting grade.
-- Weekly summary page ("this week he learned 14 words").
+- ~~Placement quiz to pick a starting grade.~~ Planned as Phase 11.
+- ~~Weekly summary page ("this week he learned 14 words").~~ Planned as Phase 11, sent by email.
 - Extra question types: synonym/antonym matching, picture prompts.
 - Printable review sheet of trouble words.
 
@@ -440,6 +442,46 @@ Turns the spelling question into real dictation: the child hears the word, then 
 | Custom words          | Written spelling question (no audio) | Parent records the word in the browser (needs microphone permission, a CSP and Permissions-Policy change) |
 
 **Accepts when:** every built-in word has a current clip and `content:check` passes; the parent has listened to a sample from each grade and fixed or switched off any word the voice gets wrong; a dictation question's HTML, page data, URL and response headers never contain the word or its hash (an end-to-end test checks all four); `/play/audio` returns 404 for another child's question, an answered question, a non-spelling question and a made-up id; a clip plays in Chromium and on the child's own device, with and without JavaScript; a custom word and a word marked "Voice is wrong" get the written spelling question instead; the per-child setting and the CSV column work; the image is still distroless, makes no outbound calls and passes the Trivy scan; axe reports no violations on the dictation question in both themes; all unit and end-to-end tests pass.
+
+### Phase 11 — Placement quiz and weekly summary email
+
+Two of the Phase 8 extras. Both are optional: the parent starts a placement quiz only when they want one, and the weekly email is off until they turn it on.
+
+**Placement quiz**
+
+A short quiz that finds the grade a child should start at, so a child who already knows the easier words does not spend weeks on them.
+
+- **Started by the parent.** Each child's Settings page gets a "Placement quiz" section with "Give {name} a placement quiz". The next time the child opens the app, the home page offers "Quick quiz first" in place of practice. The parent can cancel a quiz that has not finished. Only one quiz per child can be open at a time.
+- **How it runs:** rounds of 5 questions, each from one grade's built-in words (custom lists are left out, as they are not graded). Every question is `word_to_def` with four choices and a fifth button, "I don't know this one", which counts as wrong and keeps guessing down. The first round uses the child's current grade. 4 or 5 right passes a grade: the quiz moves up one grade. 3 or fewer fails it: the quiz moves down one grade. It ends when it has found a passed grade whose next grade was failed, or a pass at grade 12, or a fail at grade 3. The result is the highest grade passed, or 3 if none was. The longest possible quiz is 10 rounds, but a child usually needs 2 to 4 (10 to 20 questions).
+- **Words chosen:** prefer words the child has not met in practice, so the quiz measures what they knew before; fall back to any active built-in word of that grade. Wrong choices follow the usual rules (2.1).
+- **No right/wrong feedback during the quiz.** The child sees only a progress bar and "Next", so a hard grade is not discouraging. At the end: "All done! Thanks for doing the quiz." with no score.
+- **It changes nothing on its own.** Quiz answers are kept in their own tables, `placement_quiz` and `placement_answer`, not in `question` and `answer`. So they do not move words between boxes and do not count toward any dashboard figure, the streak or the daily limit. As in practice, the correct answer stays on the server until the child has answered.
+- **Result for the parent.** The Settings page shows the latest finished quiz: when it was taken, the grade it suggests and each grade's score ("Grade 5: 5 of 5, Grade 6: 2 of 5"), and a "Move to grade N" button. The button is not shown when the child is already at that grade. Older quizzes are listed below it.
+- **Stopping part way:** "Stop for now" keeps the quiz open, and the child picks up where they left off. A quiz left untouched for 7 days is closed unfinished.
+
+**Weekly summary email**
+
+A short email to the parent every Monday morning about the week before.
+
+- **Content, per child who is not archived, for the past Monday to Sunday in `TZ`:** days practiced, minutes practiced, sessions finished, new words started, words mastered, accuracy (first attempts, as in section 5) with last week's figure next to it, the three most-missed words, grade progress, and "Ready to move up to grade N" when the 80% mark is reached and automatic move-up is off. A finished placement quiz from that week is mentioned with its suggested grade. A child who did not practice gets one line saying so. There is a link to the dashboard, using `ORIGIN`.
+- **Format:** both plain text and simple HTML, laid out as a table. The HTML has no images, scripts or remote resources, and every value in it is escaped.
+- **Preview:** the Account page has "See this week's summary", which shows the same content in the app. This works whether or not email is set up.
+- **Sending through Gmail:** SMTP to `smtp.gmail.com` on port 465 (TLS from the first byte), signed in with a Google app password. The account and app password come from the `GMAIL_USER` and `GMAIL_APP_PASSWORD` environment variables, not from the database, so the password is never in a backup. The README explains how to make an app password (it needs 2-step verification on the Google account), and recommends a separate Gmail account just for the app.
+- **Parent settings (Account page, "Weekly summary email"):** an on/off switch (off by default), the address to send to, and "Send a test email now". When the two environment variables are missing, this section says email is not set up and links to the README instead of showing the form. The page also shows when the last summary was sent, or the last error.
+- **When it is sent:** an hourly check, like the nightly backup. It sends when the switch is on, an address is set, it is Monday 7:00 or later in `TZ` (or any later day that week, if the app was off on Monday), and last week's summary has not been sent. The week sent is saved in `setting` so a restart never sends it twice. A failed send is logged without the password, shown on the Account page, and tried again next hour, up to 6 tries per week.
+- **Dependency:** `nodemailer`, the usual SMTP client for Node. It has no dependencies of its own, so it adds little to audit, and writing SMTP and TLS handling by hand would be riskier. Pinned exactly like everything else.
+- **Security:** the address to send to is validated as an email address, and no header is built from anything the child typed. A child's typed spelling answers are never in the email: trouble words are listed from the word lists, not from what was typed. The app connects out only when sending, only to `smtp.gmail.com`, and verifies the server's certificate. The image stays distroless.
+
+**Data model additions**
+
+| Table              | Key columns                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `placement_quiz`   | `id`, `child_id`, `started_at`, `ended_at`, `start_grade`, `result_grade`, `completed`, `cancelled`                                                                      |
+| `placement_answer` | `id`, `quiz_id`, `grade`, `word_id`, `choices_json`, `correct_choice`, `served_at`, `chosen` (null until answered, `''` for "I don't know"), `is_correct`, `answered_at` |
+
+Email settings (`summary.enabled`, `summary.to`, `summary.lastWeek`, `summary.lastSentAt`, `summary.lastError`, `summary.tries`) go in the existing `setting` table.
+
+**Accepts when:** unit tests cover the quiz staircase (pass up, fail down, stop at 3 and at 12, the result rule), word choice preferring unseen words, and that a quiz changes no `word_progress`, `question`, `answer` or `practice_session` rows; an end-to-end test runs a full quiz with JavaScript on and another with it off, and checks the correct answer is not in any response before it is answered; the parent can start, cancel and apply a quiz, and a child can reach only their own quiz; unit tests cover the weekly figures against a fixture, the Monday 7:00 rule across a `TZ` boundary, no double send after a restart, retries, and HTML escaping of a child's name; the message that would be sent is checked with nodemailer's stream transport, so tests never contact Gmail; the settings section hides the form when the environment variables are missing; a test email arrives from the real Gmail account on the NAS; axe reports no violations on the new pages in both themes; all unit and end-to-end tests pass, the image is still distroless and passes the Trivy scan.
 
 ---
 
