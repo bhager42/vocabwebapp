@@ -65,10 +65,35 @@ Each child has four tabs under **For parents**:
 - **Sessions**: each session with its questions and answers. A session that should not count
   can be deleted.
 - **Words**: every word the child has met, and every answer given for each.
-- **Settings**: name, grade and practice settings, and the placement quiz.
+- **Reading**: stories read, time reading, and how many answers were right, split into answers
+  written in the story and answers that had to be worked out from it. Each story read can be
+  opened to see every answer given. The page also offers the move to the next reading grade.
+- **Settings**: name, word grade, reading grade and practice settings, and the placement quiz.
 
 "Time practiced" is active time: gaps between actions count only up to one minute, so a tablet
 left open does not add to it. Days and hours follow the `TZ` setting.
+
+## Reading
+
+Next to word practice, a child can press **Read a story**. They read a short story (three to five
+paragraphs at grade 3), with a button by each paragraph that reads it aloud, and answer five
+questions about it one at a time while the story stays on screen. Some answers are written in the
+story; others have to be worked out from it. After each answer the child sees whether it was right
+and a short explanation of where the answer comes from. A story can be stopped and picked up later.
+
+- Each child has a **reading grade**, separate from their word grade (default 3), set on the
+  Settings tab. Stories come in order; once all of a grade's stories are read, the one read
+  longest ago comes back.
+- After five stories at a grade averaging 80% or more, with at least 70% on the answers that must
+  be worked out, the Reading tab offers the next reading grade (or the child moves up by
+  themselves, if you tick that setting). For now only grade 3 has stories.
+- Reading time counts toward the same daily limit as word practice.
+- **Stories** in the parent menu lists every story. Open one to read it with its questions and
+  answers, and switch off any you do not want used.
+
+The stories are written and reviewed ahead of time, not generated while the app runs. They live in
+`content/reading/grade-N.json`; `npm run reading:check` checks them, and
+`content/reading/REVIEW.md` records the review of each one. PLAN.md Phase 12 has the rules.
 
 ## Placement quiz
 
@@ -169,11 +194,11 @@ installed from [compose.truenas.yaml](compose.truenas.yaml).
 Pushing a version tag makes GitHub Actions test, scan and publish the image:
 
 ```sh
-git tag v1.2.0
-git push origin v1.2.0
+git tag v1.3.0
+git push origin v1.3.0
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.2.0`
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.3.0`
 and also at `:latest`, which the YAML below uses. A GitHub release for the tag lists what
 changed since the previous one. A new package on GitHub starts out private. Either make it
 public (on GitHub: your profile → Packages → vocabwebapp → Package settings → Change
@@ -201,7 +226,7 @@ This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml)
 services:
   vocab:
     # Always the newest published version. To stay on one version, put its number in
-    # place of latest, such as :1.2.0.
+    # place of latest, such as :1.3.0.
     image: ghcr.io/bhager42/vocabwebapp:latest
     # Fetch the newest image whenever the app is started or saved.
     pull_policy: always
@@ -306,7 +331,7 @@ set `TRUST_PROXY` to `'true'`.
 
 The app also fetches the newest image whenever it starts, such as after the NAS reboots. To
 stay on one version instead, put its number in place of `latest` in the `image:` line, such as
-`ghcr.io/bhager42/vocabwebapp:1.2.0`.
+`ghcr.io/bhager42/vocabwebapp:1.3.0`.
 
 Before a new version changes the structure of the database, the app saves a copy as
 `backups/pre-migrate-<date>-<time>.db`. To go back, put the old version's number in place of

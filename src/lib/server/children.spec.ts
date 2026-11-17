@@ -33,6 +33,7 @@ const editForm = (overrides: Record<string, string | undefined> = {}) => {
 	const form: Record<string, string | undefined> = {
 		name: 'Sam',
 		grade: '3',
+		readingGrade: '3',
 		questionsPerSession: '10',
 		newWordsPerSession: '4',
 		spellingEnabled: 'on',
@@ -85,11 +86,13 @@ describe('practice settings rules', () => {
 		expect(result).toEqual({
 			name: 'Sam',
 			grade: 3,
+			readingGrade: 3,
 			questionsPerSession: 10,
 			newWordsPerSession: 4,
 			spellingEnabled: false,
 			dailyCapMinutes: 0,
-			autoUnlockNextGrade: false
+			autoUnlockNextGrade: false,
+			autoUnlockReadingGrade: false
 		});
 	});
 
@@ -157,23 +160,27 @@ describe('children', () => {
 		const input: EditChildInput = {
 			name: 'Samuel',
 			grade: 5,
+			readingGrade: 4,
 			questionsPerSession: 15,
 			newWordsPerSession: 6,
 			spellingEnabled: false,
 			dailyCapMinutes: 20,
-			autoUnlockNextGrade: true
+			autoUnlockNextGrade: true,
+			autoUnlockReadingGrade: true
 		};
 
 		expect(updateChild(db, sam.id, input)).toMatchObject({ ok: true });
 		expect(getChild(db, sam.id)).toMatchObject({
 			name: 'Samuel',
 			grade: 5,
+			readingGrade: 4,
 			settings: {
 				questionsPerSession: 15,
 				newWordsPerSession: 6,
 				spellingEnabled: false,
 				dailyCapMinutes: 20,
-				autoUnlockNextGrade: true
+				autoUnlockNextGrade: true,
+				autoUnlockReadingGrade: true
 			}
 		});
 	});
@@ -181,7 +188,7 @@ describe('children', () => {
 	it('lets a child keep their own name when saving, but not take a sibling’s', () => {
 		const sam = add('Sam');
 		add('Mia');
-		const input: EditChildInput = { ...DEFAULT_SETTINGS, name: 'sam', grade: 3 };
+		const input: EditChildInput = { ...DEFAULT_SETTINGS, name: 'sam', grade: 3, readingGrade: 3 };
 
 		expect(updateChild(db, sam.id, input)).toMatchObject({ ok: true });
 		expect(updateChild(db, sam.id, { ...input, name: 'MIA' })).toEqual({
@@ -192,7 +199,9 @@ describe('children', () => {
 	});
 
 	it('returns null when saving a child that does not exist', () => {
-		expect(updateChild(db, 999, { ...DEFAULT_SETTINGS, name: 'Sam', grade: 3 })).toBeNull();
+		expect(
+			updateChild(db, 999, { ...DEFAULT_SETTINGS, name: 'Sam', grade: 3, readingGrade: 3 })
+		).toBeNull();
 	});
 
 	it('archives and restores without losing anything', () => {

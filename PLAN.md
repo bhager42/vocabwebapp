@@ -545,6 +545,15 @@ The review is a strong first filter, not a guarantee; the parent reviewing each 
 | Grade 3 at launch   | 15 stories                             | More at launch, at the cost of review time           |
 | Questions per story | 5                                      | 4 for grade 3, rising to 6 for older grades          |
 
+**Decided while building it:**
+
+- The reading pages live under `/play/read`, so the child-only guard and the no-caching rule for `/play` cover them too.
+- Time between two actions counts as reading up to 5 minutes (word practice caps it at 1 minute), since reading the story before the first question takes a few minutes.
+- "Stop for now" keeps the story open to pick up later; one left untouched for 7 days is closed unfinished.
+- Reading does not count toward the day streak, which stays about word practice. The home page keeps "Start practicing" and adds "Read a story" beside it.
+- The reading grade can be set only to a grade that has stories (or the one the child is on).
+- The `child.reading_grade` column is added in place with `ALTER TABLE`. The generated migration rebuilt the `child` table, which would have deleted every child's history through the cascading foreign keys, so it was replaced, and a test checks that the migration keeps an existing child's data.
+
 **Accepts when (pilot):** `reading:check` passes on 5 grade-3 stories, its rules are unit-tested, each story has a review entry, and the parent has read them and approved the format.
 
 **Accepts when (feature):** grade 3 has 15 stories that pass `reading:check`, each reviewed by Claude and by the parent; a child can read a story and answer its questions with JavaScript on and off; the correct answer is not in any response before it is answered (an end-to-end test); a child can reach only their own attempts; stopping and picking up works; reading figures match hand-worked values on a fixture, including literal versus inference accuracy; the reading-grade suggestion and automatic move-up work; word practice figures are unchanged by reading; axe reports no violations on the new pages in both themes; all unit and end-to-end tests pass.

@@ -22,6 +22,13 @@
       "when": 1794876582455,
       "tag": "0002_placement_quiz",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1794882594712,
+      "tag": "0003_reading",
+      "breakpoints": true
     }
   ]
 }

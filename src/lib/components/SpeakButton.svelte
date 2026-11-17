@@ -2,8 +2,10 @@
 	import { onMount } from 'svelte';
 	import Icon from './Icon.svelte';
 
-	// Reads a word aloud with the browser's own speech engine. Nothing is sent anywhere.
-	let { text }: { text: string } = $props();
+	// Reads text aloud with the browser's own speech engine. Nothing is sent anywhere.
+	// `label` names the button for screen readers when the text is too long to say twice,
+	// such as a whole paragraph.
+	let { text, label }: { text: string; label?: string } = $props();
 
 	// The button only appears once the page knows the browser can speak, so nobody is
 	// ever shown a button that does nothing (for example with JavaScript turned off).
@@ -24,7 +26,7 @@
 {#if supported}
 	<button class="speak" type="button" onclick={speak}>
 		<Icon name="speaker" />
-		<span class="visually-hidden">Hear “{text}”</span>
+		<span class="visually-hidden">{label ?? `Hear “${text}”`}</span>
 	</button>
 {/if}
 

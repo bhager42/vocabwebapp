@@ -17,6 +17,8 @@ export interface ChildSettings {
 	dailyCapMinutes: number;
 	/** Move to the next grade automatically at 80% instead of asking the parent. */
 	autoUnlockNextGrade: boolean;
+	/** Move to the next reading grade automatically when ready, instead of asking. */
+	autoUnlockReadingGrade: boolean;
 }
 
 export const DEFAULT_SETTINGS: ChildSettings = {
@@ -24,7 +26,8 @@ export const DEFAULT_SETTINGS: ChildSettings = {
 	newWordsPerSession: 4,
 	spellingEnabled: true,
 	dailyCapMinutes: 0,
-	autoUnlockNextGrade: false
+	autoUnlockNextGrade: false,
+	autoUnlockReadingGrade: false
 };
 
 export const NAME_MAX_LENGTH = 30;
@@ -62,11 +65,13 @@ export const editChildSchema = v.pipe(
 	v.object({
 		name: nameSchema,
 		grade: gradeSchema,
+		readingGrade: gradeSchema,
 		questionsPerSession: wholeNumber('Questions per session', 5, 20),
 		newWordsPerSession: wholeNumber('New words per session', 1, 10),
 		spellingEnabled: checkbox,
 		dailyCapMinutes: wholeNumber('Daily limit', 0, 120),
-		autoUnlockNextGrade: checkbox
+		autoUnlockNextGrade: checkbox,
+		autoUnlockReadingGrade: checkbox
 	}),
 	v.forward(
 		v.check(
@@ -83,6 +88,7 @@ export interface Child {
 	id: number;
 	name: string;
 	grade: number;
+	readingGrade: number;
 	settings: ChildSettings;
 	createdAt: Date;
 	archivedAt: Date | null;
@@ -102,6 +108,7 @@ const toChild = (row: typeof child.$inferSelect): Child => ({
 	id: row.id,
 	name: row.name,
 	grade: row.grade,
+	readingGrade: row.readingGrade,
 	settings: readSettings(row.settingsJson),
 	createdAt: row.createdAt,
 	archivedAt: row.archivedAt
@@ -163,13 +170,14 @@ export function updateChild(db: Db, id: number, input: EditChildInput): SaveResu
 	if (!getChild(db, id)) return null;
 	if (nameTaken(db, input.name, id)) return { ok: false, reason: 'name-taken' };
 
-	const { name, grade, ...settings } = input;
+	const { name, grade, readingGrade, ...settings } = input;
 	const row = db
 		.update(child)
 		.set({
 			name: cleanName(name),
 			nameNormalized: normalizeName(name),
 			grade,
+			readingGrade,
 			settingsJson: { ...settings }
 		})
 		.where(eq(child.id, id))
@@ -181,6 +189,11 @@ export function updateChild(db: Db, id: number, input: EditChildInput): SaveResu
 /** Changes only the grade, leaving name and settings alone. */
 export function setGrade(db: Db, id: number, grade: number): boolean {
 	return db.update(child).set({ grade }).where(eq(child.id, id)).run().changes > 0;
+}
+
+/** Changes only the reading grade. */
+export function setReadingGrade(db: Db, id: number, readingGrade: number): boolean {
+	return db.update(child).set({ readingGrade }).where(eq(child.id, id)).run().changes > 0;
 }
 
 /**

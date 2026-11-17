@@ -11,6 +11,7 @@ import {
 	child,
 	practiceSession,
 	question,
+	readingAttempt,
 	word,
 	wordList,
 	wordProgress,
@@ -145,21 +146,32 @@ function openSession(db: Reader, childId: number, now: Date): SessionRow | null 
 	return current;
 }
 
-/** Milliseconds of practice so far on the local day that contains `now`. */
+/**
+ * Milliseconds of practice so far on the local day that contains `now`: word practice and
+ * reading together, since both count toward the daily limit.
+ */
 export function activeMsToday(db: Reader, childId: number, now: Date, timeZone: string): number {
-	return db
+	const today = startOfLocalDay(now, timeZone);
+	const words = db
 		.select({ total: sql<number>`coalesce(sum(${practiceSession.activeMs}), 0)` })
 		.from(practiceSession)
-		.where(
-			and(
-				eq(practiceSession.childId, childId),
-				gte(practiceSession.startedAt, startOfLocalDay(now, timeZone))
-			)
-		)
+		.where(and(eq(practiceSession.childId, childId), gte(practiceSession.startedAt, today)))
 		.get()!.total;
+	const reading = db
+		.select({ total: sql<number>`coalesce(sum(${readingAttempt.activeMs}), 0)` })
+		.from(readingAttempt)
+		.where(and(eq(readingAttempt.childId, childId), gte(readingAttempt.startedAt, today)))
+		.get()!.total;
+	return words + reading;
 }
 
-function capReached(db: Reader, who: PracticeChild, now: Date, timeZone: string): boolean {
+/** True once today's practice and reading together have reached the daily limit. */
+export function capReached(
+	db: Reader,
+	who: Pick<PracticeChild, 'id' | 'settings'>,
+	now: Date,
+	timeZone: string
+): boolean {
 	const cap = who.settings.dailyCapMinutes;
 	return cap > 0 && activeMsToday(db, who.id, now, timeZone) >= cap * 60_000;
 }

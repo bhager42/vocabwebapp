@@ -12,7 +12,8 @@ import {
 import { getParent } from '#lib/server/auth/parent.ts';
 import { readSession } from '#lib/server/auth/session.ts';
 import { getChild } from '#lib/server/children.ts';
-import { loadContent } from '#lib/server/content/load.ts';
+import { loadContent, loadReading } from '#lib/server/content/load.ts';
+import { seedStories } from '#lib/server/content/seed-reading.ts';
 import { seedBuiltinWords } from '#lib/server/content/seed.ts';
 import { scheduleNightly } from '#lib/server/backup.ts';
 import { backupDir, getDb } from '#lib/server/db/index.ts';
@@ -26,7 +27,8 @@ const headers = securityHeaders({ https: ORIGIN?.startsWith('https://') ?? false
 
 // Open the database and run migrations at startup, so a bad DATA_DIR fails fast, start
 // the daily backups and (when Gmail is set up) the weekly summary email check, then bring
-// the built-in word lists up to date with the content files shipped in ./content.
+// the built-in word lists and reading stories up to date with the content files shipped
+// in ./content.
 export const init: ServerInit = () => {
 	const db = getDb();
 	scheduleNightly(db.$client, backupDir());
@@ -44,6 +46,12 @@ export const init: ServerInit = () => {
 	if (result.inserted || result.updated || result.deactivated) {
 		console.log(
 			`Word lists updated: ${result.inserted} added, ${result.updated} changed, ${result.deactivated} retired.`
+		);
+	}
+	const stories = seedStories(db, loadReading(path.resolve('content/reading')));
+	if (stories.inserted || stories.updated || stories.retired) {
+		console.log(
+			`Reading stories updated: ${stories.inserted} added, ${stories.updated} changed, ${stories.retired} retired.`
 		);
 	}
 };

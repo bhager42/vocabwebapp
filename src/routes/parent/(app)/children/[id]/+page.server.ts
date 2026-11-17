@@ -11,6 +11,7 @@ import {
 import { getDb } from '#lib/server/db/index.ts';
 import { idParam } from '#lib/server/params.ts';
 import { cancelQuiz, listQuizzes, startQuiz } from '#lib/server/placement.ts';
+import { readingGrades } from '#lib/server/reading.ts';
 import { appTimeZone, formatDateTime } from '#lib/server/time.ts';
 import { parseForm } from '#lib/server/validation.ts';
 import type { Actions, PageServerLoad } from './$types';
@@ -30,13 +31,18 @@ export const load: PageServerLoad = ({ locals, params }) => {
 		rounds: quiz.rounds
 	}));
 
+	// Reading grades on offer: those with stories, plus wherever the child is now.
+	const withStories = new Set([...readingGrades(db), child.readingGrade]);
+
 	return {
 		quizzes,
 		grades: [...GRADES],
+		readingGrades: [...withStories].sort((a, b) => a - b),
 		child: {
 			id: child.id,
 			name: child.name,
 			grade: child.grade,
+			readingGrade: child.readingGrade,
 			archived: child.archivedAt !== null,
 			settings: child.settings
 		}

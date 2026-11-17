@@ -38,6 +38,8 @@ export const child = sqliteTable(
 		/** Trimmed, lower-cased name used to match what the child types. */
 		nameNormalized: text('name_normalized').notNull().unique(),
 		grade: integer('grade').notNull().default(3),
+		/** Grade of the reading stories, kept apart from the word grade (PLAN.md Phase 12). */
+		readingGrade: integer('reading_grade').notNull().default(3),
 		settingsJson: text('settings_json', { mode: 'json' })
 			.$type<Record<string, unknown>>()
 			.notNull()
@@ -45,7 +47,10 @@ export const child = sqliteTable(
 		createdAt: timestamp('created_at').notNull(),
 		archivedAt: timestamp('archived_at')
 	},
-	(t) => [check('child_grade_range', sql`${t.grade} between 1 and 12`)]
+	(t) => [
+		check('child_grade_range', sql`${t.grade} between 1 and 12`),
+		check('child_reading_grade_range', sql`${t.readingGrade} between 1 and 12`)
+	]
 );
 
 export const authSession = sqliteTable(
@@ -240,4 +245,92 @@ export const placementAnswer = sqliteTable(
 		answeredAt: timestamp('answered_at')
 	},
 	(t) => [index('placement_answer_quiz_idx').on(t.quizId)]
+);
+
+// ---- Reading (PLAN.md Phase 12) ----
+
+export const READING_KINDS = [
+	'literal',
+	'inference',
+	'vocabulary',
+	'main_idea',
+	'sequence'
+] as const;
+export type ReadingKind = (typeof READING_KINDS)[number];
+
+/** A built-in reading story, seeded from content/reading at startup. */
+export const readingStory = sqliteTable('reading_story', {
+	id: integer('id').primaryKey({ autoIncrement: true }),
+	/** The id in the content file. Never changes once shipped. */
+	slug: text('slug').notNull().unique(),
+	grade: integer('grade').notNull(),
+	title: text('title').notNull(),
+	paragraphsJson: text('paragraphs_json', { mode: 'json' }).$type<string[]>().notNull(),
+	/** The parent's on/off switch; also off for a story taken out of the content files. */
+	active: boolean('active').notNull().default(true)
+});
+
+export const readingQuestion = sqliteTable(
+	'reading_question',
+	{
+		id: integer('id').primaryKey({ autoIncrement: true }),
+		storyId: integer('story_id')
+			.notNull()
+			.references(() => readingStory.id, { onDelete: 'cascade' }),
+		/** Order within the story, from 0. */
+		position: integer('position').notNull(),
+		kind: text('kind', { enum: READING_KINDS }).notNull(),
+		prompt: text('prompt').notNull(),
+		correct: text('correct').notNull(),
+		wrongJson: text('wrong_json', { mode: 'json' }).$type<string[]>().notNull(),
+		explanation: text('explanation').notNull(),
+		/** Off for a question taken out of the content file. */
+		active: boolean('active').notNull().default(true)
+	},
+	(t) => [uniqueIndex('reading_question_story_position').on(t.storyId, t.position)]
+);
+
+/** One child reading one story, from start to finish (or not). */
+export const readingAttempt = sqliteTable(
+	'reading_attempt',
+	{
+		id: integer('id').primaryKey({ autoIncrement: true }),
+		childId: integer('child_id')
+			.notNull()
+			.references(() => child.id, { onDelete: 'cascade' }),
+		storyId: integer('story_id')
+			.notNull()
+			.references(() => readingStory.id, { onDelete: 'restrict' }),
+		startedAt: timestamp('started_at').notNull(),
+		endedAt: timestamp('ended_at'),
+		completed: boolean('completed').notNull().default(false),
+		/** Sum of gaps between events, each gap capped (see reading.ts). */
+		activeMs: integer('active_ms').notNull().default(0)
+	},
+	(t) => [index('reading_attempt_child_idx').on(t.childId, t.startedAt)]
+);
+
+/**
+ * A question served during an attempt. The correct answer is kept here, on the server,
+ * and the browser receives only the shuffled choices until the child has answered.
+ */
+export const readingAnswer = sqliteTable(
+	'reading_answer',
+	{
+		id: integer('id').primaryKey({ autoIncrement: true }),
+		attemptId: integer('attempt_id')
+			.notNull()
+			.references(() => readingAttempt.id, { onDelete: 'cascade' }),
+		questionId: integer('question_id')
+			.notNull()
+			.references(() => readingQuestion.id, { onDelete: 'restrict' }),
+		choicesJson: text('choices_json', { mode: 'json' }).$type<string[]>().notNull(),
+		correctChoice: text('correct_choice').notNull(),
+		servedAt: timestamp('served_at').notNull(),
+		chosen: text('chosen'),
+		isCorrect: boolean('is_correct'),
+		responseMs: integer('response_ms'),
+		answeredAt: timestamp('answered_at')
+	},
+	(t) => [index('reading_answer_attempt_idx').on(t.attemptId)]
 );

@@ -1,7 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createChild, setArchived, updateChild, DEFAULT_SETTINGS } from './children.ts';
 import type { Db } from './db/client.ts';
-import { placementQuiz, wordProgress } from './db/schema.ts';
+import { seedStories } from './content/seed-reading.ts';
+import {
+	placementQuiz,
+	readingAnswer,
+	readingAttempt,
+	readingQuestion,
+	wordProgress
+} from './db/schema.ts';
 import {
 	childLines,
 	childNotes,
@@ -81,7 +88,8 @@ describe('weeklySummary', () => {
 			troubleWords: ['w3', 'w5'],
 			gradeProgress: 0.2, // w3 and w4 of ten
 			readyFor: null,
-			quizGrade: null
+			quizGrade: null,
+			reading: expect.objectContaining({ started: 0, finished: 0 })
 		});
 
 		const mia = summary.children.find((child) => child.name === 'Mia')!;
@@ -127,6 +135,7 @@ describe('weeklySummary', () => {
 		updateChild(db, fixture.mia, {
 			name: 'Mia',
 			grade: 3,
+			readingGrade: 3,
 			...DEFAULT_SETTINGS,
 			autoUnlockNextGrade: true
 		});
@@ -147,6 +156,68 @@ describe('weeklySummary', () => {
 		const sam = weeklySummary(db, NOW, CHICAGO).children.find((child) => child.name === 'Sam')!;
 		expect(sam.quizGrade).toBe(5);
 		expect(childNotes(sam)).toContain('A placement quiz this week suggested grade 5.');
+	});
+
+	it('adds a line for reading, split into stated and worked-out answers', () => {
+		seedStories(db, [
+			{
+				grade: 3,
+				stories: [
+					{
+						id: 'a',
+						title: 'A',
+						paragraphs: ['Text.'],
+						questions: (['literal', 'literal', 'inference', 'inference', 'sequence'] as const).map(
+							(kind, n) => ({
+								kind,
+								prompt: `Q${n}`,
+								correct: `r${n}`,
+								wrong: ['x', 'y', 'z'],
+								explanation: 'e',
+								evidence: ['Text']
+							})
+						)
+					}
+				]
+			}
+		]);
+		const at = new Date('2026-11-12T20:00:00Z');
+		const attempt = db
+			.insert(readingAttempt)
+			.values({
+				childId: fixture.mia,
+				storyId: 1,
+				startedAt: at,
+				endedAt: at,
+				completed: true,
+				activeMs: 240_000
+			})
+			.returning()
+			.get();
+		const questions = db.select().from(readingQuestion).all();
+		// Both stated answers right, one of two worked-out answers right, sequence wrong.
+		[true, true, true, false, false].forEach((right, index) =>
+			db
+				.insert(readingAnswer)
+				.values({
+					attemptId: attempt.id,
+					questionId: questions[index].id,
+					choicesJson: [],
+					correctChoice: 'r',
+					servedAt: at,
+					chosen: right ? 'r' : 'x',
+					isCorrect: right,
+					answeredAt: at
+				})
+				.run()
+		);
+
+		const mia = weeklySummary(db, NOW, CHICAGO).children.find((child) => child.name === 'Mia')!;
+		expect(childLines(mia)).toContainEqual(['Stories read', '1 finished, 4 minutes']);
+		expect(childLines(mia)).toContainEqual([
+			'Story questions',
+			'60% right (answers in the story: 100%, worked out: 50%)'
+		]);
 	});
 
 	it('gives a child who did not practice one line', () => {

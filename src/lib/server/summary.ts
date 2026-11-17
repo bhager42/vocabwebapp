@@ -9,6 +9,7 @@ import type { Db } from './db/client.ts';
 import { placementQuiz, wordProgress } from './db/schema.ts';
 import { accuracy, sessionCounts, timePracticed, troubleWords, type Scope } from './metrics.ts';
 import { gradeProgress, practicedDays, UNLOCK_SHARE } from './practice.ts';
+import { readingFigures, type ReadingFigures } from './reading.ts';
 import { formatDay, formatShortDay, localDayKey, shiftDayKey, startOfLocalDay } from './time.ts';
 
 export interface Week {
@@ -57,6 +58,7 @@ export interface ChildWeek {
 	readyFor: number | null;
 	/** The grade a placement quiz finished this week suggested. */
 	quizGrade: number | null;
+	reading: ReadingFigures;
 }
 
 export interface WeeklySummary {
@@ -132,7 +134,8 @@ export function weeklySummary(db: Db, now: Date, timeZone: string): WeeklySummar
 					next !== undefined && !child.settings.autoUnlockNextGrade && progress >= UNLOCK_SHARE
 						? next
 						: null,
-				quizGrade: quiz?.grade ?? null
+				quizGrade: quiz?.grade ?? null,
+				reading: readingFigures(db, scope)
 			};
 		});
 	return { week, children };
@@ -152,9 +155,27 @@ export function subject(summary: WeeklySummary): string {
 	return `Vocab: the week of ${formatShortDay(summary.week.firstDay)}`;
 }
 
+const practicedWords = (child: ChildWeek) => child.firstAttempts > 0 || child.daysPracticed > 0;
+const read = (child: ChildWeek) => child.reading.started > 0;
+
 /** The lines shown for one child, as label and value, in order. */
 export function childLines(child: ChildWeek): [string, string][] {
-	if (child.firstAttempts === 0 && child.daysPracticed === 0) return [];
+	const lines: [string, string][] = [];
+	if (practicedWords(child)) lines.push(...wordLines(child));
+	if (read(child)) {
+		const { reading } = child;
+		lines.push(
+			['Stories read', `${reading.finished} finished, ${plural(reading.minutes, 'minute')}`],
+			[
+				'Story questions',
+				`${percent(reading.overall.share)} right (answers in the story: ${percent(reading.literal.share)}, worked out: ${percent(reading.inference.share)})`
+			]
+		);
+	}
+	return lines;
+}
+
+function wordLines(child: ChildWeek): [string, string][] {
 	const lines: [string, string][] = [
 		['Days practiced', `${child.daysPracticed} of 7`],
 		['Time practiced', plural(child.minutes, 'minute')],
@@ -172,7 +193,7 @@ export function childLines(child: ChildWeek): [string, string][] {
 /** Sentences after a child's figures: grade progress and anything to act on. */
 export function childNotes(child: ChildWeek): string[] {
 	const notes: string[] = [];
-	if (child.firstAttempts === 0 && child.daysPracticed === 0) {
+	if (!practicedWords(child) && !read(child)) {
 		notes.push(`${child.name} did not practice this week.`);
 	}
 	notes.push(`Grade ${child.grade} progress: ${percent(child.gradeProgress)} of words known well.`);

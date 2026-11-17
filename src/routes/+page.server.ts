@@ -6,6 +6,7 @@ import { findChildByName, getChild, NAME_MAX_LENGTH } from '#lib/server/children
 import { getDb } from '#lib/server/db/index.ts';
 import { quizView } from '#lib/server/placement.ts';
 import { practiceStatus, streak } from '#lib/server/practice.ts';
+import { readingStatus } from '#lib/server/reading.ts';
 import { appTimeZone } from '#lib/server/time.ts';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -24,11 +25,14 @@ export const load: PageServerLoad = ({ locals, url }) => {
 		child: {
 			name: who.name,
 			status: practiceStatus(db, who, now, timeZone),
+			reading: readingStatus(db, who, now, timeZone),
 			// A placement quiz the parent has asked for comes before practice.
 			quiz: quiz.kind === 'none' ? null : { started: quiz.kind === 'question' || quiz.started },
 			streak: streak(db, who.id, now, timeZone),
 			// Set by /play when there was nothing at all to ask.
-			nothingToPractice: url.searchParams.has('nothing')
+			nothingToPractice: url.searchParams.has('nothing'),
+			// Set by /play/read when there was no story at the child's reading grade.
+			noStories: url.searchParams.has('nostories')
 		},
 		needsSetup: false
 	};

@@ -177,8 +177,11 @@ describe('backup before a structure change', () => {
 		);
 		expect(pendingMigrations(raw, MIGRATIONS)).toBe(1);
 		// Undo what that migration added, so that it can run again.
-		raw.exec('drop table placement_answer');
-		raw.exec('drop table placement_quiz');
+		raw.exec('drop table reading_answer');
+		raw.exec('drop table reading_attempt');
+		raw.exec('drop table reading_question');
+		raw.exec('drop table reading_story');
+		raw.exec('alter table child drop column reading_grade');
 		raw.close();
 
 		const db = openDatabase(file, MIGRATIONS, backups);
@@ -193,7 +196,7 @@ describe('backup before a structure change', () => {
 		const tables = before.prepare("select name from sqlite_master where type = 'table'").all() as {
 			name: string;
 		}[];
-		expect(tables.map((table) => table.name)).not.toContain('placement_quiz');
+		expect(tables.map((table) => table.name)).not.toContain('reading_story');
 		before.close();
 	});
 });

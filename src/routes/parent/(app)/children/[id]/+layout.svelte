@@ -10,6 +10,7 @@
 		{ href: resolve('/parent/(app)/children/[id]/progress', { id }), label: 'Progress' },
 		{ href: resolve('/parent/(app)/children/[id]/sessions', { id }), label: 'Sessions' },
 		{ href: resolve('/parent/(app)/children/[id]/words', { id }), label: 'Words' },
+		{ href: resolve('/parent/(app)/children/[id]/reading', { id }), label: 'Reading' },
 		{ href: resolve('/parent/(app)/children/[id]', { id }), label: 'Settings' }
 	]);
 

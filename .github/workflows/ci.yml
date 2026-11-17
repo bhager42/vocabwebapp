@@ -48,6 +48,9 @@ jobs:
       - name: Check the word lists
         run: npm run content:check
 
+      - name: Check the reading stories
+        run: npm run reading:check
+
       - name: Unit tests
         run: npx vitest --run
 

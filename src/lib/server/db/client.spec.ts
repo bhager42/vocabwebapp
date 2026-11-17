@@ -89,3 +89,44 @@ describe('openDatabase', () => {
 		).toThrow(/CHECK|FOREIGN KEY/);
 	});
 });
+
+describe('the reading migration (0003)', () => {
+	it('adds the reading grade without losing any child or their history', async () => {
+		const { cpSync, readFileSync, writeFileSync } = await import('node:fs');
+		const Database = (await import('better-sqlite3')).default;
+
+		// A copy of the migrations as they were before 0003.
+		const before = path.join(dir, 'before');
+		cpSync(MIGRATIONS, before, { recursive: true });
+		const journalFile = path.join(before, 'meta', '_journal.json');
+		const journal = JSON.parse(readFileSync(journalFile, 'utf8'));
+		journal.entries = journal.entries.filter((entry: { tag: string }) => entry.tag < '0003');
+		writeFileSync(journalFile, JSON.stringify(journal));
+
+		const file = path.join(dir, 'old.db');
+		openDatabase(file, before).$client.close();
+		const raw = new Database(file);
+		raw.exec(`
+			insert into child (name, name_normalized, grade, settings_json, created_at) values ('Sam', 'sam', 5, '{}', 1);
+			insert into word_list (name, grade, source) values ('Grade 5', 5, 'builtin');
+			insert into word (list_id, word, part_of_speech, definition, sentence) values (1, 'brisk', 'adjective', 'quick', 'A brisk walk.');
+			insert into word_progress (child_id, word_id, box, due_at, first_seen_at) values (1, 1, 3, 1, 1);
+			insert into practice_session (child_id, started_at) values (1, 1);
+			insert into placement_quiz (child_id, started_at, start_grade) values (1, 1, 5);
+		`);
+		raw.close();
+
+		const updated = openDatabase(file, MIGRATIONS);
+		const count = (table: string) =>
+			(updated.$client.prepare(`select count(*) as n from ${table}`).get() as { n: number }).n;
+		expect(updated.$client.prepare('select name, grade, reading_grade from child').all()).toEqual([
+			{ name: 'Sam', grade: 5, reading_grade: 3 }
+		]);
+		expect(['word_progress', 'practice_session', 'placement_quiz'].map(count)).toEqual([1, 1, 1]);
+		expect(updated.$client.pragma('foreign_key_check')).toEqual([]);
+		expect(() => updated.$client.prepare('update child set reading_grade = 13').run()).toThrow(
+			/CHECK/
+		);
+		updated.$client.close();
+	});
+});

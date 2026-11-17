@@ -73,6 +73,17 @@
 				options={data.grades.map((grade) => ({ value: String(grade), label: `Grade ${grade}` }))}
 				hint="Words from earlier grades keep coming back for review."
 			/>
+			<SelectField
+				label="Reading grade"
+				name="readingGrade"
+				value={String(child.readingGrade)}
+				error={errors.readingGrade}
+				options={data.readingGrades.map((grade) => ({
+					value: String(grade),
+					label: `Grade ${grade}`
+				}))}
+				hint="The grade of the stories. It can differ from the word grade."
+			/>
 		</fieldset>
 
 		<fieldset class="stack">
@@ -124,6 +135,12 @@
 				name="autoUnlockNextGrade"
 				checked={child.settings.autoUnlockNextGrade}
 				hint="When 80% of this grade's words are well known. Otherwise you are asked first."
+			/>
+			<CheckField
+				label="Move up a reading grade automatically"
+				name="autoUnlockReadingGrade"
+				checked={child.settings.autoUnlockReadingGrade}
+				hint="After 5 stories at 80% or better, with 70% on questions that need working out. Otherwise you are asked first."
 			/>
 		</fieldset>
 

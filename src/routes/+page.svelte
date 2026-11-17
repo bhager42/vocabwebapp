@@ -24,6 +24,12 @@
 			{/if}
 		</header>
 
+		{#if child.noStories}
+			<p class="notice notice-info">
+				There are no stories to read yet. Ask a grown-up to check your stories.
+			</p>
+		{/if}
+
 		{#if child.nothingToPractice}
 			<p class="notice notice-info">
 				There are no words to practice yet. Ask a grown-up to check your word lists.
@@ -44,9 +50,18 @@
 		{:else if child.status === 'capped'}
 			<p class="notice notice-ok">Great work today! You are all done. Come back tomorrow.</p>
 		{:else}
-			<form method="POST" action="{resolve('/play')}?/start">
-				<Button size="lg">{child.status === 'resume' ? 'Keep going' : 'Start practicing'}</Button>
-			</form>
+			<div class="choices">
+				<form method="POST" action="{resolve('/play')}?/start">
+					<Button size="lg">{child.status === 'resume' ? 'Keep going' : 'Start practicing'}</Button>
+				</form>
+				{#if child.reading === 'ready' || child.reading === 'resume'}
+					<form method="POST" action="{resolve('/play/read')}?/start">
+						<Button size="lg" variant="secondary">
+							{child.reading === 'resume' ? 'Keep reading' : 'Read a story'}
+						</Button>
+					</form>
+				{/if}
+			</div>
 		{/if}
 
 		<form method="POST" action="?/switch" class="switch">
@@ -88,6 +103,12 @@
 
 	.lead {
 		font-size: var(--text-lg);
+	}
+
+	.choices {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
 	}
 
 	.switch {

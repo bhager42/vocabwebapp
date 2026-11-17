@@ -359,39 +359,6 @@
 </div>
 
 <style>
-	.periods {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.periods a {
-		display: inline-flex;
-		align-items: center;
-		min-block-size: var(--target-min);
-		padding-inline: var(--space-4);
-		border-radius: var(--radius-full);
-		color: var(--color-text);
-		font-size: var(--text-sm);
-		font-weight: var(--weight-bold);
-		text-decoration: none;
-	}
-
-	.periods a:hover {
-		background: var(--color-accent-soft);
-	}
-
-	.periods a[aria-current='true'] {
-		background: var(--color-accent-soft);
-		color: var(--color-accent-text);
-		text-decoration: underline;
-		text-decoration-thickness: 0.12em;
-		text-underline-offset: 0.3em;
-	}
-
 	.grade + .grade {
 		padding-block-start: var(--space-4);
 		border-block-start: 1px solid var(--color-border);
