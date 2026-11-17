@@ -431,6 +431,856 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "the-new-girl",
+			"title": "The New Girl",
+			"paragraphs": [
+				"Hana's family moved to Maple Grove in the middle of the school year. On her first day, her teacher, Mr. Ruiz, gave her a desk by the window. Hana said hello in a quiet voice and looked down at her shoes. At recess, the other kids ran off in groups. Hana sat on a bench by herself and took out her sketchbook.",
+				"She began to draw a cat wearing a superhero cape. The cat had a tiny mask and a big, brave grin. Soon a boy from her class stopped beside the bench. His name was Marcus. \"Whoa,\" he said. \"Did you just make that up?\" Hana nodded.",
+				"Marcus sat down next to her. He told her that he loved to write stories, but his drawings always looked like potatoes. Hana laughed for the first time all day. \"Maybe you could write the words,\" she said, \"and I could draw the pictures.\"",
+				"For the rest of the week, they spent every recess on the bench. Marcus wrote about Captain Whiskers, a cat who rescued lost kittens. Hana drew each part in neat little boxes. On Friday, they shared the comic with the class. Everyone wanted to know what Captain Whiskers would do next.",
+				"That afternoon, Hana's mom asked how school was going. Hana grinned. \"I think I'm going to like it here,\" she said."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Hana take out at recess?",
+					"correct": "Her sketchbook",
+					"wrong": [
+						"A jump rope",
+						"A book about cats",
+						"Her lunch box"
+					],
+					"explanation": "The story says she sat on a bench and took out her sketchbook.",
+					"evidence": [
+						"took out her sketchbook"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did Hana most likely feel on her first morning?",
+					"correct": "Shy and a little lonely",
+					"wrong": [
+						"Angry at her new teacher",
+						"Bored and sleepy",
+						"Proud and excited"
+					],
+					"explanation": "She spoke in a quiet voice, looked down at her shoes and sat by herself while the others played in groups.",
+					"evidence": [
+						"said hello in a quiet voice",
+						"looked down at her shoes",
+						"sat on a bench by herself"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did Marcus do for the comic?",
+					"correct": "He wrote the words.",
+					"wrong": [
+						"He drew the pictures.",
+						"He colored the boxes.",
+						"He sold the comics."
+					],
+					"explanation": "Marcus wrote about Captain Whiskers, and Hana drew the pictures.",
+					"evidence": [
+						"Marcus wrote about Captain Whiskers"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Hana think she was going to like her new school?",
+					"correct": "She had made a new friend.",
+					"wrong": [
+						"Her desk was by a window.",
+						"Her teacher gave her a prize.",
+						"She did not have any homework."
+					],
+					"explanation": "She spent the whole week with Marcus making the comic, so she was not alone anymore.",
+					"evidence": [
+						"they spent every recess on the bench",
+						"I'm going to like it here"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is this story mostly about?",
+					"correct": "A new student makes a friend by sharing what she loves.",
+					"wrong": [
+						"A boy who learns how to draw cats.",
+						"A cat who rescues lost kittens.",
+						"A class that moves to a new school."
+					],
+					"explanation": "Hana is new and alone until her drawing brings Marcus over, and the two of them make a comic together.",
+					"evidence": [
+						"Did you just make that up?",
+						"and I could draw the pictures"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-lemonade-stand",
+			"title": "The Lemonade Stand",
+			"paragraphs": [
+				"On the first hot day of summer, Noah and Nia set up a lemonade stand. Their street was quiet, with tall trees and only a few houses. The twins made a sign that said \"Cold Lemonade, 50 Cents.\" They filled a big jug with lemonade and ice. Then they sat down and waited.",
+				"An hour went by. A mail truck rolled past without stopping. A cat walked across the road and lay down in the shade. Only one person bought a cup, and that was their neighbor, Mrs. Kim. The ice in the jug was melting, and Nia's smile was melting too.",
+				"\"Nobody comes down this street,\" Noah said with a sigh. Nia looked toward the end of the block. Past the corner was the park, where a soccer game was going on. She could hear kids shouting and a whistle blowing. Suddenly she jumped up. \"I have an idea!\"",
+				"Dad helped them carry the table, the sign and a fresh jug of lemonade to the edge of the soccer field. When the game stopped for a break, red-faced players ran toward them, waving their money. Parents lined up too. In twenty minutes, the jug was empty.",
+				"That night, the twins counted their coins on the kitchen table. They had made eleven dollars. \"Next time,\" said Noah, \"we'll start at the park.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did the twins' sign say?",
+					"correct": "Cold Lemonade, 50 Cents",
+					"wrong": [
+						"Free Lemonade Today",
+						"Lemonade and Cookies",
+						"Hot Cocoa, 1 Dollar"
+					],
+					"explanation": "The twins made a sign that said \"Cold Lemonade, 50 Cents.\"",
+					"evidence": [
+						"Cold Lemonade, 50 Cents"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "The story says Nia's smile was melting too. What does that mean?",
+					"correct": "She was starting to feel sad.",
+					"wrong": [
+						"Her face was getting wet.",
+						"She was eating the ice.",
+						"She was laughing at the cat."
+					],
+					"explanation": "Smiles do not really melt. Like the ice, her happy mood was slowly going away because almost nobody came.",
+					"evidence": [
+						"Nia's smile was melting too"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Who was the only person to buy lemonade on their street?",
+					"correct": "Mrs. Kim",
+					"wrong": [
+						"Their dad",
+						"The mail carrier",
+						"A soccer player"
+					],
+					"explanation": "Only one person bought a cup, and that was their neighbor, Mrs. Kim.",
+					"evidence": [
+						"that was their neighbor, Mrs. Kim"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the twins sell so much lemonade at the park?",
+					"correct": "The players were hot and thirsty.",
+					"wrong": [
+						"The lemonade was free at the park.",
+						"Mrs. Kim told everyone to buy some.",
+						"They made it sweeter than before."
+					],
+					"explanation": "It was a hot day, and the players ran over red-faced after playing soccer. They wanted something cold to drink.",
+					"evidence": [
+						"the first hot day of summer",
+						"red-faced players ran toward them"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Noah learn from the day?",
+					"correct": "To sell where there are lots of people",
+					"wrong": [
+						"To make the lemonade sweeter",
+						"To sell cookies instead",
+						"To ask for more money"
+					],
+					"explanation": "Nobody came down their quiet street, but the busy park sold out fast. Next time he wants to start at the park.",
+					"evidence": [
+						"Nobody comes down this street",
+						"we'll start at the park"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-snowy-sidewalk",
+			"title": "The Snowy Sidewalk",
+			"paragraphs": [
+				"The snow fell all night long, and in the morning Maya looked out her window at a sparkling white world. School was closed for the day! She pulled on her boots, her puffy coat and her striped hat, grabbed her sled and hurried outside with her little brother, Owen.",
+				"Next door, Mr. Garcia stood on his front step. He leaned on his cane and looked at the deep snow on his sidewalk. His daughter was coming to take him to lunch, and her car would park at the end of his long, snowy path.",
+				"Maya looked at her sled. Then she looked at Mr. Garcia. \"Owen,\" she whispered, \"let's go get the shovels.\" The two of them dug and scraped for almost an hour, until their arms ached and their cheeks turned pink from the cold. At last, there was a clear path all the way from Mr. Garcia's front door to the street.",
+				"Mr. Garcia walked carefully down the path, tapping his cane on the ground. \"Thank you both,\" he said. \"You saved my lunch!\" When his daughter's car pulled up, he waved good-bye from the window. Then Maya and Owen finally took out their sled.",
+				"Later that afternoon, there was a knock on their door. Mr. Garcia's daughter stood on the step with a box. Inside were two cups of hot cocoa and a bag of cookies. A note said, \"For the best neighbors on the street.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Mr. Garcia lean on?",
+					"correct": "His cane",
+					"wrong": [
+						"His car",
+						"A shovel",
+						"The door"
+					],
+					"explanation": "The story says he leaned on his cane.",
+					"evidence": [
+						"He leaned on his cane"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Mr. Garcia look at the snow on his sidewalk?",
+					"correct": "He was worried he could not walk through it.",
+					"wrong": [
+						"He wanted to build a snowman.",
+						"He was looking for a lost glove.",
+						"He was waiting for the mail."
+					],
+					"explanation": "He walks with a cane, the snow was deep, and he had to get down the long path to his daughter's car.",
+					"evidence": [
+						"He leaned on his cane",
+						"the deep snow on his sidewalk"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Maya look at her sled and then at Mr. Garcia?",
+					"correct": "She was deciding between playing and helping.",
+					"wrong": [
+						"She thought the sled belonged to him.",
+						"She wanted him to see her new sled.",
+						"She was too cold to go sledding."
+					],
+					"explanation": "She had been about to go sledding, then she saw Mr. Garcia's problem. She chose to help first and sled later.",
+					"evidence": [
+						"Maya looked at her sled",
+						"Then she looked at Mr. Garcia"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How long did Maya and Owen shovel?",
+					"correct": "Almost an hour",
+					"wrong": [
+						"About ten minutes",
+						"All day long",
+						"Two hours"
+					],
+					"explanation": "The story says they dug and scraped for almost an hour.",
+					"evidence": [
+						"for almost an hour"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened right after Mr. Garcia's daughter picked him up?",
+					"correct": "Maya and Owen went sledding.",
+					"wrong": [
+						"Maya went to get the shovels.",
+						"The children cleared the path.",
+						"Mr. Garcia knocked on their door."
+					],
+					"explanation": "Once Mr. Garcia had waved good-bye, Maya and Owen finally took out their sled.",
+					"evidence": [
+						"Then Maya and Owen finally took out their sled"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-paper-bridge",
+			"title": "The Paper Bridge",
+			"paragraphs": [
+				"Ms. Patel held up a single sheet of paper. \"Today,\" she said, \"each of you will build a bridge out of one piece of paper. It has to cross the gap between two stacks of books. Then we will see how many pennies it can hold.\"",
+				"Tomás laid his paper flat across the gap. It looked like a bridge, but when he set one penny in the middle, the paper sagged and the penny slid to the floor. Across the room, his friend Jada's bridge drooped the same way. Tomás frowned and picked up his penny.",
+				"Then Tomás remembered something. At home, his little sister liked to fold paper into fans. When the paper was folded back and forth, it was much harder to bend. Tomás got a new sheet. He folded it into tight pleats, back and forth, like a fan. Then he laid it across the books.",
+				"He put one penny on top. It stayed. He added another, and another. The class began to count out loud. \"Twenty-one, twenty-two, twenty-three!\" Finally, at thirty-four pennies, the bridge bent and the pile of coins slid off with a clatter.",
+				"Ms. Patel smiled. \"Tomás found a way to make paper stronger without adding anything to it,\" she said. \"Engineers use the same idea when they build real bridges and roofs.\" Jada was already folding her own new sheet."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did each bridge have to cross?",
+					"correct": "The gap between two stacks of books",
+					"wrong": [
+						"A puddle on the playground",
+						"The space between two desks",
+						"A line of chairs"
+					],
+					"explanation": "Ms. Patel said each bridge had to cross the gap between two stacks of books.",
+					"evidence": [
+						"the gap between two stacks of books"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Tomás's first bridge fail?",
+					"correct": "Flat paper bends too easily.",
+					"wrong": [
+						"He used the wrong kind of penny.",
+						"The books were too close together.",
+						"Jada bumped into his desk."
+					],
+					"explanation": "His first bridge was flat, and it sagged under just one penny. Folded paper held much more.",
+					"evidence": [
+						"laid his paper flat across the gap",
+						"the paper sagged"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How many pennies were on the folded bridge when it bent?",
+					"correct": "Thirty-four",
+					"wrong": [
+						"One",
+						"Twenty-one",
+						"Fifty"
+					],
+					"explanation": "The story says that at thirty-four pennies, the bridge bent.",
+					"evidence": [
+						"at thirty-four pennies, the bridge bent"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why was Jada folding a new sheet at the end?",
+					"correct": "She wanted to try Tomás's idea.",
+					"wrong": [
+						"She was making a fan for her sister.",
+						"Ms. Patel told her to clean up.",
+						"She wanted to make a paper hat."
+					],
+					"explanation": "Her flat bridge had drooped too. After seeing how strong Tomás's folded bridge was, she started folding one of her own.",
+					"evidence": [
+						"Jada's bridge drooped the same way",
+						"Jada was already folding her own new sheet"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this story, what are pleats?",
+					"correct": "Folds that go back and forth",
+					"wrong": [
+						"Small copper coins",
+						"Tall stacks of books",
+						"Long pieces of tape"
+					],
+					"explanation": "Tomás folded the paper into tight pleats, back and forth, like a fan.",
+					"evidence": [
+						"folded it into tight pleats, back and forth"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-rainy-day-show",
+			"title": "The Rainy-Day Show",
+			"paragraphs": [
+				"Rain drummed on the windows all Saturday morning. Lucas and his sister, Rosie, had planned to go to the zoo with Grandma, but now the trip was off. Lucas flopped onto the couch. \"There's nothing to do,\" he groaned.",
+				"Rosie looked around the living room. She saw an old cardboard box, a pile of socks with no partners and a jar of buttons. Her eyes lit up. \"We can't go to the zoo,\" she said, \"so let's bring the zoo here!\"",
+				"They cut a big window in the side of the box and hung a towel over the top for a curtain. Then they turned the lonely socks into puppets. A gray sock became an elephant with a long trunk. A yellow sock with brown buttons became a giraffe. Lucas made a lion with a mane of orange yarn.",
+				"At three o'clock, they lined up chairs and made a ticket for Grandma. She sat in the front row with a bowl of popcorn. The elephant told jokes, the giraffe sang a song, and the lion roared so loudly that Grandma spilled her popcorn. She laughed until she had to wipe her eyes.",
+				"When the show was over, Grandma clapped and clapped. Lucas looked out the window. The rain had stopped, and the sun was peeking through the clouds. \"Do you want to go to the zoo now?\" Grandma asked. Lucas thought for a moment. \"Maybe tomorrow,\" he said. \"I think the lion needs to practice his roar.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Lucas and Rosie use to make the puppets?",
+					"correct": "Old socks",
+					"wrong": [
+						"Paper bags",
+						"Old mittens",
+						"Wooden spoons"
+					],
+					"explanation": "They turned the lonely socks into puppets.",
+					"evidence": [
+						"turned the lonely socks into puppets"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "The story calls the socks lonely. Why?",
+					"correct": "Each one had lost its partner.",
+					"wrong": [
+						"Nobody wanted to wear them.",
+						"They had been left out in the rain.",
+						"They were too small for Lucas."
+					],
+					"explanation": "Socks come in pairs. These were a pile of socks with no partners, so each one was alone.",
+					"evidence": [
+						"a pile of socks with no partners"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Who watched the puppet show?",
+					"correct": "Grandma",
+					"wrong": [
+						"Their mom",
+						"The zookeeper",
+						"Their friends"
+					],
+					"explanation": "Grandma sat in the front row with a bowl of popcorn.",
+					"evidence": [
+						"She sat in the front row with a bowl of popcorn"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How was Lucas feeling at the end compared with the start?",
+					"correct": "Happy instead of bored",
+					"wrong": [
+						"Bored instead of happy",
+						"Angry instead of sad",
+						"Scared instead of brave"
+					],
+					"explanation": "At the start he groaned that there was nothing to do. By the end he was having so much fun that he wanted to keep going.",
+					"evidence": [
+						"There's nothing to do",
+						"Maybe tomorrow"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Lucas say \"maybe tomorrow\" about the zoo?",
+					"correct": "He was having fun and wanted to keep playing.",
+					"wrong": [
+						"He was afraid of real lions.",
+						"He was too tired to walk.",
+						"He had never liked the zoo."
+					],
+					"explanation": "He chose to stay and practice the lion's roar, so he was enjoying the show more than he expected. He had wanted to go to the zoo that morning.",
+					"evidence": [
+						"I think the lion needs to practice his roar",
+						"had planned to go to the zoo"
+					]
+				}
+			]
+		},
+		{
+			"id": "abuelos-secret",
+			"title": "Abuelo's Secret",
+			"paragraphs": [
+				"Every Sunday, Diego's grandfather, Abuelo, made pancakes. They were tall, fluffy and golden. This Sunday, Abuelo was visiting his sister in another town, so Diego decided to make the pancakes himself. Mom said she would help with the hot stove.",
+				"Diego found Abuelo's recipe card in a drawer. He mixed flour, sugar, baking powder, eggs and milk in a big bowl. He wanted the batter to be perfect, so he stirred and stirred until his arm was tired and there was not a single lump.",
+				"Mom poured the batter into the pan. The pancakes sizzled, but they did not puff up. They came out flat and chewy, like rubber circles. Diego stared at his plate. \"These don't look anything like Abuelo's,\" he said.",
+				"That night, Diego called Abuelo on the phone and told him what happened. Abuelo chuckled. \"Did you stir it a lot?\" he asked. \"Yes! Until it was smooth,\" said Diego. \"Ah,\" said Abuelo. \"That is my secret. Stir only until the flour is wet. A few lumps are good. Too much stirring makes pancakes tough.\"",
+				"The next Sunday, Abuelo was home again. This time, Diego stirred the batter only ten times and left the lumps alone. The pancakes rose high in the pan. Abuelo took a bite and gave a thumbs-up. \"Now,\" he said, \"you know my secret too.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Who usually made pancakes on Sundays?",
+					"correct": "Diego's grandfather",
+					"wrong": [
+						"Diego's mom",
+						"Diego's aunt",
+						"Diego's sister"
+					],
+					"explanation": "Every Sunday, Diego's grandfather, Abuelo, made pancakes.",
+					"evidence": [
+						"Diego's grandfather, Abuelo, made pancakes"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Diego's first pancakes come out flat?",
+					"correct": "He mixed the batter for too long.",
+					"wrong": [
+						"He forgot to put in the eggs.",
+						"The pan was not hot enough.",
+						"He used the wrong recipe card."
+					],
+					"explanation": "Diego stirred until his arm was tired, and Abuelo said too much stirring makes pancakes tough. The pan did sizzle, so it was hot.",
+					"evidence": [
+						"stirred and stirred until his arm was tired",
+						"Too much stirring makes pancakes tough"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What was Abuelo's secret?",
+					"correct": "Stir only until the flour is wet.",
+					"wrong": [
+						"Add an extra cup of sugar.",
+						"Cook them on very low heat.",
+						"Let the batter sit all night."
+					],
+					"explanation": "Abuelo said, \"Stir only until the flour is wet.\"",
+					"evidence": [
+						"Stir only until the flour is wet"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Abuelo think of the second batch of pancakes?",
+					"correct": "He liked them a lot.",
+					"wrong": [
+						"He thought they were too sweet.",
+						"He wished Diego had stirred more.",
+						"He was too full to eat them."
+					],
+					"explanation": "He took a bite and gave a thumbs-up, which shows he liked them.",
+					"evidence": [
+						"gave a thumbs-up"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What did Diego do after his first pancakes came out flat?",
+					"correct": "He called Abuelo on the phone.",
+					"wrong": [
+						"He threw away the recipe card.",
+						"He made a new batch that night.",
+						"He went to visit Abuelo's sister."
+					],
+					"explanation": "That night, Diego called Abuelo and told him what happened.",
+					"evidence": [
+						"Diego called Abuelo on the phone"
+					]
+				}
+			]
+		},
+		{
+			"id": "a-house-for-wrens",
+			"title": "A House for Wrens",
+			"paragraphs": [
+				"Lily wanted birds in her backyard. She had seen a little brown bird hopping along the fence and singing a loud, bubbly song. Her mom said it was a house wren. \"Wrens like to nest in small boxes,\" Mom said. \"Maybe we can build one.\"",
+				"On Saturday, they worked in the garage. Mom cut the wood, and Lily sanded the edges until they were smooth. Together they nailed the pieces into a box with a slanted roof. Lily painted it light green. Then Mom drilled a round hole in the front. It was small, only a little wider than a quarter.",
+				"\"Why is the hole so tiny?\" Lily asked. \"Won't the birds get stuck?\" Mom smiled. \"Wrens are very small, so they can squeeze right in. Bigger birds can't fit through. That keeps the wrens' eggs safe.\"",
+				"They hung the birdhouse on a post near the garden. For two weeks, nothing happened. Lily checked every morning before school. Then one day she saw a wren carrying a twig in its beak. It flew to the hole and popped inside. Soon it came back out for another twig, and another.",
+				"By June, Lily could hear tiny peeping sounds coming from the box. She kept her distance and watched from the porch with her binoculars. \"Mom,\" she whispered, \"we made a home for a whole family.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What color did Lily paint the birdhouse?",
+					"correct": "Light green",
+					"wrong": [
+						"Bright red",
+						"Sky blue",
+						"Dark brown"
+					],
+					"explanation": "The story says Lily painted it light green.",
+					"evidence": [
+						"Lily painted it light green"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did Mom make the hole so small?",
+					"correct": "So bigger birds could not get in",
+					"wrong": [
+						"So the rain would stay out",
+						"So Lily could see inside",
+						"So the wood would not crack"
+					],
+					"explanation": "Mom said bigger birds can't fit through the hole, and that keeps the wrens' eggs safe.",
+					"evidence": [
+						"Bigger birds can't fit through"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why was the wren carrying twigs into the box?",
+					"correct": "It was building a nest.",
+					"wrong": [
+						"It was storing food for winter.",
+						"It was trying to block the hole.",
+						"It was playing a game."
+					],
+					"explanation": "Mom said wrens like to nest in small boxes. A bird that carries twig after twig inside is making a nest.",
+					"evidence": [
+						"Wrens like to nest in small boxes",
+						"carrying a twig in its beak"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What were the peeping sounds coming from the box?",
+					"correct": "Baby wrens that had hatched",
+					"wrong": [
+						"Frogs in the garden",
+						"A squirrel on the roof",
+						"Lily's binoculars"
+					],
+					"explanation": "The wrens built a nest inside, and by June there were tiny peeps from the box. Lily says they made a home for a whole family.",
+					"evidence": [
+						"tiny peeping sounds coming from the box",
+						"a home for a whole family"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened after Lily saw the wren carrying a twig?",
+					"correct": "She heard peeping sounds from the box.",
+					"wrong": [
+						"Mom drilled a hole in the front.",
+						"Lily sanded the edges of the wood.",
+						"They hung the box on a post."
+					],
+					"explanation": "The twig came after the box was built and hung up. The peeping came later, in June.",
+					"evidence": [
+						"By June, Lily could hear tiny peeping sounds"
+					]
+				}
+			]
+		},
+		{
+			"id": "life-in-a-beehive",
+			"title": "Life in a Beehive",
+			"paragraphs": [
+				"A honeybee hive is like a busy city. A single hive can be home to thousands of bees, and each bee has a job to do. The longest bee in the hive is the queen. Her job is to lay eggs, sometimes more than a thousand in one day.",
+				"Most of the bees in a hive are worker bees. Young workers stay inside. They clean the hive, feed the babies and build little wax rooms called cells. Older workers become guards at the door, or they fly outside to find flowers.",
+				"When a worker bee finds a good patch of flowers, she flies back to the hive and does a special dance. She wiggles and turns in a pattern. The dance tells the other bees which way to fly and how far to go. Soon many bees are heading to the same flowers.",
+				"Bees drink a sweet juice from flowers called nectar. Back at the hive, they put the nectar into the wax cells. Then they fan it with their wings to dry it out. Slowly, the nectar turns into thick, sticky honey. The bees eat the honey in winter, when there are no flowers.",
+				"While bees visit flowers, a yellow dust called pollen sticks to their fuzzy bodies. They carry it from flower to flower. This helps plants make seeds and fruit. Many of the apples, berries and pumpkins we eat grow because bees helped them."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What is the queen bee's job?",
+					"correct": "To lay eggs",
+					"wrong": [
+						"To guard the door",
+						"To make the wax",
+						"To find flowers"
+					],
+					"explanation": "The passage says the queen's job is to lay eggs.",
+					"evidence": [
+						"Her job is to lay eggs"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what are cells?",
+					"correct": "Small wax rooms in the hive",
+					"wrong": [
+						"Baby bees",
+						"Patches of flowers",
+						"Bee dances"
+					],
+					"explanation": "Young workers build little wax rooms called cells, and the bees store nectar in them.",
+					"evidence": [
+						"little wax rooms called cells"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What does a worker bee's dance tell the other bees?",
+					"correct": "Which way to fly and how far",
+					"wrong": [
+						"When it is going to rain",
+						"Which bee is the queen",
+						"How to build with wax"
+					],
+					"explanation": "The dance tells the other bees which way to fly and how far to go.",
+					"evidence": [
+						"which way to fly and how far to go"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why do bees save honey for the winter?",
+					"correct": "They cannot get food from flowers then.",
+					"wrong": [
+						"Honey tastes better when it is cold.",
+						"The queen eats it all in summer.",
+						"Winter is when they dance the most."
+					],
+					"explanation": "Bees make honey from the nectar in flowers. In winter there are no flowers, so the stored honey is their food.",
+					"evidence": [
+						"The bees eat the honey in winter, when there are no flowers"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What would most likely happen to apple trees if there were no bees?",
+					"correct": "They would grow fewer apples.",
+					"wrong": [
+						"They would grow more apples.",
+						"They would make their own honey.",
+						"They would lose all their leaves."
+					],
+					"explanation": "Bees carry pollen that helps plants make fruit. Without bees, many apple flowers would not turn into apples.",
+					"evidence": [
+						"This helps plants make seeds and fruit",
+						"Many of the apples, berries and pumpkins we eat"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-monarchs-long-trip",
+			"title": "The Monarch's Long Trip",
+			"paragraphs": [
+				"Every fall, millions of orange and black butterflies begin a long trip. They are called monarch butterflies. Many of them start in Canada and the northern United States. They fly south for weeks. Some fly more than two thousand miles. They go all the way to the mountains of Mexico.",
+				"In Mexico, the monarchs gather in forests of tall fir trees. So many butterflies land on the branches that the trees look orange. They hang in big bunches, like orange leaves. They rest there all winter in the cool mountain air.",
+				"In spring, the monarchs fly north again. But they do not make the whole trip back. Along the way, they lay eggs. Their children and grandchildren finish the trip north.",
+				"Monarchs lay their eggs on just one kind of plant. It is called milkweed. When the caterpillars hatch, milkweed is the only food they eat. Milkweed makes the caterpillars taste bad to birds. The grown butterflies taste bad, too. Their bright orange wings are like a warning sign. The sign says, \"Don't eat me!\"",
+				"Today there is less milkweed than there used to be. People can help by planting milkweed in gardens and schoolyards. Then the monarchs will have more places to lay their eggs."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where do the monarchs in this passage spend the winter?",
+					"correct": "In the mountains of Mexico",
+					"wrong": [
+						"In the forests of Canada",
+						"In the deserts of Arizona",
+						"On islands in the ocean"
+					],
+					"explanation": "They fly all the way to the mountains of Mexico and rest there all winter.",
+					"evidence": [
+						"all the way to the mountains of Mexico"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What do monarch caterpillars eat?",
+					"correct": "Milkweed",
+					"wrong": [
+						"Fir needles",
+						"Grass",
+						"Apple leaves"
+					],
+					"explanation": "The passage says milkweed is the only food they eat.",
+					"evidence": [
+						"milkweed is the only food they eat"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How do bright orange wings help a monarch?",
+					"correct": "Birds learn to leave it alone.",
+					"wrong": [
+						"They keep the butterfly warm.",
+						"They help it find milkweed.",
+						"They help it fly faster."
+					],
+					"explanation": "Monarchs taste bad to birds, and the bright wings work like a warning sign, so birds stay away.",
+					"evidence": [
+						"taste bad to birds",
+						"like a warning sign"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why would planting milkweed help monarchs?",
+					"correct": "More caterpillars would have food.",
+					"wrong": [
+						"Milkweed keeps birds out of gardens.",
+						"Monarchs sleep in milkweed all winter.",
+						"Milkweed makes honey for butterflies."
+					],
+					"explanation": "Monarchs lay their eggs only on milkweed, and it is the only food their caterpillars eat. More milkweed means food for more caterpillars.",
+					"evidence": [
+						"milkweed is the only food they eat",
+						"There is less milkweed than there used to be"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What do the monarchs do right after the winter in Mexico?",
+					"correct": "They start flying north.",
+					"wrong": [
+						"They fly south to Mexico.",
+						"They gather in the fir trees.",
+						"They hatch from eggs in Canada."
+					],
+					"explanation": "In spring, after resting all winter, the monarchs fly north again.",
+					"evidence": [
+						"In spring, the monarchs fly north again"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-clever-octopus",
+			"title": "The Clever Octopus",
+			"paragraphs": [
+				"An octopus is a sea animal with a soft body and eight long arms. Each arm is covered with round suckers. The suckers can grab and hold things. They can even taste what they touch! An octopus has no bones at all.",
+				"Because it has no bones, an octopus can squeeze into very small spaces. The only hard part of its body is its beak. It uses the beak to bite its food. If the beak fits through a hole, the rest of the octopus can follow. An octopus can slip into a crack in a rock to hide.",
+				"An octopus also has clever ways to stay safe. It can change the color of its skin in less than a second. It can turn bumpy like a rock or smooth like sand. When a hungry fish swims by, the octopus seems to disappear. If that does not work, it can squirt a cloud of dark ink and zoom away.",
+				"Octopuses are very smart. Scientists have watched them solve puzzles and find their way through mazes. In some aquariums, octopuses have learned to twist the lids off jars to get the food inside. Some octopuses even carry coconut shells around and hide inside them."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How many arms does an octopus have?",
+					"correct": "Eight",
+					"wrong": [
+						"Six",
+						"Ten",
+						"Four"
+					],
+					"explanation": "The passage says an octopus has eight long arms.",
+					"evidence": [
+						"eight long arms"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What can an octopus's suckers do?",
+					"correct": "Grab things and taste them",
+					"wrong": [
+						"See in the dark",
+						"Make clouds of ink",
+						"Change into bones"
+					],
+					"explanation": "The suckers can grab and hold things, and they can taste what they touch.",
+					"evidence": [
+						"The suckers can grab and hold things",
+						"they can even taste what they touch"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does an octopus change color when a hungry fish swims by?",
+					"correct": "So the fish will not notice it",
+					"wrong": [
+						"To show the fish it is friendly",
+						"To scare away other octopuses",
+						"Because the water turns cold"
+					],
+					"explanation": "It changes to look like rock or sand, so it seems to disappear and the fish cannot find it to eat.",
+					"evidence": [
+						"It can turn bumpy like a rock or smooth like sand",
+						"the octopus seems to disappear"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What does opening jars show about octopuses?",
+					"correct": "They can figure out how things work.",
+					"wrong": [
+						"They are bigger than most fish.",
+						"They do not like living in tanks.",
+						"They need glass to stay healthy."
+					],
+					"explanation": "Twisting a lid off takes working out how the jar opens. The passage gives it as an example of how smart octopuses are.",
+					"evidence": [
+						"Octopuses are very smart",
+						"twist the lids off jars"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what does squirt mean?",
+					"correct": "To shoot out fast",
+					"wrong": [
+						"To hide slowly",
+						"To swim in a circle",
+						"To change color"
+					],
+					"explanation": "The octopus squirts a cloud of ink: it shoots the ink out quickly and then zooms away.",
+					"evidence": [
+						"squirt a cloud of dark ink"
+					]
+				}
+			]
 		}
 	]
 }
