@@ -4,6 +4,7 @@ import { enterGate, markSuccess, minutesLeft, NAME_LIMIT } from '#lib/server/aut
 import { endSession, startSession } from '#lib/server/auth/start-session.ts';
 import { findChildByName, getChild, NAME_MAX_LENGTH } from '#lib/server/children.ts';
 import { getDb } from '#lib/server/db/index.ts';
+import { quizView } from '#lib/server/placement.ts';
 import { practiceStatus, streak } from '#lib/server/practice.ts';
 import { appTimeZone } from '#lib/server/time.ts';
 import type { Actions, PageServerLoad } from './$types';
@@ -18,10 +19,13 @@ export const load: PageServerLoad = ({ locals, url }) => {
 
 	const now = new Date();
 	const timeZone = appTimeZone();
+	const quiz = quizView(db, who.id, now);
 	return {
 		child: {
 			name: who.name,
 			status: practiceStatus(db, who, now, timeZone),
+			// A placement quiz the parent has asked for comes before practice.
+			quiz: quiz.kind === 'none' ? null : { started: quiz.kind === 'question' || quiz.started },
 			streak: streak(db, who.id, now, timeZone),
 			// Set by /play when there was nothing at all to ask.
 			nothingToPractice: url.searchParams.has('nothing')

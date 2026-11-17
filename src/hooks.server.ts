@@ -16,17 +16,30 @@ import { loadContent } from '#lib/server/content/load.ts';
 import { seedBuiltinWords } from '#lib/server/content/seed.ts';
 import { scheduleNightly } from '#lib/server/backup.ts';
 import { backupDir, getDb } from '#lib/server/db/index.ts';
+import { scheduleWeekly } from '#lib/server/email.ts';
+import { getSender, mailConfig } from '#lib/server/email-config.ts';
 import { securityHeaders } from '#lib/server/security-headers.ts';
+import { appTimeZone } from '#lib/server/time.ts';
 import { colorSchemeFor, parseTheme, THEME_COOKIE } from '#lib/theme.ts';
 
 const headers = securityHeaders({ https: ORIGIN?.startsWith('https://') ?? false });
 
 // Open the database and run migrations at startup, so a bad DATA_DIR fails fast, start
-// the daily backups, then bring the built-in word lists up to date with the content files
-// shipped in ./content.
+// the daily backups and (when Gmail is set up) the weekly summary email check, then bring
+// the built-in word lists up to date with the content files shipped in ./content.
 export const init: ServerInit = () => {
 	const db = getDb();
 	scheduleNightly(db.$client, backupDir());
+	const config = mailConfig();
+	if (config) {
+		scheduleWeekly(db, () => ({
+			now: new Date(),
+			timeZone: appTimeZone(),
+			origin: ORIGIN,
+			send: getSender(config),
+			config
+		}));
+	}
 	const result = seedBuiltinWords(db, loadContent(path.resolve('content')));
 	if (result.inserted || result.updated || result.deactivated) {
 		console.log(

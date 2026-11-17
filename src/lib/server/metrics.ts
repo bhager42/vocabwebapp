@@ -9,7 +9,7 @@
 //   short session) are easier, so accuracy figures leave them out unless they say otherwise.
 // - A "scope" is one child and a stretch of time ending now.
 
-import { and, asc, eq, gte } from 'drizzle-orm';
+import { and, asc, eq, gte, lt } from 'drizzle-orm';
 import type { Db } from './db/client.ts';
 import {
 	answer,
@@ -39,6 +39,8 @@ export interface Scope {
 	childId: number;
 	/** Start of the stretch of time, or null for everything. */
 	since: Date | null;
+	/** End of the stretch of time (not included). Left out, the stretch runs up to now. */
+	until?: Date;
 	now: Date;
 	timeZone: string;
 }
@@ -78,7 +80,7 @@ interface AnswerRow {
 }
 
 /** The child's answers, oldest first. `since` null means all of them. */
-function answers(db: Db, childId: number, since: Date | null): AnswerRow[] {
+function answers(db: Db, childId: number, since: Date | null, until?: Date): AnswerRow[] {
 	return db
 		.select({
 			sessionId: question.practiceSessionId,
@@ -94,20 +96,25 @@ function answers(db: Db, childId: number, since: Date | null): AnswerRow[] {
 		.innerJoin(question, eq(question.id, answer.questionId))
 		.innerJoin(practiceSession, eq(practiceSession.id, question.practiceSessionId))
 		.where(
-			and(eq(practiceSession.childId, childId), since ? gte(answer.answeredAt, since) : undefined)
+			and(
+				eq(practiceSession.childId, childId),
+				since ? gte(answer.answeredAt, since) : undefined,
+				until ? lt(answer.answeredAt, until) : undefined
+			)
 		)
 		.orderBy(asc(answer.answeredAt), asc(question.id))
 		.all();
 }
 
-function sessions(db: Db, { childId, since }: Scope) {
+function sessions(db: Db, { childId, since, until }: Scope) {
 	return db
 		.select()
 		.from(practiceSession)
 		.where(
 			and(
 				eq(practiceSession.childId, childId),
-				since ? gte(practiceSession.startedAt, since) : undefined
+				since ? gte(practiceSession.startedAt, since) : undefined,
+				until ? lt(practiceSession.startedAt, until) : undefined
 			)
 		)
 		.orderBy(asc(practiceSession.startedAt))
@@ -127,7 +134,7 @@ export interface Accuracy {
 }
 
 export function accuracy(db: Db, scope: Scope): Accuracy {
-	const rows = answers(db, scope.childId, scope.since);
+	const rows = answers(db, scope.childId, scope.since, scope.until);
 	const first = rows.filter((row) => !row.isRetry);
 	const retries = rows.filter((row) => row.isRetry);
 	const firstCorrect = first.filter((row) => row.isCorrect).length;
@@ -366,7 +373,7 @@ export interface TroubleWord {
 
 /** The words missed most often, worst first. Words never missed are left out. */
 export function troubleWords(db: Db, scope: Scope, limit = 10): TroubleWord[] {
-	const rows = answers(db, scope.childId, scope.since);
+	const rows = answers(db, scope.childId, scope.since, scope.until);
 	const words = db
 		.select({ id: word.id, word: word.word, definition: word.definition })
 		.from(word)
@@ -452,7 +459,7 @@ export interface TypeAccuracy {
 
 /** Accuracy on first attempts for each kind of question, in the order they are learned. */
 export function accuracyByType(db: Db, scope: Scope): TypeAccuracy[] {
-	const first = answers(db, scope.childId, scope.since).filter((row) => !row.isRetry);
+	const first = answers(db, scope.childId, scope.since, scope.until).filter((row) => !row.isRetry);
 	return QUESTION_TYPES.map((type) => {
 		const ofType = first.filter((row) => row.type === type);
 		const firstCorrect = ofType.filter((row) => row.isCorrect).length;
@@ -480,7 +487,7 @@ export interface ResponseTimes {
 
 /** Median time from seeing a question to answering it. Every answer counts, retries too. */
 export function responseTimes(db: Db, scope: Scope): ResponseTimes {
-	const rows = answers(db, scope.childId, scope.since);
+	const rows = answers(db, scope.childId, scope.since, scope.until);
 	return {
 		overallMs: median(rows.map((row) => row.responseMs)),
 		byType: QUESTION_TYPES.map((type) => {
@@ -504,7 +511,7 @@ export interface Guessing {
  * out: nobody types a word that quickly, so they would only water the figure down.
  */
 export function guessing(db: Db, scope: Scope): Guessing {
-	const wrong = answers(db, scope.childId, scope.since).filter(
+	const wrong = answers(db, scope.childId, scope.since, scope.until).filter(
 		(row) => !row.isCorrect && row.type !== 'spell'
 	);
 	const fastWrong = wrong.filter((row) => row.responseMs < GUESS_MS).length;
@@ -532,7 +539,7 @@ export interface TimeOfDay {
 }
 
 export function timeOfDay(db: Db, scope: Scope): TimeOfDay {
-	const first = answers(db, scope.childId, scope.since).filter((row) => !row.isRetry);
+	const first = answers(db, scope.childId, scope.since, scope.until).filter((row) => !row.isRetry);
 	const tally = new Map<number, { firstAttempts: number; firstCorrect: number }>();
 	for (const row of first) {
 		const hour = localHour(row.answeredAt, scope.timeZone);

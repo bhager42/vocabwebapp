@@ -5,7 +5,7 @@
 services:
   vocab:
     # Always the newest published version. To stay on one version, put its number in
-    # place of latest, such as :1.1.1.
+    # place of latest, such as :1.2.0.
     image: ghcr.io/bhager42/vocabwebapp:latest
     # Fetch the newest image whenever the app is started or saved.
     pull_policy: always
@@ -24,6 +24,10 @@ services:
       SETUP_TOKEN: 'change-me-to-a-long-random-code'
       # Set to 'true' only if a reverse proxy sits in front of the app.
       TRUST_PROXY: 'false'
+      # Optional: the weekly summary email. Remove the # from both lines and fill them in
+      # to let the app send it through Gmail. README.md explains how to get an app password.
+      # GMAIL_USER: 'your.vocab.account@gmail.com'
+      # GMAIL_APP_PASSWORD: 'abcd efgh ijkl mnop'
     volumes:
       # A volume TrueNAS keeps with its other app data, under /mnt/.ix-apps. To keep the
       # data in a dataset of your own instead, put its path here, such as

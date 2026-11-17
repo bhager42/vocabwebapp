@@ -30,7 +30,18 @@
 			</p>
 		{/if}
 
-		{#if child.status === 'capped'}
+		{#if child.quiz}
+			<div class="stack">
+				<p class="lead">
+					{child.quiz.started
+						? 'You are part way through a quick quiz.'
+						: 'First, a quick quiz to find the best words for you.'}
+				</p>
+				<form method="POST" action="{resolve('/play/placement')}?/start">
+					<Button size="lg">{child.quiz.started ? 'Keep going' : 'Start the quiz'}</Button>
+				</form>
+			</div>
+		{:else if child.status === 'capped'}
 			<p class="notice notice-ok">Great work today! You are all done. Come back tomorrow.</p>
 		{:else}
 			<form method="POST" action="{resolve('/play')}?/start">

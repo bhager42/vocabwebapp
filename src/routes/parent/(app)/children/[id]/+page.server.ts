@@ -5,19 +5,33 @@ import {
 	getChild,
 	GRADES,
 	setArchived,
+	setGrade,
 	updateChild
 } from '#lib/server/children.ts';
 import { getDb } from '#lib/server/db/index.ts';
 import { idParam } from '#lib/server/params.ts';
+import { cancelQuiz, listQuizzes, startQuiz } from '#lib/server/placement.ts';
+import { appTimeZone, formatDateTime } from '#lib/server/time.ts';
 import { parseForm } from '#lib/server/validation.ts';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ locals, params }) => {
 	requireParent(locals);
-	const child = getChild(getDb(), idParam(params.id));
+	const db = getDb();
+	const child = getChild(db, idParam(params.id));
 	if (!child) error(404, 'Child not found');
 
+	const timeZone = appTimeZone();
+	const quizzes = listQuizzes(db, child.id, new Date()).map((quiz) => ({
+		id: quiz.id,
+		state: quiz.state,
+		when: formatDateTime(quiz.endedAt ?? quiz.startedAt, timeZone),
+		resultGrade: quiz.resultGrade,
+		rounds: quiz.rounds
+	}));
+
 	return {
+		quizzes,
 		grades: [...GRADES],
 		child: {
 			id: child.id,
@@ -43,6 +57,36 @@ export const actions: Actions = {
 			return fail(400, { errors: { name: 'There is already a child with that name.' } });
 		}
 		return { saved: true };
+	},
+
+	startQuiz: ({ locals, params }) => {
+		requireParent(locals);
+		const db = getDb();
+		const child = getChild(db, idParam(params.id));
+		if (!child) error(404, 'Child not found');
+		if (child.archivedAt) return fail(400, { quizError: 'Restore this child first.' });
+		startQuiz(db, child.id, child.grade, new Date());
+		return { quizStarted: true };
+	},
+
+	cancelQuiz: ({ locals, params }) => {
+		requireParent(locals);
+		cancelQuiz(getDb(), idParam(params.id), new Date());
+		return { quizCancelled: true };
+	},
+
+	/** "Move to grade N" from a finished quiz. Only a grade the quiz suggested is accepted. */
+	applyQuiz: async ({ locals, params, request }) => {
+		requireParent(locals);
+		const db = getDb();
+		const id = idParam(params.id);
+		const quizId = Number((await request.formData()).get('quiz'));
+		const quiz = listQuizzes(db, id, new Date()).find((entry) => entry.id === quizId);
+		if (!quiz || quiz.state !== 'finished' || quiz.resultGrade === null) {
+			error(400, 'That quiz has no result');
+		}
+		if (!setGrade(db, id, quiz.resultGrade)) error(404, 'Child not found');
+		return { gradeApplied: quiz.resultGrade };
 	},
 
 	archive: ({ locals, params }) => {

@@ -27,7 +27,9 @@ export function withDb<T>(fn: (db: Database.Database) => T): T {
 export function resetAccounts() {
 	withDb((db) =>
 		db.exec(
-			`delete from answer; delete from question; delete from practice_session;
+			`delete from placement_answer; delete from placement_quiz;
+			 delete from setting where key like 'summary.%';
+			 delete from answer; delete from question; delete from practice_session;
 			 delete from word_progress; delete from auth_session; delete from login_attempt;
 			 delete from child; delete from parent;
 			 delete from word_list where source = 'custom';

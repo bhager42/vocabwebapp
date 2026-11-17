@@ -13,6 +13,12 @@
 	const hasErrors = $derived(Object.keys(errors).length > 0);
 
 	let confirmArchive = $state(false);
+
+	const openQuiz = $derived(data.quizzes.find((quiz) => quiz.state === 'open'));
+	const latest = $derived(data.quizzes.find((quiz) => quiz.state === 'finished'));
+	const earlier = $derived(
+		data.quizzes.filter((quiz) => quiz.state !== 'open' && quiz.id !== latest?.id)
+	);
 </script>
 
 <svelte:head>
@@ -125,6 +131,75 @@
 			<Button>Save changes</Button>
 		</div>
 	</form>
+
+	<section class="stack" aria-labelledby="quiz-heading">
+		<h2 id="quiz-heading">Placement quiz</h2>
+		<p class="muted">
+			A short quiz that finds the grade {child.name} should practice at. It asks about five words a grade,
+			moving up or down until it finds the right level, usually in 10 to 20 questions. It does not change
+			their progress or their dashboard, and nothing changes until you choose to move them.
+		</p>
+
+		{#if form && 'gradeApplied' in form}
+			<p class="notice notice-ok" role="status">
+				{child.name} is now at grade {form.gradeApplied}.
+			</p>
+		{:else if form && 'quizCancelled' in form}
+			<p class="notice notice-ok" role="status">The quiz was cancelled.</p>
+		{:else if form && 'quizError' in form}
+			<p class="notice" role="alert">{form.quizError}</p>
+		{/if}
+
+		{#if openQuiz}
+			<p class="notice notice-info" role="status">
+				{form && 'quizStarted' in form ? 'Done. ' : ''}A quiz is waiting for {child.name}. They will
+				see it on the start page next time they open the app.
+			</p>
+			<form method="POST" action="?/cancelQuiz" use:enhance>
+				<Button variant="secondary">Cancel the quiz</Button>
+			</form>
+		{:else if !child.archived}
+			<form method="POST" action="?/startQuiz" use:enhance>
+				<Button variant="secondary">Give {child.name} a placement quiz</Button>
+			</form>
+		{/if}
+
+		{#if latest}
+			<div class="stack">
+				<h3>Latest result</h3>
+				<p>
+					Taken {latest.when}. It suggests <strong>grade {latest.resultGrade}</strong>.
+					{#if latest.resultGrade === child.grade}{child.name} is already at that grade.{/if}
+				</p>
+				<ul>
+					{#each latest.rounds as round (round.grade)}
+						<li>Grade {round.grade}: {round.correct} of {round.asked} right</li>
+					{/each}
+				</ul>
+				{#if latest.resultGrade !== child.grade}
+					<form method="POST" action="?/applyQuiz" use:enhance>
+						<input type="hidden" name="quiz" value={latest.id} />
+						<Button>Move {child.name} to grade {latest.resultGrade}</Button>
+					</form>
+				{/if}
+			</div>
+		{/if}
+
+		{#if earlier.length > 0}
+			<details>
+				<summary>Earlier quizzes</summary>
+				<ul>
+					{#each earlier as quiz (quiz.id)}
+						<li>
+							{quiz.when}:
+							{#if quiz.state === 'finished'}suggested grade {quiz.resultGrade}{:else if quiz.state === 'cancelled'}cancelled{:else}not
+								finished{/if}
+						</li>
+					{/each}
+				</ul>
+			</details>
+		{/if}
+	</section>
 
 	{#if !child.archived}
 		<section class="stack" aria-labelledby="archive-heading">

@@ -65,10 +65,54 @@ Each child has four tabs under **For parents**:
 - **Sessions**: each session with its questions and answers. A session that should not count
   can be deleted.
 - **Words**: every word the child has met, and every answer given for each.
-- **Settings**: name, grade and practice settings.
+- **Settings**: name, grade and practice settings, and the placement quiz.
 
 "Time practiced" is active time: gaps between actions count only up to one minute, so a tablet
 left open does not add to it. Days and hours follow the `TZ` setting.
+
+## Placement quiz
+
+To find the grade a child should start at, open their **Settings** tab and choose **Give them a
+placement quiz**. The next time the child opens the app, they are offered a quick quiz before
+practice. It asks five "what does this word mean?" questions from one grade's built-in words,
+starting at the child's current grade, and moves up a grade after 4 or 5 right answers and down
+a grade after fewer. It stops once it has found the highest grade the child passes, usually after
+10 to 20 questions. An "I don't know this one" button keeps guessing down.
+
+The quiz shows the child no right or wrong answers and no score, and it changes nothing on its
+own: it does not move words between boxes or count toward the dashboard. Its result appears on
+the Settings tab, with each grade's score and a button to move the child to the grade it
+suggests. A quiz can be cancelled before it is finished, and one left alone for a week is closed.
+
+## Weekly summary email
+
+Every Monday at 7:00 in the morning (in `TZ`), the app can email you a summary of the week before:
+for each child, days and minutes practiced, sessions finished, new and mastered words, accuracy
+compared with the week before, the most-missed words, grade progress, and a note when a child
+is ready for the next grade. **Account → See this week's summary** shows the same thing in the
+app, whether or not email is set up.
+
+It is off until you turn it on, and it is the only time the app connects to anything outside
+your network. It is sent through Gmail, so you need a Gmail account and an app password for it:
+
+1. Use a Gmail account just for this, rather than your own. Anyone who can read the app's YAML in
+   TrueNAS can see its app password.
+2. Turn on **2-Step Verification** for that account (Google Account → Security). App passwords
+   need it.
+3. Go to <https://myaccount.google.com/apppasswords>, make an app password named `Vocab`, and
+   copy the 16 letters it shows.
+4. In TrueNAS, edit the app's YAML: remove the `#` from the `GMAIL_USER` and
+   `GMAIL_APP_PASSWORD` lines, fill in the address and the app password, and save.
+5. In the app, open **Account**, tick **Send a weekly summary**, enter the address to send to
+   (it can be any address, such as your own), and save. Press **Send a test email now** to check
+   that it works.
+
+The first summary arrives the Monday after you turn it on. If a send fails, the Account page
+shows why, and the app tries again each hour, up to six times that week. To stop the emails,
+untick the box. To stop the app from ever sending, take the two lines out of the YAML again.
+
+The app password is only ever read from the environment. It is never stored in the database or
+in backups, and it is never written to the logs.
 
 ## Word lists
 
@@ -101,14 +145,16 @@ shell or package manager in it, only Node and the app.
 
 ## Configuration
 
-| Variable      | Required   | Purpose                                                                           |
-| ------------- | ---------- | --------------------------------------------------------------------------------- |
-| `ORIGIN`      | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080`              |
-| `DATA_DIR`    | no         | Directory for the database and backups (default `./data`, `/data` in the image)   |
-| `TZ`          | no         | Time zone for day boundaries, e.g. `America/New_York`                             |
-| `SETUP_TOKEN` | first run  | One-time code for creating the parent account at `/setup`                         |
-| `TRUST_PROXY` | no         | `true` only behind a reverse proxy: read visitor addresses from `X-Forwarded-For` |
-| `PORT`        | no         | Listen port (default `3000`)                                                      |
+| Variable             | Required   | Purpose                                                                           |
+| -------------------- | ---------- | --------------------------------------------------------------------------------- |
+| `ORIGIN`             | production | Exact origin used to reach the app, e.g. `http://192.168.1.10:30080`              |
+| `DATA_DIR`           | no         | Directory for the database and backups (default `./data`, `/data` in the image)   |
+| `TZ`                 | no         | Time zone for day boundaries, e.g. `America/New_York`                             |
+| `SETUP_TOKEN`        | first run  | One-time code for creating the parent account at `/setup`                         |
+| `TRUST_PROXY`        | no         | `true` only behind a reverse proxy: read visitor addresses from `X-Forwarded-For` |
+| `PORT`               | no         | Listen port (default `3000`)                                                      |
+| `GMAIL_USER`         | no         | Gmail address the weekly summary is sent from                                     |
+| `GMAIL_APP_PASSWORD` | no         | That account's app password. Without both, email stays off                        |
 
 `ORIGIN` must match what is in the browser's address bar exactly (scheme, host and port).
 Form submissions from any other origin are rejected with a 403.
@@ -123,11 +169,11 @@ installed from [compose.truenas.yaml](compose.truenas.yaml).
 Pushing a version tag makes GitHub Actions test, scan and publish the image:
 
 ```sh
-git tag v1.1.1
-git push origin v1.1.1
+git tag v1.2.0
+git push origin v1.2.0
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.1.1`
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.2.0`
 and also at `:latest`, which the YAML below uses. A GitHub release for the tag lists what
 changed since the previous one. A new package on GitHub starts out private. Either make it
 public (on GitHub: your profile → Packages → vocabwebapp → Package settings → Change
@@ -155,7 +201,7 @@ This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml)
 services:
   vocab:
     # Always the newest published version. To stay on one version, put its number in
-    # place of latest, such as :1.1.1.
+    # place of latest, such as :1.2.0.
     image: ghcr.io/bhager42/vocabwebapp:latest
     # Fetch the newest image whenever the app is started or saved.
     pull_policy: always
@@ -174,6 +220,10 @@ services:
       SETUP_TOKEN: 'change-me-to-a-long-random-code'
       # Set to 'true' only if a reverse proxy sits in front of the app.
       TRUST_PROXY: 'false'
+      # Optional: the weekly summary email. Remove the # from both lines and fill them in
+      # to let the app send it through Gmail. README.md explains how to get an app password.
+      # GMAIL_USER: 'your.vocab.account@gmail.com'
+      # GMAIL_APP_PASSWORD: 'abcd efgh ijkl mnop'
     volumes:
       # A volume TrueNAS keeps with its other app data, under /mnt/.ix-apps. To keep the
       # data in a dataset of your own instead, put its path here, such as
@@ -256,7 +306,7 @@ set `TRUST_PROXY` to `'true'`.
 
 The app also fetches the newest image whenever it starts, such as after the NAS reboots. To
 stay on one version instead, put its number in place of `latest` in the `image:` line, such as
-`ghcr.io/bhager42/vocabwebapp:1.1.1`.
+`ghcr.io/bhager42/vocabwebapp:1.2.0`.
 
 Before a new version changes the structure of the database, the app saves a copy as
 `backups/pre-migrate-<date>-<time>.db`. To go back, put the old version's number in place of

@@ -26,6 +26,23 @@ export const variables = defineEnvVars({
 		description: 'One-time token required to create the parent account on first run.',
 		schema: (value) => value || undefined
 	},
+	GMAIL_USER: {
+		description:
+			'Gmail address the weekly summary email is sent from. Optional; email stays off without it.',
+		schema: (value) => {
+			if (!value) return undefined;
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+				throw new Error('GMAIL_USER must be an email address');
+			}
+			return value;
+		}
+	},
+	GMAIL_APP_PASSWORD: {
+		description:
+			"The Gmail account's 16-letter Google app password. Optional; email stays off without it.",
+		// Google shows app passwords in groups of four with spaces; either way works.
+		schema: (value) => value?.replace(/\s+/g, '') || undefined
+	},
 	TRUST_PROXY: {
 		description: 'Whether to read the client IP from X-Forwarded-For (behind a reverse proxy).',
 		schema: (value) => {

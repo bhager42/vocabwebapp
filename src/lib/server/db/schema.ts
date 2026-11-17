@@ -195,3 +195,49 @@ export const setting = sqliteTable('setting', {
 	key: text('key').primaryKey(),
 	value: text('value').notNull()
 });
+
+/**
+ * A placement quiz: a few rounds of questions that find the grade a child should start
+ * at. Kept apart from practice so it never moves words between boxes or counts toward
+ * the dashboard. See PLAN.md Phase 11.
+ */
+export const placementQuiz = sqliteTable(
+	'placement_quiz',
+	{
+		id: integer('id').primaryKey({ autoIncrement: true }),
+		childId: integer('child_id')
+			.notNull()
+			.references(() => child.id, { onDelete: 'cascade' }),
+		startedAt: timestamp('started_at').notNull(),
+		endedAt: timestamp('ended_at'),
+		startGrade: integer('start_grade').notNull(),
+		/** The suggested grade. Set when the quiz is finished. */
+		resultGrade: integer('result_grade'),
+		completed: boolean('completed').notNull().default(false),
+		cancelled: boolean('cancelled').notNull().default(false)
+	},
+	(t) => [index('placement_quiz_child_idx').on(t.childId, t.startedAt)]
+);
+
+/** One question of a placement quiz, written when served and filled in when answered. */
+export const placementAnswer = sqliteTable(
+	'placement_answer',
+	{
+		id: integer('id').primaryKey({ autoIncrement: true }),
+		quizId: integer('quiz_id')
+			.notNull()
+			.references(() => placementQuiz.id, { onDelete: 'cascade' }),
+		grade: integer('grade').notNull(),
+		wordId: integer('word_id')
+			.notNull()
+			.references(() => word.id, { onDelete: 'restrict' }),
+		choicesJson: text('choices_json', { mode: 'json' }).$type<string[]>().notNull(),
+		correctChoice: text('correct_choice').notNull(),
+		servedAt: timestamp('served_at').notNull(),
+		/** What was picked; '' for "I don't know this one"; null until answered. */
+		chosen: text('chosen'),
+		isCorrect: boolean('is_correct'),
+		answeredAt: timestamp('answered_at')
+	},
+	(t) => [index('placement_answer_quiz_idx').on(t.quizId)]
+);

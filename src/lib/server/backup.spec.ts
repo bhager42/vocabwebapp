@@ -177,10 +177,8 @@ describe('backup before a structure change', () => {
 		);
 		expect(pendingMigrations(raw, MIGRATIONS)).toBe(1);
 		// Undo what that migration added, so that it can run again.
-		raw.exec('alter table practice_session drop column plan_json');
-		raw.exec('drop index login_attempt_ip_idx');
-		raw.exec('alter table login_attempt drop column scope');
-		raw.exec('create index login_attempt_ip_idx on login_attempt (ip, at)');
+		raw.exec('drop table placement_answer');
+		raw.exec('drop table placement_quiz');
 		raw.close();
 
 		const db = openDatabase(file, MIGRATIONS, backups);
@@ -191,9 +189,11 @@ describe('backup before a structure change', () => {
 		expect(copy.kind).toBe('pre-migrate');
 		const before = new Database(path.join(backups, copy.name), { readonly: true });
 		expect(before.prepare('select name from child').all()).toEqual([{ name: 'Sam' }]);
-		// The copy is from before the update: it does not have the new column.
-		const columns = before.pragma('table_info(practice_session)') as { name: string }[];
-		expect(columns.map((column) => column.name)).not.toContain('plan_json');
+		// The copy is from before the update: it does not have the new table.
+		const tables = before.prepare("select name from sqlite_master where type = 'table'").all() as {
+			name: string;
+		}[];
+		expect(tables.map((table) => table.name)).not.toContain('placement_quiz');
 		before.close();
 	});
 });
