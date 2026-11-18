@@ -100,23 +100,11 @@
 </div>
 
 <style>
-	/* The story and the questions side by side on a wide screen, one above the other on a
-	   narrow one. The story is always there to look back at. */
+	/* The story across the whole width, the questions underneath. The story is always
+	   there to scroll back to. */
 	.reading {
 		display: grid;
 		gap: var(--space-6);
-		align-items: start;
-	}
-
-	@media (min-width: 64rem) {
-		.reading {
-			grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-		}
-
-		.questions {
-			position: sticky;
-			inset-block-start: var(--space-4);
-		}
 	}
 
 	.story {
