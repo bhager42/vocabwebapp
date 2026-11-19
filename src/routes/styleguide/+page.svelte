@@ -70,12 +70,12 @@
 		<div class="sample stack">
 			<ProgressBar value={step} max={10} label="Question {step} of 10" />
 			<div class="row">
-				<Button type="button" variant="secondary" disabled={step <= 1} onclick={() => (step -= 1)}
-					>Back</Button
-				>
-				<Button type="button" variant="secondary" disabled={step >= 10} onclick={() => (step += 1)}
-					>Next</Button
-				>
+				<Button type="button" variant="secondary" disabled={step <= 1} onclick={() => (step -= 1)}>
+					Back
+				</Button>
+				<Button type="button" variant="secondary" disabled={step >= 10} onclick={() => (step += 1)}>
+					Next
+				</Button>
 			</div>
 		</div>
 	</section>

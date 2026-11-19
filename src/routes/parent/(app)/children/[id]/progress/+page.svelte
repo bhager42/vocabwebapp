@@ -79,9 +79,9 @@
 		</div>
 	{:else if data.finishedLastGrade}
 		<p class="notice notice-ok">
-			<strong
-				>{child.name} knows most of the grade {child.grade} words, the last grade there is.</strong
-			>
+			<strong>
+				{child.name} knows most of the grade {child.grade} words, the last grade there is.
+			</strong>
 			They keep coming back for review, and you can add your own lists under Word lists.
 		</p>
 	{/if}

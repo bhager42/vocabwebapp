@@ -2,10 +2,10 @@
 
 # The image the app is built in: Node 26 LTS on Debian 13 slim, pinned by multi-arch index digest.
 # To update: pull the new tag, then replace both the tag and the digest.
-ARG NODE_IMAGE=docker.io/library/node:26.13.0-trixie-slim@sha256:5adad64f9a1fca2d51972caa65983634c8a774eb300d72b20f7f2a0f60368072
+ARG NODE_IMAGE=docker.io/library/node:26.13.1-trixie-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc
 # The image the app runs in, pinned the same way. It must carry the same major version
 # of Node as the build image, because better-sqlite3 is compiled code.
-ARG RUNTIME_IMAGE=gcr.io/distroless/nodejs26-debian13@sha256:e2a8b92ece0f4447203399a40bd1abc12547052b32e004cf0a28002c1cd12be3
+ARG RUNTIME_IMAGE=gcr.io/distroless/nodejs26-debian13@sha256:80631bd2f0e7ef192138a7409013b47d92fd11b8ff3bb35f5c0a65be3ecaea4c
 
 # ---- build: install everything, build, then drop dev dependencies ----
 FROM ${NODE_IMAGE} AS build

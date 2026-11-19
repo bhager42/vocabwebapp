@@ -164,8 +164,10 @@
 										href={resolve('/parent/(app)/children/[id]/reading/[attempt]', {
 											id,
 											attempt: String(attempt.id)
-										})}>{attempt.title}</a
+										})}
 									>
+										{attempt.title}
+									</a>
 									<small class="muted">grade {attempt.grade}</small>
 								</th>
 								<td>{attempt.when}</td>
