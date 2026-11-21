@@ -425,3 +425,189 @@ No grade 3 name is used again, and no name is used twice within grade 4.
 - **For the parent's review:** the islands passage (5.0) is the hardest. The solo (3.3) and the
   kite (3.3) are the easiest. Three questions can be answered from general knowledge: the
   telescope's Q2 (Jupiter's moons), the islands' Q1 (magma) and the tardigrades' Q1 (water bear).
+
+---
+
+## Grade 5
+
+Fifteen passages: eleven stories and four nonfiction passages. Reviewed by Claude, 2026-11-21.
+No name from grades 3 or 4 is used again, and no name is used twice within grade 5.
+
+### the-mural-contest: The Mural Contest
+
+- **Holds together:** yes. Two designs, a vote, the loss, the painting days, and the finished
+  wall with both names.
+- **Answers:** Q2 (why she went home silent): she had felt sure she would win, then studied how
+  lively Gabe's faces were. Q4 (why Gabe was relieved): he has never painted anything this big.
+- **Wrong answers:** Q2's "he copied her river idea" is ruled out: his design shows people, not
+  the river.
+- **Grade:** disappointment handled well; nobody is unkind.
+- **Changed:** nothing.
+
+### the-jar-on-the-counter: The Jar on the Counter
+
+- **Holds together:** yes. The feeding rule in paragraph 2 explains what goes wrong in paragraph 4.
+- **Facts checked:** a sourdough starter is flour and water with wild yeast that is fed regularly;
+  a dark liquid on top ("hooch") and a sharp smell like nail polish remover mean it is hungry,
+  and regular feeding in a warm spot brings it back.
+- **Answers:** Q2 (why flat and gray): the empty boxes on the checklist. Q4 (why move the
+  checklist): so he sees it every morning.
+- **Grade:** Mrs. Kowalski moves to be near her daughter, which is a happy reason. The starter is
+  "ruined" and "starving", never dead.
+- **Changed:** nothing.
+
+### the-falling-needle: The Falling Needle
+
+- **Facts checked:** a barometer measures air pressure; high pressure usually means settled
+  weather, and a fast drop often means a storm is coming.
+- **Answers:** Q4 (why show the notes): two months of records were better evidence than words.
+  Q5 (why the teacher went to the principal): he doubted her until he read the notes.
+- **Wrong answers:** Q4 first had "She hoped he would cancel Field Day", which a child could
+  argue, since she did want it changed. It is now "She wanted to show off her neat handwriting".
+- **Changed:** Q4's wrong answer, above.
+
+### the-other-side: The Other Side
+
+- **Holds together:** yes. Each reason in paragraph 4 comes from someone he asked in paragraph 3.
+- **Answers:** Q2 (how he felt): staring at the paper, then "That's not fair". Q4 (why the other
+  team nodded): real stories instead of a list of facts.
+- **Grade:** the story does not take a side on homework; Felix ends up between the two.
+- **Changed:** nothing.
+
+### follow-the-blue-blazes: Follow the Blue Blazes
+
+- **Holds together:** yes. The ranger's three rules in paragraph 2 are exactly what Nadia uses in
+  paragraph 4, and the left path is the uphill one.
+- **Facts checked:** many trails are marked with painted rectangles called blazes, and a double
+  blaze with the top one offset shows the direction of a turn.
+- **Answers:** Q4 (what the double blaze meant): turn left, and the left path went uphill. Q5 (why
+  report the sign): so other hikers would not get confused.
+- **Grade:** nobody gets lost or frightened; the problem is solved in minutes. Read at 3.6 at
+  first; it now reads at 4.6.
+- **Changed:** the reading level.
+
+### two-kinds-of-talking: Two Kinds of Talking
+
+- **Facts checked:** Busan is a port city in South Korea; "sagwa" is Korean for apple.
+- **Answers:** Q2 (why stand by the wall): she knew few English words yet, and she joins once she
+  has some. Q4 ("we both were"): Ji-woo taught the table Korean words while learning English.
+- **Grade:** a new classmate who does not speak English yet, shown as someone with things to
+  teach. Read at 3.6 at first; it now reads at 4.3.
+- **Changed:** the reading level.
+
+### the-poem-contest: The Poem Contest
+
+- **Holds together:** yes. Elena honestly forgot where the idea came from, and her poem adds
+  something of her own (a sunflower afraid of winter).
+- **Answers:** Q2 (why Quinn stopped speaking): she thought Elena took the idea on purpose. Q3 (why
+  Elena looked puzzled): she did not remember being told.
+- **Wrong answers:** "She wanted Quinn to congratulate her" was left out of Q3, because a child
+  could argue for it.
+- **Grade:** a friendship quarrel resolved by talking. Nobody is the villain.
+- **Changed:** nothing.
+
+### the-gnome-who-wandered: The Gnome Who Wandered
+
+- **Holds together:** the clues are fair: scratches but no footprints, then clawed four-toed
+  prints, then the photo. A dog's print shows four toes with claws.
+- **Answers:** Q3 (what made the scratches): claws. Q4 (why the gift): his mom found it hilarious.
+- **Changed:** Gus is now "a small garden gnome", so a beagle could carry him.
+
+### the-cardboard-boat-race: The Cardboard Boat Race
+
+- **Facts checked:** cardboard boat regattas usually allow only cardboard, tape and paint; paint
+  keeps the cardboard from soaking through; a wide, flat bottom makes a boat sit higher and
+  harder to tip.
+- **Answers:** Q3 (why wide and flat): steadier and harder to tip. Q4 (why Best Built): it stayed
+  upright and barely damp while others sank or tipped.
+- **Grade:** read at 3.9 at first; it now reads at 4.5.
+- **Changed:** Grandpa's first explanation ("the wider the bottom, the more water it pushes
+  aside") was not right: a floating boat pushes aside its own weight in water whatever its
+  shape. He now says a wide, flat bottom spreads the weight, so the boat sits higher and is
+  harder to tip. The reading level, as above.
+
+### the-dog-in-the-back-corner: The Dog in the Back Corner
+
+- **Holds together:** yes. Weeks 4, 6 and 8 each bring Juniper a little closer.
+- **Answers:** Q3 (why read instead of reaching): she was afraid of people, and the manager said
+  not to touch her. Q4 (why Keisha sat with the family): Juniper trusted her.
+- **Grade:** a dog found near a highway is the only sad detail; she is healthy and is adopted.
+- **Changed:** nothing.
+
+### say-it-right: Say It Right
+
+- **Facts checked:** Saoirse is an Irish name meaning "freedom", said "SEER-sha"; in Irish
+  spelling "ao" sounds like "ee", and an "s" next to "i" or "e" often sounds like "sh"; Niamh is
+  said "Neev".
+- **Answers:** Q4 (why her ears burned): kids giggled right after her name was said wrong. Q5 (why
+  classmates said her name): she had taught them, and they stepped in for her.
+- **Grade:** a teacher gets a name wrong and then apologizes; nobody is mean. Read at 3.1 at
+  first; it now reads at 4.2.
+- **Changed:** the reading level.
+
+### seeing-with-sound: Seeing with Sound (nonfiction)
+
+- **Facts checked:** many bats echolocate with calls mostly too high for people to hear; the
+  delay of the echo gives distance, and comparing the two ears gives direction; the "feeding
+  buzz" reaches about two hundred calls a second; many large fruit bats rely on sight and smell;
+  sonar uses the same idea; one bat can eat hundreds of insects a night.
+- **Answers:** Q4 (one ear): direction comes from comparing two ears. Q5 (why call faster): to
+  keep track of a moving insect.
+- **Changed:** nothing.
+
+### twelve-seconds-at-kitty-hawk: Twelve Seconds at Kitty Hawk (nonfiction)
+
+- **Facts checked:** December 17, 1903, near Kitty Hawk, North Carolina; the brothers ran a
+  bicycle shop in Dayton; their own wind tunnel tested about two hundred wing shapes; they
+  steered by twisting ("warping") the wings; the first flight was at about 10:35, twelve
+  seconds and 120 feet, with Orville lying on the lower wing; four flights that day, the last by
+  Wilbur, 59 seconds and 852 feet; five other people watched; Neil Armstrong carried pieces of
+  the Flyer's wood and fabric to the Moon in 1969.
+- **Answers:** Q3 (why their own wind tunnel): the published numbers were wrong. Q4 (why the
+  bicycle comparison): both lean into a turn.
+- **Grade:** reads at 5.9, the hardest in the grade, because of numbers and dates.
+- **Changed:** nothing.
+
+### cities-under-the-sea: Cities Under the Sea (nonfiction)
+
+- **Facts checked:** reefs cover less than one percent of the sea floor but hold about a quarter of
+  ocean species; corals are animals made of polyps that build limestone cups; algae living in
+  them make food from sunlight and give them color; warm water makes polyps expel the algae,
+  which is bleaching, and corals can recover if it cools in time; the Great Barrier Reef runs
+  more than 1,400 miles; reef nurseries grow and replant corals.
+- **Answers:** Q4 (why a bleached coral may die): it is starving without the algae's food. Q5 (why
+  "cities"): huge numbers of different creatures live there together.
+- **Grade:** read at 6.5 at first, too hard; long sentences were split, and it reads at 5.5.
+- **Changed:** the reading level.
+
+### seeds-on-the-move: Seeds on the Move (nonfiction)
+
+- **Facts checked:** dandelion seeds can travel miles on the wind; maple seeds spin as they fall;
+  coconuts float for months and spread between tropical islands; seeds in berries pass through
+  animals; burrs hook onto fur; George de Mestral got the idea for Velcro from burrs after a walk
+  with his dog in 1941.
+- **Answers:** Q3 (a coconut that sank): it could not float to a new shore. Q4 (farthest on a
+  windy day): the dandelion seed.
+- **Wrong answers:** Q5's "Velcro was invented in 1941" is wrong by the passage too: the walk was
+  in 1941, and the invention took years after that.
+- **Changed:** Q4's answer was "A dandelion seed", which is written word for word in the passage,
+  so the check flagged it. It is now "A seed from a dandelion", with the wrong answers reworded
+  to match.
+
+---
+
+### Grade 5 as a whole
+
+- **Balance:** 15 passages, each with 5 questions: 30 stated, 30 inferred, and 15 others
+  (6 vocabulary, 5 sequence, 4 main idea). Four passages are nonfiction (bats, the Wright
+  brothers, coral reefs, seeds).
+- **Settings and people:** a city street, a kitchen, a backyard weather station, a classroom
+  debate, a hiking trail, a new classmate from South Korea, a library contest, a front garden,
+  a lake, an animal shelter, a first day of school.
+- **Length and level:** 324 to 374 words each, reading between grade 4.2 and 5.9.
+- **Themes:** handling disappointment (the mural), responsibility (the starter), using evidence
+  (the barometer, the gnome, the blazes), seeing the other side (the debate, the poem),
+  patience (the shelter dog), and pride in who you are (Saoirse).
+- **For the parent's review:** the Wright brothers (5.9) is the hardest. Say It Right (4.2) and
+  Two Kinds of Talking (4.3) are the easiest. Questions that some children could answer from
+  what they already know: the bats' Q2 (calls too high to hear) and the coral reef's Q1 (polyps).

@@ -1,0 +1,1284 @@
+{
+	"grade": 5,
+	"stories": [
+		{
+			"id": "the-mural-contest",
+			"title": "The Mural Contest",
+			"paragraphs": [
+				"The old laundromat on Fulton Avenue had a long brick wall that faced the bus stop. For years it had been plain and gray, covered with faded posters and patches of peeling paint. So when the town council announced a contest for a mural on that wall, Imani started sketching the same night. Any fifth grader in town could enter, and the whole neighborhood would vote.",
+				"Imani's design showed the river that ran through town, curving across the whole wall like a blue ribbon. Herons stood in the shallow water, and children fished from the old stone bridge. She worked on it every evening for two weeks, erasing and redrawing until her pencil was a stub. When she taped her final drawing to the entry board at the library, she felt sure it would win.",
+				"Gabe Moreno's design was taped right beside hers. His showed the people of the neighborhood: the baker with flour on her apron, the crossing guard holding up her sign, the man who sold tamales from a cart. Imani studied it for a long time. The faces were so lively that they almost seemed to be talking. She went home without saying a word to anyone.",
+				"A week later, the results were posted. Gabe's design had won by forty votes. Imani read the list twice, then walked straight past the library without stopping. That evening she didn't touch her sketchbook. Her older brother, Kwame, found her sitting on the back steps. \"You know they need helpers to paint it,\" he said. \"Forty votes isn't that many. Plenty of people liked yours too.\"",
+				"On the first painting day, Imani showed up with her own brushes. Gabe looked surprised, then relieved. \"I've never painted anything this big,\" he admitted. \"Your river was really good. What if it ran along the bottom, under everyone's feet?\" Imani thought about it for a moment. Then she dipped her brush in blue paint and began.",
+				"It took the volunteers three weekends to finish. Now, when people wait for the bus on Fulton Avenue, they see their neighbors standing along the banks of a winding blue river. In the bottom corner, in small letters, are two names instead of one."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Imani's mural design show?",
+					"correct": "The river that runs through town",
+					"wrong": [
+						"The people of the neighborhood",
+						"The old laundromat on Fulton Avenue",
+						"The members of the town council"
+					],
+					"explanation": "The story says Imani's design showed the river that ran through town, curving across the wall like a blue ribbon.",
+					"evidence": [
+						"Imani's design showed the river that ran through town"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Imani go home without saying a word after she saw Gabe's design?",
+					"correct": "She worried that his design was better than hers.",
+					"wrong": [
+						"She thought he had copied her river idea.",
+						"She had not finished her own drawing yet.",
+						"She did not like pictures of people."
+					],
+					"explanation": "She had felt sure she would win, but she studied Gabe's design for a long time and saw how lively his faces were. That left her worried and quiet.",
+					"evidence": [
+						"she felt sure it would win",
+						"The faces were so lively that they almost seemed to be talking"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "By how many votes did Gabe's design win?",
+					"correct": "Forty",
+					"wrong": [
+						"Four",
+						"Fourteen",
+						"Four hundred"
+					],
+					"explanation": "The results showed that Gabe's design had won by forty votes.",
+					"evidence": [
+						"Gabe's design had won by forty votes"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Gabe look relieved when Imani showed up to paint?",
+					"correct": "He needed help with such a large painting.",
+					"wrong": [
+						"He had forgotten to bring his own brushes.",
+						"He wanted her to vote for him next time.",
+						"He thought she had come to take his prize."
+					],
+					"explanation": "Gabe admits he has never painted anything this big, so he was glad to have a good artist helping.",
+					"evidence": [
+						"I've never painted anything this big"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main message of the story?",
+					"correct": "Losing can lead to something good if you stay involved.",
+					"wrong": [
+						"Contests are never fair to everyone.",
+						"It is better to work alone than with others.",
+						"The best artist always wins a contest."
+					],
+					"explanation": "Imani lost, but by helping to paint she added her river to the mural, and both of their names ended up on the wall.",
+					"evidence": [
+						"On the first painting day, Imani showed up with her own brushes",
+						"two names instead of one"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-jar-on-the-counter",
+			"title": "The Jar on the Counter",
+			"paragraphs": [
+				"The day before Mrs. Kowalski moved to Arizona to live near her daughter, she knocked on Lucas's door holding a glass jar. Inside was a pale, bubbly paste that smelled a little like apples and a little like old socks. \"This is my sourdough starter,\" she said. \"My mother began it in Poland more than fifty years ago. I want you to keep it going.\"",
+				"She explained that a starter is a mix of flour and water full of tiny living things called yeast. The yeast eat the flour and give off gas, and the gas makes bread rise. To keep the yeast healthy, Lucas would have to feed the starter every day. He would pour out half, then stir in fresh flour and water. If he forgot, the yeast would get hungry and weak.",
+				"For the first few weeks, Lucas fed the starter every morning before school. He named it Bubbles and taped a checklist to the kitchen cupboard. Then baseball season began. Some mornings he had early practice, and some evenings he came home too tired to remember anything. The checklist had more and more empty boxes.",
+				"One Saturday, Lucas opened the jar and frowned. Bubbles was flat and gray, and a layer of brown liquid sat on top. It smelled sharp, like nail polish remover. Lucas felt a heavy feeling in his stomach. He imagined having to tell Mrs. Kowalski that her mother's starter was ruined.",
+				"He looked it up and learned that the brown liquid was a sign that the yeast were starving, but that they could still recover. For three days, Lucas fed Bubbles twice a day, right on time. He kept the jar on the warm shelf above the refrigerator. On the third evening, small bubbles began to rise through the paste again. By the end of the week, it had doubled in size.",
+				"The next Sunday, Lucas and his dad baked their first loaf. The crust crackled as it cooled. Lucas took a photo and sent it to Mrs. Kowalski with a message: Bubbles says hello. Then he moved his checklist from the cupboard to his bedroom door, where he would see it every single morning."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Who first started the sourdough starter?",
+					"correct": "Mrs. Kowalski's mother, in Poland",
+					"wrong": [
+						"Lucas's dad, at the grocery store",
+						"Mrs. Kowalski's daughter, in Arizona",
+						"Lucas, with flour and water"
+					],
+					"explanation": "Mrs. Kowalski says her mother began it in Poland more than fifty years ago.",
+					"evidence": [
+						"My mother began it in Poland more than fifty years ago"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Bubbles turn flat and gray?",
+					"correct": "Lucas had been forgetting to feed it.",
+					"wrong": [
+						"Mrs. Kowalski had given him old flour.",
+						"Lucas had fed it too much flour.",
+						"His dad had poured some of it out."
+					],
+					"explanation": "Once baseball began, the checklist had more and more empty boxes, and Mrs. Kowalski had said the yeast would get weak if he forgot.",
+					"evidence": [
+						"The checklist had more and more empty boxes",
+						"If he forgot, the yeast would get hungry and weak"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did the brown liquid on top of the starter mean?",
+					"correct": "The yeast were starving.",
+					"wrong": [
+						"The starter was ready to bake.",
+						"The jar needed to be washed.",
+						"The flour had gone moldy."
+					],
+					"explanation": "Lucas learned that the brown liquid was a sign that the yeast were starving, but that they could still recover.",
+					"evidence": [
+						"the brown liquid was a sign that the yeast were starving"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Lucas move his checklist to his bedroom door?",
+					"correct": "So he would not forget to feed the starter again",
+					"wrong": [
+						"Because his dad needed the cupboard",
+						"Because the tape would not stick anymore",
+						"So that Mrs. Kowalski could see it"
+					],
+					"explanation": "He had forgotten when the checklist was on the cupboard. On his door he would see it every single morning.",
+					"evidence": [
+						"where he would see it every single morning"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened after Lucas fed Bubbles twice a day for three days?",
+					"correct": "Small bubbles began to rise again.",
+					"wrong": [
+						"Lucas named the starter Bubbles.",
+						"Baseball season began.",
+						"Mrs. Kowalski moved to Arizona."
+					],
+					"explanation": "On the third evening of careful feeding, small bubbles began to rise through the paste again.",
+					"evidence": [
+						"On the third evening, small bubbles began to rise through the paste again"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-falling-needle",
+			"title": "The Falling Needle",
+			"paragraphs": [
+				"For her birthday, Amira asked for a weather station: a rain gauge, a thermometer, and an old-fashioned barometer with a brass needle. She hung them on the fence in her backyard and checked them every afternoon. In a notebook, she wrote down the temperature, the rainfall, and where the barometer needle pointed.",
+				"A barometer measures air pressure, which is the weight of the air pressing down on everything. Amira learned that when air pressure is high, the weather is usually calm and clear. When the pressure drops quickly, it often means a storm is on the way. After two months of notes, she could see the pattern for herself. Almost every time the needle fell fast, rain followed within a day.",
+				"Field Day was planned for Friday. Every fifth grader had been looking forward to it for weeks: relay races, a water balloon toss, and a tug-of-war against the teachers. On Thursday morning, the sky was bright blue. But when Amira checked her barometer before school, she stopped. The needle had dropped farther overnight than she had ever seen.",
+				"At school, she told her teacher, Mr. Ferreira, about the barometer. He listened, then pointed out the window. \"Not a cloud in the sky,\" he said kindly. \"And the forecast says only a small chance of showers.\" Amira didn't argue, but at lunch she showed him two months of notes. Mr. Ferreira read them for a long time. Then he went to talk to the principal.",
+				"That afternoon, the principal announced that Field Day would move into the gym, just in case. A few kids groaned. By ten o'clock on Friday morning, though, dark clouds had rolled in, and a heavy rain was drumming on the gym roof. Inside, the relay races went on without a single puddle.",
+				"The next week, Mr. Ferreira asked Amira to teach the class a short lesson on barometers. When she finished, a boy in the back raised his hand. \"So what's the needle doing now?\" he asked. Amira grinned. \"Going up,\" she said. \"Saturday should be perfect.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What does a barometer measure?",
+					"correct": "Air pressure",
+					"wrong": [
+						"How much rain has fallen",
+						"How hot the air is",
+						"How fast the wind blows"
+					],
+					"explanation": "The story says a barometer measures air pressure, the weight of the air pressing down.",
+					"evidence": [
+						"A barometer measures air pressure"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What does a quick drop in air pressure often mean?",
+					"correct": "A storm is on the way.",
+					"wrong": [
+						"The weather will stay calm.",
+						"The day will be very hot.",
+						"The barometer is broken."
+					],
+					"explanation": "Amira learned that when the pressure drops quickly, it often means a storm is on the way.",
+					"evidence": [
+						"When the pressure drops quickly, it often means a storm is on the way"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 2, what is a pattern?",
+					"correct": "Something that happens the same way again and again",
+					"wrong": [
+						"A design printed on a piece of cloth",
+						"A tool for measuring the weather",
+						"A page in a notebook"
+					],
+					"explanation": "Amira noticed that almost every time the needle fell fast, rain followed. That repeating result is the pattern.",
+					"evidence": [
+						"she could see the pattern for herself",
+						"Almost every time the needle fell fast, rain followed within a day"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Amira show Mr. Ferreira her notes instead of arguing?",
+					"correct": "Her records could prove the pattern better than words.",
+					"wrong": [
+						"She wanted him to grade her notebook.",
+						"She had forgotten what the barometer said.",
+						"She wanted to show off her neat handwriting."
+					],
+					"explanation": "Two months of notes showed that rain almost always followed a fast drop, which was stronger evidence than just saying so.",
+					"evidence": [
+						"at lunch she showed him two months of notes",
+						"Almost every time the needle fell fast, rain followed within a day"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Mr. Ferreira go to talk to the principal?",
+					"correct": "The notes convinced him that a storm might really come.",
+					"wrong": [
+						"He wanted to cancel school on Friday.",
+						"He thought Amira was making things up.",
+						"He needed to borrow a barometer."
+					],
+					"explanation": "He doubted her at first because the sky was clear, but after reading her notes for a long time, he went straight to the principal.",
+					"evidence": [
+						"Mr. Ferreira read them for a long time. Then he went to talk to the principal"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-other-side",
+			"title": "The Other Side",
+			"paragraphs": [
+				"When Ms. Abernathy announced the class debate topic, Felix grinned. The question was whether fifth graders should have homework, and Felix had strong opinions about homework. Then she read the team assignments. Felix would be arguing that homework was a good idea. He stared at the paper as if it were written in another language.",
+				"\"That's not fair,\" he told her after class. \"I don't even believe that.\" Ms. Abernathy smiled. \"That's the point,\" she said. \"Anyone can argue for something they already believe. A good debater understands the other side well enough to explain it.\"",
+				"So Felix started researching. He asked his older sister, who was in high school, why she thought her teachers gave homework. He interviewed his neighbor, who taught piano, about why her students had to practice every day. He even asked his grandfather, who said that he had learned his multiplication tables by reciting them at the kitchen table every night. Slowly, Felix's notebook filled with reasons.",
+				"Some of the reasons he still didn't agree with. But others made more sense than he expected. Practicing something a little each day helped people remember it, the way the piano students improved by playing every evening. Homework also showed parents what their children were learning. And reading at home, his sister pointed out, was homework too, and Felix read every night because he wanted to.",
+				"On the day of the debate, Felix spoke last for his team. He didn't just list facts. He told the story of his grandfather at the kitchen table and of the piano students practicing their scales. When he sat down, even some of the kids on the other team were nodding.",
+				"His team won by one point. Afterward, his friend Dmitri asked whether he had changed his mind about homework. Felix thought about it. \"Not completely,\" he said. \"I still think we get too much of it. But now I understand why teachers give it. So if I ever want less, I know what I'd have to say.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Which side was Felix assigned to argue?",
+					"correct": "That homework is a good idea",
+					"wrong": [
+						"That homework should be banned",
+						"That school should start later",
+						"That recess should be longer"
+					],
+					"explanation": "The team assignments said Felix would be arguing that homework was a good idea.",
+					"evidence": [
+						"Felix would be arguing that homework was a good idea"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did Felix feel when he read his team assignment?",
+					"correct": "Shocked and unhappy",
+					"wrong": [
+						"Proud and excited",
+						"Calm and bored",
+						"Thankful and relieved"
+					],
+					"explanation": "He stared at the paper as if he could not understand it, and after class he complained that it was not fair.",
+					"evidence": [
+						"He stared at the paper as if it were written in another language",
+						"That's not fair"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How did Felix's grandfather learn his multiplication tables?",
+					"correct": "By reciting them at the kitchen table each night",
+					"wrong": [
+						"By practicing the piano",
+						"By reading in bed",
+						"By doing puzzles each morning"
+					],
+					"explanation": "His grandfather said he had learned them by reciting them at the kitchen table every night.",
+					"evidence": [
+						"he had learned his multiplication tables by reciting them at the kitchen table every night"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did some kids on the other team nod during Felix's speech?",
+					"correct": "His real stories made his reasons easy to believe.",
+					"wrong": [
+						"They had decided to switch teams.",
+						"They were falling asleep in their seats.",
+						"Ms. Abernathy told them to agree."
+					],
+					"explanation": "Instead of only listing facts, Felix told true stories about people he knew, which made his points convincing even to the other side.",
+					"evidence": [
+						"He didn't just list facts",
+						"He told the story of his grandfather at the kitchen table"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What does Felix learn from the debate?",
+					"correct": "Understanding the other side helps you argue your own.",
+					"wrong": [
+						"Homework is always a good idea.",
+						"Debates are won by speaking loudly.",
+						"You should argue only for what you believe."
+					],
+					"explanation": "Felix still wants less homework, but he now understands the reasons for it, and he knows that will help him make his own case.",
+					"evidence": [
+						"A good debater understands the other side well enough to explain it",
+						"So if I ever want less, I know what I'd have to say"
+					]
+				}
+			]
+		},
+		{
+			"id": "follow-the-blue-blazes",
+			"title": "Follow the Blue Blazes",
+			"paragraphs": [
+				"Nadia's family hiked the Ridge Trail every autumn, when the maple trees turned brilliant orange and red, and this year Nadia was in charge of the trail map. Her dad handed it to her in the parking lot. \"You're the navigator today,\" he said. \"Your mom and I will just follow.\" Her little brother, Sami, groaned, because he had wanted to be the navigator himself.",
+				"Before they started, a park ranger showed them how the trail was marked. Every few hundred feet, a blue rectangle, called a blaze, was painted on a tree trunk at eye level. Two blazes stacked on top of each other meant the trail was about to turn. If the top blaze was shifted to one side, the trail would turn that way. And if you ever walked a long way without seeing a blaze, the ranger said, you should go back to the last one you saw.",
+				"For the first hour, the hike was easy, with Nadia counting blazes out loud and Sami counting squirrels. Then they reached a spot where the path divided in two. A wooden sign had fallen face down in the leaves. One path went left and uphill toward the rocks, and the other went right and downhill toward the sound of a creek. Neither direction had a blaze in sight.",
+				"Sami wanted to go downhill to explore the creek. Nadia studied the map carefully, but it didn't show this fork at all. Then she remembered the ranger's instructions. She walked back along the path until she found the last blaze. It was a double blaze, and the top rectangle was shifted to the left. Nadia looked back at the fork. Far up the left-hand path, almost hidden by a branch, was a small patch of blue.",
+				"Twenty minutes later, they reached the lookout at the top of the ridge. The whole valley spread out below them in red and gold, with the creek shining like a silver thread. Even Sami admitted that the view was better than any creek. On the way out, Nadia stopped at the ranger station to report the fallen sign. The ranger thanked her and wrote down the location. \"Most people never notice the blazes at all,\" she said."
+			],
+			"questions": [
+				{
+					"kind": "vocabulary",
+					"prompt": "In this story, what is a blaze?",
+					"correct": "A painted mark on a tree that shows the trail",
+					"wrong": [
+						"A small fire at a campsite",
+						"A wooden sign at a fork in the path",
+						"A ranger who guides hikers"
+					],
+					"explanation": "The ranger explains that a blaze is a blue rectangle painted on a tree trunk to mark the trail.",
+					"evidence": [
+						"a blue rectangle, called a blaze, was painted on a tree trunk at eye level"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did the ranger say to do after walking a long way without a blaze?",
+					"correct": "Go back to the last blaze you saw",
+					"wrong": [
+						"Wait for a ranger to come",
+						"Follow the sound of water",
+						"Climb a tree to look around"
+					],
+					"explanation": "The ranger said that if you go a long way without a blaze, you should go back to the last one you saw.",
+					"evidence": [
+						"you should go back to the last one you saw"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why couldn't the family tell which way to go at the fork?",
+					"correct": "The sign had fallen, and no blaze was in sight.",
+					"wrong": [
+						"It was too dark to see the trail.",
+						"Sami had taken the map.",
+						"The ranger had told them the wrong way."
+					],
+					"explanation": "A wooden sign had fallen face down, and neither path had a blaze in sight.",
+					"evidence": [
+						"A wooden sign had fallen face down in the leaves",
+						"Neither direction had a blaze in sight"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did the shifted double blaze tell Nadia?",
+					"correct": "The trail turned left, up the hill.",
+					"wrong": [
+						"The trail ended at that tree.",
+						"The trail went down to the creek.",
+						"She should return to the parking lot."
+					],
+					"explanation": "A double blaze means a turn, and the top one shifted left means the trail turns left. The left path went uphill.",
+					"evidence": [
+						"If the top blaze was shifted to one side, the trail would turn that way",
+						"the top rectangle was shifted to the left",
+						"One path went left and uphill toward the rocks"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Nadia report the fallen sign to the ranger?",
+					"correct": "So other hikers would not get confused at the fork",
+					"wrong": [
+						"So the ranger would give her a prize",
+						"Because Sami had knocked the sign over",
+						"Because she wanted to keep the sign"
+					],
+					"explanation": "Without the sign, her family almost took the wrong path. Reporting it means it can be fixed for the next hikers.",
+					"evidence": [
+						"A wooden sign had fallen face down in the leaves",
+						"to report the fallen sign"
+					]
+				}
+			]
+		},
+		{
+			"id": "two-kinds-of-talking",
+			"title": "Two Kinds of Talking",
+			"paragraphs": [
+				"Ji-woo arrived in Tomás's class in the middle of October. She had just moved from Busan, a city by the sea in South Korea, and she knew only a few words of English. Mr. Lindqvist asked Tomás to be her buddy for the first week. Tomás agreed, but he was worried. How could he possibly help someone when they couldn't understand each other?",
+				"The first day was awkward. Tomás showed Ji-woo the cafeteria, the library, and the classroom cubbies, pointing and pronouncing each word slowly and carefully. Ji-woo nodded politely, but Tomás couldn't tell whether she understood. At recess she stood by the wall and watched the four-square game without moving.",
+				"That night, Tomás remembered something important. When his family had moved from Puerto Rico two years earlier, his grandmother had spoken almost no English. She had learned by labeling things around the house with sticky notes: door, window, refrigerator. Tomás took a pad of sticky notes to school the next day.",
+				"At lunch, he wrote APPLE on a note and stuck it on his apple, and Ji-woo laughed. She took the pen and wrote a word in Korean letters underneath, then said it out loud: \"sagwa.\" Tomás tried to repeat it, and she laughed again, even harder than before. Soon the whole table was trading words. Milk, juice, sandwich, napkin. Ji-woo taught them, and they taught her.",
+				"By the end of the week, Ji-woo had a notebook full of English words, and Tomás could count to ten in Korean. On Friday at recess, she walked over to the four-square court and held up one finger. \"One more player?\" she asked. The kids made room for her right away.",
+				"Mr. Lindqvist asked Tomás how the buddy week had gone. Tomás considered the question for a moment. \"I thought I was going to be the teacher,\" he said. \"But I think we both were.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where did Ji-woo move from?",
+					"correct": "Busan, in South Korea",
+					"wrong": [
+						"Puerto Rico",
+						"Tokyo, in Japan",
+						"A town near the school"
+					],
+					"explanation": "The story says she had just moved from Busan, a city by the sea in South Korea.",
+					"evidence": [
+						"She had just moved from Busan, a city by the sea in South Korea"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ji-woo stand by the wall at recess on the first day?",
+					"correct": "She did not know how to join in yet.",
+					"wrong": [
+						"She did not like playing four square.",
+						"Her teacher told her to stay by the wall.",
+						"She was waiting for her mother."
+					],
+					"explanation": "She knew only a few words of English and had just arrived. By Friday, once she had learned some words, she asked to play.",
+					"evidence": [
+						"she knew only a few words of English",
+						"One more player?"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where did Tomás get the idea of using sticky notes?",
+					"correct": "From the way his grandmother learned English",
+					"wrong": [
+						"From a book in the library",
+						"From his teacher, Mr. Lindqvist",
+						"From Ji-woo's notebook"
+					],
+					"explanation": "He remembered that his grandmother had learned English by labeling things around the house with sticky notes.",
+					"evidence": [
+						"She had learned by labeling things around the house with sticky notes"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Tomás mean when he said, \"I think we both were\"?",
+					"correct": "He learned from Ji-woo just as she learned from him.",
+					"wrong": [
+						"He and Ji-woo both want to become teachers.",
+						"Mr. Lindqvist let them teach the class.",
+						"Ji-woo already knew more English than he thought."
+					],
+					"explanation": "Ji-woo learned English words, and Tomás learned Korean ones, even counting to ten. They had both been teachers.",
+					"evidence": [
+						"Ji-woo taught them, and they taught her",
+						"Tomás could count to ten in Korean"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened last?",
+					"correct": "Ji-woo asked to join the four-square game.",
+					"wrong": [
+						"Tomás wrote APPLE on a sticky note.",
+						"Ji-woo watched the game from the wall.",
+						"Tomás showed Ji-woo the library."
+					],
+					"explanation": "Ji-woo asked to play on Friday, at the end of the buddy week. The other events happened earlier in the week.",
+					"evidence": [
+						"On Friday at recess, she walked over to the four-square court"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-poem-contest",
+			"title": "The Poem Contest",
+			"paragraphs": [
+				"Quinn and Elena had been best friends since kindergarten. They sat together on the bus, traded books, and told each other everything. So when the library announced a poetry contest, Quinn told Elena her idea right away. She wanted to write about her grandmother's garden, describing each season through the eyes of a sunflower.",
+				"Two weeks later, the winning poems were posted in the library window. Quinn's poem wasn't among them, but Elena's was, with a blue ribbon beside it. Its title was \"A Sunflower's Year.\" Quinn read the first lines and felt her face go hot. Spring, summer, fall, and winter, all told by a sunflower.",
+				"Quinn didn't speak to Elena on the bus that afternoon. She didn't speak to her the next morning either. Elena kept glancing at her with a puzzled look, but Quinn stared out the window. At home, Quinn's mother noticed that she had hardly touched her dinner. When Quinn explained, her mother asked only one question. \"Have you asked Elena about it?\"",
+				"The next day, Quinn finally did. Elena's eyes went wide. \"I didn't even remember that you told me,\" she said slowly. \"I just thought I had the idea. But I guess it came from you.\" She was quiet for a moment. \"I'm really sorry. I'll tell the librarian.\"",
+				"Quinn hadn't expected that. She thought about the poem in the window. Elena's poem didn't sound like the one Quinn had planned. It had a sunflower that was afraid of winter, which Quinn would never have thought of. \"You wrote it,\" Quinn said. \"Maybe the idea started with me, but the poem is yours.\"",
+				"In the end, Elena told the librarian anyway, and the librarian came up with a solution. The library would print the poem in its newsletter with a note: \"Inspired by an idea from Quinn Abbott.\" Both girls agreed that was fair. And this time, they decided, they would write a poem together, about two friends and a garden."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What was Quinn's idea for her poem?",
+					"correct": "A garden's seasons seen through a sunflower's eyes",
+					"wrong": [
+						"A summer trip to the ocean",
+						"A friendship between two girls",
+						"A winter storm at her grandmother's house"
+					],
+					"explanation": "Quinn wanted to describe each season in her grandmother's garden through the eyes of a sunflower.",
+					"evidence": [
+						"describing each season through the eyes of a sunflower"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Quinn stop speaking to Elena?",
+					"correct": "She believed Elena had taken her idea on purpose.",
+					"wrong": [
+						"She was busy writing a new poem.",
+						"Elena had said something unkind about her.",
+						"She wanted to sit with someone else."
+					],
+					"explanation": "Quinn's face went hot when she saw Elena's poem used her sunflower idea, and she stayed silent until her mother asked whether she had talked to Elena.",
+					"evidence": [
+						"Quinn read the first lines and felt her face go hot",
+						"Have you asked Elena about it?"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Elena keep glancing at Quinn with a puzzled look?",
+					"correct": "She did not know why Quinn was upset.",
+					"wrong": [
+						"She could not see out of the window.",
+						"She was trying to remember her own poem.",
+						"She thought Quinn was in her seat."
+					],
+					"explanation": "Elena did not remember that the idea came from Quinn, so she could not understand why her friend had gone silent.",
+					"evidence": [
+						"Elena kept glancing at her with a puzzled look",
+						"I didn't even remember that you told me"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How did the librarian solve the problem?",
+					"correct": "A note in the newsletter named Quinn's idea.",
+					"wrong": [
+						"Quinn got a blue ribbon too.",
+						"Elena's poem was taken down.",
+						"The contest was held again."
+					],
+					"explanation": "The library printed the poem in its newsletter with a note saying it was inspired by Quinn's idea.",
+					"evidence": [
+						"Inspired by an idea from Quinn Abbott"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main message of the story?",
+					"correct": "Talking about a problem works better than staying silent.",
+					"wrong": [
+						"Never share your ideas with friends.",
+						"Contests always cause fights.",
+						"The best poems are about flowers."
+					],
+					"explanation": "Quinn's silence only made both girls unhappy. Once she asked Elena, they understood each other and found a fair solution.",
+					"evidence": [
+						"Have you asked Elena about it?",
+						"The next day, Quinn finally did"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-gnome-who-wandered",
+			"title": "The Gnome Who Wandered",
+			"paragraphs": [
+				"Wyatt's mother had a small garden gnome named Gus. He had a red pointed hat, a white beard, and a tiny fishing pole, and for six years he had stood beside the front steps without moving an inch. Then, one Monday morning, Gus was standing by the mailbox.",
+				"Wyatt's mom assumed someone had bumped him, so she carried Gus back to the steps. On Tuesday, he was under the maple tree. On Wednesday, he was in the middle of the vegetable patch, facing the tomatoes. Each time, there were no footprints in the soft dirt, only a few scratches around the spot where Gus had been.",
+				"Wyatt decided to solve the mystery. He borrowed his uncle's trail camera, the kind that takes a picture whenever something moves in front of it, and strapped it to the porch railing. He sprinkled a thin layer of flour around Gus to catch any prints. Then he went to bed, though it took him a long time to fall asleep.",
+				"In the morning, Gus had moved again, this time to the edge of the driveway. Wyatt ran to the flour. There were no shoe prints, but there were plenty of small oval prints, each with four toes and tiny claw marks at the tips. Wyatt's heart beat faster. Then he checked the camera.",
+				"The picture had been taken at 2:14 in the morning. It was blurry and gray, but there was no mistaking it. A small beagle stood beside the steps with Gus's red hat clamped in her mouth. It was Pickles, who lived next door with the Hendersons. Wyatt and his mom followed the fence until they found a narrow gap under the boards, just the right size for a beagle.",
+				"Mrs. Henderson laughed when she saw the photo. Pickles, she explained, had been collecting things from all over the neighborhood: a glove, a hose nozzle, and once a whole loaf of bread. Wyatt's dad fixed the fence that weekend. But Wyatt's mom, who thought the whole thing was hilarious, bought Pickles a little gnome of her very own."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where had Gus stood for six years before he started moving?",
+					"correct": "Beside the front steps",
+					"wrong": [
+						"By the mailbox",
+						"Under the maple tree",
+						"In the vegetable patch"
+					],
+					"explanation": "The story says Gus had stood beside the front steps for six years without moving.",
+					"evidence": [
+						"for six years he had stood beside the front steps without moving an inch"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did Wyatt sprinkle flour around Gus?",
+					"correct": "To catch the prints of whoever moved him",
+					"wrong": [
+						"To keep bugs out of the garden",
+						"To make Gus look like he was in snow",
+						"To feed the birds in the yard"
+					],
+					"explanation": "The story says Wyatt sprinkled the flour to catch any prints.",
+					"evidence": [
+						"He sprinkled a thin layer of flour around Gus to catch any prints"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What most likely made the scratches around the spot where Gus had been?",
+					"correct": "A dog's claws",
+					"wrong": [
+						"A garden rake",
+						"Wyatt's shoes",
+						"Gus's fishing pole"
+					],
+					"explanation": "The prints in the flour had tiny claw marks, and the camera showed Pickles the beagle carrying Gus.",
+					"evidence": [
+						"only a few scratches around the spot where Gus had been",
+						"tiny claw marks at the tips"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Wyatt's mom buy Pickles a gnome of her own?",
+					"correct": "She found the mystery funny and wanted to be kind.",
+					"wrong": [
+						"She wanted Pickles to stop visiting forever.",
+						"Mrs. Henderson asked her to buy one.",
+						"She did not want Gus anymore."
+					],
+					"explanation": "She was not angry. She thought the whole thing was hilarious, so she gave the gnome-loving beagle a present.",
+					"evidence": [
+						"who thought the whole thing was hilarious"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What did Wyatt do right after he looked at the prints in the flour?",
+					"correct": "He checked the camera.",
+					"wrong": [
+						"He fixed the gap in the fence.",
+						"He strapped the camera to the railing.",
+						"He carried Gus back to the steps."
+					],
+					"explanation": "After he saw the clawed prints, he checked the camera and found the photo of Pickles.",
+					"evidence": [
+						"Then he checked the camera"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-cardboard-boat-race",
+			"title": "The Cardboard Boat Race",
+			"paragraphs": [
+				"Every summer, the town of Clearwater held a cardboard boat race on Mirror Lake. The rules were simple. Boats could be made only of cardboard, duct tape, and paint, and each one had to carry at least one person across the lake and back. Rafael had watched the competition for years. This summer, he and his grandfather decided to enter.",
+				"Grandpa had been a carpenter, and he believed in planning. Before they cut a single box, he made Rafael draw the boat on graph paper. \"A boat floats by pushing water out of the way,\" Grandpa explained. \"A wide, flat bottom spreads the weight out, so the boat sits higher in the water and is much harder to tip over.\" Rafael wanted a tall, pointed boat shaped like a shark. They settled on a wide, flat boat with a shark fin painted on the side.",
+				"For three weekends they worked together in the garage, layering the cardboard so the bottom was three sheets thick and covering every seam with duct tape. Then they painted the whole boat, inside and out, with two coats of thick paint. \"Paint keeps the water out of the cardboard,\" Grandpa said. \"Wet cardboard turns to mush.\"",
+				"On race day, twenty boats lined up on the beach. Some were shaped like dragons and castles, and one looked like a giant sneaker. When the horn blew, Rafael paddled with all his energy. The giant sneaker sank before it reached the first buoy. A dragon tipped over when its rider leaned too far. Rafael's boat sat low in the water, but it stayed upright, and he kept paddling.",
+				"He didn't win the race. Two teenagers in a long, skinny boat finished first, and Rafael finished in seventh place. But when he climbed out on the beach, his legs were dry, and the bottom of the boat was barely damp. The judges gave him the award for Best Built Boat. Grandpa clapped louder than anyone.",
+				"That evening, Rafael pulled out the graph paper again. On a new page, he drew a boat that was a little longer and a little narrower. \"For speed,\" he told Grandpa, \"but not too skinny.\" Grandpa studied the drawing and nodded slowly. \"Now you're thinking like a builder.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What were the boats allowed to be made of?",
+					"correct": "Cardboard, duct tape, and paint",
+					"wrong": [
+						"Wood, nails, and glue",
+						"Plastic bottles and rope",
+						"Cardboard, wood, and string"
+					],
+					"explanation": "The rules said boats could be made only of cardboard, duct tape, and paint.",
+					"evidence": [
+						"Boats could be made only of cardboard, duct tape, and paint"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did they paint the boat inside and out?",
+					"correct": "To keep water out of the cardboard",
+					"wrong": [
+						"To make it look like a shark",
+						"To make the boat lighter",
+						"To follow the rules of the race"
+					],
+					"explanation": "Grandpa says paint keeps the water out of the cardboard, because wet cardboard turns to mush.",
+					"evidence": [
+						"Paint keeps the water out of the cardboard"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Grandpa want a wide, flat boat instead of a tall, pointed one?",
+					"correct": "It would float better and be less likely to tip.",
+					"wrong": [
+						"It would be easier to paint a fin on.",
+						"Tall boats were against the rules.",
+						"It would fit better in the garage."
+					],
+					"explanation": "Grandpa explains that a wide, flat bottom makes a boat sit higher and much harder to tip over. In the race, the boats that were less steady tipped over.",
+					"evidence": [
+						"A wide, flat bottom spreads the weight out, so the boat sits higher in the water and is much harder to tip over"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the judges give Rafael the award for Best Built Boat?",
+					"correct": "His boat stayed dry and steady the whole race.",
+					"wrong": [
+						"He crossed the finish line first.",
+						"His boat was shaped like a dragon.",
+						"His grandfather was one of the judges."
+					],
+					"explanation": "Other boats sank or tipped, but Rafael's stayed upright, and afterward its bottom was barely damp.",
+					"evidence": [
+						"it stayed upright",
+						"the bottom of the boat was barely damp"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 4, what does \"upright\" mean?",
+					"correct": "Standing straight up, not tipped over",
+					"wrong": [
+						"Moving very fast",
+						"Floating low in the water",
+						"Painted in bright colors"
+					],
+					"explanation": "The dragon tipped over, but Rafael's boat stayed upright, so it did not tip.",
+					"evidence": [
+						"A dragon tipped over when its rider leaned too far",
+						"it stayed upright"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-dog-in-the-back-corner",
+			"title": "The Dog in the Back Corner",
+			"paragraphs": [
+				"Every Saturday morning, Keisha volunteered at the Hillside Animal Shelter with her aunt. Her jobs were simple: fill the water bowls, sweep the kennels, and walk the dogs who were ready for a walk. Most of the dogs barked and wagged when she came in. But one dog, a skinny brown mix named Juniper, always stayed pressed against the back wall of her kennel.",
+				"The shelter workers said Juniper had been found wandering near the highway. She was healthy now, but she was afraid of people. Families walked past her kennel every week. Some stopped, but when Juniper wouldn't come to the front, they moved on to the friendlier dogs.",
+				"Keisha asked the shelter manager, Mr. Oduya, what she could do. \"Don't try to touch her,\" he said. \"Just sit near her and let her decide.\" So every Saturday, after her other jobs were done, Keisha sat on the floor outside Juniper's kennel and read a book out loud. She didn't look at Juniper or reach through the bars. She just read.",
+				"For three weeks, nothing changed. On the fourth Saturday, Juniper crept halfway across the kennel and lay down. On the sixth Saturday, she was close enough that Keisha could hear her breathing. On the eighth Saturday, while Keisha was reading a chapter about a pirate ship, she felt something warm and damp against her fingers. Juniper was sniffing her hand through the bars.",
+				"Keisha held perfectly still. She kept reading, even though her voice wobbled a little. After a minute, Juniper licked her thumb once and lay down right against the bars, as close as she could get.",
+				"Two weeks later, a family came in looking for a calm, quiet dog. Mr. Oduya brought them to Juniper's kennel and asked Keisha to sit with them. Juniper came straight to the front and pushed her nose into Keisha's hand. Then, slowly, she sniffed the hand of the youngest girl too. The next Saturday, Juniper's kennel was empty, and a photo on the bulletin board showed her curled up on a new couch."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where had Juniper been found?",
+					"correct": "Wandering near the highway",
+					"wrong": [
+						"In a box outside the shelter",
+						"In Keisha's backyard",
+						"Behind a pet store"
+					],
+					"explanation": "The shelter workers said Juniper had been found wandering near the highway.",
+					"evidence": [
+						"Juniper had been found wandering near the highway"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What advice did Mr. Oduya give Keisha?",
+					"correct": "Sit near Juniper and let her decide.",
+					"wrong": [
+						"Give Juniper treats every day.",
+						"Take Juniper on long walks.",
+						"Call Juniper in a loud voice."
+					],
+					"explanation": "Mr. Oduya told her not to touch Juniper, but to sit near her and let her decide.",
+					"evidence": [
+						"Just sit near her and let her decide"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Keisha read out loud instead of reaching for Juniper?",
+					"correct": "So Juniper could get used to her without feeling scared",
+					"wrong": [
+						"Because she had a book report due",
+						"Because the book was about a dog",
+						"So the other dogs would stop barking"
+					],
+					"explanation": "Juniper was afraid of people, and Mr. Oduya said not to touch her. Reading let Juniper get used to Keisha's voice from a safe distance.",
+					"evidence": [
+						"she was afraid of people",
+						"Don't try to touch her"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Mr. Oduya ask Keisha to sit with the family?",
+					"correct": "Juniper trusted Keisha and would be calmer near her.",
+					"wrong": [
+						"Keisha wanted to adopt Juniper herself.",
+						"The family needed help with some forms.",
+						"Keisha knew the family from school."
+					],
+					"explanation": "Juniper came straight to the front for Keisha, and with Keisha there, she was brave enough to sniff the girl's hand too.",
+					"evidence": [
+						"Juniper came straight to the front and pushed her nose into Keisha's hand"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened first?",
+					"correct": "Juniper lay down halfway across the kennel.",
+					"wrong": [
+						"Juniper sniffed Keisha's hand.",
+						"Juniper licked Keisha's thumb.",
+						"Juniper sniffed the young girl's hand."
+					],
+					"explanation": "On the fourth Saturday, Juniper crept halfway across the kennel. The sniffing and licking came on the eighth Saturday, and meeting the family came later still.",
+					"evidence": [
+						"On the fourth Saturday, Juniper crept halfway across the kennel and lay down"
+					]
+				}
+			]
+		},
+		{
+			"id": "say-it-right",
+			"title": "Say It Right",
+			"paragraphs": [
+				"On the first day of fifth grade, Saoirse waited for the moment she dreaded every year. The new teacher, Mr. Pratt, ran his finger down the class list and paused. \"Sa... Sa-oh-ir-see?\" he tried. A few kids giggled. Saoirse felt her ears burn. \"It's SEER-sha,\" she said quietly. Mr. Pratt nodded, but by lunchtime he had called her \"Sorsha\" twice.",
+				"Saoirse was named after her great-grandmother, who had grown up on a farm in Ireland. In the Irish language, the name means \"freedom.\" At home, Saoirse loved her name, but at school it was a completely different story. Substitute teachers usually skipped it entirely. One coach shortened it to \"Sir.\" Another teacher had once asked whether she had a nickname that was \"easier for everyone.\"",
+				"That night, Saoirse complained to her father, who listened patiently and then pulled a dusty book off the shelf: a guide to the Irish language. \"Irish spelling follows rules,\" he said. \"They're just different rules from English. The letters 'ao' together sound like 'ee.' And an 's' next to an 'i' or an 'e' often sounds like 'sh.'\" Saoirse paged through the book, and words that had always looked impossible suddenly began to make sense.",
+				"The next week, Mr. Pratt asked each student to share something about their family's history, so Saoirse brought the book. She wrote her name on the board and explained the rules, letter by letter. Then she wrote other Irish names: Siobhan, Niamh, Caoimhe. The class tried to sound them out using the rules. When someone figured out that Niamh was pronounced \"Neev,\" the whole room cheered.",
+				"After class, Mr. Pratt stopped by her desk. \"SEER-sha,\" he said carefully. \"I'm sorry it took me a week. Thank you for teaching me.\" Saoirse smiled, and for the rest of the year, Mr. Pratt never pronounced it incorrectly. And when a substitute came in February and hesitated over the class list, three of her classmates said her name before she could."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What does the name Saoirse mean?",
+					"correct": "Freedom",
+					"wrong": [
+						"Farm",
+						"Sunshine",
+						"Teacher"
+					],
+					"explanation": "The story says that in the Irish language, the name means \"freedom.\"",
+					"evidence": [
+						"the name means \"freedom"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "According to Saoirse's dad, how do the letters \"ao\" sound together in Irish?",
+					"correct": "Like \"ee\"",
+					"wrong": [
+						"Like \"oh\"",
+						"Like \"ah\"",
+						"Like \"sh\""
+					],
+					"explanation": "Her dad explains that the letters \"ao\" together sound like \"ee.\"",
+					"evidence": [
+						"The letters 'ao' together sound like 'ee.'"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 1, what does \"dreaded\" mean?",
+					"correct": "Felt worried about something that was coming",
+					"wrong": [
+						"Looked forward to happily",
+						"Forgot about completely",
+						"Wrote down carefully"
+					],
+					"explanation": "Saoirse expected her name to be said wrong again, as it was every year, and she was not looking forward to it.",
+					"evidence": [
+						"Saoirse waited for the moment she dreaded every year"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Saoirse's ears burn when Mr. Pratt read her name?",
+					"correct": "She felt embarrassed when the kids giggled.",
+					"wrong": [
+						"The classroom was very warm.",
+						"She was angry at her dad.",
+						"She was excited about the new year."
+					],
+					"explanation": "Right after the teacher said her name wrong and some kids giggled, she felt her ears burn, which shows embarrassment.",
+					"evidence": [
+						"A few kids giggled. Saoirse felt her ears burn"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did three classmates say Saoirse's name before she could?",
+					"correct": "They had learned to say it and wanted to help.",
+					"wrong": [
+						"They wanted to play a joke on the substitute.",
+						"Mr. Pratt had told them to answer for her.",
+						"They thought Saoirse was absent that day."
+					],
+					"explanation": "Saoirse had taught the class how Irish spelling works, so her classmates knew her name and stepped in before the substitute could get it wrong.",
+					"evidence": [
+						"The class tried to sound them out using the rules",
+						"three of her classmates said her name before she could"
+					]
+				}
+			]
+		},
+		{
+			"id": "seeing-with-sound",
+			"title": "Seeing with Sound",
+			"paragraphs": [
+				"On a summer evening, you might see small dark shapes darting and swooping above a pond or a streetlight. Those are probably bats, hunting for insects. A bat can catch a moth or a mosquito in midair, even when it is too dark for a person to see anything at all. How do they do it? Many bats use a skill called echolocation.",
+				"Echolocation means finding things by using echoes. As a bat flies, it makes short, high-pitched calls through its mouth or nose. Most of these sounds are too high for human ears to hear. When a call hits an object, such as a branch or an insect, the sound bounces back as an echo. The bat's large, sensitive ears catch the echo.",
+				"The echo tells the bat a great deal. If it comes back quickly, the object is close. If it takes longer, the object is farther away. By comparing the echo in each ear, the bat can tell whether the object is to its left or its right. Some bats can even tell the size and shape of an insect, and which way it is flying.",
+				"When a bat closes in on an insect, it calls faster and faster, sometimes nearly two hundred times a second. Scientists call this the feeding buzz. The rapid calls give the bat an up-to-date picture of exactly where the insect is, right up until the moment it is caught.",
+				"Not every bat uses echolocation. Many large fruit bats find their food mainly by sight and smell, since fruit and flowers do not fly away. But for insect-eating bats, echolocation is so useful that people have copied the idea. Ships use sonar, which sends pulses of sound through water, to find the sea floor, schools of fish, and other ships.",
+				"Insect-eating bats help people, too. A single bat can eat hundreds of insects in one night, including mosquitoes and moths that damage farmers' crops. So the next time you see a bat swooping through the evening sky, remember that it is listening its way to dinner."
+			],
+			"questions": [
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what does \"echolocation\" mean?",
+					"correct": "Finding things by using echoes",
+					"wrong": [
+						"Flying in a straight line",
+						"Sleeping upside down in caves",
+						"Seeing clearly in the dark"
+					],
+					"explanation": "The passage says echolocation means finding things by using echoes.",
+					"evidence": [
+						"Echolocation means finding things by using echoes"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why can't people hear most bat calls?",
+					"correct": "The sounds are too high for human ears.",
+					"wrong": [
+						"Bats call only when they are underwater.",
+						"Bats make their calls very quietly.",
+						"Bats call only during the winter."
+					],
+					"explanation": "The passage says most of a bat's calls are too high for human ears to hear.",
+					"evidence": [
+						"Most of these sounds are too high for human ears to hear"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How does a bat tell whether an object is close or far away?",
+					"correct": "By how quickly the echo comes back",
+					"wrong": [
+						"By how loud its own call is",
+						"By the color of the object",
+						"By how the object smells"
+					],
+					"explanation": "If the echo comes back quickly, the object is close. If it takes longer, the object is farther away.",
+					"evidence": [
+						"If it comes back quickly, the object is close"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What would most likely happen if a bat could hear with only one ear?",
+					"correct": "It would have trouble telling left from right.",
+					"wrong": [
+						"It would not be able to fly at all.",
+						"It would hunt only during the day.",
+						"It would stop making any calls."
+					],
+					"explanation": "A bat tells left from right by comparing the echo in each ear. With one ear, it could not compare.",
+					"evidence": [
+						"By comparing the echo in each ear, the bat can tell whether the object is to its left or its right"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does a bat call faster as it gets close to an insect?",
+					"correct": "To keep track of the insect as it moves",
+					"wrong": [
+						"To scare the insect out of hiding",
+						"To call other bats to share the meal",
+						"To rest its wings before landing"
+					],
+					"explanation": "An insect keeps moving, so the bat needs fresh echoes very often to know exactly where it is until it catches it.",
+					"evidence": [
+						"The rapid calls give the bat an up-to-date picture of exactly where the insect is"
+					]
+				}
+			]
+		},
+		{
+			"id": "twelve-seconds-at-kitty-hawk",
+			"title": "Twelve Seconds at Kitty Hawk",
+			"paragraphs": [
+				"On a cold, windy morning in December 1903, two brothers from Dayton, Ohio, stood on a sandy beach in North Carolina. Wilbur and Orville Wright had built a flying machine out of wood, wire, and cloth, with a small gasoline engine they had designed themselves. No one had ever flown a powered airplane that a pilot could control. The brothers were about to try.",
+				"The Wrights were not famous scientists. They ran a bicycle shop. But building bicycles had taught them a lot about balance and about making machines both strong and light. For years they studied birds, read everything they could find about flight, and tested gliders on the windy dunes near Kitty Hawk. When the numbers in other people's books turned out to be wrong, they built their own wind tunnel, a long wooden box with a fan at one end, and tested about two hundred small wing shapes.",
+				"One of their biggest discoveries was how to steer. Birds, they noticed, tilted the tips of their wings to turn. The Wrights designed wings that the pilot could twist slightly, so that one side lifted more than the other. This let the airplane lean into a turn, the way a bicycle rider leans around a corner.",
+				"At about 10:35 that morning, Orville lay flat on the lower wing while Wilbur ran alongside to steady it. The engine roared, and the airplane rolled down a wooden rail and lifted into the air. It flew for twelve seconds and traveled 120 feet, about the length of three school buses. Then it landed in the sand.",
+				"That might not sound like much. But the brothers made three more flights that day, taking turns. On the last one, Wilbur stayed in the air for fifty-nine seconds and flew 852 feet. Only five other people were there to watch, and few newspapers believed the story at first.",
+				"Less than sixty-six years later, astronauts landed on the Moon. Neil Armstrong carried a small piece of the Wright brothers' airplane with him, a scrap of wood and a scrap of cloth from its wing, to honor that first flight."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What kind of business did the Wright brothers run?",
+					"correct": "A bicycle shop",
+					"wrong": [
+						"A newspaper",
+						"An engine factory",
+						"A toy store"
+					],
+					"explanation": "The passage says the Wrights were not famous scientists; they ran a bicycle shop.",
+					"evidence": [
+						"They ran a bicycle shop"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How long did the very first flight last?",
+					"correct": "Twelve seconds",
+					"wrong": [
+						"Fifty-nine seconds",
+						"Twelve minutes",
+						"Two hundred seconds"
+					],
+					"explanation": "The passage says the first flight lasted twelve seconds and went 120 feet.",
+					"evidence": [
+						"It flew for twelve seconds"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the brothers build their own wind tunnel?",
+					"correct": "They could not rely on the numbers in other people's books.",
+					"wrong": [
+						"They wanted to sell wind tunnels in their shop.",
+						"There was no wind at Kitty Hawk.",
+						"Birds kept flying into their gliders."
+					],
+					"explanation": "When the published numbers turned out to be wrong, the only way to get good ones was to test wing shapes themselves.",
+					"evidence": [
+						"When the numbers in other people's books turned out to be wrong, they built their own wind tunnel"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does the passage compare the airplane's turn to a bicycle rider?",
+					"correct": "Both lean to one side to go around a turn.",
+					"wrong": [
+						"Both have two wheels.",
+						"Both use gasoline engines.",
+						"Both were invented by the Wrights."
+					],
+					"explanation": "Twisting the wings made the airplane lean into a turn, just as a rider leans a bicycle around a corner.",
+					"evidence": [
+						"This let the airplane lean into a turn, the way a bicycle rider leans around a corner"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened first?",
+					"correct": "The brothers tested wing shapes in a wind tunnel.",
+					"wrong": [
+						"Orville flew for twelve seconds.",
+						"Wilbur flew for fifty-nine seconds.",
+						"Astronauts landed on the Moon."
+					],
+					"explanation": "The wind tunnel tests came during the years of work before the flights of December 1903. The Moon landing came much later.",
+					"evidence": [
+						"they built their own wind tunnel"
+					]
+				}
+			]
+		},
+		{
+			"id": "cities-under-the-sea",
+			"title": "Cities Under the Sea",
+			"paragraphs": [
+				"Coral reefs are sometimes called the cities of the ocean. They cover less than one percent of the sea floor. Yet about one quarter of all the kinds of animals in the ocean live on or around them. Turtles, sharks, octopuses, crabs, and thousands of kinds of fish find food and shelter among the reef's branches, tunnels, and caves.",
+				"It is easy to think that coral is a rock or a plant. But it is really an animal. A coral is made of many tiny creatures called polyps. Each polyp has a soft body, often smaller than a pencil eraser. It has a ring of tentacles around its mouth. Polyps build hard cups of limestone around their bodies for protection. When millions of polyps grow side by side for hundreds of years, their cups pile up into a reef.",
+				"Corals have an unusual partnership. Tiny algae live inside the polyps' bodies. Like plants, the algae use sunlight to make food, and they share much of that food with the coral. In return, the coral gives the algae a safe home. The algae also give many corals their bright colors. Because the algae need sunlight, most reefs grow in clear, shallow water.",
+				"Corals are easily harmed by changes in the water around them. When the ocean becomes too warm for too long, the polyps push the algae out. Without the algae, the coral turns white, which is called bleaching. A bleached coral is still alive, but it is starving. If the water cools down soon enough, the algae can return, and the coral can recover.",
+				"The largest reef system in the world is the Great Barrier Reef, off the coast of Australia. It stretches for more than 1,400 miles. Many people are working to protect reefs like it. Scientists study which corals can handle warmer water. Volunteers keep beaches and water clean. Divers even grow young corals in underwater nurseries and plant them on damaged reefs."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What is a coral made of?",
+					"correct": "Many tiny animals called polyps",
+					"wrong": [
+						"Small pieces of rock",
+						"Thick ocean plants",
+						"Shells left behind by crabs"
+					],
+					"explanation": "The passage says a coral is made of many tiny creatures called polyps.",
+					"evidence": [
+						"A coral is made of many tiny creatures called polyps"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why do most reefs grow in clear, shallow water?",
+					"correct": "The algae inside the coral need sunlight.",
+					"wrong": [
+						"Sharks cannot swim in shallow water.",
+						"Deep water is too cold for fish.",
+						"Divers plant all reefs near the shore."
+					],
+					"explanation": "The passage says that because the algae need sunlight, most reefs grow in clear, shallow water.",
+					"evidence": [
+						"Because the algae need sunlight, most reefs grow in clear, shallow water"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is bleaching?",
+					"correct": "Coral turning white after losing its algae",
+					"wrong": [
+						"Coral growing new tentacles",
+						"Cleaning beaches near a reef",
+						"Algae making food from sunlight"
+					],
+					"explanation": "When polyps push out their algae, the coral turns white, which is called bleaching.",
+					"evidence": [
+						"the coral turns white, which is called bleaching"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why might a bleached coral die if the water stays too warm?",
+					"correct": "It cannot get enough food without its algae.",
+					"wrong": [
+						"Its limestone cups melt in warm water.",
+						"Fish eat it once it turns white.",
+						"It breaks off and floats away."
+					],
+					"explanation": "The algae make much of the coral's food. A bleached coral has lost them and is starving, so it needs them back soon.",
+					"evidence": [
+						"they share much of that food with the coral",
+						"A bleached coral is still alive, but it is starving"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why are coral reefs called the cities of the ocean?",
+					"correct": "Huge numbers of different creatures live there together.",
+					"wrong": [
+						"They are the largest things in the ocean.",
+						"They are found only near big cities.",
+						"People built them long ago."
+					],
+					"explanation": "Like a city full of people, a reef is crowded with many kinds of animals that find food and shelter there.",
+					"evidence": [
+						"about one quarter of all the kinds of animals in the ocean live on or around them"
+					]
+				}
+			]
+		},
+		{
+			"id": "seeds-on-the-move",
+			"title": "Seeds on the Move",
+			"paragraphs": [
+				"A plant cannot walk. Once it puts down roots, it stays in one place for the rest of its life. Yet plants have spread across nearly every corner of the Earth. Their secret is their seeds. Over millions of years, plants have developed clever ways to send their seeds far from home, where the young plants will not have to compete with their parents for sunlight, water, and space.",
+				"Some seeds ride the wind. A dandelion seed hangs beneath a tuft of fine white hairs that works like a tiny parachute, and a strong breeze can carry it for miles. Maple trees grow seeds with a single flat wing. When a maple seed falls, it spins like a helicopter blade, which slows its fall and gives the wind more time to push it away from the tree.",
+				"Other seeds travel by water. The coconut is a seed wrapped in a thick husk full of air. It can float in the ocean for months and wash up on a beach far away, where it may sprout into a new palm tree. That is one reason coconut palms grow on so many tropical islands.",
+				"Many seeds hitch a ride on animals. Berries are bright and sweet so that birds and other animals will eat them. The seeds pass through the animal's body unharmed and drop to the ground far away. Other seeds, called burrs, are covered in tiny hooks that grab onto fur, feathers, or the socks of a passing hiker.",
+				"In 1941, a Swiss engineer named George de Mestral went for a walk in the mountains with his dog. When they got home, both of them were covered in burrs. Curious, he looked at one under a microscope and saw hundreds of tiny hooks that caught on anything with loops, like fur or the threads of his pants. After years of work, he invented a fastener with hooks on one side and loops on the other. He called it Velcro."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What does a maple seed do as it falls?",
+					"correct": "It spins like a helicopter blade.",
+					"wrong": [
+						"It opens a tiny parachute.",
+						"It drops straight down like a stone.",
+						"It rolls along the ground."
+					],
+					"explanation": "The passage says a falling maple seed spins like a helicopter blade, which slows its fall.",
+					"evidence": [
+						"it spins like a helicopter blade"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What gave George de Mestral the idea for Velcro?",
+					"correct": "Burrs stuck to his dog and his clothes",
+					"wrong": [
+						"A coconut floating on the ocean",
+						"A dandelion seed in the wind",
+						"A maple seed falling from a tree"
+					],
+					"explanation": "After a walk, he and his dog were covered in burrs, and looking at their hooks led to his invention.",
+					"evidence": [
+						"both of them were covered in burrs"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why would a coconut that sank right away be less likely to start a palm on a new island?",
+					"correct": "It could not float across the sea to a new beach.",
+					"wrong": [
+						"Its husk would be too thin to grow roots.",
+						"Birds would eat it before it could sprout.",
+						"It would be carried away by the wind."
+					],
+					"explanation": "Coconuts reach far-off islands by floating for months. One that sank would never wash up on a new shore.",
+					"evidence": [
+						"It can float in the ocean for months and wash up on a beach far away"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "On a windy day, which seed would most likely travel the farthest?",
+					"correct": "A seed from a dandelion",
+					"wrong": [
+						"A coconut from a palm tree",
+						"A seed from a berry",
+						"A burr from a bush"
+					],
+					"explanation": "The dandelion's parachute lets a strong breeze carry it for miles. A coconut travels by water, and berry seeds and burrs travel with animals.",
+					"evidence": [
+						"a strong breeze can carry it for miles"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main idea of the passage?",
+					"correct": "Plants have many clever ways to spread their seeds.",
+					"wrong": [
+						"Velcro was invented in 1941.",
+						"Coconuts grow only on islands.",
+						"Birds eat berries in the fall."
+					],
+					"explanation": "The passage describes seeds that travel by wind, water and animals, and even an invention inspired by one of them.",
+					"evidence": [
+						"plants have developed clever ways to send their seeds far from home"
+					]
+				}
+			]
+		}
+	]
+}
