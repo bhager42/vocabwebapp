@@ -15,7 +15,8 @@ import type { Actions, PageServerLoad } from './$types';
 
 // Reading a story. As in /play, every action is a plain form post followed by a redirect
 // back here, so it works the same with and without JavaScript, and reloading or pressing
-// Back can never re-submit an answer.
+// Back can never re-submit an answer. After an answer or "Next question" the redirect goes to
+// #questions, so the page stays on the questions instead of jumping back up to the story.
 
 const clock = (): Clock => ({ now: new Date(), timeZone: appTimeZone(), rng: Math.random });
 
@@ -61,13 +62,13 @@ export const actions: Actions = {
 			new Date()
 		);
 		if (result === 'invalid') return fail(400, { message: 'Pick an answer first.' });
-		redirect(303, '/play/read');
+		redirect(303, '/play/read#questions');
 	},
 
 	next: ({ locals }) => {
 		const result = advanceReading(getDb(), readingChild(locals), clock());
 		if (result === 'done') redirect(303, '/play/read/done');
 		if (result === 'none') redirect(303, '/');
-		redirect(303, '/play/read');
+		redirect(303, '/play/read#questions');
 	}
 };
