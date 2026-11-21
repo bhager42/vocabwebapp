@@ -1,0 +1,10 @@
+# Findings the image scan in CI may skip. Each entry needs a reason and an expiry date;
+# after the date the scan fails on it again, so it has to be looked at once more.
+# Trivy reads this file from the repository root.
+
+# OpenSSL QUIC memory leak in Debian's libssl3t64, from the distroless base image. Debian had
+# no fixed version on 2026-11-21. The app is not affected: Node carries its own OpenSSL
+# (3.5.9) and never loads the system libssl3, which was checked by listing the libraries
+# Node loads in the runtime image with https and tls in use. The app does not use QUIC.
+# Remove this entry once a fixed base image is out and its digest is in the Dockerfile.
+CVE-2026-124709 exp:2026-12-31
