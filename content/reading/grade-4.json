@@ -1,0 +1,1275 @@
+{
+	"grade": 4,
+	"stories": [
+		{
+			"id": "the-telescope-in-the-attic",
+			"title": "The Telescope in the Attic",
+			"paragraphs": [
+				"Kenji had wanted a telescope for as long as he could remember. So when Aunt Ruth said she had an old one in her attic, he was up the ladder before she finished talking. The telescope was long and white, and it rested on three wobbly legs. A thick layer of dust covered everything, and one of the knobs was missing.",
+				"\"It hasn't been used in twenty years,\" Aunt Ruth admitted. \"It might need some work.\" Together they carried it down to the kitchen table. Kenji wiped away the dust with a soft cloth while his aunt searched a drawer for a knob that would fit. The best she could find was a wooden spool from her sewing basket. She glued it on and let it dry overnight.",
+				"The next evening, Kenji set up the telescope in the backyard. He pointed it at a bright, steady light that Aunt Ruth showed him and peered through the eyepiece. All he saw was a fuzzy gray blob. He turned the spool one way, then the other, until the blob shrank into a sharp, tiny circle. Beside the circle were four little dots in a row.",
+				"\"That's Jupiter,\" Aunt Ruth said, leaning over his shoulder. \"And those dots are some of its moons. A scientist named Galileo saw those same moons more than four hundred years ago.\" Kenji didn't want to blink. He stayed outside until his fingers were cold and his aunt had called him in three times.",
+				"For the rest of the week, clouds covered the sky every night. Kenji checked the window again and again. On Saturday, the clouds finally drifted away. Kenji grabbed a notebook and a pencil before he ran outside. This time he drew the moons, and he wrote the date at the top of the page. The next night, he drew them again. The dots had moved."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Aunt Ruth use in place of the missing knob?",
+					"correct": "A wooden spool from her sewing basket",
+					"wrong": [
+						"A button from an old coat",
+						"A cork from a bottle",
+						"A piece of a broken pencil"
+					],
+					"explanation": "The story says the best she could find was a wooden spool from her sewing basket, so she glued it on.",
+					"evidence": [
+						"a wooden spool from her sewing basket"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What were the four little dots beside Jupiter?",
+					"correct": "Some of Jupiter's moons",
+					"wrong": [
+						"Specks of dust on the telescope",
+						"Other planets near Jupiter",
+						"Lights from faraway airplanes"
+					],
+					"explanation": "Aunt Ruth tells Kenji that the dots are some of Jupiter's moons.",
+					"evidence": [
+						"those dots are some of its moons"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did Kenji most likely feel when he first saw Jupiter's moons?",
+					"correct": "Amazed and excited",
+					"wrong": [
+						"Bored and sleepy",
+						"Scared of the dark",
+						"Upset with his aunt"
+					],
+					"explanation": "He did not want to blink, and he stayed out in the cold until his aunt had called him three times. He was too amazed to stop looking.",
+					"evidence": [
+						"Kenji didn't want to blink",
+						"He stayed outside until his fingers were cold"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Kenji take a notebook outside on Saturday?",
+					"correct": "He wanted to keep a record of where the moons were.",
+					"wrong": [
+						"He wanted to write a letter to Aunt Ruth.",
+						"He needed to finish his homework outside.",
+						"He wanted to draw a picture of the telescope."
+					],
+					"explanation": "He drew the moons and wrote the date, then drew them again the next night. That is how he found out that the moons had moved.",
+					"evidence": [
+						"This time he drew the moons, and he wrote the date at the top of the page"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What did Kenji do right before the fuzzy blob became a sharp circle?",
+					"correct": "He turned the spool on the telescope.",
+					"wrong": [
+						"He wrote the date in his notebook.",
+						"He wiped the dust off with a cloth.",
+						"He climbed the ladder to the attic."
+					],
+					"explanation": "Kenji turned the spool one way, then the other, until the blob shrank into a sharp, tiny circle.",
+					"evidence": [
+						"He turned the spool one way, then the other, until the blob shrank into a sharp, tiny circle"
+					]
+				}
+			]
+		},
+		{
+			"id": "pepper-goes-missing",
+			"title": "Pepper Goes Missing",
+			"paragraphs": [
+				"Every Friday, one student in Ms. Delgado's class got to take Pepper home for the weekend. Pepper was the class guinea pig, a round little animal with black and white fur. When it was finally Sofia's turn, she carried the cage home as carefully as if it held a birthday cake. Ms. Delgado had given her a list of rules. The most important one was underlined twice: Always latch the cage door.",
+				"On Saturday morning, Sofia cleaned the cage and gave Pepper fresh hay and a slice of cucumber. Then her little brother, Mateo, called her to come and see a funny cartoon. Sofia hurried to the living room and sat down next to him. Twenty minutes later, she came back to her bedroom and stopped in the doorway. The cage door was hanging open, and the cage was empty.",
+				"Sofia's heart thumped. She looked under the bed, behind the bookshelf, and inside her sneakers. There was no sign of Pepper anywhere. Mateo helped her search the hallway while Mom checked the kitchen. Sofia felt her eyes sting. How would she ever tell the class?",
+				"Then Sofia remembered something else from the list. Guinea pigs squeak when they hear a bag of food. She grabbed the crinkly bag of pellets and shook it hard. For a moment, the house was silent. Then a loud \"Wheek! Wheek!\" came from a pile of towels on the floor of the hall closet. Pepper was curled up in a warm nest between them.",
+				"Sofia laughed with relief and scooped her up. After that, she checked the latch every single time she closed the cage, and she even counted to three out loud while she did it. On Monday, she asked Ms. Delgado to add one more line to the list. It said, Never leave the room until the latch clicks."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What was the most important rule on Ms. Delgado's list?",
+					"correct": "Always latch the cage door.",
+					"wrong": [
+						"Feed Pepper twice a day.",
+						"Keep Pepper away from other pets.",
+						"Clean the cage every morning."
+					],
+					"explanation": "The story says the most important rule was underlined twice: Always latch the cage door.",
+					"evidence": [
+						"The most important one was underlined twice: Always latch the cage door"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why was the cage door open when Sofia came back?",
+					"correct": "She forgot to latch it before she left the room.",
+					"wrong": [
+						"Mateo opened it while she was gone.",
+						"Mom opened it to clean the cage.",
+						"Pepper chewed a hole in the door."
+					],
+					"explanation": "Mateo was in the living room with Sofia the whole time. Afterward she checked the latch every time and added a rule about it, which shows she knew the open latch was her own mistake.",
+					"evidence": [
+						"sat down next to him",
+						"she checked the latch every single time she closed the cage",
+						"Never leave the room until the latch clicks"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where did Sofia find Pepper?",
+					"correct": "In a pile of towels in the hall closet",
+					"wrong": [
+						"Under the bed in Sofia's room",
+						"Inside one of Sofia's sneakers",
+						"Behind the bookshelf in the bedroom"
+					],
+					"explanation": "The squeaking came from a pile of towels on the floor of the hall closet, where Pepper was curled up.",
+					"evidence": [
+						"came from a pile of towels on the floor of the hall closet"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Sofia shake the bag of pellets?",
+					"correct": "She hoped Pepper would squeak and give away where she was.",
+					"wrong": [
+						"She wanted to fill Pepper's food bowl.",
+						"She wanted to wake up her mom.",
+						"She was angry and wanted to make noise."
+					],
+					"explanation": "She remembered that guinea pigs squeak when they hear a bag of food, so the noise would tell her where Pepper was hiding.",
+					"evidence": [
+						"Guinea pigs squeak when they hear a bag of food"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 5, what does \"relief\" mean?",
+					"correct": "A good feeling when a worry is over",
+					"wrong": [
+						"A feeling of being very tired",
+						"A feeling of being a little bored",
+						"A feeling of being jealous"
+					],
+					"explanation": "Sofia laughs with relief when Pepper is found, because her worry about losing the class pet is over.",
+					"evidence": [
+						"Sofia laughed with relief"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-ball-over-the-fence",
+			"title": "The Ball Over the Fence",
+			"paragraphs": [
+				"Tariq had one rule about the yard next door: never go in. Mr. Halvorsen lived there, and he never smiled. He kept his grass cut short and his hedges perfectly square, and a sign on his gate said Please Keep Out. When Tariq practiced soccer against his garage wall, he aimed carefully so the ball would not fly over the fence.",
+				"One afternoon, Tariq tried a powerful new kick. The ball shot off his foot, sailed over the fence, and landed with a thud in Mr. Halvorsen's tomato bed. Tariq froze, and for a moment he considered leaving the ball there forever. Then he remembered that it was a birthday present from his grandmother. He took a deep breath, walked next door, and knocked.",
+				"Mr. Halvorsen opened the door with a frown. Tariq's words came out in a rush. \"I'm sorry, my ball went in your garden, and I think it squashed a tomato plant, and I can help fix it.\" The old man looked at him for a long moment. Then he walked to the garden, picked up the ball, and spun it on one finger.",
+				"\"That was a strong kick,\" he said. \"But you lean back too far. That's why the ball goes so high.\" He set the ball on the grass and showed Tariq how to keep his body over the ball. When Tariq tried it, the ball flew low and straight, and Mr. Halvorsen nodded with approval. Then he pointed to an old photograph by his door. It showed a young man in a goalkeeper's shirt, diving through the air.",
+				"After that, Tariq visited every Saturday. He helped tie up the tomato plants, and Mr. Halvorsen helped with his kicks. Tariq still did not see him smile very often. But one day, Tariq noticed that the sign on the gate was gone."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where did Tariq's ball land?",
+					"correct": "In Mr. Halvorsen's tomato bed",
+					"wrong": [
+						"On Mr. Halvorsen's roof",
+						"In the middle of the street",
+						"Behind Tariq's garage"
+					],
+					"explanation": "The story says the ball sailed over the fence and landed in Mr. Halvorsen's tomato bed.",
+					"evidence": [
+						"landed with a thud in Mr. Halvorsen's tomato bed"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Tariq decide to knock instead of leaving the ball?",
+					"correct": "He did not want to lose a gift from his grandmother.",
+					"wrong": [
+						"He wanted Mr. Halvorsen to play soccer with him.",
+						"He wanted to pick some of the tomatoes.",
+						"He thought Mr. Halvorsen was not at home."
+					],
+					"explanation": "He was about to leave the ball there until he remembered it was a birthday present from his grandmother.",
+					"evidence": [
+						"Then he remembered that it was a birthday present from his grandmother"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did Mr. Halvorsen say Tariq was doing wrong?",
+					"correct": "Leaning back too far",
+					"wrong": [
+						"Kicking with the wrong foot",
+						"Running at the ball too slowly",
+						"Looking away from the ball"
+					],
+					"explanation": "Mr. Halvorsen says, \"You lean back too far,\" and that is why the ball goes so high.",
+					"evidence": [
+						"But you lean back too far"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What do the photograph and the kicking advice suggest about Mr. Halvorsen?",
+					"correct": "He knows about soccer from playing it himself.",
+					"wrong": [
+						"He has never played any sports.",
+						"He wants Tariq to stop playing soccer.",
+						"He has never seen a soccer ball before."
+					],
+					"explanation": "He fixes Tariq's kick right away, and the old photograph shows a young goalkeeper by his door. Together they suggest he played soccer when he was young.",
+					"evidence": [
+						"showed Tariq how to keep his body over the ball",
+						"a young man in a goalkeeper's shirt"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main idea of the story?",
+					"correct": "A neighbor who seems unfriendly can become a friend.",
+					"wrong": [
+						"Soccer balls should never be kicked hard.",
+						"Tomato plants need a lot of care.",
+						"It is best to stay away from grumpy people."
+					],
+					"explanation": "Tariq is afraid of Mr. Halvorsen at first, but after he is honest, they help each other every week, and the Keep Out sign comes down.",
+					"evidence": [
+						"After that, Tariq visited every Saturday",
+						"the sign on the gate was gone"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-robot-race",
+			"title": "The Robot Race",
+			"paragraphs": [
+				"For the school robot race, each team had to build a small robot that could follow a black line taped across the gym floor. Ingrid and Malik were partners. Ingrid loved writing code on the computer, and Malik loved building things with his hands. They spent two weeks after school putting their robot together. It had two wheels, a small battery, and a sensor underneath that could tell black from white. They named it Sprocket.",
+				"On the morning of the race, Sprocket rolled forward, wobbled, and drove straight off the line. Malik groaned. Ingrid stared at her code, but she could not find a single mistake. \"It worked perfectly yesterday,\" she said. Their turn was in thirty minutes.",
+				"Malik got down on his knees and watched Sprocket carefully. He noticed that the robot always turned toward the left. He picked it up and spun each wheel with his finger. The right wheel turned smoothly, but the left one rubbed against a loose screw. \"Found it!\" he said. He tightened the screw while Ingrid held the robot still.",
+				"When their names were called, Sprocket rolled onto the starting line. This time it hummed along the tape, around both curves, and over the finish line. It was not the fastest robot in the gym. A team of fifth graders won first place, and Sprocket came in second.",
+				"Ingrid and Malik didn't mind. On the bus ride home, they were already sketching ideas for next year. Ingrid wanted to make the code faster around the curves. Malik wanted bigger wheels. \"And this time,\" Ingrid said, \"you check the screws, and I'll check the code.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did each robot have to do in the race?",
+					"correct": "Follow a black line on the gym floor",
+					"wrong": [
+						"Climb up a ramp in the gym",
+						"Pick up a ball and carry it",
+						"Answer questions from the judges"
+					],
+					"explanation": "The story says each robot had to follow a black line taped across the gym floor.",
+					"evidence": [
+						"follow a black line taped across the gym floor"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What was wrong with Sprocket on the morning of the race?",
+					"correct": "A loose screw rubbed against a wheel.",
+					"wrong": [
+						"There was a mistake in the code.",
+						"Its battery was almost empty.",
+						"One of its wheels had fallen off."
+					],
+					"explanation": "Malik found that the left wheel rubbed against a loose screw. Ingrid could not find any mistake in the code.",
+					"evidence": [
+						"the left one rubbed against a loose screw"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Malik watch Sprocket so carefully?",
+					"correct": "He hoped the way it moved would show him the problem.",
+					"wrong": [
+						"He wanted to see if it was faster than the others.",
+						"He was waiting for Ingrid to finish her lunch.",
+						"He was trying to think of a better name for it."
+					],
+					"explanation": "By watching, he noticed that it always turned left, and that led him to the rubbing wheel.",
+					"evidence": [
+						"He noticed that the robot always turned toward the left"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did Ingrid and Malik most likely feel about coming in second?",
+					"correct": "Proud and eager to build again",
+					"wrong": [
+						"Upset and ready to quit",
+						"Angry at the fifth graders",
+						"Bored and tired of robots"
+					],
+					"explanation": "They didn't mind, and on the way home they were already planning next year's robot.",
+					"evidence": [
+						"Ingrid and Malik didn't mind",
+						"they were already sketching ideas for next year"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened first?",
+					"correct": "Sprocket drove off the line.",
+					"wrong": [
+						"Malik tightened the screw.",
+						"Sprocket crossed the finish line.",
+						"The partners sketched new ideas."
+					],
+					"explanation": "Sprocket drove off the line on the morning of the race. Malik then found and tightened the screw, Sprocket finished second, and they sketched ideas on the bus.",
+					"evidence": [
+						"Sprocket rolled forward, wobbled, and drove straight off the line"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-market-mistake",
+			"title": "The Market Mistake",
+			"paragraphs": [
+				"Every Saturday in summer, Mei helped her parents sell vegetables at the farmers market. Her job was the money box. She liked counting out change, and she was quick at adding numbers in her head. A bunch of carrots cost two dollars, a basket of peas cost three dollars, and a big bag of green beans cost four.",
+				"Late one morning, the market was so crowded that Mei could hardly keep up. A woman in a yellow hat bought peas and green beans and handed Mei a ten-dollar bill. Mei counted the change into her hand. Then the woman was gone, and the next customer was already waiting.",
+				"A few minutes later, Mei glanced at the money box and frowned. Something was not right. She added the numbers again in her head. Peas and green beans came to seven dollars, so the change should have been three dollars. But she had only handed the woman one.",
+				"Mei's stomach felt tight as she explained the problem to her dad, who looked at the long line of customers. \"Can you find her?\" he asked. Mei nodded. She took two dollar bills from the box and slipped through the crowd. She looked for the yellow hat at the honey stand, the bread stand, and the flower stand. At last she spotted it by the apple carts.",
+				"\"Excuse me,\" Mei said, a little out of breath. \"I made a mistake with your change. Here are the two dollars I owe you.\" The woman looked surprised at first, and then she smiled warmly. \"I never would have noticed,\" she said. \"Thank you for being so honest.\" The next Saturday, the woman in the yellow hat came to their stand first, and she brought two friends with her."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How much did the peas and green beans cost together?",
+					"correct": "Seven dollars",
+					"wrong": [
+						"Five dollars",
+						"Ten dollars",
+						"Three dollars"
+					],
+					"explanation": "Mei adds it up again: peas and green beans came to seven dollars.",
+					"evidence": [
+						"Peas and green beans came to seven dollars"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Mei most likely make a mistake with the change?",
+					"correct": "The market was busy, and she was rushing.",
+					"wrong": [
+						"She did not know how to add numbers.",
+						"The woman did not pay her enough.",
+						"Her dad told her the wrong prices."
+					],
+					"explanation": "Mei is quick at adding, but the market was so crowded she could hardly keep up, and the next customer was already waiting.",
+					"evidence": [
+						"the market was so crowded that Mei could hardly keep up"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where did Mei finally find the woman?",
+					"correct": "By the apple carts",
+					"wrong": [
+						"At the honey stand",
+						"At the bread stand",
+						"By the flower stand"
+					],
+					"explanation": "Mei looked at the honey, bread and flower stands first, and at last spotted the yellow hat by the apple carts.",
+					"evidence": [
+						"At last she spotted it by the apple carts"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the woman come to Mei's stand first the next Saturday?",
+					"correct": "She trusted the family because Mei had been honest.",
+					"wrong": [
+						"She wanted to ask for more change.",
+						"She had left her yellow hat there.",
+						"The other stands were closed that day."
+					],
+					"explanation": "She thanked Mei for being honest, and she came back first and brought friends, which shows she trusted them.",
+					"evidence": [
+						"Thank you for being so honest",
+						"came to their stand first, and she brought two friends with her"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 3, what does \"glanced\" mean?",
+					"correct": "Looked quickly",
+					"wrong": [
+						"Counted slowly",
+						"Pointed angrily",
+						"Listened closely"
+					],
+					"explanation": "Mei glanced at the money box for a moment, a quick look, before she frowned and started adding again.",
+					"evidence": [
+						"Mei glanced at the money box and frowned"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-solo",
+			"title": "The Solo",
+			"paragraphs": [
+				"When Mr. Brooks announced that Adaeze would sing the solo at the spring concert, the whole choir clapped. Adaeze smiled, but her hands felt cold. She loved to sing in the shower, in the car, and while she walked the dog. Singing alone in front of three hundred people was a completely different thing.",
+				"Every evening for three weeks, she practiced the song in her bedroom. She sang it for her mother, for her little cousins, and even for the goldfish. Her mother gave her one piece of advice. \"Pick one friendly face in the crowd,\" she said. \"Then sing to that person as if no one else is there.\"",
+				"On the night of the concert, the gym was packed. Folding chairs filled the floor, and people stood along the back wall. When it was time for the solo, Adaeze stepped up to the microphone. Her knees were shaking. She took a breath and began the first line.",
+				"On the highest note, her voice cracked. It made a squeaky sound, like a door that needs oil. A few people in the front row giggled. For one terrible second, Adaeze wanted to run off the stage. Then she found her grandmother in the third row, smiling and nodding. Adaeze lifted her chin and kept singing.",
+				"When the song ended, the audience stood up and cheered. Afterward, Mr. Brooks shook her hand. \"Anyone can sing a song when everything goes right,\" he said. \"It takes a real performer to finish strong when something goes wrong.\" Adaeze thought about that all the way home. By the time she reached her front door, she had decided to try out for the solo again next year."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What advice did Adaeze's mother give her?",
+					"correct": "Sing to one friendly face in the crowd.",
+					"wrong": [
+						"Practice the song one more time.",
+						"Close your eyes while you sing.",
+						"Sing a little more quietly."
+					],
+					"explanation": "Her mother told her to pick one friendly face and sing to that person as if no one else is there.",
+					"evidence": [
+						"Pick one friendly face in the crowd"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What happened when Adaeze sang the highest note?",
+					"correct": "Her voice cracked.",
+					"wrong": [
+						"The microphone stopped working.",
+						"She forgot the words.",
+						"The choir started singing too early."
+					],
+					"explanation": "The story says that on the highest note, her voice cracked and made a squeaky sound.",
+					"evidence": [
+						"On the highest note, her voice cracked"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Adaeze look for her grandmother in the crowd?",
+					"correct": "She was following her mother's advice about a friendly face.",
+					"wrong": [
+						"She wanted her grandmother to take a picture.",
+						"She wanted to check whether her grandmother was giggling.",
+						"She was looking for an empty seat to sit in."
+					],
+					"explanation": "Her mother told her to find one friendly face. Right after her voice cracked, she found her smiling grandmother and kept singing.",
+					"evidence": [
+						"Pick one friendly face in the crowd",
+						"found her grandmother in the third row, smiling and nodding"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Mr. Brooks mean when he spoke to Adaeze after the song?",
+					"correct": "She did well because she kept going after a mistake.",
+					"wrong": [
+						"She should practice more before the next concert.",
+						"Her voice was too quiet for the big gym.",
+						"She should let someone else sing the solo."
+					],
+					"explanation": "He says it takes a real performer to finish strong when something goes wrong, and her voice had cracked but she kept singing.",
+					"evidence": [
+						"It takes a real performer to finish strong when something goes wrong"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main idea of the story?",
+					"correct": "It takes courage to keep going after a mistake.",
+					"wrong": [
+						"Singing alone is easy with enough practice.",
+						"The best singers never feel nervous.",
+						"A singer should stop if something goes wrong."
+					],
+					"explanation": "Adaeze is nervous and her voice cracks, but she keeps singing, and she learns that finishing strong matters most.",
+					"evidence": [
+						"Adaeze lifted her chin and kept singing",
+						"finish strong when something goes wrong"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-map-in-the-book",
+			"title": "The Map in the Book",
+			"paragraphs": [
+				"Callum loved the used bookstore on Water Street because every book there had a history. One rainy afternoon, he bought a thick old book about trains for one dollar. When he opened it at home, a folded piece of paper slid out onto the floor. It was a hand-drawn map of his own town, but something about it looked strange.",
+				"Callum spread the map on the table. He recognized the river, the park, and Main Street. But a dotted line ran down the middle of Main Street, and little squares were drawn along it with labels like \"Elm Stop\" and \"Mill Stop.\" At the top, someone had written \"Trolley Line, 1912\" in curly handwriting.",
+				"Callum had never seen a trolley in his town. He asked his dad, who shrugged and said, \"Before my time.\" So on Saturday, Callum took the map to the town museum. A woman named Ms. Varga studied it with a magnifying glass. Her eyebrows went up. \"Where did you find this?\" she asked.",
+				"Ms. Varga explained that trolleys were like small trains that ran on rails in the street. Electric wires above the street gave them power. Long ago, people rode the trolley to work, to school, and to the lake. Later, when more families bought cars, the trolley stopped running, and the rails were covered by new roads. The museum had photographs of the trolley, but no one had ever found a map of every stop.",
+				"The museum asked if they could make a copy of Callum's map for a new display. A month later, Callum and his dad went to see it. The copy hung in a glass case next to a photo of a trolley full of smiling passengers. A small card under it said, \"Found by Callum Reid.\" On the way home, Callum walked slowly down Main Street and tried to guess where Elm Stop had been."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where did Callum find the map?",
+					"correct": "Inside an old book about trains",
+					"wrong": [
+						"In a drawer at the town museum",
+						"Under a box in his dad's closet",
+						"Taped to a wall at the bookstore"
+					],
+					"explanation": "He bought an old book about trains, and when he opened it at home, the folded map slid out.",
+					"evidence": [
+						"he bought a thick old book about trains",
+						"a folded piece of paper slid out onto the floor"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What does the dotted line on the map most likely show?",
+					"correct": "The path the trolley took through town",
+					"wrong": [
+						"A trail for people walking their dogs",
+						"Where the river used to flow",
+						"The edge of the town park"
+					],
+					"explanation": "The map is labeled \"Trolley Line,\" and the squares along the dotted line are named stops, so the line shows where the trolley ran.",
+					"evidence": [
+						"a dotted line ran down the middle of Main Street",
+						"Trolley Line, 1912"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ms. Varga's eyebrows go up?",
+					"correct": "She could tell the map was rare and important.",
+					"wrong": [
+						"She could not read the curly handwriting.",
+						"She was upset that the map had been folded.",
+						"She thought it showed a different town."
+					],
+					"explanation": "The museum had photographs of the trolley but had never found a map of every stop, so Callum's map surprised her.",
+					"evidence": [
+						"no one had ever found a map of every stop"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did the trolley stop running?",
+					"correct": "More families bought cars.",
+					"wrong": [
+						"The river flooded the rails.",
+						"A storm broke the electric wires.",
+						"People stopped going to the lake."
+					],
+					"explanation": "Ms. Varga says that when more families bought cars, the trolley stopped running.",
+					"evidence": [
+						"when more families bought cars, the trolley stopped running"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What did Callum do right after his dad said, \"Before my time\"?",
+					"correct": "He took the map to the town museum.",
+					"wrong": [
+						"He bought a book about trains.",
+						"He looked for Elm Stop on Main Street.",
+						"He went to see the new display."
+					],
+					"explanation": "His dad did not know about the trolley, so on Saturday Callum took the map to the museum.",
+					"evidence": [
+						"So on Saturday, Callum took the map to the town museum"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-bake-sale-budget",
+			"title": "The Bake Sale Budget",
+			"paragraphs": [
+				"The school library needed new beanbag chairs. Leila and her friends Theo and Jonah wanted to help, so they planned a bake sale. Their teacher gave them a budget of twenty dollars to buy supplies. Anything they earned after that would go to the library. Leila made a list right away. \"Chocolate chip cookies,\" she said. \"Everybody loves those.\"",
+				"At the store, the three friends added up what they needed. Chocolate chips, butter, flour, sugar, and eggs came to twenty-six dollars. That was six dollars over their budget. Theo wanted to buy fewer chocolate chips. Jonah wanted to skip the eggs. Leila said the cookies would fall apart without them.",
+				"Then Leila noticed a big sale sign by the bananas. Brown, spotty bananas were only ten cents each. Her grandmother baked banana muffins with bananas just like those. Leila called her and wrote the recipe on the back of her list. Banana muffins needed flour, sugar, eggs, butter, and bananas, but no chocolate chips at all. The new total was fifteen dollars.",
+				"Theo frowned. \"Will people really buy muffins made from old bananas?\" Leila grinned. \"Spotty bananas are the sweetest ones,\" she said. With the five dollars they had left, the friends bought a small bag of chocolate chips anyway and sprinkled a few on top of each muffin.",
+				"On the day of the sale, the muffins were gone before lunch. The friends earned ninety dollars, which was enough for one beanbag chair. The librarian put a sign on it that said, \"Thank you, Muffin Team!\" Theo admitted that the spotty bananas had been a good idea after all."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How much money did the friends have to spend on supplies?",
+					"correct": "Twenty dollars",
+					"wrong": [
+						"Fifteen dollars",
+						"Six dollars",
+						"Ninety dollars"
+					],
+					"explanation": "Their teacher gave them a budget of twenty dollars to buy supplies.",
+					"evidence": [
+						"a budget of twenty dollars to buy supplies"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the friends switch from cookies to muffins?",
+					"correct": "The cookie supplies cost more than they could spend.",
+					"wrong": [
+						"Nobody at school liked cookies.",
+						"The store had run out of flour.",
+						"Their teacher asked for muffins."
+					],
+					"explanation": "The cookie supplies came to twenty-six dollars, six dollars over their budget, and the muffins cost only fifteen.",
+					"evidence": [
+						"That was six dollars over their budget",
+						"The new total was fifteen dollars"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this story, what is a budget?",
+					"correct": "An amount of money set aside to spend",
+					"wrong": [
+						"A list of things to bake",
+						"A sign that shows a sale price",
+						"A recipe from a grandmother"
+					],
+					"explanation": "The budget is the twenty dollars the friends were given to spend on supplies. Going over it meant spending more than they had.",
+					"evidence": [
+						"a budget of twenty dollars to buy supplies"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did the friends buy with the five dollars they had left?",
+					"correct": "A small bag of chocolate chips",
+					"wrong": [
+						"More spotty bananas",
+						"Paper cups for the muffins",
+						"A sign for the bake sale"
+					],
+					"explanation": "With the five dollars left, they bought a small bag of chocolate chips to sprinkle on top.",
+					"evidence": [
+						"the friends bought a small bag of chocolate chips anyway"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Theo change his mind about the spotty bananas?",
+					"correct": "The muffins sold quickly and earned money for the library.",
+					"wrong": [
+						"He baked all of the muffins by himself.",
+						"He had always liked bananas best.",
+						"The librarian told him to say so."
+					],
+					"explanation": "Theo doubted that people would buy them, but the muffins were gone before lunch and earned ninety dollars.",
+					"evidence": [
+						"Will people really buy muffins made from old bananas?",
+						"the muffins were gone before lunch"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-chess-surprise",
+			"title": "The Chess Surprise",
+			"paragraphs": [
+				"Ravi had been playing chess for two years, and he almost always won. He played against his dad, his friends at chess club, and sometimes a computer program. So when his little sister, Anya, asked to play, Ravi laughed. \"You don't even know how the knight moves,\" he said. Anya just set up the pieces and waited.",
+				"Ravi moved quickly, without thinking much, because he was certain the game would be over in ten minutes. But Anya studied the board for a long time before every move. She protected her queen carefully and moved her knights in their tricky L shapes. After twenty minutes, Ravi realized that he had lost two pawns and a bishop.",
+				"Ravi began to slow down. He leaned over the board and rested his chin in his hands. He tried a clever trap with his rook, but Anya saw it coming and moved her king out of the way. Then she slid her queen across the board. \"Checkmate,\" she said quietly.",
+				"Ravi stared at the board, and his face felt hot. For a moment, he wanted to say that he had not really been trying. Then he looked at Anya. She was grinning, but she also looked a little nervous, as if she was waiting to see what he would say.",
+				"Ravi took a deep breath and held out his hand. \"Good game,\" he said. \"Where did you learn to play like that?\" Anya pointed to the bookshelf. For the past three months, she had been reading his old chess books every night before bed. Ravi shook his head and laughed, and then he arranged the pieces again. \"Best two out of three?\" he asked."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How did Anya learn to play chess so well?",
+					"correct": "She read Ravi's old chess books.",
+					"wrong": [
+						"Her dad taught her at chess club.",
+						"She played a computer program.",
+						"Ravi gave her lessons every week."
+					],
+					"explanation": "Anya points to the bookshelf: she had been reading Ravi's old chess books every night for three months.",
+					"evidence": [
+						"she had been reading his old chess books every night before bed"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Which piece did Anya move to win the game?",
+					"correct": "Her queen",
+					"wrong": [
+						"Her king",
+						"Her rook",
+						"Her knight"
+					],
+					"explanation": "Anya slid her queen across the board and said, \"Checkmate.\"",
+					"evidence": [
+						"Then she slid her queen across the board"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ravi lose pieces early in the game?",
+					"correct": "He did not take the game seriously at first.",
+					"wrong": [
+						"He did not know how the pieces moved.",
+						"Anya kept changing the rules.",
+						"He was too tired to play well."
+					],
+					"explanation": "He expected to win in ten minutes, so he moved quickly without thinking. He only slowed down after he had lost pieces.",
+					"evidence": [
+						"Ravi moved quickly, without thinking much",
+						"he was certain the game would be over in ten minutes"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Anya look a little nervous after she won?",
+					"correct": "She was not sure whether Ravi would be upset.",
+					"wrong": [
+						"She thought she had made a wrong move.",
+						"She was worried about losing a piece.",
+						"She wanted to go to bed early."
+					],
+					"explanation": "She seemed to be waiting to see what Ravi would say, after beating a big brother who had laughed at her.",
+					"evidence": [
+						"as if she was waiting to see what he would say"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What lesson does Ravi learn in this story?",
+					"correct": "Do not decide that someone will be easy to beat.",
+					"wrong": [
+						"Chess is a game for older children.",
+						"The fastest moves are the best moves.",
+						"Losing a game is never any fun."
+					],
+					"explanation": "Ravi laughed at his little sister and played carelessly, and she beat him because she had studied and played carefully.",
+					"evidence": [
+						"Ravi laughed",
+						"Checkmate"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-kite-that-would-not-fly",
+			"title": "The Kite That Would Not Fly",
+			"paragraphs": [
+				"Bao spent a whole Sunday building a kite. He used two thin sticks, a sheet of red paper, glue, and a long ball of string. On the front, he painted a dragon with gold eyes and a curling tail. When it was finished, he hung it on his bedroom wall and admired it all evening.",
+				"The next Saturday was breezy, so Bao and his dad carried the kite to the top of the hill in the park. Bao held the string, and his dad lifted the kite into the wind. It rose for a second, but then it spun around in circles and crashed nose first into the grass. They tried again and again. Each time, the kite spun and tumbled down.",
+				"Bao sat down on the grass and crossed his arms, ready to go home. His dad picked up the kite and turned it over. \"I think it needs a real tail,\" he said. \"A tail adds a little weight at the bottom. It keeps the kite pointing up into the wind, so it doesn't spin.\"",
+				"They didn't have any ribbon or string to spare. Bao looked around the hilltop, and then he pulled off the long striped scarf that his grandmother had knitted for him. His dad tied one end to the bottom of the kite. Bao held his breath as his dad tossed the kite into the air one more time.",
+				"This time, the kite climbed higher and higher. The dragon swayed back and forth, and the striped scarf waved below it. Other children on the hill stopped to watch in amazement. Bao let out more string until the kite was a small red speck against the clouds. That evening, he made a proper tail out of old ribbons. But he decided to keep the scarf with the kite, just in case."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Bao paint on the front of his kite?",
+					"correct": "A dragon",
+					"wrong": [
+						"A tiger",
+						"A bird",
+						"A ship"
+					],
+					"explanation": "The story says he painted a dragon with gold eyes on the front.",
+					"evidence": [
+						"he painted a dragon with gold eyes"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "According to Bao's dad, what does a tail do for a kite?",
+					"correct": "It keeps the kite pointing into the wind.",
+					"wrong": [
+						"It makes the kite lighter.",
+						"It helps the kite go faster.",
+						"It makes the kite easier to see."
+					],
+					"explanation": "His dad says a tail adds weight at the bottom and keeps the kite pointing up into the wind, so it doesn't spin.",
+					"evidence": [
+						"It keeps the kite pointing up into the wind"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Bao sit down and cross his arms?",
+					"correct": "He was frustrated that the kite kept falling.",
+					"wrong": [
+						"He was waiting for his turn to hold the string.",
+						"He was cold and wanted to put on his scarf.",
+						"He wanted to paint the kite a new color."
+					],
+					"explanation": "They had tried again and again, and each time the kite spun and fell, so he was ready to give up and go home.",
+					"evidence": [
+						"Each time, the kite spun and tumbled down",
+						"ready to go home"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Bao use his scarf?",
+					"correct": "It was long, and they had nothing else to make a tail.",
+					"wrong": [
+						"He wanted to show his grandmother the kite.",
+						"He was too warm and wanted to take it off.",
+						"His dad needed it to wipe the kite clean."
+					],
+					"explanation": "The kite needed a tail, but they had no ribbon or string to spare, and the long scarf could do the job.",
+					"evidence": [
+						"They didn't have any ribbon or string to spare"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened last?",
+					"correct": "Bao made a tail out of old ribbons.",
+					"wrong": [
+						"The kite crashed into the grass.",
+						"Bao painted a dragon on the kite.",
+						"Bao's dad tied the scarf to the kite."
+					],
+					"explanation": "The ribbon tail came that evening, after the kite had finally flown with the scarf.",
+					"evidence": [
+						"That evening, he made a proper tail out of old ribbons"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-lunchroom-detectives",
+			"title": "The Lunchroom Detectives",
+			"paragraphs": [
+				"Zainab noticed it first. Every day after lunch, the big trash cans in the cafeteria were stuffed to the top. Half-eaten apples, banana peels, and crusts of bread spilled over the edges. \"That's a lot of food going to waste,\" she said to her friend Eli. Eli shrugged. \"It's just trash.\" But Zainab wasn't so sure.",
+				"She asked her teacher, Mrs. Abara, if their group could study the problem for a science project. For one week, Zainab, Eli, and two other classmates sorted the lunch trash while wearing rubber gloves. They put food scraps in one bucket, and they put paper, plastic, and everything else in another. Each afternoon, they weighed the buckets and wrote the numbers in a chart.",
+				"The results surprised everyone. More than half of the weight in the trash cans was food, and most of it was fruit and vegetable scraps. Zainab's grandfather kept a compost bin in his garden, where scraps rotted into rich, dark soil. If the school had compost bins, she thought, all those apple cores and peels could feed plants instead of filling up a landfill.",
+				"The group made a poster with their chart and gave a short talk to the principal. Eli explained the numbers, and Zainab explained how compost works. The principal asked a lot of questions. Then she said they could try two compost bins behind the school garden for one month.",
+				"At first, students kept throwing their scraps in the regular trash out of habit. So the group made bright green signs that said \"Food Scraps Here!\" and took turns standing by the bins at lunch. By the end of the month, the trash cans were only half full. The next spring, the school garden grew its biggest tomatoes ever. Eli admitted that it wasn't just trash after all."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How did the group find out how much of the trash was food?",
+					"correct": "They sorted the trash and weighed it.",
+					"wrong": [
+						"They asked the lunch workers to guess.",
+						"They counted the trash cans each day.",
+						"They read a book about school lunches."
+					],
+					"explanation": "They sorted food scraps into one bucket and everything else into another, then weighed the buckets every afternoon.",
+					"evidence": [
+						"they weighed the buckets and wrote the numbers in a chart"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is compost?",
+					"correct": "Food scraps that rot into rich soil",
+					"wrong": [
+						"A kind of trash can for plastic",
+						"A chart that shows numbers",
+						"A tool for weighing buckets"
+					],
+					"explanation": "Zainab's grandfather has a compost bin, where scraps rot into rich, dark soil.",
+					"evidence": [
+						"where scraps rotted into rich, dark soil"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did the principal let the group try?",
+					"correct": "Two compost bins for one month",
+					"wrong": [
+						"A garden for every class",
+						"A longer lunch period",
+						"A poster contest for the school"
+					],
+					"explanation": "The principal said they could try two compost bins behind the school garden for one month.",
+					"evidence": [
+						"they could try two compost bins behind the school garden for one month"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the group take turns standing by the bins at lunch?",
+					"correct": "To remind students where to put their food scraps",
+					"wrong": [
+						"To sell tomatoes to the students",
+						"To count how many students ate lunch",
+						"To keep animals away from the bins"
+					],
+					"explanation": "Students kept putting scraps in the regular trash out of habit, so the group stood by the bins to help them remember.",
+					"evidence": [
+						"students kept throwing their scraps in the regular trash out of habit"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What most likely helped the school garden grow its biggest tomatoes ever?",
+					"correct": "Soil made from the lunch scraps",
+					"wrong": [
+						"The bright green signs",
+						"The rubber gloves",
+						"The poster with the chart"
+					],
+					"explanation": "Compost turns scraps into rich soil that feeds plants, and the school had been composting its lunch scraps since the month before.",
+					"evidence": [
+						"scraps rotted into rich, dark soil",
+						"could feed plants instead of filling up a landfill"
+					]
+				}
+			]
+		},
+		{
+			"id": "tiny-tardigrades",
+			"title": "Tiny Tardigrades",
+			"paragraphs": [
+				"If you collect a clump of damp moss and look at it under a microscope, you might spot a strange little creature. It has a round body, eight stubby legs, and tiny claws. It moves slowly, like a bear lumbering through the woods. Scientists call it a tardigrade, but many people call it a water bear.",
+				"Tardigrades are very small. Most are less than half a millimeter long, about the size of a grain of salt. Yet they live almost everywhere on Earth. They have been found on mountaintops, in deep oceans, in hot springs, and under thick ice. Many live right in backyard moss.",
+				"What makes tardigrades famous is how tough they are. When their home dries out, a tardigrade pulls in its legs and head and curls into a tiny dry ball called a tun. In this state, its body almost stops working. It does not eat, drink, or move. A tardigrade can stay this way for years. When water returns, it slowly uncurls and begins to crawl again.",
+				"Tardigrades in the tun state can survive things that would harm almost any other animal. They can live through freezing cold, and even great heat for a short time. In 2007, scientists even sent dried tardigrades into space on the outside of a spacecraft. When the tardigrades came back to Earth and got wet, some of them woke up and went on living.",
+				"Tardigrades are not superheroes, though. Most of the time, they need a thin film of water around them to stay active. Scientists hope that studying them could teach people new ways to protect things that dry out, such as medicines and seeds."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What is another name for a tardigrade?",
+					"correct": "A water bear",
+					"wrong": [
+						"A moss bug",
+						"A salt crab",
+						"A sea spider"
+					],
+					"explanation": "The passage says many people call a tardigrade a water bear.",
+					"evidence": [
+						"many people call it a water bear"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is a tun?",
+					"correct": "A dry ball a tardigrade curls into",
+					"wrong": [
+						"A tardigrade's tiny claw",
+						"A clump of damp moss",
+						"A spacecraft for small animals"
+					],
+					"explanation": "When its home dries out, a tardigrade curls into a tiny dry ball called a tun.",
+					"evidence": [
+						"curls into a tiny dry ball called a tun"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did scientists do with tardigrades in 2007?",
+					"correct": "Sent them into space",
+					"wrong": [
+						"Froze them in a block of ice",
+						"Found them in a hot spring",
+						"Taught them to climb"
+					],
+					"explanation": "In 2007, scientists sent dried tardigrades into space on the outside of a spacecraft.",
+					"evidence": [
+						"scientists even sent dried tardigrades into space"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How does turning into a tun help a tardigrade?",
+					"correct": "It lets the tardigrade wait until there is water again.",
+					"wrong": [
+						"It helps the tardigrade move faster.",
+						"It lets the tardigrade catch more food.",
+						"It makes the tardigrade grow bigger."
+					],
+					"explanation": "A tun can last for years without food or water, and it uncurls when water returns, so the tardigrade survives the dry time.",
+					"evidence": [
+						"A tardigrade can stay this way for years",
+						"When water returns, it slowly uncurls"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why might tardigrades help scientists protect medicines?",
+					"correct": "Tardigrades can dry out for a long time and still survive.",
+					"wrong": [
+						"Tardigrades eat medicines and seeds.",
+						"Tardigrades make medicine inside their bodies.",
+						"Tardigrades are bigger than most seeds."
+					],
+					"explanation": "Medicines and seeds can be harmed when they dry out. Tardigrades survive drying out, so learning how they do it might help.",
+					"evidence": [
+						"A tardigrade can stay this way for years",
+						"protect things that dry out, such as medicines and seeds"
+					]
+				}
+			]
+		},
+		{
+			"id": "termite-towers",
+			"title": "Termite Towers",
+			"paragraphs": [
+				"In the grasslands of Africa, some termites build towers of dirt that rise taller than a grown-up. From the outside, a termite mound looks like a lumpy pile of hard mud. Inside, it is full of tunnels and rooms. Millions of termites can live in a single colony.",
+				"Termites build their mounds one tiny bit at a time. Worker termites mix soil with their spit to make a kind of mud. They carry it in their mouths and press it into place. When the mud dries in the sun, it becomes almost as hard as brick. A tall mound can take years to build.",
+				"Most of the colony does not live in the tall tower. The queen, the workers, and the young termites live in a nest underground, below the mound. The tower above works like a giant chimney. Air moves through tunnels in its walls. It carries fresh air down toward the nest and lets stale air and extra heat escape.",
+				"Some of these termites are also farmers. They gather bits of dead grass and wood and carry them into special rooms in the nest. There, they grow a fungus that helps break down the plant material. The termites eat the fungus and the softened plants. The fungus needs steady warmth and damp air to grow, so the mound's moving air helps the farm too.",
+				"Engineers have studied termite mounds to learn how to cool buildings without using much electricity. A large office building in Zimbabwe was designed with ideas from termite mounds. Like a mound, it uses openings and chimneys to move air, so it stays comfortable inside even on hot days."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What do worker termites mix with soil to build a mound?",
+					"correct": "Their spit",
+					"wrong": [
+						"River water",
+						"Dead grass",
+						"Tree sap"
+					],
+					"explanation": "The passage says worker termites mix soil with their spit to make a kind of mud.",
+					"evidence": [
+						"Worker termites mix soil with their spit"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where does the termite queen live?",
+					"correct": "In a nest underground",
+					"wrong": [
+						"At the very top of the tower",
+						"In a hollow tree nearby",
+						"Out in the open grass"
+					],
+					"explanation": "The queen, the workers and the young termites live in a nest underground, below the mound.",
+					"evidence": [
+						"live in a nest underground, below the mound"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What would most likely happen to the fungus if air stopped moving through the mound?",
+					"correct": "It could get too hot and stop growing well.",
+					"wrong": [
+						"It would grow faster than before.",
+						"It would turn as hard as brick.",
+						"It would float up the chimney."
+					],
+					"explanation": "The moving air lets extra heat escape, and the fungus needs steady warmth. Without the airflow, heat would build up.",
+					"evidence": [
+						"lets stale air and extra heat escape",
+						"The fungus needs steady warmth and damp air to grow"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does the passage say the tower works like a chimney?",
+					"correct": "Air flows through it and carries heat out.",
+					"wrong": [
+						"It is made of bricks like a house.",
+						"The termites light fires inside it.",
+						"The termites climb out of its top."
+					],
+					"explanation": "A chimney lets smoke and heat rise out of a house. The tower's tunnels move air and let stale air and heat escape in the same way.",
+					"evidence": [
+						"The tower above works like a giant chimney",
+						"lets stale air and extra heat escape"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main idea of the passage?",
+					"correct": "Termite mounds are cleverly built homes that help termites live.",
+					"wrong": [
+						"Termites are pests that harm buildings.",
+						"Termites live only in Zimbabwe.",
+						"Fungus is the best food for insects."
+					],
+					"explanation": "The passage explains how termites build mounds and how the mound's design keeps the colony and its fungus farm alive, so well that engineers copy it.",
+					"evidence": [
+						"The tower above works like a giant chimney",
+						"Engineers have studied termite mounds"
+					]
+				}
+			]
+		},
+		{
+			"id": "islands-made-of-fire",
+			"title": "Islands Made of Fire",
+			"paragraphs": [
+				"The Hawaiian Islands sit in the middle of the Pacific Ocean. They are more than two thousand miles from the nearest continent. They did not break off from some larger piece of land. Every one of them was built by volcanoes, layer by layer, starting at the bottom of the sea.",
+				"Deep under this part of the ocean floor is a hot spot. It is a place where melted rock rises from far inside the Earth. The melted rock is called magma. When it pours out of the ocean floor, it is called lava. Each time lava cools, it hardens into a new layer of rock. After thousands of eruptions, the pile of rock can grow tall enough to rise above the waves. Then it is an island.",
+				"The hot spot stays in one place. But the ocean floor above it moves very slowly, a few inches each year. Over millions of years, each island is carried away from the hot spot, and its volcanoes stop erupting. Then a new volcano begins to grow over the hot spot. That is why the islands form a long chain.",
+				"Because of this, the islands are different ages. Kauai, in the northwest, is about five million years old. Its old volcanoes have worn down into steep green cliffs and deep valleys. The Big Island of Hawaii, in the southeast, is the youngest. It sits over the hot spot today, and its volcano Kilauea still erupts.",
+				"The next island has already started. About twenty miles off the coast of the Big Island, an underwater volcano is slowly growing. Its top is still more than three thousand feet below the waves. Scientists think it will not reach the air for tens of thousands of years, so no one alive today will ever stand on it."
+			],
+			"questions": [
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is magma?",
+					"correct": "Melted rock deep inside the Earth",
+					"wrong": [
+						"Rock that has cooled into an island",
+						"A wave that crashes on the shore",
+						"A deep green valley"
+					],
+					"explanation": "The passage says melted rock rises from far inside the Earth, and that melted rock is called magma. Once it pours out, it is called lava.",
+					"evidence": [
+						"The melted rock is called magma"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "About how old is Kauai?",
+					"correct": "About five million years old",
+					"wrong": [
+						"About five thousand years old",
+						"About fifty years old",
+						"About five hundred years old"
+					],
+					"explanation": "The passage says Kauai is about five million years old.",
+					"evidence": [
+						"is about five million years old"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why do the Hawaiian Islands form a long chain?",
+					"correct": "The ocean floor moves slowly over the hot spot.",
+					"wrong": [
+						"The volcanoes are joined by tunnels.",
+						"Waves pushed the islands into a line.",
+						"The hot spot moves from place to place."
+					],
+					"explanation": "The hot spot stays in one place while the ocean floor carries each island away, and a new volcano grows behind it.",
+					"evidence": [
+						"the ocean floor above it moves very slowly",
+						"That is why the islands form a long chain"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why do Kauai's volcanoes no longer erupt?",
+					"correct": "Kauai has moved far away from the hot spot.",
+					"wrong": [
+						"The ocean water put out the fire.",
+						"Kauai is too small to hold any lava.",
+						"The magma under Kauai turned to sand."
+					],
+					"explanation": "Islands stop erupting once they are carried away from the hot spot. Kauai is the oldest island, so it has traveled the farthest.",
+					"evidence": [
+						"each island is carried away from the hot spot, and its volcanoes stop erupting",
+						"is about five million years old"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why will no one alive today stand on the newest island?",
+					"correct": "It will take far longer than a lifetime to rise above water.",
+					"wrong": [
+						"It will be too hot to walk on.",
+						"Scientists will not let anyone visit it.",
+						"It is too far from the other islands."
+					],
+					"explanation": "The underwater volcano will not reach the air for tens of thousands of years, much longer than any person lives.",
+					"evidence": [
+						"it will not reach the air for tens of thousands of years"
+					]
+				}
+			]
+		},
+		{
+			"id": "emperor-penguin-dads",
+			"title": "Emperor Penguin Dads",
+			"paragraphs": [
+				"Emperor penguins are the largest penguins in the world. They live in Antarctica, the coldest place on Earth. Most animals leave before winter comes. Emperor penguins do something surprising instead. They raise their chicks during the long, dark winter. Fierce winds blow, and the temperature can drop far below zero.",
+				"In early winter, each female lays one egg. Then she does something that might seem strange. She carefully passes the egg to her mate and walks many miles back to the sea to hunt for fish. Making the egg used up much of her energy, and she needs to eat.",
+				"The father balances the egg on top of his feet. A warm fold of skin, called a brood pouch, covers it like a feathery blanket. For about two months, he stands in the cold and keeps the egg warm. He does not eat at all during that time. By the end, he may have lost almost half of his body weight.",
+				"To survive the bitter wind, thousands of fathers crowd together in a tight group called a huddle. The penguins in the middle stay warm, while the ones on the edges face the wind. The huddle moves slowly all the time. The birds on the outside shuffle in, and the birds in the middle drift out. In this way, every penguin gets a turn in the warm center.",
+				"Around the time the chick hatches, the mother returns with a belly full of fish. She finds her mate by listening for his special call among thousands of other penguins. She feeds the chick, and the hungry father finally heads to the sea to eat. From then on, the parents take turns caring for their chick until it is ready to swim on its own."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Where does the father penguin keep the egg?",
+					"correct": "On top of his feet",
+					"wrong": [
+						"In a nest of rocks",
+						"Under the snow",
+						"In the sea"
+					],
+					"explanation": "The passage says the father balances the egg on top of his feet, under a warm fold of skin.",
+					"evidence": [
+						"The father balances the egg on top of his feet"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "About how long does the father keep the egg warm without eating?",
+					"correct": "About two months",
+					"wrong": [
+						"About two days",
+						"About two weeks",
+						"About two years"
+					],
+					"explanation": "For about two months, he stands in the cold keeping the egg warm, and he does not eat at all.",
+					"evidence": [
+						"For about two months, he stands in the cold and keeps the egg warm"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this passage, what is a huddle?",
+					"correct": "A tight group of penguins crowded together",
+					"wrong": [
+						"A warm fold of skin over the egg",
+						"A long walk back to the sea",
+						"A special call one penguin makes"
+					],
+					"explanation": "The passage says the fathers crowd together in a tight group called a huddle.",
+					"evidence": [
+						"crowd together in a tight group called a huddle"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What would most likely happen to an egg that rolled off the father's feet onto the ice?",
+					"correct": "The chick inside would get too cold.",
+					"wrong": [
+						"It would hatch more quickly.",
+						"The mother would come back at once.",
+						"It would roll back toward the sea."
+					],
+					"explanation": "The father keeps the egg on his feet under a warm pouch because Antarctica is so cold. On the bare ice, it would lose that warmth.",
+					"evidence": [
+						"keeps the egg warm",
+						"the temperature can drop far below zero"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does the mother need her mate's special call to find him?",
+					"correct": "There are thousands of penguins that look alike.",
+					"wrong": [
+						"Her mate has already gone back to the sea.",
+						"She wants to teach the chick his call.",
+						"The father is hiding under the snow."
+					],
+					"explanation": "She returns to a crowd of thousands of penguins, so she listens for his call to pick him out.",
+					"evidence": [
+						"listening for his special call among thousands of other penguins"
+					]
+				}
+			]
+		}
+	]
+}

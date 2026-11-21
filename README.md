@@ -86,7 +86,7 @@ and a short explanation of where the answer comes from. A story can be stopped a
   longest ago comes back.
 - After five stories at a grade averaging 80% or more, with at least 70% on the answers that must
   be worked out, the Reading tab offers the next reading grade (or the child moves up by
-  themselves, if you tick that setting). For now only grade 3 has stories.
+  themselves, if you tick that setting). For now grades 3 and 4 have stories.
 - Reading time counts toward the same daily limit as word practice.
 - **Stories** in the parent menu lists every story. Open one to read it with its questions and
   answers, and switch off any you do not want used.

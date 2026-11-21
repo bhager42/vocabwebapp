@@ -134,13 +134,15 @@ afterEach(() => close());
 describe('seedStories', () => {
 	it('loads the shipped stories, and a second run changes nothing', () => {
 		const shipped = loadReading(path.resolve('content/reading'));
+		const stories = shipped.reduce((total, grade) => total + grade.stories.length, 0);
+		expect(stories).toBeGreaterThanOrEqual(15);
 		const first = seedStories(db, shipped);
-		expect(first.inserted).toBe(15);
-		expect(count(readingQuestion)).toBe(75);
+		expect(first.inserted).toBe(stories);
+		expect(count(readingQuestion)).toBe(stories * 5);
 		expect(seedStories(db, shipped)).toEqual({
 			inserted: 0,
 			updated: 0,
-			unchanged: 15,
+			unchanged: stories,
 			retired: 0
 		});
 	});
