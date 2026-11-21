@@ -112,6 +112,36 @@ test('a child reads a story and the parent sees how it went', async ({ page }) =
 	await expect(page.getByText(`The answer: ${first.correct}`)).toBeVisible();
 });
 
+/**
+ * Answers one question and goes on to the next, checking each time that the page stays on the
+ * questions rather than jumping back up to the story. The screen is short, so the story alone
+ * is taller than it.
+ */
+async function staysOnQuestions(page: Page) {
+	await page.setViewportSize({ width: 1024, height: 600 });
+	createChild('Sam');
+	await enterAs(page, 'Sam');
+	await readButton(page).click();
+	const questions = page.locator('#questions');
+	// A new story starts at the top, with the story to read first.
+	expect((await questions.boundingBox())!.y).toBeGreaterThan(600);
+
+	const nearTop = async () => {
+		const box = (await questions.boundingBox())!;
+		expect(box.y).toBeGreaterThanOrEqual(0);
+		expect(box.y).toBeLessThan(100);
+	};
+	await answer(page);
+	await nearTop();
+	await page.getByRole('button', { name: 'Next question' }).click();
+	await expect(page.getByText('Question 2 of 5')).toBeVisible();
+	await nearTop();
+}
+
+test('answering keeps the page on the questions', async ({ page }) => {
+	await staysOnQuestions(page);
+});
+
 test.describe('without JavaScript', () => {
 	test.use({ javaScriptEnabled: false });
 
@@ -121,6 +151,10 @@ test.describe('without JavaScript', () => {
 		await readButton(page).click();
 		await finishStory(page, 3);
 		await expect(page.getByText('got 3 of 5 questions right')).toBeVisible();
+	});
+
+	test('answering keeps the page on the questions', async ({ page }) => {
+		await staysOnQuestions(page);
 	});
 });
 

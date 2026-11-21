@@ -54,7 +54,7 @@
 		{/each}
 	</article>
 
-	<section class="questions stack-lg" aria-label="Questions">
+	<section id="questions" class="questions stack-lg" aria-label="Questions">
 		<ProgressBar
 			value={view.position}
 			max={view.total}
@@ -105,6 +105,11 @@
 	.reading {
 		display: grid;
 		gap: var(--space-6);
+	}
+
+	/* Space above the questions when an answer brings the page to #questions. */
+	.questions {
+		scroll-margin-block-start: var(--space-4);
 	}
 
 	.story {
