@@ -30,12 +30,18 @@ export function isPrivatePath(pathname: string): boolean {
  * Cookie settings for a session. Over HTTPS the cookie is marked Secure and uses the
  * `__Host-` prefix, which stops any other site on the same domain from overwriting it.
  * Over plain HTTP (a home network without a reverse proxy) neither is possible.
+ *
+ * SameSite=Lax, not Strict: Strict leaves the cookie off any visit that starts on another
+ * site, such as the weekly email's dashboard link, and Safari keeps leaving it off when
+ * that page is refreshed, so a signed-in parent landed on the sign-in page. Lax still keeps
+ * the cookie off form posts and background requests from other sites, and SvelteKit
+ * rejects form posts from any other origin as well. No GET request changes anything.
  */
 export function sessionCookie(kind: SessionKind, url: URL) {
 	const secure = url.protocol === 'https:';
 	return {
 		name: secure ? `__Host-vocab_${kind}` : `vocab_${kind}`,
-		options: { path: '/', httpOnly: true, sameSite: 'strict', secure } as const
+		options: { path: '/', httpOnly: true, sameSite: 'lax', secure } as const
 	};
 }
 

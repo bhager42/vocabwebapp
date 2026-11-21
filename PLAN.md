@@ -185,7 +185,7 @@ Accepted trade-off: anyone on the home network who knows his name can practice a
 
 ### 4.3 Web security baseline
 
-- **Cookies:** `HttpOnly`, `SameSite=Strict`, `Path=/`. When `ORIGIN` is https, also `Secure` and the `__Host-` prefix.
+- **Cookies:** `HttpOnly`, `SameSite=Lax`, `Path=/`. When `ORIGIN` is https, also `Secure` and the `__Host-` prefix. (`Strict` until 1.4.1: it left the cookie off visits that start on another site, such as the weekly email's link, and Safari kept it off when such a page was refreshed, so a signed-in parent was sent to the sign-in page. Form posts from other sites are still refused by the cookie and by SvelteKit's origin check.)
 - **CSRF:** SvelteKit origin checking stays on; every state change is a POST form action; `ORIGIN` is set explicitly.
 - **Content Security Policy:** nonce-based via SvelteKit's `csp` config: `default-src 'self'`; `script-src 'self' 'nonce-…'`; `style-src 'self'`; `style-src-attr` limited by hash to the one inline style attribute SvelteKit's route announcer uses; `img-src 'self' data:`; `font-src 'self'`; `connect-src 'self'`; `object-src 'none'`; `base-uri 'none'`; `form-action 'self'`; `frame-ancestors 'none'`. No inline event handlers and no third-party origins.
 - **Other headers:** `X-Content-Type-Options: nosniff`, `Referrer-Policy: same-origin` (not `no-referrer`, which makes browsers send `Origin: null` on plain form posts and so breaks the CSRF check for forms submitted without JavaScript), `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Resource-Policy: same-origin`, a `Permissions-Policy` that disables camera, microphone, geolocation and the rest. `Strict-Transport-Security` only when `ORIGIN` is https.

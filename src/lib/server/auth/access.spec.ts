@@ -52,11 +52,11 @@ describe('isPrivatePath', () => {
 });
 
 describe('sessionCookie', () => {
-	it('is always HttpOnly and SameSite=Strict', () => {
+	it('is always HttpOnly and SameSite=Lax', () => {
 		for (const origin of ['http://192.168.1.10:30080', 'https://vocab.home.example']) {
 			expect(sessionCookie('parent', new URL(origin)).options).toMatchObject({
 				httpOnly: true,
-				sameSite: 'strict',
+				sameSite: 'lax',
 				path: '/'
 			});
 		}

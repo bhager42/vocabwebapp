@@ -55,7 +55,7 @@ test.describe('typing a name', () => {
 		await expect(page.getByRole('button', { name: 'Start practicing' })).toBeVisible();
 
 		const cookie = (await context.cookies()).find((entry) => entry.name === 'vocab_child')!;
-		expect(cookie).toMatchObject({ httpOnly: true, sameSite: 'Strict', path: '/' });
+		expect(cookie).toMatchObject({ httpOnly: true, sameSite: 'Lax', path: '/' });
 		// Lasts 30 days, so the child is not asked again on their usual device.
 		const days = (cookie.expires * 1000 - Date.now()) / (24 * 60 * 60 * 1000);
 		expect(days).toBeGreaterThan(29.9);

@@ -57,7 +57,7 @@ test.describe('first-run setup', () => {
 		await expect(page.getByRole('heading', { level: 1, name: 'Children' })).toBeVisible();
 
 		const cookie = (await context.cookies()).find((entry) => entry.name === 'vocab_parent');
-		expect(cookie).toMatchObject({ httpOnly: true, sameSite: 'Strict', path: '/' });
+		expect(cookie).toMatchObject({ httpOnly: true, sameSite: 'Lax', path: '/' });
 		expect(cookie!.value).toMatch(/^[A-Za-z0-9_-]{43}$/);
 	});
 
@@ -142,6 +142,20 @@ test.describe('sign in', () => {
 
 		await expect(page).toHaveURL(/\/parent$/);
 		await expect(page.getByText(`Signed in as ${PARENT.username}.`)).toBeAttached();
+	});
+
+	test('stays signed in when opened from a link on another site, and on refresh', async ({
+		page
+	}) => {
+		// Such as the dashboard link in the weekly email, opened from a mail app on a phone.
+		await fillSignIn(page);
+		await expect(page).toHaveURL(/\/parent$/);
+		await page.goto('data:text/html,<a href="http://localhost:4173/parent/settings">Settings</a>');
+		await page.getByRole('link', { name: 'Settings' }).click();
+		await expect(page).toHaveURL(/\/parent\/settings$/);
+		await page.reload();
+		await expect(page).toHaveURL(/\/parent\/settings$/);
+		await expect(page.getByText(`Signed in as ${PARENT.username}.`).first()).toBeAttached();
 	});
 
 	test('the username is not case sensitive', async ({ page }) => {
