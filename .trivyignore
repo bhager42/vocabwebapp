@@ -8,3 +8,9 @@
 # Node loads in the runtime image with https and tls in use. The app does not use QUIC.
 # Remove this entry once a fixed base image is out and its digest is in the Dockerfile.
 CVE-2026-124709 exp:2026-12-31
+
+# OpenSSL QUIC denial of service (unbounded frame queueing) in the same Debian libssl3t64.
+# Debian had no fixed version in any release on 2026-11-23. Same reasons as above: Node uses
+# its own OpenSSL and never loads the system libssl3, and the app does not use QUIC.
+# Remove this entry once a fixed base image is out and its digest is in the Dockerfile.
+CVE-2026-107494 exp:2026-12-31
