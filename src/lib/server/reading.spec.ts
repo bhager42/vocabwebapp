@@ -223,7 +223,11 @@ describe('reading a story', () => {
 		const { view } = onScreen();
 		expect(view).toMatchObject({
 			kind: 'question',
-			story: { title: 'Title a', paragraphs: ['First part of a.', 'Second part of a.'] },
+			story: {
+				title: 'Title a',
+				paragraphs: ['First part of a.', 'Second part of a.'],
+				grade: 3
+			},
 			position: 1,
 			total: 5,
 			question: { prompt: 'Question 1?' }

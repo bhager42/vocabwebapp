@@ -209,6 +209,8 @@ export function startReading(
 export interface StoryText {
 	title: string;
 	paragraphs: string[];
+	/** The reading grade the story is written for, shown above the title. */
+	grade: number;
 }
 
 export interface ReadingFeedback {
@@ -252,7 +254,11 @@ export function readingView(db: Db, childId: number, now: Date): ReadingView {
 			.from(readingStory)
 			.where(eq(readingStory.id, attempt.storyId))
 			.get()!;
-		const story = { title: storyRow.title, paragraphs: storyRow.paragraphsJson };
+		const story = {
+			title: storyRow.title,
+			paragraphs: storyRow.paragraphsJson,
+			grade: storyRow.grade
+		};
 		const question = tx
 			.select()
 			.from(readingQuestion)
@@ -591,7 +597,7 @@ export function listAttempts(db: Db, childId: number, now: Date): AttemptSummary
 
 export interface AttemptDetail {
 	id: number;
-	story: StoryText & { grade: number };
+	story: StoryText;
 	startedAt: Date;
 	state: AttemptSummary['state'];
 	answers: {

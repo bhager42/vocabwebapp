@@ -75,6 +75,7 @@ test('a child reads a story and the parent sees how it went', async ({ page }) =
 	await readButton(page).click();
 	await expect(page).toHaveURL(/\/play\/read$/);
 	await expect(page.getByRole('heading', { level: 1, name: 'The Roof Garden' })).toBeVisible();
+	await expect(page.getByText('Grade 3 story')).toBeVisible();
 	// The whole story is on screen while answering.
 	await expect(page.getByText('Priya lived with her grandpa')).toBeVisible();
 

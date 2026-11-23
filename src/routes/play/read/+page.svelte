@@ -45,7 +45,10 @@
 
 <div class="reading">
 	<article class="story" aria-labelledby="story-title">
-		<h1 id="story-title">{view.story.title}</h1>
+		<header class="story-head">
+			<p class="grade">Grade {view.story.grade} story</p>
+			<h1 id="story-title">{view.story.title}</h1>
+		</header>
 		{#each view.story.paragraphs as paragraph, index (index)}
 			<div class="paragraph">
 				<p>{paragraph}</p>
@@ -119,6 +122,21 @@
 		border: 2px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		background: var(--color-surface);
+	}
+
+	.story-head {
+		display: grid;
+		gap: var(--space-1);
+	}
+
+	/* The grade above the title, small so the title still reads first. */
+	.grade {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
 	}
 
 	.story h1 {
