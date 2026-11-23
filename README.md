@@ -194,11 +194,11 @@ installed from [compose.truenas.yaml](compose.truenas.yaml).
 Pushing a version tag makes GitHub Actions test, scan and publish the image:
 
 ```sh
-git tag v1.4.1
-git push origin v1.4.1
+git tag v1.5.0
+git push origin v1.5.0
 ```
 
-When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.4.1`
+When the **CI** run on GitHub is green, the image is at `ghcr.io/bhager42/vocabwebapp:1.5.0`
 and also at `:latest`, which the YAML below uses. A GitHub release for the tag lists what
 changed since the previous one. A new package on GitHub starts out private. Either make it
 public (on GitHub: your profile → Packages → vocabwebapp → Package settings → Change
@@ -226,7 +226,7 @@ This is the app's YAML, the same as [compose.truenas.yaml](compose.truenas.yaml)
 services:
   vocab:
     # Always the newest published version. To stay on one version, put its number in
-    # place of latest, such as :1.4.1.
+    # place of latest, such as :1.5.0.
     image: ghcr.io/bhager42/vocabwebapp:latest
     # Fetch the newest image whenever the app is started or saved.
     pull_policy: always
@@ -331,7 +331,7 @@ set `TRUST_PROXY` to `'true'`.
 
 The app also fetches the newest image whenever it starts, such as after the NAS reboots. To
 stay on one version instead, put its number in place of `latest` in the `image:` line, such as
-`ghcr.io/bhager42/vocabwebapp:1.4.1`.
+`ghcr.io/bhager42/vocabwebapp:1.5.0`.
 
 Before a new version changes the structure of the database, the app saves a copy as
 `backups/pre-migrate-<date>-<time>.db`. To go back, put the old version's number in place of
