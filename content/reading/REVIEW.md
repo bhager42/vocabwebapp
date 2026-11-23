@@ -611,3 +611,196 @@ No name from grades 3 or 4 is used again, and no name is used twice within grade
 - **For the parent's review:** the Wright brothers (5.9) is the hardest. Say It Right (4.2) and
   Two Kinds of Talking (4.3) are the easiest. Questions that some children could answer from
   what they already know: the bats' Q2 (calls too high to hear) and the coral reef's Q1 (polyps).
+
+---
+
+## Grade 6
+
+Fifteen passages: eleven stories and four nonfiction passages. Reviewed by Claude, 2026-11-23.
+The theme limits for grades 3 to 5 were kept for grade 6 (nothing frightening, violent,
+romantic, or about death, illness or family breakup), since no other rule had been set. Grade 6
+leans more on choices with no easy answer: honesty, fairness, peer pressure, standing up for
+something. No name from grades 3 to 5 is used again.
+
+### campaign-promises: Campaign Promises
+
+- **Holds together:** yes. Desmond checked his promise before making it; Marisol did not, and
+  says so in her announcement. Desmond starts his club even though he lost.
+- **Answers:** Q3 (why she felt worse): she already knew the machine could not happen. Q4 (what
+  she learned from Desmond): check before you promise.
+- **Wrong answers:** Q3's "hungry because she skipped lunch" is a distractor, not a reason given
+  for feeling worse each time she spoke.
+- **Changed:** nothing.
+
+### the-experiment-that-failed: The Experiment That Failed
+
+- **Holds together:** yes. The numbers (14.2 against 14.5 cm) go the wrong way, and the poster's
+  title says so.
+- **Facts checked:** using fewer than ten plants per group and different rooms are real weaknesses
+  a judge would point out. The story does not claim music does or does not help plants.
+- **Answers:** Q3 (why leave numbers out): to match the hypothesis; Arjun had no real reason to
+  think they were wrong. Q5 (why the judge asked so many questions): their honesty.
+- **Grade:** read at 4.9 at first; it now reads at 5.2.
+- **Changed:** the reading level.
+
+### lights-out-on-sycamore-street: Lights Out on Sycamore Street
+
+- **Holds together:** yes. The radio and candles are used at Mr. Teodoro's; the cooler and the
+  stove come from neighbors; the note "Knock loudly" ties back to his hearing.
+- **Answers:** Q3 (what not checking his phone shows): he was enjoying himself. Q4 ("Knock
+  loudly"): he does not hear well.
+- **Grade:** a thunderstorm and an outage, but nobody is in danger. An elderly neighbor who hears
+  poorly is the only hint of age, and he is fine.
+- **Changed:** nothing.
+
+### the-trade: The Trade
+
+- **Holds together:** yes. The card game is made up, so no real product is named.
+- **Answers:** Q2 (why Kofi agreed): he was new and thought five for one was the better deal.
+  Q3 (why Jasper's face went hot): he remembered being taken advantage of himself.
+- **Grade:** read at 4.6 at first; it now reads at 5.1.
+- **Changed:** the reading level.
+
+### in-two-languages: In Two Languages
+
+- **Holds together:** yes. The mother's night classes are mentioned in the first paragraph, which
+  sets up the ending.
+- **Answers:** Q3 (why she thought about changing the words): she did not want her mother to know.
+  Q4 (what the ending suggests): her mother may have understood the English herself.
+- **Grade:** a child translating for a parent, treated with respect for both. Read at 4.8 and
+  three words short at first; it now has 360 words and reads at 5.2.
+- **Changed:** the length and reading level.
+
+### second-chair: Second Chair
+
+- **Holds together:** yes. The grandfather's remark in paragraph 3 is checked in paragraph 4.
+- **Answers:** Q2 (why she stopped practicing): she was upset, and later admits jealousy. Q4 (how
+  her feelings changed): jealous, then offering a trade.
+- **Wrong answers:** Q3's "waiting for her to make a mistake" is what Rosalind was doing, not
+  Andrés, so it is ruled out.
+- **Changed:** the name of a real composer was replaced by "the new symphony", to keep the text
+  simple.
+
+### the-time-capsule: The Time Capsule
+
+- **Facts checked:** 1976 was the United States' two hundredth birthday; opening in 2026 is fifty
+  years later, and the story is set this November. Cassette tapes, curly-corded kitchen phones and
+  weekly TV shows fit 1976.
+- **Answers:** Q3 (why Ezra laughed): no flying cars or homework robots. Q4 (his first line):
+  his own phones will look funny one day.
+- **Grade:** reads at 6.3.
+- **Changed:** nothing.
+
+### calling-antarctica: Calling Antarctica
+
+- **Facts checked:** amateur radio needs a license from a test, with no minimum age in the United
+  States; high-frequency signals bounce off the ionosphere and can cross the world; research
+  bases in Antarctica have radio operators; December is midsummer there, with no sunset for
+  weeks; operators confirm contacts by mailing cards.
+- **Answers:** Q3 (how the signal reached so far): the ionosphere. Q4 (why her hands shook): her
+  first contact ever.
+- **Changed:** Gran's call sign was left out on purpose, so a real person's call sign is not
+  printed.
+
+### too-good-to-be-true: Too Good to Be True
+
+- **Facts checked:** the "shark on a flooded highway" fake really has been shared after many
+  hurricanes, and reverse image search is the usual way to trace a picture.
+- **Answers:** Q3 ("I almost shared it too"): anyone could be fooled, said kindly. Q4 (why the
+  correction): to fix what he had spread.
+- **Changed:** nothing.
+
+### the-steep-part: The Steep Part
+
+- **Holds together:** yes. Nobody crashes or is hurt; the pressure is the whole problem.
+- **Answers:** Q2 (Jules's nod): she walked the Chute herself her first five times. Q3 (why
+  Beckett walked too): Rowan made it easier to admit fear.
+- **Grade:** read at 3.8 at first, well below the range, because of short dialogue sentences.
+  Several were joined, and it now reads at 5.2. Jules's nod was left as just "a small nod" so
+  that Q2 still has to be worked out.
+- **Changed:** the reading level.
+
+### stop-number-twelve: Stop Number Twelve
+
+- **Holds together:** yes. The survey numbers (31 of 104 came by bus) and the eight-block walk are
+  used again in the speech.
+- **Facts checked:** public comment at city council meetings is often limited to about three
+  minutes, and councils usually send transit requests for study before deciding.
+- **Answers:** Q3 ("Somebody like you?"): she could act herself. Q4 (why evidence): complaining
+  alone would not be enough.
+- **Changed:** nothing.
+
+### the-concrete-that-heals-itself: The Concrete That Heals Itself (nonfiction)
+
+- **Facts checked:** the Pantheon was finished around 125 under Hadrian; its dome is about 142 feet
+  across and is still the largest unreinforced concrete dome; Roman marine concrete grows new
+  minerals in seawater; a 2023 study led by MIT found that hot mixing with quicklime leaves lime
+  lumps that let cracks heal, and their test sample sealed within two weeks while a sample
+  without lumps did not; cement making produces roughly eight percent of the world's carbon
+  dioxide.
+- **Answers:** Q4 (why a sample without lumps): to show the lumps caused the healing. Q5 (how it
+  helps the environment): less new concrete.
+- **Grade:** read at 7.6 at first; long sentences were split, and it now reads at 5.4.
+  "Massachusetts Institute of Technology" became "a team of researchers in Massachusetts".
+- **Changed:** the reading level.
+
+### finding-the-way: Finding the Way Without a Map (nonfiction)
+
+- **Facts checked:** the ancestors of the Polynesians began settling the remote Pacific about three
+  thousand years ago, reaching Hawaii, New Zealand and Easter Island over many centuries;
+  wayfinders used rising and setting stars, swells, homing seabirds and still clouds over
+  islands, including a green tint over lagoons; some historians in the 1950s argued for
+  accidental drift; Hōkūleʻa sailed from Hawaii on May 1, 1976 and reached Tahiti on June 4
+  (34 days), guided by Mau Piailug of Satawal, and a crowd of about 17,000 met it; Nainoa
+  Thompson later navigated its voyage around the world.
+- **Answers:** Q3 (how the voyage answered the drift idea): it showed islands could be reached on
+  purpose. Q4 (still clouds): they can mark an island.
+- **Grade:** read at 9.5 at first, far too hard; it was rewritten with shorter sentences and now
+  reads at 6.9, near the top of the range. The canoe's name keeps its Hawaiian spelling.
+- **Changed:** the reading level. Q2's answer now matches the new wording ("No navigator in
+  Hawaii...").
+
+### rivers-of-ice: Rivers of Ice (nonfiction)
+
+- **Facts checked:** glaciers form where snow outlasts summer and turns to ice under its own
+  weight; Jakobshavn Glacier was measured at about 150 feet a day; crevasses can be over a
+  hundred feet deep; glaciers carve U-shaped valleys such as Yosemite; about twenty thousand years
+  ago, ice more than a mile thick covered much of North America and deepened the Great Lakes;
+  ice covers about a tenth of the land and holds about two thirds of the fresh water; dense ice
+  looks blue because it absorbs red light.
+- **Answers:** Q3 (a U-shaped valley): moving ice long ago, worded so the answer is not written
+  in the text. Q4 (house-sized boulders): carried and dropped by ice.
+- **Wrong answers:** Q5's "reflects the color of the sky" is a common belief, and the passage gives
+  the real reason.
+- **Grade:** read at 7.5 at first; it now reads at 5.8.
+- **Changed:** the reading level.
+
+### mapping-the-ocean-floor: The Woman Who Mapped the Ocean Floor (nonfiction)
+
+- **Facts checked:** Marie Tharp worked at Columbia University's geological observatory; women
+  were kept off its research ships; echo sounders timed the echo to measure depth; she found the
+  rift valley in the Mid-Atlantic Ridge in 1952, and Bruce Heezen first called it "girl talk";
+  earthquake locations along the rift convinced him; the mid-ocean ridge, about 40,000 miles
+  long, became key evidence for plate tectonics in the 1960s; the 1977 world ocean floor map was
+  painted by Heinrich Berann; the Library of Congress honored her in 1997.
+- **Answers:** Q3 (why Heezen doubted her): most scientists did not accept moving continents, and
+  the explanation also names his dismissive remark. Q4 (why the earthquakes mattered): quakes
+  mark where the crust moves.
+- **Grade:** read at 7.5 at first; it now reads at 5.9.
+- **Changed:** the reading level.
+
+---
+
+### Grade 6 as a whole
+
+- **Balance:** 15 passages, each with 5 questions: 30 stated, 30 inferred, and 15 others
+  (5 vocabulary, 5 sequence, 5 main idea). Four passages are nonfiction (Roman concrete,
+  Polynesian wayfinding, glaciers, Marie Tharp).
+- **Length and level:** 358 to 441 words each, reading between grade 5.1 and 6.9.
+- **Themes:** keeping promises, scientific honesty, neighbors helping, fairness, telling a parent
+  the truth, rivalry, history and change, a first radio contact, checking what you share, peer
+  pressure, and speaking up to a city council.
+- **For the parent's review:** the theme limits are the same as grades 3 to 5, as noted at the top;
+  say if grade 6 should allow more. Finding the Way (6.9) is the hardest; The Trade (5.1) and The
+  Experiment That Failed (5.2) are the easiest. The glacier and ocean-floor questions can partly
+  be answered by a child who already knows some earth science.

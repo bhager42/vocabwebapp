@@ -1,0 +1,1291 @@
+{
+	"grade": 6,
+	"stories": [
+		{
+			"id": "campaign-promises",
+			"title": "Campaign Promises",
+			"paragraphs": [
+				"When Marisol decided to run for sixth-grade representative on the student council, she knew exactly what would win votes. At the first campaign assembly, she stood at the microphone and made a promise: if elected, she would get a vending machine full of snacks installed in the cafeteria. The gym erupted in cheers. Her opponent, a quiet boy named Desmond, promised to start a homework help club. Nobody cheered quite as loudly for that.",
+				"Marisol won by a wide margin. At her first council meeting, she raised her hand and proposed the vending machine. The principal, Dr. Whitfield, listened carefully and then slid a folder across the table. Inside was the district's wellness policy, which limited what snacks schools could sell, and a letter from the company that rented vending machines. The machine would cost the school four hundred dollars a year, and it could only be stocked with items like baked chips, fruit cups, and water.",
+				"Marisol felt her stomach sink. She had promised candy bars and soda, and now she couldn't deliver either. For two days she avoided the cafeteria at lunch. When classmates asked about the vending machine, she mumbled that it was \"still being discussed.\" Each time she said it, she felt a little worse.",
+				"On the third day, she went to find Desmond. He was in the library, helping a fifth grader with fractions. \"How did you know your club was something you could actually do?\" she asked. Desmond shrugged. \"I asked Ms. Ortega if the library could stay open after school before I promised anything,\" he said. \"I didn't want to promise something I couldn't keep.\"",
+				"That Friday, Marisol asked to speak during the morning announcements. Her voice shook a little at first. She explained the wellness policy and the cost, and she admitted that she had made a promise without checking whether it was possible. \"I'm sorry,\" she said. \"Here's what I can do instead.\" She described a plan for a monthly snack sale run by students, with the profits going toward new equipment for the playground.",
+				"Some students grumbled. But a surprising number stopped her in the hallway to say they respected her for telling the truth. The first snack sale raised two hundred and twelve dollars. And when Desmond started his homework club anyway and asked for volunteers, Marisol was the first to sign up."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Marisol promise during her campaign?",
+					"correct": "A vending machine full of snacks",
+					"wrong": [
+						"A homework help club",
+						"A monthly snack sale",
+						"New playground equipment"
+					],
+					"explanation": "At the campaign assembly, she promised to get a vending machine full of snacks installed in the cafeteria.",
+					"evidence": [
+						"she would get a vending machine full of snacks installed in the cafeteria"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why couldn't the school get the vending machine Marisol had promised?",
+					"correct": "It cost money, and rules limited what it could sell.",
+					"wrong": [
+						"The principal did not like snacks.",
+						"The cafeteria had no room for it.",
+						"Desmond's club needed the money."
+					],
+					"explanation": "The district's wellness policy limited what snacks schools could sell, and the machine would cost four hundred dollars a year.",
+					"evidence": [
+						"limited what snacks schools could sell",
+						"The machine would cost the school four hundred dollars a year"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Marisol feel worse each time she said the machine was \"still being discussed\"?",
+					"correct": "She knew she was not being honest with her classmates.",
+					"wrong": [
+						"She was tired of talking about snacks.",
+						"She thought Desmond was spreading rumors.",
+						"She was hungry because she skipped lunch."
+					],
+					"explanation": "She already knew the machine she promised could not happen, so saying it was still being discussed was hiding the truth.",
+					"evidence": [
+						"now she couldn't deliver either",
+						"Each time she said it, she felt a little worse"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Marisol learn from talking with Desmond?",
+					"correct": "Check whether a promise is possible before making it.",
+					"wrong": [
+						"Homework clubs are more popular than snacks.",
+						"Libraries should stay open late every day.",
+						"It is easier to lose an election than win one."
+					],
+					"explanation": "Desmond asked whether the library could stay open before he promised his club. In her announcement, Marisol admitted she had not checked first.",
+					"evidence": [
+						"I asked Ms. Ortega if the library could stay open after school before I promised anything",
+						"she had made a promise without checking whether it was possible"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main message of the story?",
+					"correct": "Admitting a mistake honestly can earn people's respect.",
+					"wrong": [
+						"Elections are won by the best promises.",
+						"Schools should not have vending machines.",
+						"Student councils cannot change anything."
+					],
+					"explanation": "Marisol's honest apology did not make everyone happy, but many students told her they respected her for telling the truth.",
+					"evidence": [
+						"they respected her for telling the truth"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-experiment-that-failed",
+			"title": "The Experiment That Failed",
+			"paragraphs": [
+				"Arjun and his science fair partner, Bea, had a hypothesis they were sure about: bean plants that heard music every day would grow taller than plants grown in silence. For four weeks, they raised two groups of plants. One group sat on Arjun's bedroom windowsill beside a small speaker that played classical music for three hours a day. The other group sat in a quiet room down the hall. Every evening, Arjun measured each plant with a ruler and recorded the height in a spreadsheet.",
+				"On the last day, they compared the averages: the plants with music had reached 14.2 centimeters, while the plants in silence had reached 14.5 centimeters. The difference was tiny, and it went the wrong way. Bea stared at the screen in disbelief. \"The fair is on Monday,\" she said. \"We can't show up with nothing.\"",
+				"Then she made a suggestion. A few of the quiet plants had been measured on an evening when Arjun was in a hurry. What if those numbers were mistakes? If they simply left out those plants, the music group would come out ahead. \"Nobody would ever know,\" she said.",
+				"Arjun thought about it for a long time that night. He knew his hurried measurements might have been a little careless, but he had no real reason to believe they were wrong. Leaving them out just because they spoiled the result didn't seem like science. It seemed like choosing the answer first and then finding numbers to match. The next morning, he told Bea he wanted to present the real data. Bea was frustrated, but she finally agreed, on one condition: they would explain what they would do differently next time.",
+				"Their poster had an unusual title: \"Did Music Help? Our Results Say No.\" They showed every measurement. They also listed the problems they had discovered along the way. The two rooms had different amounts of sunlight, which might have mattered more than the music. Each group had only six plants, which was too few to be sure of anything.",
+				"When the judges came by, one of them, a biologist from the local college, read the poster twice. Then she asked them more questions than any other team. They won a ribbon for Best Scientific Method. \"Most of what scientists do,\" the judge told them, \"is find out that their first idea was wrong. The important part is being honest about it.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What was Arjun and Bea's hypothesis?",
+					"correct": "Music would help bean plants grow taller.",
+					"wrong": [
+						"Sunlight matters more than water.",
+						"Plants grow best in a quiet room.",
+						"Bean plants grow faster than flowers."
+					],
+					"explanation": "They believed bean plants that heard music every day would grow taller than plants grown in silence.",
+					"evidence": [
+						"bean plants that heard music every day would grow taller than plants grown in silence"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 1, what is a hypothesis?",
+					"correct": "An idea that an experiment is designed to test",
+					"wrong": [
+						"The final result of an experiment",
+						"A chart that shows measurements",
+						"A prize given at a science fair"
+					],
+					"explanation": "Their hypothesis was their idea about music and plant growth, and the four-week experiment was set up to test it.",
+					"evidence": [
+						"had a hypothesis they were sure about"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Bea suggest leaving out some of the measurements?",
+					"correct": "She wanted the results to match their hypothesis.",
+					"wrong": [
+						"She knew for certain those numbers were wrong.",
+						"The judges had asked for fewer numbers.",
+						"The spreadsheet had run out of room."
+					],
+					"explanation": "Without those plants, the music group would come out ahead. Arjun had no real reason to think the numbers were wrong.",
+					"evidence": [
+						"If they simply left out those plants, the music group would come out ahead",
+						"he had no real reason to believe they were wrong"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "According to their poster, what might have mattered more than the music?",
+					"correct": "The different amounts of sunlight in the two rooms",
+					"wrong": [
+						"How often the plants were watered",
+						"The kind of music that was played",
+						"The size of the plant pots"
+					],
+					"explanation": "Their poster listed that the two rooms had different amounts of sunlight, which might have mattered more than the music.",
+					"evidence": [
+						"The two rooms had different amounts of sunlight, which might have mattered more than the music"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the biologist ask them more questions than any other team?",
+					"correct": "She was impressed by how honestly they studied their results.",
+					"wrong": [
+						"She thought their data was made up.",
+						"She wanted to borrow their plants.",
+						"She could not read their poster."
+					],
+					"explanation": "They showed every measurement and listed the problems with their own experiment, and she told them that being honest about results is what matters.",
+					"evidence": [
+						"They showed every measurement",
+						"The important part is being honest about it"
+					]
+				}
+			]
+		},
+		{
+			"id": "lights-out-on-sycamore-street",
+			"title": "Lights Out on Sycamore Street",
+			"paragraphs": [
+				"The thunderstorm rolled in just after dinner, and by eight o'clock the power was out on all of Sycamore Street. Hollis stood at the window, watching rain pour down the glass in sheets. Without the hum of the refrigerator and the glow of screens, the house felt strangely quiet. His mother found a box of candles and a battery radio, and the weather report crackled through the static: the storm would pass by midnight, but power might not return until the next afternoon.",
+				"At first, Hollis was mostly annoyed. His phone was at eleven percent, and he had no way to charge it. Then his mother said something that made him stop scrolling. \"I keep thinking about Mr. Teodoro,\" she said. Their neighbor was eighty-eight and lived alone, and his hearing wasn't what it used to be. \"If someone tries to call and check on him, he probably won't hear the phone.\"",
+				"When the rain eased, Hollis and his mother pulled on raincoats and crossed the yard with a flashlight. Mr. Teodoro answered the door wrapped in two sweaters. He was perfectly fine, he insisted, though his kitchen was dark and he couldn't find his matches. Hollis lit three candles from their box, and his mother left the battery radio so he could hear the news.",
+				"On the way back, Hollis noticed other flashlights bobbing along the street. The Nguyen twins were carrying a cooler to the Pattersons' house, because the Pattersons' freezer was full of food that would spoil. Someone had set up a camping stove on a covered porch and was boiling water for anyone who wanted tea. Hollis realized he had lived on Sycamore Street for six years and had never spoken to half of these people.",
+				"Back home, there was nothing to do but play cards by candlelight. His mother taught him a game her own grandmother had taught her, and he won three rounds in a row, though he suspected she had let him win the last one. Around eleven o'clock, Hollis realized he hadn't checked his phone in two hours.",
+				"The power came back at two o'clock the next afternoon. That weekend, Mrs. Patterson organized a block party to thank everyone, and Hollis made a list of every neighbor's name and phone number to keep in the kitchen drawer. He put Mr. Teodoro's at the top, with a note beside it: Knock loudly."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "According to the radio, when might the power come back?",
+					"correct": "The next afternoon",
+					"wrong": [
+						"By midnight",
+						"In a few minutes",
+						"Next week"
+					],
+					"explanation": "The weather report said the storm would pass by midnight, but the power might not return until the next afternoon.",
+					"evidence": [
+						"power might not return until the next afternoon"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why was Hollis's mother worried about Mr. Teodoro?",
+					"correct": "He lived alone and might not hear the phone.",
+					"wrong": [
+						"He had borrowed their battery radio.",
+						"His house was flooding in the storm.",
+						"He had run out of food."
+					],
+					"explanation": "Mr. Teodoro was eighty-eight, lived alone, and did not hear well, so he might miss a call from someone checking on him.",
+					"evidence": [
+						"Their neighbor was eighty-eight and lived alone, and his hearing wasn't what it used to be"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What does it show that Hollis hadn't checked his phone in two hours?",
+					"correct": "He was enjoying the evening more than he expected.",
+					"wrong": [
+						"He had lent his phone to Mr. Teodoro.",
+						"He was angry with his mother.",
+						"He had fallen asleep at the table."
+					],
+					"explanation": "At first he was annoyed about his phone, but after helping neighbors and playing cards, he forgot about it completely.",
+					"evidence": [
+						"At first, Hollis was mostly annoyed",
+						"Hollis realized he hadn't checked his phone in two hours"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Hollis write \"Knock loudly\" beside Mr. Teodoro's name?",
+					"correct": "Mr. Teodoro does not hear well.",
+					"wrong": [
+						"Mr. Teodoro's doorbell is broken.",
+						"Mr. Teodoro likes loud visitors.",
+						"Mr. Teodoro sleeps very deeply."
+					],
+					"explanation": "The story says Mr. Teodoro's hearing wasn't what it used to be, so a quiet knock might not be heard.",
+					"evidence": [
+						"his hearing wasn't what it used to be",
+						"Knock loudly"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened right after Hollis and his mother visited Mr. Teodoro?",
+					"correct": "Hollis saw neighbors helping each other on the street.",
+					"wrong": [
+						"The power came back on.",
+						"Mrs. Patterson held a block party.",
+						"Hollis's mother found the candles."
+					],
+					"explanation": "On the way back from Mr. Teodoro's house, Hollis noticed other flashlights and neighbors helping each other.",
+					"evidence": [
+						"On the way back, Hollis noticed other flashlights bobbing along the street"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-trade",
+			"title": "The Trade",
+			"paragraphs": [
+				"Jasper had been collecting Comet League cards for three years, and he knew the value of every card in his binder. So when Kofi, a third grader who had just started collecting, sat down beside him at the after-school program, Jasper's eyes went straight to the shiny card on top of Kofi's pile. It was a Nebula Dragon, one of the rarest cards in the whole game.",
+				"\"Want to trade?\" Jasper asked casually. Kofi's face lit up; he had never traded with an older kid before. Jasper offered five common cards with bright pictures of robots and rockets. Kofi studied them, then nodded eagerly. \"Five for one!\" he said, as if he had gotten the better deal. Jasper slid the Nebula Dragon into his binder before Kofi could change his mind.",
+				"At home, Jasper looked up the Nebula Dragon online. It was worth more than all the cards in Kofi's pile put together, maybe more than half of Jasper's binder. He should have felt thrilled, but instead he kept picturing Kofi's face, so pleased with his five robots and rockets. Jasper told himself that a trade was a trade. After all, Kofi had agreed, and nobody had forced him.",
+				"The next afternoon, Jasper watched Kofi show his new cards to the other third graders. A fifth grader leaned over, looked at the cards, and asked what Kofi had traded for them. When Kofi told him, the fifth grader laughed. \"You traded a Nebula Dragon for those? That's the worst trade I've ever heard of.\" Kofi's smile disappeared. He looked across the room at Jasper, and then he looked down at the floor.",
+				"Jasper felt his face go hot. He thought about the times older kids had taken advantage of him when he was new to the game, and how foolish he had felt afterward. Before he could talk himself out of it, he walked over and sat down next to Kofi. He took the Nebula Dragon out of his binder and set it on the table. \"I didn't tell you what it was worth,\" he said. \"That wasn't fair. You can have it back, and keep the robots too.\"",
+				"Kofi stared at him for a moment, and then he slowly pushed the robot cards back across the table. \"Can you show me how to tell which cards are rare?\" he asked. Jasper spent the rest of the afternoon teaching him about holograms, card numbers, and set symbols. By the end of the week, Kofi had a binder of his own, and he wouldn't trade a single card without asking Jasper first."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Jasper give Kofi for the Nebula Dragon?",
+					"correct": "Five common cards",
+					"wrong": [
+						"One rare card",
+						"His whole binder",
+						"A shiny hologram card"
+					],
+					"explanation": "Jasper offered five common cards with pictures of robots and rockets.",
+					"evidence": [
+						"Jasper offered five common cards"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Kofi agree to the trade so quickly?",
+					"correct": "He did not know how valuable his card was.",
+					"wrong": [
+						"He wanted to get rid of the dragon.",
+						"Jasper had threatened him.",
+						"He only collected robot cards."
+					],
+					"explanation": "Kofi had just started collecting and thought five cards for one was the better deal, so he did not know what the dragon was worth.",
+					"evidence": [
+						"a third grader who had just started collecting",
+						"as if he had gotten the better deal"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Jasper's face go hot when Kofi looked at him?",
+					"correct": "He was ashamed of how he had treated Kofi.",
+					"wrong": [
+						"The room was too warm.",
+						"He was excited to show off his new card.",
+						"He was embarrassed about his own binder."
+					],
+					"explanation": "He remembered how foolish he had felt when older kids took advantage of him, and he realized he had done the same to Kofi.",
+					"evidence": [
+						"He thought about the times older kids had taken advantage of him",
+						"That wasn't fair"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 5, what does \"taken advantage of\" mean?",
+					"correct": "Treated unfairly so someone else could gain",
+					"wrong": [
+						"Given a helpful gift",
+						"Taught how to play a game",
+						"Chosen first for a team"
+					],
+					"explanation": "Older kids had made unfair trades with Jasper when he was new, just as he had done with Kofi, and he felt foolish afterward.",
+					"evidence": [
+						"older kids had taken advantage of him when he was new to the game, and how foolish he had felt afterward"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did Kofi ask Jasper after the trade was undone?",
+					"correct": "How to tell which cards are rare",
+					"wrong": [
+						"To trade again for the robots",
+						"To give him the whole binder",
+						"To play a game against him"
+					],
+					"explanation": "Kofi asked, \"Can you show me how to tell which cards are rare?\"",
+					"evidence": [
+						"Can you show me how to tell which cards are rare?"
+					]
+				}
+			]
+		},
+		{
+			"id": "in-two-languages",
+			"title": "In Two Languages",
+			"paragraphs": [
+				"Linh had been translating for her mother since she was eight. Her mother spoke Vietnamese and was learning English in night classes, but at the bank, the post office, and the landlord's office, Linh was the one who explained. Usually she didn't mind, and she was proud that she could help. But this time was different. This time, she would be translating her own parent-teacher conference.",
+				"Linh's teacher, Mr. Castellano, greeted them warmly and opened a folder. He started with good news. Linh's writing was excellent, he said, and her essay about her grandmother's village was one of the best in the class. Linh translated every word carefully, perhaps adding a little extra enthusiasm. Her mother beamed.",
+				"Then Mr. Castellano turned the page. \"Her math grade has slipped this quarter,\" he said. \"She's missing four homework assignments, and I'm a little concerned.\" Linh's mouth went dry, and she felt her mother's eyes on her, waiting patiently. For one long moment, Linh considered saying that Mr. Castellano wanted her to keep up the good work in math. Her mother would never know the difference.",
+				"But Mr. Castellano was watching too, and something about his patient expression made her stop. Linh suspected he had seen this moment before. She took a breath and translated exactly what he had said. Her mother's eyebrows rose. She asked a question in Vietnamese, and Linh translated it: \"What can we do at home to help?\"",
+				"The three of them spent the next ten minutes making a plan. Mr. Castellano offered extra help on Tuesday afternoons, and Linh's mother asked to see the homework each night, even though she said she would need Linh to explain the word problems to her. Linh found herself explaining fractions to her mother in Vietnamese, and halfway through, she realized she understood them better than she had all quarter.",
+				"On the walk home, her mother was quiet for a long while before she finally said, in careful English, \"Thank you for telling me the truth.\" Linh was startled; she hadn't known her mother understood that much English. Her mother smiled. \"Night class,\" she said. \"I understand more than you think.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did Mr. Castellano praise first?",
+					"correct": "Linh's essay about her grandmother's village",
+					"wrong": [
+						"Linh's math grade",
+						"Linh's homework record",
+						"Linh's reading speed"
+					],
+					"explanation": "He started with good news: her essay about her grandmother's village was one of the best in the class.",
+					"evidence": [
+						"her essay about her grandmother's village was one of the best in the class"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How many homework assignments was Linh missing?",
+					"correct": "Four",
+					"wrong": [
+						"Two",
+						"Ten",
+						"None"
+					],
+					"explanation": "Mr. Castellano said she was missing four homework assignments.",
+					"evidence": [
+						"She's missing four homework assignments"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Linh think about changing what the teacher said about math?",
+					"correct": "She did not want her mother to learn about her slipping grade.",
+					"wrong": [
+						"She did not know the Vietnamese word for math.",
+						"She thought the teacher had made a mistake.",
+						"She wanted to finish the meeting quickly."
+					],
+					"explanation": "The news was bad, and she thought her mother would never know if she changed it, so she was tempted to hide it.",
+					"evidence": [
+						"Her math grade has slipped this quarter",
+						"Her mother would never know the difference"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What does the ending suggest about Linh's mother?",
+					"correct": "She may have understood the teacher's English herself.",
+					"wrong": [
+						"She was angry that Linh missed homework.",
+						"She planned to quit her night classes.",
+						"She had never been to a school meeting."
+					],
+					"explanation": "Her mother thanks her in English and says she understands more than Linh thinks, so she may have known if Linh had changed the words.",
+					"evidence": [
+						"I understand more than you think"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "What happened right after Linh translated exactly what Mr. Castellano said about math?",
+					"correct": "Her mother asked what they could do at home.",
+					"wrong": [
+						"Mr. Castellano praised Linh's essay.",
+						"Her mother thanked her in English.",
+						"Linh thought about changing his words."
+					],
+					"explanation": "After Linh translated honestly, her mother's eyebrows rose and she asked what they could do at home to help.",
+					"evidence": [
+						"What can we do at home to help?"
+					]
+				}
+			]
+		},
+		{
+			"id": "second-chair",
+			"title": "Second Chair",
+			"paragraphs": [
+				"For two years, Rosalind had sat in the first chair of the cello section in the Westbrook Youth Orchestra. First chair meant playing the solos, leading the section, and tuning everyone before rehearsal. She had practiced an hour every day to earn it. Then, in September, a new cellist named Andrés joined the orchestra, and after the fall auditions, the conductor moved him into first chair and Rosalind into second.",
+				"Rosalind smiled and congratulated him, but at home she shut her bedroom door and didn't practice at all. She told herself that the conductor had made a mistake, that Andrés had simply gotten lucky with an easy audition piece. For the next two weeks she watched him during rehearsals, waiting for him to stumble. He hardly ever did.",
+				"Then, one evening, Rosalind's grandfather came to pick her up early and stayed to watch the end of rehearsal. On the drive home, he asked about the boy in the first chair. Rosalind admitted she was jealous. Her grandfather nodded. \"You know what I noticed?\" he said. \"He watches you. Every time there's a passage he finds hard, he watches your bow.\"",
+				"Rosalind hadn't noticed that at all. At the next rehearsal she paid attention, and her grandfather was right. During a tricky section of the new symphony, Andrés glanced over at her bow arm and then adjusted his own. Afterward, she worked up the courage to ask him about it. He looked embarrassed. \"Your bowing is smoother than mine,\" he said. \"My old teacher focused on fingers. I'm trying to catch up.\"",
+				"That surprised her. All this time, she had been thinking only about what she had lost, while he had been studying what she did well. Rosalind thought about it all weekend. On Monday, she offered him a trade: she would show him the bowing exercises her teacher had given her, and he would show her how he practiced fast passages without tensing up.",
+				"By the spring concert, both of them were playing better than they ever had. Andrés still sat in first chair. But when the conductor needed two cellists for a duet in the final piece, she chose Rosalind and Andrés, and they played it side by side."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What did sitting in first chair mean in the orchestra?",
+					"correct": "Playing the solos and leading the section",
+					"wrong": [
+						"Sitting closest to the audience",
+						"Choosing the music for concerts",
+						"Carrying instruments to the stage"
+					],
+					"explanation": "The story says first chair meant playing the solos, leading the section, and tuning everyone before rehearsal.",
+					"evidence": [
+						"First chair meant playing the solos, leading the section"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Rosalind stop practicing at home?",
+					"correct": "She was upset about losing first chair.",
+					"wrong": [
+						"Her cello needed to be repaired.",
+						"Her grandfather told her to rest.",
+						"She had already learned all the music."
+					],
+					"explanation": "She smiled in front of Andrés, but at home she shut her door and did not practice, and she later admits she was jealous.",
+					"evidence": [
+						"at home she shut her bedroom door and didn't practice at all",
+						"Rosalind admitted she was jealous"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did Andrés watch Rosalind's bow?",
+					"correct": "Her bowing was smoother than his.",
+					"wrong": [
+						"He was waiting for her to make a mistake.",
+						"The conductor told him to.",
+						"He wanted to borrow her bow."
+					],
+					"explanation": "Andrés told her, \"Your bowing is smoother than mine,\" and said he was trying to catch up.",
+					"evidence": [
+						"Your bowing is smoother than mine"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did Rosalind's feelings about Andrés change?",
+					"correct": "She went from jealous to wanting to work with him.",
+					"wrong": [
+						"She went from friendly to angry.",
+						"She went from proud to bored.",
+						"She stayed jealous the whole time."
+					],
+					"explanation": "At first she was jealous and waited for him to stumble. After learning he admired her bowing, she offered to trade lessons.",
+					"evidence": [
+						"Rosalind admitted she was jealous",
+						"she offered him a trade"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main message of the story?",
+					"correct": "Learning from a rival can make you both better.",
+					"wrong": [
+						"An hour of practice a day guarantees first chair.",
+						"Orchestras should not have first chairs.",
+						"Jealousy always ruins a friendship."
+					],
+					"explanation": "Once Rosalind and Andrés traded what each did well, both played better than ever and were chosen for the duet.",
+					"evidence": [
+						"both of them were playing better than they ever had"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-time-capsule",
+			"title": "The Time Capsule",
+			"paragraphs": [
+				"For fifty years, a metal box had sat sealed inside the cornerstone of Fairview Middle School. The plaque above it read: \"To be opened in 2026.\" Ezra's sixth-grade class had been chosen to open it, and on a gray November morning, the whole school gathered on the front steps to watch a custodian carefully chisel out the stone.",
+				"Inside the box, wrapped in plastic that had turned yellow and brittle, were the things the class of 1976 had chosen to save: a yearbook, a cassette tape, a newspaper with a headline about the country's two hundredth birthday, a lunch menu, and a stack of letters addressed to \"the students of the future.\"",
+				"Back in the classroom, Ms. Tanaka handed out the letters. Ezra's had been written by a girl named Patricia, who had been eleven years old. She described her favorite television show, which came on only once a week, and complained that her family's only telephone was attached to the kitchen wall by a curly cord, so everyone could hear her conversations. \"By the time you read this,\" she wrote, \"I bet everyone will have flying cars and robots that do their homework.\"",
+				"Ezra laughed out loud at that. Then he read the next part more slowly. Patricia wrote that she hoped the students of the future would still ride bikes to the library, still pass notes in class, and still have best friends who knew all their secrets. \"Some things,\" she wrote, \"I hope never change.\"",
+				"Ms. Tanaka asked the class what had surprised them most. Hands flew up. Someone couldn't believe the lunch menu listed a slice of pizza for thirty-five cents. Someone else had never seen a cassette tape and wanted to know how to play it. Ezra said the most surprising thing was how much Patricia sounded like his own friends, even though she had written her letter fifty years earlier.",
+				"Then Ms. Tanaka explained the second part of the project. The class would fill a new box, to be opened in 2076, and everyone would write a letter. Ezra stared at his blank page for a long time. He thought about flying cars, and about Patricia's curly telephone cord. Finally, he began: \"Dear student of the future, I bet you think our phones are funny.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "When was the time capsule meant to be opened?",
+					"correct": "In 2026",
+					"wrong": [
+						"In 1976",
+						"In 2076",
+						"In 2000"
+					],
+					"explanation": "The plaque above the box read, \"To be opened in 2026.\"",
+					"evidence": [
+						"To be opened in 2026"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did Patricia predict about the future?",
+					"correct": "Flying cars and robots that do homework",
+					"wrong": [
+						"Telephones with curly cords",
+						"Pizza for thirty-five cents",
+						"Television once a week"
+					],
+					"explanation": "Patricia wrote that she bet everyone would have flying cars and robots that do their homework.",
+					"evidence": [
+						"everyone will have flying cars and robots that do their homework"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ezra laugh out loud at Patricia's prediction?",
+					"correct": "Her guess about the future had not come true.",
+					"wrong": [
+						"He thought her handwriting was funny.",
+						"His friend told a joke at that moment.",
+						"He already owned a robot for homework."
+					],
+					"explanation": "Fifty years later there are no flying cars or homework robots, so her confident guess seemed funny.",
+					"evidence": [
+						"I bet everyone will have flying cars and robots that do their homework",
+						"Ezra laughed out loud at that"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why does Ezra begin his letter with \"I bet you think our phones are funny\"?",
+					"correct": "He realizes his own time will seem old-fashioned someday.",
+					"wrong": [
+						"He wants future students to send him a phone.",
+						"He thinks phones will never change.",
+						"He wants to brag about his new phone."
+					],
+					"explanation": "Patricia's curly telephone cord seems funny to Ezra, so he guesses his own phones will seem just as funny in 2076.",
+					"evidence": [
+						"He thought about flying cars, and about Patricia's curly telephone cord"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened last?",
+					"correct": "Ezra began his own letter to the future.",
+					"wrong": [
+						"A custodian chiseled out the cornerstone.",
+						"Ms. Tanaka handed out the old letters.",
+						"Ezra laughed at Patricia's prediction."
+					],
+					"explanation": "Writing a letter for the new box was the second part of the project, after the old capsule had been opened and read.",
+					"evidence": [
+						"Finally, he began"
+					]
+				}
+			]
+		},
+		{
+			"id": "calling-antarctica",
+			"title": "Calling Antarctica",
+			"paragraphs": [
+				"Tess's grandmother had a hobby that most people had never heard of. In the corner of her spare room sat a ham radio: a black box covered in dials, a microphone on a stand, and a thick cable running out the window to a tall antenna in the backyard. Ham radio operators talk with each other over the airwaves, without phones or the internet, and Gran had been doing it for forty years.",
+				"Every operator has a call sign, a code of letters and numbers that works like a name. Before anyone can transmit, they must pass a test to earn a license, which Tess had done that fall after weeks of studying radio rules and electronics. Her own call sign had arrived in the mail just the day before.",
+				"Gran explained that radio signals can travel much farther than most people expect. Some of them bounce off a high layer of the atmosphere called the ionosphere and come back down hundreds or even thousands of miles away. On a good night, a signal might bounce several times and reach the other side of the world.",
+				"One evening in December, Tess put on the headphones and slowly turned the dial. Most of what she heard was static, a rushing sound like ocean waves. Then a voice broke through, faint but clear, calling for anyone who could hear. Gran looked up the call sign in her directory, and her eyes went wide. The station was at a research base in Antarctica.",
+				"Tess's hands were shaking as she pressed the microphone button and spoke her new call sign for the very first time. There was a pause filled with crackling. Then the operator answered. He was a scientist who studied the ice, and it was midsummer there, with the sun shining around the clock. Tess told him it was snowing in Ohio. He laughed and said that he hadn't seen a sunset in two months.",
+				"They talked for six minutes before the signal faded back into static. Afterward, Gran showed Tess how to fill out a card to mail to the station; operators trade these cards to prove that a contact really happened. Tess wrote the date, the time, and the frequency in her neatest handwriting. Then, at the bottom, she added a note: \"My first contact ever. Thank you for answering.\""
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What must a person do before they can transmit on a ham radio?",
+					"correct": "Pass a test to earn a license",
+					"wrong": [
+						"Buy a satellite phone",
+						"Get permission from a scientist",
+						"Build their own antenna"
+					],
+					"explanation": "The passage says that before anyone can transmit, they must pass a test to earn a license.",
+					"evidence": [
+						"they must pass a test to earn a license"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In this story, what is a call sign?",
+					"correct": "A code of letters and numbers that identifies an operator",
+					"wrong": [
+						"A loud signal sent in an emergency",
+						"A card that proves a contact happened",
+						"The dial used to change stations"
+					],
+					"explanation": "The story says every operator has a call sign, a code of letters and numbers that works like a name.",
+					"evidence": [
+						"a code of letters and numbers that works like a name"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How was Tess's radio able to reach a station so far away?",
+					"correct": "Signals bounced off the ionosphere.",
+					"wrong": [
+						"She connected through the internet.",
+						"The station was in the next town.",
+						"Gran called the scientist first."
+					],
+					"explanation": "Gran explained that signals can bounce off the ionosphere and reach the other side of the world, which is how Ohio could reach Antarctica.",
+					"evidence": [
+						"bounce off a high layer of the atmosphere called the ionosphere",
+						"reach the other side of the world"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why were Tess's hands shaking when she pressed the button?",
+					"correct": "She was nervous and excited about her first contact.",
+					"wrong": [
+						"Her grandmother's room was very cold.",
+						"She was afraid the radio would break.",
+						"She was tired from studying all day."
+					],
+					"explanation": "She was using her new call sign for the very first time, to reach Antarctica, which made her both nervous and thrilled.",
+					"evidence": [
+						"spoke her new call sign for the very first time"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did the operator at the base study?",
+					"correct": "The ice",
+					"wrong": [
+						"Penguins",
+						"Radio waves",
+						"The ocean floor"
+					],
+					"explanation": "The story says he was a scientist who studied the ice.",
+					"evidence": [
+						"He was a scientist who studied the ice"
+					]
+				}
+			]
+		},
+		{
+			"id": "too-good-to-be-true",
+			"title": "Too Good to Be True",
+			"paragraphs": [
+				"The video showed a shark swimming down a flooded highway, its fin slicing through the brown water between half-sunken cars. Caleb sent it to the group chat with five exclamation points: \"THIS IS FROM THE HURRICANE IN FLORIDA!!!!!\" Within an hour, half of the sixth grade had shared it.",
+				"Ines watched it three times. Something about it bothered her. The shark looked a little too sharp compared with the blurry water around it, and it never seemed to move its tail. She remembered a lesson from her media literacy class: before you share something surprising, ask who made it, when it was made, and whether anyone else is reporting it.",
+				"So Ines did some digging. She took a screenshot and ran it through a reverse image search, a tool that looks for other places a picture has appeared online. The results surprised her. The same shark, in exactly the same position, appeared in a photo from an ocean documentary filmed years earlier. Someone had cut it out and pasted it onto footage of a flooded road. She also found an article from a fact-checking website explaining that versions of this fake had appeared after nearly every major hurricane for more than a decade.",
+				"Ines wasn't sure what to do next. Caleb was her friend, and she didn't want to embarrass him in front of everyone. In the end, she sent him a private message with a link to the article. \"I think this one's fake,\" she wrote. \"I almost shared it too.\"",
+				"Caleb didn't answer for twenty minutes, and Ines began to worry that he was angry. Then a new message appeared in the group chat. \"Hey everyone, that shark video I posted is fake,\" Caleb wrote. \"Ines found the original photo. Sorry for spreading it.\" A few people replied with laughing faces, and one person admitted that he had already sent it to his grandmother.",
+				"The next day, Caleb asked Ines to show him how the reverse image search worked. By the end of the week, he had caught two more fakes on his own, including a photo of a \"rainbow owl\" that turned out to be a painting. \"It's kind of like being a detective,\" he said. Ines agreed. The hardest part, she had learned, was not finding the truth. It was remembering to look for it before hitting share."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What does a reverse image search do?",
+					"correct": "Finds other places a picture has appeared online",
+					"wrong": [
+						"Makes a blurry photo sharper",
+						"Turns a photo into a video",
+						"Sends a picture to a group chat"
+					],
+					"explanation": "The story describes it as a tool that looks for other places a picture has appeared online.",
+					"evidence": [
+						"a tool that looks for other places a picture has appeared online"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Where did the shark in the video really come from?",
+					"correct": "A photo from an ocean documentary",
+					"wrong": [
+						"A flooded highway in Florida",
+						"A painting of sea animals",
+						"A news report about the hurricane"
+					],
+					"explanation": "The search showed the same shark in a photo from an ocean documentary, cut out and pasted onto the flood footage.",
+					"evidence": [
+						"appeared in a photo from an ocean documentary filmed years earlier"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Ines write \"I almost shared it too\" in her message?",
+					"correct": "To show Caleb that anyone could be fooled",
+					"wrong": [
+						"To ask Caleb to share it for her",
+						"To prove she was smarter than Caleb",
+						"To warn Caleb that she was angry"
+					],
+					"explanation": "She did not want to embarrass him, so she let him know the fake had nearly fooled her as well.",
+					"evidence": [
+						"she didn't want to embarrass him in front of everyone",
+						"I almost shared it too"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Caleb post a correction in the group chat?",
+					"correct": "He wanted to fix the mistake he had spread.",
+					"wrong": [
+						"Ines said she would tell the teacher.",
+						"He wanted more people to watch the video.",
+						"His grandmother asked him to."
+					],
+					"explanation": "Caleb had shared the fake with everyone, so he told everyone it was fake and apologized for spreading it.",
+					"evidence": [
+						"Sorry for spreading it"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What lesson does the story teach?",
+					"correct": "Check surprising things before you share them.",
+					"wrong": [
+						"Sharks can swim in flooded streets.",
+						"Group chats are a waste of time.",
+						"Never trust your friends online."
+					],
+					"explanation": "The fake spread quickly because people shared it without checking. Ines learned that the hard part is remembering to look before hitting share.",
+					"evidence": [
+						"before you share something surprising, ask who made it",
+						"remembering to look for it before hitting share"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-steep-part",
+			"title": "The Steep Part",
+			"paragraphs": [
+				"Rowan had been mountain biking with his friend Beckett all summer, mostly on the wide gravel paths around the reservoir. So when Beckett's older cousin, Jules, offered to take them to Ridgeback Trail, Rowan said yes before he really thought about it. Ridgeback was famous for one thing: a steep, rocky drop near the end that riders called the Chute.",
+				"The first part of the trail was the best ride Rowan had ever had, twisting through pine trees and over roots and small logs, and he cleared every obstacle without stopping. Then they reached the top of the Chute. Rowan stopped and looked down. The trail dropped away at an angle that made his stomach flip, with loose rocks scattered between two enormous boulders. Jules rode it first, as smoothly as if it were a sidewalk, and then she waited at the bottom and called up to them.",
+				"Beckett laughed and said, \"Easy.\" Rowan's hands were sweating inside his gloves. He knew his brakes were reliable and his helmet was fastened securely, but he also knew he had never ridden anything this steep, and the loose rocks worried him. He could hear Beckett waiting impatiently behind him. \"Come on,\" Beckett said. \"Don't be a chicken.\"",
+				"Rowan took a deep breath, and then he climbed off his bike. \"I'm going to walk it this time,\" he announced. His face felt hot, but his voice came out steadier than he expected. He guided his bike down the side of the Chute carefully, one step at a time, and at the bottom he waited. Jules gave him a small nod.",
+				"Beckett stood at the top for a long time. Then, to Rowan's surprise, he dismounted too and walked his bike down. At the bottom, he avoided looking at either of them. Later, during the drive home, he admitted that he had been terrified the entire time. \"I only said 'easy' because you were watching,\" he told Rowan. \"When you got off, I figured I could too.\"",
+				"Jules told them that she had walked the Chute her first five times. Then she had practiced on smaller drops at the bike park every weekend for a month before she tried it. The next Saturday, Rowan and Beckett went to the bike park together. Rowan wasn't sure when he would be ready for the Chute. But he knew that when he rode it, it would be because he had decided to, not because someone had called him a name."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What was the Chute?",
+					"correct": "A steep, rocky drop near the end of the trail",
+					"wrong": [
+						"A wide gravel path by the reservoir",
+						"A bike park with small jumps",
+						"A bridge over a creek"
+					],
+					"explanation": "The story says the Chute was a steep, rocky drop near the end of Ridgeback Trail.",
+					"evidence": [
+						"a steep, rocky drop near the end that riders called the Chute"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Jules give Rowan a small nod at the bottom?",
+					"correct": "She respected his choice to walk down safely.",
+					"wrong": [
+						"She wanted him to try again right away.",
+						"She was telling him to hurry up.",
+						"She thought he had ridden the Chute."
+					],
+					"explanation": "Jules had walked the Chute her first five times herself, so she understood and approved of his careful choice.",
+					"evidence": [
+						"Jules gave him a small nod",
+						"she had walked the Chute her first five times"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Beckett walk his bike down too?",
+					"correct": "Rowan's choice made it easier to admit he was scared.",
+					"wrong": [
+						"Jules told him he had to walk.",
+						"His bike had a flat tire.",
+						"He wanted to race Rowan to the bottom."
+					],
+					"explanation": "Beckett had been scared all along but acted brave. Once Rowan walked, Beckett felt he could do the same.",
+					"evidence": [
+						"When you got off, I figured I could too"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How did Jules prepare before she rode the Chute?",
+					"correct": "She practiced on smaller drops for a month.",
+					"wrong": [
+						"She rode it fast on her first try.",
+						"She watched videos of other riders.",
+						"She bought a lighter bike."
+					],
+					"explanation": "Jules practiced on smaller drops at the bike park every weekend for a month before she tried the Chute.",
+					"evidence": [
+						"practiced on smaller drops at the bike park every weekend for a month"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main message of the story?",
+					"correct": "It takes courage to make your own choice under pressure.",
+					"wrong": [
+						"Mountain biking is too dangerous for kids.",
+						"Older cousins always know best.",
+						"The best riders never feel scared."
+					],
+					"explanation": "Rowan walked down even though Beckett called him a chicken, and he decides he will ride the Chute only when he chooses to.",
+					"evidence": [
+						"Don't be a chicken",
+						"because he had decided to, not because someone had called him a name"
+					]
+				}
+			]
+		},
+		{
+			"id": "stop-number-twelve",
+			"title": "Stop Number Twelve",
+			"paragraphs": [
+				"The Route 9 bus passed right by the Eastside Library, but it didn't stop there. The nearest stop was eight blocks away, across a busy road with no crosswalk. Yara noticed it every Saturday when she walked to the library with her little brother, Idris. She noticed something else, too: older people and parents with strollers who got off at the far stop and then trudged the long way back.",
+				"\"Somebody should ask the city to add a stop,\" Yara said one day. Her mother looked up from her newspaper. \"Somebody like you?\" she asked. Yara laughed, but the question stuck with her. That night, she searched the city's website and learned that anyone could speak for three minutes during the public comment period at a city council meeting.",
+				"Yara knew that three minutes of complaining wouldn't be enough. She needed evidence. So for two Saturdays, she sat on the library steps with a clipboard and asked people how they had gotten there. Of the one hundred and four people she surveyed, thirty-one had come by bus, and almost all of them had walked from the far stop. She also wrote a petition asking for a new stop and collected two hundred and sixty signatures from library visitors and neighbors.",
+				"The council meeting was on a Tuesday night. Yara wore her best sweater and practiced her speech four times in the car. When her name was called, she walked to the podium with her knees wobbling. She shared her survey numbers and showed a map with the eight-block walk marked in red. She ended by holding up the petition. \"These people would all like to take the bus to the library,\" she said. \"Right now, it doesn't stop there.\"",
+				"The council members thanked her and asked a few questions. Then they moved on to the next item. Yara felt deflated. She had expected a vote, or at least an answer. On the way home, her mother explained that the council usually asked the transit department to study a request before deciding anything. \"Change like this can take time,\" she said.",
+				"Four months later, a letter arrived addressed to Yara. The transit department had studied the route and agreed to add a stop near the library, to be called Stop Number Twelve. There was one condition: the city would also paint a crosswalk, which would take another month. Yara didn't mind waiting. On the first Saturday the new stop opened, she and Idris rode the bus right to the library door."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "How far was the nearest bus stop from the library?",
+					"correct": "Eight blocks",
+					"wrong": [
+						"Twelve blocks",
+						"Three blocks",
+						"One block"
+					],
+					"explanation": "The story says the nearest stop was eight blocks away, across a busy road.",
+					"evidence": [
+						"The nearest stop was eight blocks away"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How did Yara gather evidence before the meeting?",
+					"correct": "She surveyed library visitors and collected signatures.",
+					"wrong": [
+						"She rode the bus every day for a month.",
+						"She asked bus drivers to count riders.",
+						"She read old newspapers at the library."
+					],
+					"explanation": "She surveyed people on the library steps for two Saturdays and collected two hundred and sixty signatures on a petition.",
+					"evidence": [
+						"she sat on the library steps with a clipboard",
+						"collected two hundred and sixty signatures"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "What did Yara's mother suggest by asking, \"Somebody like you?\"",
+					"correct": "Yara could take action herself.",
+					"wrong": [
+						"Yara should not bother the city.",
+						"Someone had already asked for a stop.",
+						"Her mother would go to the city alone."
+					],
+					"explanation": "Her mother was hinting that Yara did not need to wait for someone else, and the question stuck with Yara until she acted.",
+					"evidence": [
+						"Somebody like you?",
+						"the question stuck with her"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Yara decide she needed evidence?",
+					"correct": "Facts would make the council more likely to listen.",
+					"wrong": [
+						"The website said complaints were not allowed.",
+						"Her mother made her bring a petition.",
+						"She wanted to practice using a clipboard."
+					],
+					"explanation": "She knew that three minutes of complaining would not be enough to convince the council, so she gathered numbers and signatures.",
+					"evidence": [
+						"Yara knew that three minutes of complaining wouldn't be enough"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 5, what does \"deflated\" mean?",
+					"correct": "Disappointed and less hopeful",
+					"wrong": [
+						"Proud and confident",
+						"Angry and loud",
+						"Confused and lost"
+					],
+					"explanation": "Yara expected a vote or an answer, but the council simply moved on, so her excitement sank like a balloon losing air.",
+					"evidence": [
+						"Yara felt deflated. She had expected a vote, or at least an answer"
+					]
+				}
+			]
+		},
+		{
+			"id": "the-concrete-that-heals-itself",
+			"title": "The Concrete That Heals Itself",
+			"paragraphs": [
+				"In the middle of Rome stands a building that is nearly nineteen hundred years old and still has its original roof. It is called the Pantheon, and it was finished around the year 125. Its dome is 142 feet across, with a round hole at the very top. To this day, it is the largest dome in the world made of concrete without steel bars inside to strengthen it. Many modern concrete buildings begin to crack and crumble after fifty or a hundred years. So how has this one lasted so long?",
+				"The Romans were masters of concrete. Their recipe mixed lime with volcanic ash and chunks of rock. Lime is made by heating limestone. When the mixture got wet, it hardened into something like stone. In seawater, Roman concrete even grew stronger over time, as new minerals formed in its cracks. Roman harbors built two thousand years ago still stand in the sea today.",
+				"For hundreds of years, scientists noticed something odd in old Roman concrete. Small white lumps of lime were scattered all through it. Many assumed these lumps were mistakes. They thought the Romans had simply mixed their concrete carelessly. But in 2023, a team of researchers in Massachusetts reached a different conclusion. They believed the lumps were the secret to the concrete's long life.",
+				"The team found signs that the Romans used a method called hot mixing. They added quicklime, an especially reactive form of lime, straight into the mix. The reaction gave off heat and left behind the white lumps. Later, if a crack formed and water seeped in, the water dissolved some of the lime in the lumps. The lime flowed into the crack and hardened again, sealing it shut. In other words, the concrete could repair itself.",
+				"To test their idea, the team made their own concrete using hot mixing, cracked it on purpose, and ran water through the cracks. Within two weeks, the cracks had sealed shut, and water could no longer flow through. A sample made without the lime lumps never healed.",
+				"Engineers are now studying whether self-healing concrete could be used in new buildings and bridges. Making concrete adds a lot of carbon dioxide to the air. Concrete that lasts longer and needs fewer repairs could help the planet as well as save money. Sometimes, it turns out, the best new ideas are very old ones."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What makes the Pantheon's dome special today?",
+					"correct": "It is the largest concrete dome without steel bars.",
+					"wrong": [
+						"It is the tallest building in Rome.",
+						"It is made entirely of marble.",
+						"It has no opening at the top."
+					],
+					"explanation": "The passage says it is still the largest dome in the world made of concrete without steel bars inside.",
+					"evidence": [
+						"it is the largest dome in the world made of concrete without steel bars inside to strengthen it"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "What did many scientists once think the white lumps were?",
+					"correct": "Mistakes from careless mixing",
+					"wrong": [
+						"Pieces of seashells",
+						"Decorations added by artists",
+						"Damage from earthquakes"
+					],
+					"explanation": "Many assumed the lumps were mistakes, and that the Romans had simply mixed their concrete carelessly.",
+					"evidence": [
+						"Many assumed these lumps were mistakes"
+					]
+				},
+				{
+					"kind": "vocabulary",
+					"prompt": "In paragraph 4, what does \"reactive\" mean?",
+					"correct": "Quick to change when it meets other substances",
+					"wrong": [
+						"Very heavy and hard to lift",
+						"Easy to see in the dark",
+						"Slow to dry in the sun"
+					],
+					"explanation": "Quicklime reacted strongly when it was added to the mix, giving off heat and leaving lumps behind.",
+					"evidence": [
+						"an especially reactive form of lime",
+						"The reaction gave off heat"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did the researchers also make a sample without the lime lumps?",
+					"correct": "To show that the lumps were what caused the healing",
+					"wrong": [
+						"Because they ran out of quicklime",
+						"To make the concrete look more modern",
+						"Because the Romans used both kinds"
+					],
+					"explanation": "Comparing the two showed the difference: the sample with lumps sealed its cracks, and the one without them never healed.",
+					"evidence": [
+						"A sample made without the lime lumps never healed"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How might self-healing concrete help the environment?",
+					"correct": "Less new concrete would need to be made.",
+					"wrong": [
+						"It soaks up all the carbon dioxide in the air.",
+						"It is made only from seawater.",
+						"It makes buildings use less electricity."
+					],
+					"explanation": "Making concrete adds a lot of carbon dioxide to the air. Concrete that lasts longer and needs fewer repairs means less has to be made.",
+					"evidence": [
+						"Making concrete adds a lot of carbon dioxide to the air",
+						"lasts longer and needs fewer repairs"
+					]
+				}
+			]
+		},
+		{
+			"id": "finding-the-way",
+			"title": "Finding the Way Without a Map",
+			"paragraphs": [
+				"About three thousand years ago, the ancestors of the Polynesian people began to sail across the Pacific Ocean in large canoes with two hulls. Over many centuries, they found and settled islands spread across thousands of miles of open water, from Hawaii to New Zealand to Easter Island. They had no compasses, no maps, and no tools for measuring. Instead, they read the ocean and the sky. This art of navigation is called wayfinding.",
+				"Wayfinders memorized where more than a hundred stars rose and set. A star rising in one spot on the horizon showed a direction, like a point on a compass. In the daytime, they steered by the sun and by the swells. Swells are long, steady waves that roll across the ocean from storms far away. A skilled navigator could feel the swells through the canoe, even lying down with his eyes closed.",
+				"Finding a small island in a huge ocean took other clues. Some seabirds, such as terns, fly out to sea to fish in the morning and return to land at dusk, so a navigator who spotted them in the evening could follow them home. Clouds tend to pile up and stay still above islands. The bottom of a cloud over a shallow lagoon can even look a little green.",
+				"By the 1900s, wayfinding had almost disappeared. Some historians even argued that the Polynesians had never steered on purpose. They said the islands were found by canoes that simply drifted there by luck. In the 1970s, a group in Hawaii decided to test that claim. They built Hōkūleʻa, a voyaging canoe based on old designs. They planned to sail it to Tahiti, about 2,500 miles away, with no instruments at all.",
+				"No navigator in Hawaii still knew the old ways well enough to guide such a long trip. So the crew asked for help from Mau Piailug, a master navigator from Satawal, a tiny island in Micronesia where wayfinding had never been lost. For thirty-four days, Mau guided the canoe using only the stars, the swells, the birds, and the clouds. On June 4, 1976, Hōkūleʻa reached Tahiti. About seventeen thousand people were waiting on the shore to greet it.",
+				"The voyage proved that wayfinding works. It also sparked new interest across the Pacific. Mau later trained Hawaiian navigators, including Nainoa Thompson, who went on to guide Hōkūleʻa all the way around the world. Today, young people from many islands are learning to read the stars and the swells, keeping an ancient science alive."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "What could a navigator learn from seabirds seen in the evening?",
+					"correct": "Land was nearby, in the direction they flew.",
+					"wrong": [
+						"A storm was coming soon.",
+						"The canoe was moving too fast.",
+						"Fish were swimming below the canoe."
+					],
+					"explanation": "Terns and noddies return to land at dusk, so a navigator who saw them in the evening could follow them home.",
+					"evidence": [
+						"return to land at dusk, so a navigator who spotted them in the evening could follow them home"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why did the crew ask Mau Piailug for help?",
+					"correct": "No navigator in Hawaii knew the old ways well enough.",
+					"wrong": [
+						"He had built the canoe himself.",
+						"He owned the only compass on his island.",
+						"He was born in Tahiti."
+					],
+					"explanation": "The passage says no navigator in Hawaii still knew the old ways well enough to guide such a long trip.",
+					"evidence": [
+						"No navigator in Hawaii still knew the old ways well enough to guide such a long trip"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did the 1976 voyage answer the historians who believed in drifting?",
+					"correct": "It showed people could reach far islands on purpose.",
+					"wrong": [
+						"It proved canoes drift faster than ships.",
+						"It showed compasses were needed after all.",
+						"It found Tahiti was closer than anyone thought."
+					],
+					"explanation": "Some historians said Polynesians only drifted by luck. Mau steered straight to Tahiti using wayfinding alone, which proved it could be done deliberately.",
+					"evidence": [
+						"drifted there by luck",
+						"The voyage proved that wayfinding works"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why would clouds that stay still in one place help a navigator?",
+					"correct": "They can mark where an island is.",
+					"wrong": [
+						"They block the sun and keep sailors cool.",
+						"They mean the ocean is calm everywhere.",
+						"They show which way the wind will blow."
+					],
+					"explanation": "Clouds tend to pile up and stay still above islands, so a still cloud on the horizon can point to land that is not yet visible.",
+					"evidence": [
+						"Clouds tend to pile up and stay still above islands"
+					]
+				},
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happened first?",
+					"correct": "Historians argued that the islands were reached by drifting.",
+					"wrong": [
+						"Hōkūleʻa arrived in Tahiti.",
+						"Mau trained Nainoa Thompson.",
+						"Hōkūleʻa sailed around the world."
+					],
+					"explanation": "The drifting claim came before the 1970s; the voyage was planned to test it. The arrival in Tahiti, Mau's teaching and the world voyage all came after.",
+					"evidence": [
+						"Some historians even argued",
+						"In the 1970s, a group in Hawaii decided to test that claim"
+					]
+				}
+			]
+		},
+		{
+			"id": "rivers-of-ice",
+			"title": "Rivers of Ice",
+			"paragraphs": [
+				"A glacier looks like a frozen, motionless mass, but it is actually moving all the time. A glacier forms where more snow falls in winter than melts in summer. Year after year, the snow piles up. The weight of the new snow presses down on the old snow beneath it, squeezing out the air and slowly turning it into dense, solid ice. Eventually, the ice becomes so thick and heavy that it begins to flow downhill under its own weight, like an extremely slow river.",
+				"Most glaciers move only a few inches to a few feet each day. Some, however, are much faster. Jakobshavn Glacier in Greenland has been measured moving more than 130 feet in a single day, one of the fastest speeds ever recorded. As a glacier flows over bumps in the land beneath it, the brittle ice near its surface cracks open into deep gaps called crevasses, some more than a hundred feet deep.",
+				"Glaciers are powerful sculptors. As they move, they pick up rocks and drag them along the ground beneath, scraping the land like enormous sheets of sandpaper. A river carves a narrow valley shaped like the letter V, but a glacier grinds out a wide valley shaped like the letter U. Long after the ice has melted, those U-shaped valleys remain. Yosemite Valley in California was shaped this way.",
+				"About twenty thousand years ago, during the last ice age, huge sheets of ice covered much of North America. In some places the ice was more than a mile thick. When it finally melted, it left clues everywhere. Boulders the size of houses sat in the middle of fields. Long ridges of gravel crossed the land, and countless lakes filled the hollows. The Great Lakes sit in basins that were carved deeper by the moving ice.",
+				"Today, glaciers and ice sheets still cover about one tenth of Earth's land. They hold about two thirds of all the fresh water on the planet. Glacier ice often looks blue instead of white. That is because thick, dense ice absorbs the red part of sunlight and lets the blue part travel through and bounce back. Scientists watch glaciers closely. When glaciers shrink or grow, they show how Earth's climate is changing."
+			],
+			"questions": [
+				{
+					"kind": "sequence",
+					"prompt": "Which of these happens first as a glacier forms?",
+					"correct": "Snow piles up year after year.",
+					"wrong": [
+						"The ice flows downhill.",
+						"Old snow is pressed into ice.",
+						"Crevasses crack open on top."
+					],
+					"explanation": "First snow builds up over many years. Its weight then turns the old snow into ice, and only once the ice is thick and heavy does it begin to flow.",
+					"evidence": [
+						"Year after year, the snow piles up"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How far has Jakobshavn Glacier been measured moving in one day?",
+					"correct": "More than 130 feet",
+					"wrong": [
+						"A few inches",
+						"About one mile",
+						"Exactly ten feet"
+					],
+					"explanation": "The passage says Jakobshavn Glacier has been measured moving more than 130 feet in a single day.",
+					"evidence": [
+						"has been measured moving more than 130 feet in a single day"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "If you saw a wide valley shaped like the letter U, what most likely made it?",
+					"correct": "Moving ice long ago",
+					"wrong": [
+						"A fast river",
+						"Strong winds",
+						"An earthquake"
+					],
+					"explanation": "The passage says rivers carve V-shaped valleys while glaciers grind out U-shaped ones, which remain after the ice melts.",
+					"evidence": [
+						"a glacier grinds out a wide valley shaped like the letter U",
+						"Long after the ice has melted, those U-shaped valleys remain"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "How did boulders the size of houses end up in the middle of fields?",
+					"correct": "Ice sheets carried them and left them when they melted.",
+					"wrong": [
+						"Farmers rolled them there long ago.",
+						"Volcanoes threw them through the air.",
+						"Rivers washed them down from the hills."
+					],
+					"explanation": "Glaciers pick up rocks and drag them along. When the ice sheets melted, they dropped what they carried, including huge boulders.",
+					"evidence": [
+						"they pick up rocks and drag them along",
+						"Boulders the size of houses sat in the middle of fields"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "Why does glacier ice often look blue?",
+					"correct": "Dense ice absorbs red light and lets blue through.",
+					"wrong": [
+						"Glaciers are full of blue minerals.",
+						"Glaciers reflect the color of the sky.",
+						"Ocean water freezes into blue ice."
+					],
+					"explanation": "The passage explains that dense ice absorbs the red part of sunlight and lets the blue part travel through and bounce back.",
+					"evidence": [
+						"dense ice absorbs the red part of sunlight and lets the blue part travel through and bounce back"
+					]
+				}
+			]
+		},
+		{
+			"id": "mapping-the-ocean-floor",
+			"title": "The Woman Who Mapped the Ocean Floor",
+			"paragraphs": [
+				"In the early 1950s, most people pictured the bottom of the ocean as a flat, muddy plain. No one had ever seen most of it. Then a scientist named Marie Tharp began drawing the first detailed maps of the sea floor. What she found changed the way we understand the whole planet.",
+				"Tharp worked at a laboratory run by Columbia University in New York. At the time, women were not allowed on the research ships, so she could not collect data herself. Instead, her colleague Bruce Heezen and other scientists went to sea. Their ships used echo sounders, which send a pulse of sound down to the sea floor and time how long the echo takes to return. The longer the echo takes, the deeper the water. The ships came back with thousands of these measurements, recorded as long, wavy lines on rolls of paper.",
+				"Tharp's job was to turn those numbers into pictures. She worked by hand with pens, rulers, and huge sheets of paper. She plotted the depths along each ship's path and filled in the shapes between them. Slowly, a hidden landscape appeared: tall mountains, deep canyons, and wide plains, all under thousands of feet of water.",
+				"In 1952, as she mapped the Atlantic Ocean, Tharp noticed something remarkable. A long chain of mountains ran down the middle of the ocean floor, and along the top of those mountains ran a deep valley, like a crack splitting the ridge in two. Tharp believed the valley was a rift, a place where the Earth's crust was being pulled apart. When she showed Heezen, he dismissed it as \"girl talk.\" At the time, most scientists did not believe that continents could move.",
+				"But Tharp kept checking her work, and the evidence kept growing. Earthquake records showed that quakes happened along the exact line of her rift valley. In time, Heezen was convinced. By the 1960s, the ridge she had mapped had become key evidence for plate tectonics. That is the idea that Earth's surface is broken into huge plates that slowly move. Scientists now know that the ridge winds around the globe for about 40,000 miles. It is the longest mountain range on Earth.",
+				"In 1977, Tharp and Heezen published a map of the whole ocean floor, painted by an artist named Heinrich Berann. It showed what the planet would look like if all the water were drained away. For many years, Tharp got little credit for her work. But in 1997, the Library of Congress named her one of the most important mapmakers of the 1900s. Her story shows that great discoveries can come from looking closely at what everyone else has missed."
+			],
+			"questions": [
+				{
+					"kind": "literal",
+					"prompt": "Why couldn't Marie Tharp collect data at sea herself?",
+					"correct": "Women were not allowed on the research ships.",
+					"wrong": [
+						"She was afraid of the ocean.",
+						"The ships were too small for her tools.",
+						"She was too busy teaching classes."
+					],
+					"explanation": "The passage says that at the time, women were not allowed on the research ships.",
+					"evidence": [
+						"women were not allowed on the research ships"
+					]
+				},
+				{
+					"kind": "literal",
+					"prompt": "How does an echo sounder measure the depth of the ocean?",
+					"correct": "It times how long a sound takes to echo back.",
+					"wrong": [
+						"It drops a long rope to the bottom.",
+						"It takes photographs of the sea floor.",
+						"It measures the temperature of the water."
+					],
+					"explanation": "An echo sounder sends a pulse of sound down and times how long the echo takes to return. A longer time means deeper water.",
+					"evidence": [
+						"time how long the echo takes to return"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why did Heezen most likely refuse to believe Tharp at first?",
+					"correct": "Scientists then did not believe continents could move.",
+					"wrong": [
+						"Tharp's earlier maps were full of errors.",
+						"He had already found the rift himself.",
+						"The ships had never visited the Atlantic."
+					],
+					"explanation": "A rift where the crust pulls apart only makes sense if the Earth's surface moves, an idea most scientists rejected then. His \"girl talk\" remark also shows he did not take her seriously.",
+					"evidence": [
+						"he dismissed it as \"girl talk",
+						"At the time, most scientists did not believe that continents could move"
+					]
+				},
+				{
+					"kind": "inference",
+					"prompt": "Why were the earthquake records important evidence?",
+					"correct": "Quakes along her valley suggested the crust was moving there.",
+					"wrong": [
+						"They proved the ocean was getting deeper.",
+						"They showed the ships mapped the wrong ocean.",
+						"They meant the ridge was made of ice."
+					],
+					"explanation": "Earthquakes happen where the crust shifts. Quakes along the exact line of the rift supported her idea that the crust was being pulled apart there.",
+					"evidence": [
+						"quakes happened along the exact line of her rift valley"
+					]
+				},
+				{
+					"kind": "main_idea",
+					"prompt": "What is the main idea of the passage?",
+					"correct": "Tharp's careful maps revealed how Earth's surface moves.",
+					"wrong": [
+						"Research ships are the best place to do science.",
+						"The ocean floor is flat and muddy.",
+						"Painting matters more than science."
+					],
+					"explanation": "By turning sound measurements into maps, Tharp found the mid-ocean rift, which became key evidence for plate tectonics.",
+					"evidence": [
+						"key evidence for plate tectonics"
+					]
+				}
+			]
+		}
+	]
+}
