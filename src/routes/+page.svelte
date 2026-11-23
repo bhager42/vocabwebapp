@@ -17,6 +17,10 @@
 		{@const child = data.child}
 		<header>
 			<h1>Hi, {child.name}!</h1>
+			<ul class="levels" aria-label="Your levels">
+				<li>Words: grade {child.wordGrade}</li>
+				<li>Reading: grade {child.readingGrade}</li>
+			</ul>
 			{#if child.streak > 1}
 				<p class="lead">You have practiced {child.streak} days in a row. Keep it up!</p>
 			{:else if child.status !== 'capped'}
@@ -103,6 +107,26 @@
 
 	.lead {
 		font-size: var(--text-lg);
+	}
+
+	/* Two small badges under the greeting: the word grade and the reading grade. */
+	.levels {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin: var(--space-2) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.levels li {
+		padding: var(--space-1) var(--space-3);
+		border: 2px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		color: var(--color-text-muted);
+		font-size: var(--text-sm);
+		font-weight: 600;
 	}
 
 	.choices {

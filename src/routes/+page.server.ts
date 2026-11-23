@@ -24,6 +24,10 @@ export const load: PageServerLoad = ({ locals, url }) => {
 	return {
 		child: {
 			name: who.name,
+			// Shown under the greeting so the child knows their levels. Words and reading
+			// move separately, so both are listed.
+			wordGrade: who.grade,
+			readingGrade: who.readingGrade,
 			status: practiceStatus(db, who, now, timeZone),
 			reading: readingStatus(db, who, now, timeZone),
 			// A placement quiz the parent has asked for comes before practice.

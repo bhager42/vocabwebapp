@@ -53,6 +53,9 @@ test.describe('typing a name', () => {
 
 		await expect(page.getByRole('heading', { level: 1, name: 'Hi, Sam!' })).toBeVisible();
 		await expect(page.getByRole('button', { name: 'Start practicing' })).toBeVisible();
+		// The child sees both levels, which move separately.
+		const levels = page.getByRole('list', { name: 'Your levels' });
+		await expect(levels.getByRole('listitem')).toHaveText(['Words: grade 3', 'Reading: grade 3']);
 
 		const cookie = (await context.cookies()).find((entry) => entry.name === 'vocab_child')!;
 		expect(cookie).toMatchObject({ httpOnly: true, sameSite: 'Lax', path: '/' });
