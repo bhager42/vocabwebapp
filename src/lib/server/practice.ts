@@ -250,9 +250,31 @@ export function startPractice(db: Db, who: PracticeChild, clock: Clock): StartRe
 				.map((list) => list.id)
 		);
 
+		// When each word was last asked today, so a second session the same day can keep
+		// those words for last (see composePlan).
+		const lastAskedToday = new Map(
+			tx
+				.select({ wordId: question.wordId, at: sql<number>`max(${question.servedAt})` })
+				.from(question)
+				.innerJoin(practiceSession, eq(question.practiceSessionId, practiceSession.id))
+				.where(
+					and(
+						eq(practiceSession.childId, who.id),
+						gte(question.servedAt, startOfLocalDay(now, timeZone))
+					)
+				)
+				.groupBy(question.wordId)
+				.all()
+				.map((row) => [row.wordId, row.at])
+		);
+		const notDue = progress.filter((row) => row.dueAt > now && !row.masteredAt);
+
 		const plan = composePlan({
 			due: progress.filter((row) => row.dueAt <= now),
-			early: progress.filter((row) => row.dueAt > now && !row.masteredAt),
+			early: notDue.filter((row) => !lastAskedToday.has(row.wordId)),
+			askedToday: notDue
+				.filter((row) => lastAskedToday.has(row.wordId))
+				.sort((a, b) => lastAskedToday.get(a.wordId)! - lastAskedToday.get(b.wordId)!),
 			// New words come in no particular order, except that the parent's own lists go
 			// first: those are usually this week's words from school.
 			fresh: shuffle(

@@ -431,6 +431,33 @@ describe('boxes', () => {
 		// The session leads with new words, not with the words that are waiting.
 		expect(firstFour.has(third.planJson[0].wordId)).toBe(false);
 	});
+	it('does not repeat the last session when the child goes straight into another', () => {
+		playSession();
+		tick(60_000);
+		playSession();
+
+		const [first, second] = sessions();
+		const firstWords = new Set(first.planJson.map((item) => item.wordId));
+		// Four new words, each looked at three ways, and none of the first session's words.
+		expect(second.planJson).toHaveLength(10);
+		expect(second.planJson.filter((item) => firstWords.has(item.wordId))).toEqual([]);
+	});
+
+	it('still fills a session the same day with words already asked when nothing else is left', () => {
+		playSession();
+		tick(60_000);
+		playSession();
+		tick(60_000);
+		playSession(); // all twelve words have now been introduced today
+		tick(60_000);
+
+		expect(startPractice(db, sam, clock())).toBe('started');
+		const fourth = sessions().at(-1)!;
+		const firstWords = sessions()[0].planJson.map((item) => item.wordId);
+		expect(fourth.planJson.length).toBeGreaterThan(0);
+		// The words asked longest ago come back first.
+		expect(firstWords).toContain(fourth.planJson[0].wordId);
+	});
 });
 
 describe('a missed word', () => {

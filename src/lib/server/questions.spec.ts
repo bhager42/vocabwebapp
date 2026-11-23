@@ -338,6 +338,25 @@ describe('composePlan', () => {
 		expect(new Set(plan.map((item) => item.wordId))).toEqual(new Set([101, 102, 103, 104]));
 	});
 
+	it('keeps words already asked today for last, least recently asked first', () => {
+		const askedToday = [
+			{ wordId: 1, box: 2 },
+			{ wordId: 2, box: 2 }
+		];
+		const plan = composePlan({ ...base, fresh: [101], askedToday });
+
+		// The new word three ways first, then the words from earlier today.
+		expect(plan).toEqual([
+			{ wordId: 101, type: 'word_to_def' },
+			{ wordId: 101, type: 'def_to_word' },
+			{ wordId: 101, type: 'cloze' },
+			{ wordId: 1, type: 'word_to_def' },
+			{ wordId: 2, type: 'word_to_def' }
+		]);
+		// With enough new words they are not needed at all.
+		expect(count(composePlan({ ...base, fresh, askedToday }), 1)).toBe(0);
+	});
+
 	it('never asks the same word the same way twice', () => {
 		const plan = composePlan({ ...base, fresh });
 		const keys = plan.map((item) => `${item.wordId}:${item.type}`);

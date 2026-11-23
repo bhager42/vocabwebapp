@@ -172,6 +172,12 @@ export interface PlanInput {
 	fresh: number[];
 	/** Words being learned that are not due yet, soonest first. Used only to fill a short session. */
 	early: { wordId: number; box: number }[];
+	/**
+	 * Words not due that the child was already asked today, least recently asked first.
+	 * The very last thing used to fill a session, so back-to-back sessions bring different
+	 * words instead of the ones just practised.
+	 */
+	askedToday?: { wordId: number; box: number }[];
 	questionsPerSession: number;
 	newWordsPerSession: number;
 	spellingEnabled: boolean;
@@ -187,6 +193,8 @@ export interface PlanInput {
  *    look at this session's words asked in a different way. Meeting a new word three
  *    ways in one sitting is how it starts to stick. Extra practice never moves a word
  *    up a box (see srs.ts).
+ * 4. Only if there is still room, words already asked today. Without this rule a second
+ *    session straight after the first was mostly the first one again.
  */
 export function composePlan(input: PlanInput): PlanItem[] {
 	const size = input.questionsPerSession;
@@ -220,6 +228,13 @@ export function composePlan(input: PlanInput): PlanItem[] {
 			if (plan.some((item) => item.wordId === wordId && item.type === type)) continue;
 			plan.push({ wordId, type });
 		}
+	}
+
+	for (const { wordId, box } of input.askedToday ?? []) {
+		if (room() <= 0) break;
+		if (planned.has(wordId)) continue;
+		planned.add(wordId);
+		plan.push({ wordId, type: typeFor(box) });
 	}
 	return plan;
 }

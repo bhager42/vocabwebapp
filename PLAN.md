@@ -62,7 +62,7 @@ Each child/word pair sits in a box from 1 to 5.
 - A word is **mastered** when it is answered correctly out of box 5. A mastered word comes back every 60 days so it is not forgotten; a wrong answer sends it back to box 1 like any other.
 - Due dates fall on local midnight in the app's time zone, so a word answered on Monday evening is due first thing Tuesday, not 24 hours later.
 - A session is 10 questions: due reviews first, then at most 4 new words. Both numbers are parent settings.
-- When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back to box 1.
+- When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back to box 1. Words already asked earlier the same day are used only as a last resort, so a second session straight after the first brings new words rather than the same ones again.
 - A missed word is added to the session again two questions later, unless it is already coming up, and a word is asked at most four times in one session.
 - The spelling question has no "hear it" button: reading the word aloud would mean sending the answer to the browser before it is given. The first letter and the length point to the wanted word instead. Phase 10 adds dictation, with audio made ahead of time and served so the word never reaches the page.
 
