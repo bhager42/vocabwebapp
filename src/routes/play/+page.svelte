@@ -121,6 +121,9 @@
 			</div>
 
 			{#if question.type === 'spell'}
+				<!-- No help with the spelling: no browser spell check or autocorrect, no writing
+				     suggestions, no Grammarly or LanguageTool, and no right-click menu (which can
+				     offer corrections or a web search for the word). -->
 				<Field
 					label="Your answer"
 					name="text"
@@ -128,6 +131,12 @@
 					autocapitalize="none"
 					autocorrect="off"
 					spellcheck="false"
+					writingsuggestions="false"
+					data-gramm="false"
+					data-gramm_editor="false"
+					data-enable-grammarly="false"
+					data-lt-active="false"
+					oncontextmenu={(event) => event.preventDefault()}
 					required
 					maxlength={40}
 					error={form?.message}

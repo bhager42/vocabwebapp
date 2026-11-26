@@ -450,7 +450,16 @@ test.describe('kinds of question', () => {
 		await expect(page.getByText('Type the word that means this.')).toBeVisible();
 		expect(await page.content()).not.toMatch(/enormous/i);
 		await expect(page.getByRole('button', { name: /^Hear/ })).toHaveCount(0);
-		await expect(page.getByLabel('Your answer')).toHaveAttribute('spellcheck', 'false');
+		const box = page.getByLabel('Your answer');
+		await expect(box).toHaveAttribute('spellcheck', 'false');
+		await expect(box).toHaveAttribute('writingsuggestions', 'false');
+		await expect(box).toHaveAttribute('data-gramm', 'false');
+		// The right-click menu is blocked on the answer box.
+		const menuBlocked = await box.evaluate((input) => {
+			const event = new MouseEvent('contextmenu', { bubbles: true, cancelable: true });
+			return !input.dispatchEvent(event);
+		});
+		expect(menuBlocked).toBe(true);
 
 		await page.getByLabel('Your answer').fill('  Enormous ');
 		await page.getByRole('button', { name: 'Check' }).click();
