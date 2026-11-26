@@ -556,6 +556,41 @@ export function readingFigures(db: Reader, scope: Scope): ReadingFigures {
 	};
 }
 
+export interface GradeCompletion {
+	grade: number;
+	/** Stories switched on at the grade. */
+	stories: number;
+	/** Of those, how many the child has finished at least once. */
+	finished: number;
+	/** Answers in the child's finished readings of stories at the grade. */
+	right: KindAccuracy;
+}
+
+/** For every grade that has stories: how many the child has finished, and how well. */
+export function storiesByGrade(db: Reader, childId: number): GradeCompletion[] {
+	const stories = db
+		.select({ id: readingStory.id, grade: readingStory.grade })
+		.from(readingStory)
+		.where(eq(readingStory.active, true))
+		.all();
+	const finishedAttempts = db
+		.select({ id: readingAttempt.id, storyId: readingAttempt.storyId })
+		.from(readingAttempt)
+		.where(and(eq(readingAttempt.childId, childId), eq(readingAttempt.completed, true)))
+		.all();
+	const gradeOf = new Map(stories.map((story) => [story.id, story.grade]));
+
+	return readingGrades(db).map((grade) => {
+		const attempts = finishedAttempts.filter((attempt) => gradeOf.get(attempt.storyId) === grade);
+		return {
+			grade,
+			stories: stories.filter((story) => story.grade === grade).length,
+			finished: new Set(attempts.map((attempt) => attempt.storyId)).size,
+			right: accuracyOf(attempts.flatMap((attempt) => answerKinds(db, attempt.id)))
+		};
+	});
+}
+
 export interface AttemptSummary {
 	id: number;
 	title: string;

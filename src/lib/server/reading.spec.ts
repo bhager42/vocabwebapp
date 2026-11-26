@@ -29,6 +29,7 @@ import {
 	nextStory,
 	READING_GAP_CAP_MS,
 	readingFigures,
+	storiesByGrade,
 	readingStatus,
 	readingView,
 	readiness,
@@ -399,6 +400,29 @@ describe('figures for the parent', () => {
 			inference: { asked: 2, correct: 1, share: 0.5 },
 			other: { asked: 1, correct: 0 }
 		});
+	});
+
+	it('count the stories finished at each grade, each story once', () => {
+		seedStories(db, content({ 3: ['a', 'b'], 4: ['c'] }));
+		readStory(4); // a
+		tick(60_000);
+		readStory(5); // b
+		tick(60_000);
+		readStory(3); // a again, the one finished longest ago
+		tick(60_000);
+		startReading(db, fresh(), clock()); // b again, not finished
+
+		expect(storiesByGrade(db, sam.id)).toEqual([
+			{ grade: 3, stories: 2, finished: 2, right: { asked: 15, correct: 12, share: 0.8 } },
+			{ grade: 4, stories: 1, finished: 0, right: { asked: 0, correct: 0, share: null } }
+		]);
+	});
+
+	it('count nothing for a child who has not read', () => {
+		readStory();
+		const other = createChild(db, { name: 'Mia', grade: 3 }, start);
+		if (!other.ok) throw new Error('setup');
+		expect(storiesByGrade(db, other.child.id).map((grade) => grade.finished)).toEqual([0]);
 	});
 
 	it('lists attempts and shows one in full, only to its own child', () => {

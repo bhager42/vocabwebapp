@@ -104,6 +104,13 @@ test('a child reads a story and the parent sees how it went', async ({ page }) =
 	// The parent's Reading tab.
 	await page.goto(`/parent/children/${sam}/reading`);
 	await expect(page.getByRole('heading', { name: 'Reading for Sam' })).toBeVisible();
+	// Stories finished at each grade: one so far, and none at the grades above.
+	await expect(
+		page.getByRole('progressbar', { name: 'Grade 3 (reading now): 1 of 15 stories finished' })
+	).toBeVisible();
+	await expect(
+		page.getByRole('progressbar', { name: 'Grade 4: 0 of 15 stories finished' })
+	).toBeVisible();
 	await expect(page.getByRole('row', { name: /Answer is in the story/ })).toContainText('1 of 2');
 	await expect(page.getByRole('row', { name: /Answer must be worked out/ })).toContainText(
 		'2 of 2'

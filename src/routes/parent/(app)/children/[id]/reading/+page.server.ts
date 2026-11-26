@@ -9,7 +9,8 @@ import {
 	MOVE_UP_STORIES,
 	nextReadingGrade,
 	readingFigures,
-	readiness
+	readiness,
+	storiesByGrade
 } from '#lib/server/reading.ts';
 import { appTimeZone, formatDateTime } from '#lib/server/time.ts';
 import type { Actions, PageServerLoad } from './$types';
@@ -31,6 +32,7 @@ export const load: PageServerLoad = ({ locals, params, url }) => {
 		readingGrade: child.readingGrade,
 		figures: readingFigures(db, scopeFor(child.id, period, now, timeZone)),
 		readiness: ready,
+		byGrade: storiesByGrade(db, child.id),
 		storiesNeeded: MOVE_UP_STORIES,
 		moveUpTo: ready.ready && next !== null ? next : null,
 		nextGrade: next,

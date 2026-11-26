@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { resolve } from '$app/paths';
 	import Button from '#lib/components/Button.svelte';
+	import ProgressBar from '#lib/components/ProgressBar.svelte';
 	import TableWrap from '#lib/components/TableWrap.svelte';
 	import { percent } from '#lib/format.ts';
 	import type { PageProps } from './$types';
@@ -64,6 +65,33 @@
 			{child.name} has not read a story yet. Once they do, their results show up here.
 		</p>
 	{:else}
+		<section class="stack" aria-labelledby="grades-heading">
+			<h2 id="grades-heading">Stories by grade</h2>
+			<p class="muted">
+				How many of each grade's stories {child.name} has finished, whatever period is chosen below. A
+				story read twice counts once; its answers count both times.
+			</p>
+			<div class="grades">
+				{#each data.byGrade as grade (grade.grade)}
+					<div class="grade">
+						<ProgressBar
+							value={grade.finished}
+							max={grade.stories}
+							label="Grade {grade.grade}{grade.grade === data.readingGrade
+								? ' (reading now)'
+								: ''}: {grade.finished} of {grade.stories} stories finished"
+						/>
+						{#if grade.right.share !== null}
+							<p class="muted">
+								{percent(grade.right.share)} right ({grade.right.correct} of {grade.right.asked}
+								questions)
+							</p>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		</section>
+
 		<nav aria-label="Period">
 			<ul class="periods">
 				{#each periods as option (option.value)}
@@ -181,3 +209,20 @@
 		</section>
 	{/if}
 </div>
+
+<style>
+	.grades {
+		display: grid;
+		gap: var(--space-4);
+	}
+
+	.grade {
+		display: grid;
+		gap: var(--space-1);
+	}
+
+	.grade p {
+		margin: 0;
+		font-size: var(--text-sm);
+	}
+</style>
