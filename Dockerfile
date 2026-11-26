@@ -5,7 +5,7 @@
 ARG NODE_IMAGE=docker.io/library/node:26.13.1-trixie-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc
 # The image the app runs in, pinned the same way. It must carry the same major version
 # of Node as the build image, because better-sqlite3 is compiled code.
-ARG RUNTIME_IMAGE=gcr.io/distroless/nodejs26-debian13@sha256:80631bd2f0e7ef192138a7409013b47d92fd11b8ff3bb35f5c0a65be3ecaea4c
+ARG RUNTIME_IMAGE=gcr.io/distroless/nodejs26-debian13@sha256:13e3ac17e2911d238622fea7808a7a161ba6b33a41e542ded6e399387e1dbc84
 
 # ---- build: install everything, build, then drop dev dependencies ----
 FROM ${NODE_IMAGE} AS build
