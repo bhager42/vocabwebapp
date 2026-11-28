@@ -40,6 +40,58 @@
 		<p class="notice notice-ok" role="status">
 			{child.name} is now reading grade {form.movedTo} stories.
 		</p>
+	{:else if form?.retesting}
+		<p class="notice notice-ok" role="status">
+			{child.name} will read {form.retesting === 1
+				? 'that story'
+				: `those ${form.retesting} stories`}
+			again, one at a time, next time they choose “Read a story”.
+		</p>
+	{:else if data.gradeEnd}
+		{@const end = data.gradeEnd}
+		{@const mistakes = end.withMistakes.length}
+		<div class="notice notice-info stack">
+			<p>
+				<strong>{child.name} has read all {end.stories} grade {end.grade} stories.</strong>
+				Until you choose what comes next, they are told they have read them all and to talk to you.
+			</p>
+			{#if mistakes > 0}
+				<p>
+					{mistakes === 1 ? 'One story' : `${mistakes} stories`} had a wrong answer the last time:
+				</p>
+				<ul>
+					{#each end.withMistakes as story (story.id)}<li>{story.title}</li>{/each}
+				</ul>
+			{:else}
+				<p>Every one had all its answers right the last time.</p>
+			{/if}
+			<div class="end-actions">
+				{#if mistakes > 0}
+					<form method="POST" action="?/retest" use:enhance>
+						<Button>
+							Read {mistakes === 1 ? 'that story' : `those ${mistakes} stories`} again
+						</Button>
+					</form>
+				{/if}
+				{#if data.nextGrade !== null}
+					<form method="POST" action="?/moveUp" use:enhance>
+						<Button variant={mistakes > 0 ? 'secondary' : 'primary'}>
+							Move up to reading grade {data.nextGrade}
+						</Button>
+					</form>
+				{/if}
+			</div>
+			<p class="muted">
+				{data.nextGrade === null ? `Grade ${end.grade} is the last grade with stories. ` : ''}You
+				can also choose any reading grade on the Settings tab.
+			</p>
+		</div>
+	{:else if data.retestsLeft > 0}
+		<p class="notice notice-info">
+			{child.name} is reading again the stories that had a wrong answer:
+			{data.retestsLeft}
+			{data.retestsLeft === 1 ? 'story' : 'stories'} still to go.
+		</p>
 	{:else if data.moveUpTo && !data.movesUpAutomatically}
 		<div class="notice notice-info stack">
 			<p>
@@ -211,6 +263,12 @@
 </div>
 
 <style>
+	.end-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+	}
+
 	.grades {
 		display: grid;
 		gap: var(--space-4);

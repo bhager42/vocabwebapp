@@ -13,6 +13,7 @@ import {
 	readingAnswer,
 	readingAttempt,
 	readingQuestion,
+	readingRetest,
 	readingStory,
 	type ReadingKind
 } from './db/schema.ts';
@@ -79,35 +80,58 @@ export function readingGrades(db: Reader): number[] {
 	return [...grades].sort((a, b) => a - b);
 }
 
-/**
- * The story to read next at a grade: the first one never finished, in content order;
- * once all have been finished, the one finished longest ago.
- */
-export function nextStory(db: Reader, childId: number, grade: number): number | null {
-	const stories = db
-		.select({ id: readingStory.id })
+/** Active stories at a grade that have questions, in content order. */
+function storiesAt(db: Reader, grade: number) {
+	return db
+		.select({ id: readingStory.id, title: readingStory.title })
 		.from(readingStory)
 		.where(and(eq(readingStory.grade, grade), eq(readingStory.active, true)))
 		.orderBy(asc(readingStory.id))
 		.all()
 		.filter((story) => questionsOf(db, story.id).length > 0);
-	if (stories.length === 0) return null;
+}
 
-	const lastFinished = new Map<number, number>();
-	for (const attempt of db
-		.select({ storyId: readingAttempt.storyId, endedAt: readingAttempt.endedAt })
-		.from(readingAttempt)
-		.where(and(eq(readingAttempt.childId, childId), eq(readingAttempt.completed, true)))
-		.all()) {
-		const at = attempt.endedAt?.getTime() ?? 0;
-		lastFinished.set(attempt.storyId, Math.max(lastFinished.get(attempt.storyId) ?? 0, at));
-	}
+/** Stories the child has finished at least once. */
+function finishedStories(db: Reader, childId: number): Set<number> {
+	return new Set(
+		db
+			.select({ storyId: readingAttempt.storyId })
+			.from(readingAttempt)
+			.where(and(eq(readingAttempt.childId, childId), eq(readingAttempt.completed, true)))
+			.all()
+			.map((row) => row.storyId)
+	);
+}
 
-	const unread = stories.find((story) => !lastFinished.has(story.id));
-	if (unread) return unread.id;
-	return stories.reduce((oldest, story) =>
-		lastFinished.get(story.id)! < lastFinished.get(oldest.id)! ? story : oldest
-	).id;
+/** Stories the parent has asked the child to read again. */
+function retestQueue(db: Reader, childId: number): Set<number> {
+	return new Set(
+		db
+			.select({ storyId: readingRetest.storyId })
+			.from(readingRetest)
+			.where(eq(readingRetest.childId, childId))
+			.all()
+			.map((row) => row.storyId)
+	);
+}
+
+/**
+ * The story to read next at a grade: one the parent asked to be read again, then the first
+ * one never finished, in content order. Null once every story has been finished: the child
+ * is then told to talk to a grown-up, who can choose what comes next.
+ */
+export function nextStory(db: Reader, childId: number, grade: number): number | null {
+	const stories = storiesAt(db, grade);
+	const again = retestQueue(db, childId);
+	const retest = stories.find((story) => again.has(story.id));
+	if (retest) return retest.id;
+	const finished = finishedStories(db, childId);
+	return stories.find((story) => !finished.has(story.id))?.id ?? null;
+}
+
+/** True when the grade has stories and the child has finished every one of them. */
+export function gradeFinished(db: Reader, childId: number, grade: number): boolean {
+	return storiesAt(db, grade).length > 0 && nextStory(db, childId, grade) === null;
 }
 
 // ---- Attempts ----
@@ -163,7 +187,8 @@ function serveNext(tx: Tx, attempt: AttemptRow, clock: Clock): boolean {
 	return true;
 }
 
-export type ReadingStatus = 'ready' | 'resume' | 'capped' | 'none';
+/** `finished`: every story at the grade has been read, and the parent has not chosen more. */
+export type ReadingStatus = 'ready' | 'resume' | 'capped' | 'finished' | 'none';
 
 /** What the home page should offer for reading. */
 export function readingStatus(
@@ -173,7 +198,9 @@ export function readingStatus(
 	timeZone: string
 ): ReadingStatus {
 	if (openAttempt(db, who.id, now)) return 'resume';
-	if (nextStory(db, who.id, who.readingGrade) === null) return 'none';
+	if (nextStory(db, who.id, who.readingGrade) === null) {
+		return gradeFinished(db, who.id, who.readingGrade) ? 'finished' : 'none';
+	}
 	return capReached(db, who, now, timeZone) ? 'capped' : 'ready';
 }
 
@@ -182,7 +209,7 @@ export function startReading(
 	db: Db,
 	who: ReadingChild,
 	clock: Clock
-): 'started' | 'resumed' | 'capped' | 'empty' {
+): 'started' | 'resumed' | 'capped' | 'finished' | 'empty' {
 	return db.transaction((tx) => {
 		const open = openAttempt(tx, who.id, clock.now);
 		if (open) {
@@ -193,7 +220,9 @@ export function startReading(
 		}
 		if (capReached(tx, who, clock.now, clock.timeZone)) return 'capped';
 		const storyId = nextStory(tx, who.id, who.readingGrade);
-		if (storyId === null) return 'empty';
+		if (storyId === null) {
+			return gradeFinished(tx, who.id, who.readingGrade) ? 'finished' : 'empty';
+		}
 		const attempt = tx
 			.insert(readingAttempt)
 			.values({ childId: who.id, storyId, startedAt: clock.now })
@@ -392,6 +421,10 @@ export function advanceReading(
 			.set({ endedAt: now, completed: true })
 			.where(eq(readingAttempt.id, attempt.id))
 			.run();
+		// A story the parent asked to be read again has now been read again.
+		tx.delete(readingRetest)
+			.where(and(eq(readingRetest.childId, who.id), eq(readingRetest.storyId, attempt.storyId)))
+			.run();
 		// Move up a reading grade when ready, if the parent chose "automatic".
 		const next = nextReadingGrade(tx, who.readingGrade);
 		if (
@@ -400,6 +433,7 @@ export function advanceReading(
 			readiness(tx, who.id, who.readingGrade).ready
 		) {
 			tx.update(child).set({ readingGrade: next }).where(eq(child.id, who.id)).run();
+			tx.delete(readingRetest).where(eq(readingRetest.childId, who.id)).run();
 		}
 		return 'done';
 	});
@@ -410,6 +444,8 @@ export interface ReadingSummary {
 	right: number;
 	total: number;
 	canReadAgain: boolean;
+	/** Set when that story was the last one at the child's grade. */
+	finishedGrade: number | null;
 }
 
 /** The story the child has just finished, for the "Well done" page. */
@@ -438,7 +474,9 @@ export function lastReadingSummary(
 		title,
 		right: answers.filter((row) => row.isCorrect).length,
 		total: answers.length,
-		canReadAgain: !capReached(db, who, now, timeZone)
+		canReadAgain:
+			!capReached(db, who, now, timeZone) && !gradeFinished(db, who.id, who.readingGrade),
+		finishedGrade: gradeFinished(db, who.id, who.readingGrade) ? who.readingGrade : null
 	};
 }
 
@@ -554,6 +592,64 @@ export function readingFigures(db: Reader, scope: Scope): ReadingFigures {
 		inference: accuracyOf(rows.filter((row) => row.kind === 'inference')),
 		other: accuracyOf(rows.filter((row) => row.kind !== 'literal' && row.kind !== 'inference'))
 	};
+}
+
+export interface GradeEnd {
+	grade: number;
+	stories: number;
+	/** Stories with a wrong answer the last time they were read, in content order. */
+	withMistakes: { id: number; title: string }[];
+}
+
+/** Stories at a grade whose most recent finished reading had a wrong answer. */
+function storiesWithMistakes(db: Reader, childId: number, grade: number) {
+	return storiesAt(db, grade).filter((story) => {
+		const last = db
+			.select({ id: readingAttempt.id })
+			.from(readingAttempt)
+			.where(
+				and(
+					eq(readingAttempt.childId, childId),
+					eq(readingAttempt.storyId, story.id),
+					eq(readingAttempt.completed, true)
+				)
+			)
+			.orderBy(desc(readingAttempt.endedAt), desc(readingAttempt.id))
+			.get();
+		return last !== undefined && answersOf(db, last.id).some((row) => row.isCorrect === false);
+	});
+}
+
+/** Null until the child has finished every story at the grade (and any asked again). */
+export function gradeEnd(db: Reader, childId: number, grade: number): GradeEnd | null {
+	if (!gradeFinished(db, childId, grade)) return null;
+	return {
+		grade,
+		stories: storiesAt(db, grade).length,
+		withMistakes: storiesWithMistakes(db, childId, grade)
+	};
+}
+
+/** How many stories asked again are still to be read at the grade. */
+export function retestsLeft(db: Reader, childId: number, grade: number): number {
+	const again = retestQueue(db, childId);
+	return storiesAt(db, grade).filter((story) => again.has(story.id)).length;
+}
+
+/**
+ * "Read again the stories with mistakes". Only once every story at the grade is finished.
+ * Returns how many stories were added.
+ */
+export function startRetest(db: Db, childId: number, grade: number, now: Date): number {
+	return db.transaction((tx) => {
+		if (!gradeFinished(tx, childId, grade)) return 0;
+		const stories = storiesWithMistakes(tx, childId, grade);
+		tx.delete(readingRetest).where(eq(readingRetest.childId, childId)).run();
+		for (const story of stories) {
+			tx.insert(readingRetest).values({ childId, storyId: story.id, addedAt: now }).run();
+		}
+		return stories.length;
+	});
 }
 
 export interface GradeCompletion {

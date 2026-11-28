@@ -1,7 +1,7 @@
 import { asc, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import type { Db } from './db/client.ts';
-import { child } from './db/schema.ts';
+import { child, readingRetest } from './db/schema.ts';
 import { checkbox, wholeNumber } from './validation.ts';
 
 /** Grades that have a built-in word list. */
@@ -171,6 +171,7 @@ export function updateChild(db: Db, id: number, input: EditChildInput): SaveResu
 	if (nameTaken(db, input.name, id)) return { ok: false, reason: 'name-taken' };
 
 	const { name, grade, readingGrade, ...settings } = input;
+	if (readingGrade !== getChild(db, id)!.readingGrade) clearRetests(db, id);
 	const row = db
 		.update(child)
 		.set({
@@ -193,7 +194,13 @@ export function setGrade(db: Db, id: number, grade: number): boolean {
 
 /** Changes only the reading grade. */
 export function setReadingGrade(db: Db, id: number, readingGrade: number): boolean {
+	clearRetests(db, id);
 	return db.update(child).set({ readingGrade }).where(eq(child.id, id)).run().changes > 0;
+}
+
+/** Stories asked to be read again belong to one grade; a new grade starts without them. */
+function clearRetests(db: Db, id: number) {
+	db.delete(readingRetest).where(eq(readingRetest.childId, id)).run();
 }
 
 /**

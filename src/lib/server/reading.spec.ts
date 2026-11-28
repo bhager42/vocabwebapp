@@ -1,7 +1,13 @@
 import path from 'node:path';
 import { eq, sql } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { createChild, getChild, DEFAULT_SETTINGS, type Child } from './children.ts';
+import {
+	createChild,
+	getChild,
+	DEFAULT_SETTINGS,
+	setReadingGrade,
+	type Child
+} from './children.ts';
 import { loadReading } from './content/load.ts';
 import type { GradeStories, Story, StoryQuestion } from './content/reading.ts';
 import { seedStories } from './content/seed-reading.ts';
@@ -22,6 +28,8 @@ import {
 	advanceReading,
 	answerReading,
 	attemptDetail,
+	gradeEnd,
+	gradeFinished,
 	lastReadingSummary,
 	listAttempts,
 	listStories,
@@ -33,9 +41,11 @@ import {
 	readingStatus,
 	readingView,
 	readiness,
+	retestsLeft,
 	setStoryActive,
 	STALE_MS,
 	startReading,
+	startRetest,
 	type Clock
 } from './reading.ts';
 import { createTestDb } from './test-db.ts';
@@ -182,19 +192,85 @@ describe('choosing a story', () => {
 		seedStories(db, content({ 3: ['a', 'b'], 4: ['c'] }));
 	});
 
-	it('goes through unread stories in order, then the one read longest ago', () => {
-		const slugOf = (id: number | null) =>
-			db
-				.select({ slug: readingStory.slug })
-				.from(readingStory)
-				.where(eq(readingStory.id, id!))
-				.get()?.slug;
+	const slugOf = (id: number | null) =>
+		db.select({ slug: readingStory.slug }).from(readingStory).where(eq(readingStory.id, id!)).get()
+			?.slug;
+
+	it('goes through unread stories in order, then stops for a grown-up', () => {
 		expect(slugOf(nextStory(db, sam.id, 3))).toBe('a');
 		readStory();
 		expect(slugOf(nextStory(db, sam.id, 3))).toBe('b');
+		expect(gradeFinished(db, sam.id, 3)).toBe(false);
 		tick(60_000);
 		readStory();
+		expect(nextStory(db, sam.id, 3)).toBeNull();
+		expect(gradeFinished(db, sam.id, 3)).toBe(true);
+		expect(readingStatus(db, fresh(), now, CHICAGO)).toBe('finished');
+		expect(startReading(db, fresh(), clock())).toBe('finished');
+		expect(lastReadingSummary(db, fresh(), now, CHICAGO)).toMatchObject({
+			canReadAgain: false,
+			finishedGrade: 3
+		});
+	});
+
+	it('starts again with a story added to the grade later', () => {
+		readStory();
+		tick(60_000);
+		readStory();
+		seedStories(db, content({ 3: ['a', 'b', 'n'], 4: ['c'] }));
+		expect(slugOf(nextStory(db, sam.id, 3))).toBe('n');
+		expect(readingStatus(db, fresh(), now, CHICAGO)).toBe('ready');
+	});
+
+	it('lets the parent have the stories with a wrong answer read again', () => {
+		readStory(4); // a: one wrong
+		tick(60_000);
+		readStory(5); // b: all right
+		tick(60_000);
+		// Nothing to read again before the grade is finished... and here it is.
+		expect(gradeEnd(db, sam.id, 3)).toEqual({
+			grade: 3,
+			stories: 2,
+			withMistakes: [{ id: expect.any(Number), title: 'Title a' }]
+		});
+
+		expect(startRetest(db, sam.id, 3, now)).toBe(1);
+		expect(gradeEnd(db, sam.id, 3)).toBeNull();
+		expect(retestsLeft(db, sam.id, 3)).toBe(1);
+		expect(readingStatus(db, fresh(), now, CHICAGO)).toBe('ready');
 		expect(slugOf(nextStory(db, sam.id, 3))).toBe('a');
+
+		readStory(5); // a again, all right this time
+		expect(retestsLeft(db, sam.id, 3)).toBe(0);
+		expect(gradeEnd(db, sam.id, 3)).toMatchObject({ withMistakes: [] });
+		expect(readingStatus(db, fresh(), now, CHICAGO)).toBe('finished');
+	});
+
+	it('keeps a story with a wrong answer on the re-read for next time', () => {
+		readStory(4);
+		tick(60_000);
+		readStory(5);
+		tick(60_000);
+		startRetest(db, sam.id, 3, now);
+		readStory(3); // a again, two wrong this time
+		expect(gradeEnd(db, sam.id, 3)!.withMistakes.map((story) => story.title)).toEqual(['Title a']);
+	});
+
+	it('does nothing when asked to re-read before the grade is finished', () => {
+		readStory(2);
+		expect(startRetest(db, sam.id, 3, now)).toBe(0);
+		expect(retestsLeft(db, sam.id, 3)).toBe(0);
+	});
+
+	it('forgets the stories to read again when the reading grade changes', () => {
+		readStory(4);
+		tick(60_000);
+		readStory(4);
+		startRetest(db, sam.id, 3, now);
+		expect(retestsLeft(db, sam.id, 3)).toBe(2);
+		setReadingGrade(db, sam.id, 4);
+		setReadingGrade(db, sam.id, 3);
+		expect(retestsLeft(db, sam.id, 3)).toBe(0);
 	});
 
 	it('skips stories that are switched off, and says when there are none', () => {
@@ -267,7 +343,8 @@ describe('reading a story', () => {
 			title: 'Title a',
 			right: 3,
 			total: 5,
-			canReadAgain: true
+			canReadAgain: true,
+			finishedGrade: null
 		});
 		expect(readingStatus(db, fresh(), now, CHICAGO)).toBe('ready');
 	});
@@ -408,9 +485,8 @@ describe('figures for the parent', () => {
 		tick(60_000);
 		readStory(5); // b
 		tick(60_000);
-		readStory(3); // a again, the one finished longest ago
-		tick(60_000);
-		startReading(db, fresh(), clock()); // b again, not finished
+		startRetest(db, sam.id, 3, now);
+		readStory(3); // a again, asked for by the parent
 
 		expect(storiesByGrade(db, sam.id)).toEqual([
 			{ grade: 3, stories: 2, finished: 2, right: { asked: 15, correct: 12, share: 0.8 } },

@@ -334,3 +334,22 @@ export const readingAnswer = sqliteTable(
 	},
 	(t) => [index('reading_answer_attempt_idx').on(t.attemptId)]
 );
+
+/**
+ * Stories a parent has asked the child to read again, once every story at the grade was
+ * finished: those with a wrong answer the last time. A row goes when the story is
+ * finished again, however it went.
+ */
+export const readingRetest = sqliteTable(
+	'reading_retest',
+	{
+		childId: integer('child_id')
+			.notNull()
+			.references(() => child.id, { onDelete: 'cascade' }),
+		storyId: integer('story_id')
+			.notNull()
+			.references(() => readingStory.id, { onDelete: 'cascade' }),
+		addedAt: timestamp('added_at').notNull()
+	},
+	(t) => [primaryKey({ columns: [t.childId, t.storyId] })]
+);

@@ -66,6 +66,12 @@
 					</form>
 				{/if}
 			</div>
+			{#if child.reading === 'finished'}
+				<p class="notice notice-ok">
+					You have read all the grade {child.readingGrade} stories. Amazing! Talk to a grown-up about
+					what to read next.
+				</p>
+			{/if}
 		{/if}
 
 		<form method="POST" action="?/switch" class="switch">

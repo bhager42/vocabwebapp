@@ -19,7 +19,12 @@
 		questions right.
 	</p>
 
-	{#if !summary.canReadAgain}
+	{#if summary.finishedGrade !== null}
+		<p class="notice notice-ok">
+			That was the last one. You have read all the grade {summary.finishedGrade} stories! Talk to a grown-up
+			about what to read next.
+		</p>
+	{:else if !summary.canReadAgain}
 		<p class="notice notice-ok">That is enough for today. Come back tomorrow!</p>
 	{/if}
 

@@ -265,6 +265,47 @@ test('the parent can switch a story off and change the reading grade', async ({ 
 	expect(JSON.parse(saved.settings).autoUnlockReadingGrade).toBe(true);
 });
 
+test('after the last story at a grade, the child is sent to a grown-up, who can have the ones with mistakes read again', async ({
+	page
+}) => {
+	await setUpParent(page);
+	const sam = createChild('Sam');
+	// One story at grade 3, so that reading it finishes the grade.
+	withDb((db) =>
+		db.exec("update reading_story set active = 0 where grade = 3 and title != 'The Roof Garden'")
+	);
+
+	await enterAs(page, 'Sam');
+	await readButton(page).click();
+	await finishStory(page, 4);
+	await expect(page.getByText('You have read all the grade 3 stories!')).toBeVisible();
+	await expect(page.getByRole('button', { name: 'Read another story' })).toHaveCount(0);
+	await page.getByRole('link', { name: 'All done' }).click();
+	await expect(page.getByText('You have read all the grade 3 stories. Amazing!')).toBeVisible();
+	await expect(readButton(page)).toHaveCount(0);
+
+	// The parent sees which story had a mistake and has it read again.
+	await page.goto(`/parent/children/${sam}/reading`);
+	await expect(page.getByText('Sam has read all 1 grade 3 stories.')).toBeVisible();
+	await expect(page.getByRole('listitem').filter({ hasText: 'The Roof Garden' })).toBeVisible();
+	await expect(page.getByRole('button', { name: 'Move up to reading grade 4' })).toBeVisible();
+	await page.getByRole('button', { name: 'Read that story again' }).click();
+	await expect(page.getByText('Sam will read that story again')).toBeVisible();
+
+	await page.goto('/'); // Sam is still signed in on this device
+	await readButton(page).click();
+	await expect(page.getByRole('heading', { level: 1, name: 'The Roof Garden' })).toBeVisible();
+	await finishStory(page, 5);
+	await expect(page.getByText('You have read all the grade 3 stories!')).toBeVisible();
+
+	// All right this time: nothing left to read again, and the parent can move Sam up.
+	await page.goto(`/parent/children/${sam}/reading`);
+	await expect(page.getByText('Every one had all its answers right the last time.')).toBeVisible();
+	await expect(page.getByRole('button', { name: /again$/ })).toHaveCount(0);
+	await page.getByRole('button', { name: 'Move up to reading grade 4' }).click();
+	await expect(page.getByText('Sam is now reading grade 4 stories.')).toBeVisible();
+});
+
 test.describe('accessibility', () => {
 	test.use({ reducedMotion: 'reduce' });
 

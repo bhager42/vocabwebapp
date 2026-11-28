@@ -41,6 +41,8 @@ export const actions: Actions = {
 	start: ({ locals }) => {
 		const result = startReading(getDb(), readingChild(locals), clock());
 		if (result === 'empty') redirect(303, '/?nostories');
+		// Every story at the grade is read: the home page says to talk to a grown-up.
+		if (result === 'finished') redirect(303, '/');
 		if (result === 'capped') redirect(303, '/');
 		redirect(303, '/play/read');
 	},

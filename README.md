@@ -82,8 +82,9 @@ story; others have to be worked out from it. After each answer the child sees wh
 and a short explanation of where the answer comes from. A story can be stopped and picked up later.
 
 - Each child has a **reading grade**, separate from their word grade (default 3), set on the
-  Settings tab. Stories come in order; once all of a grade's stories are read, the one read
-  longest ago comes back.
+  Settings tab. Stories come in order. Once all of a grade's stories are read, the child is told
+  so and asked to talk to you. The Reading tab then lists the stories that had a wrong answer
+  and lets you have those read again, move the child up a grade, or pick a grade on Settings.
 - After five stories at a grade averaging 80% or more, with at least 70% on the answers that must
   be worked out, the Reading tab offers the next reading grade (or the child moves up by
   themselves, if you tick that setting). For now grades 3 to 6 have stories.
