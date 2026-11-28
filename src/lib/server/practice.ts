@@ -454,7 +454,7 @@ export function submitAnswer(
 		const state = tx.select().from(wordProgress).where(where).get();
 		const outcome = applyAnswer(
 			state ? { box: state.box, dueAt: state.dueAt, mastered: state.masteredAt !== null } : null,
-			{ correct, firstAskInSession, now, timeZone }
+			{ correct, firstAskInSession, spelling: current.type === 'spell', now, timeZone }
 		);
 		if (state) {
 			tx.update(wordProgress)

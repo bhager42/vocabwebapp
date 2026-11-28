@@ -128,7 +128,7 @@
 				label="Spelling questions"
 				name="spellingEnabled"
 				checked={child.settings.spellingEnabled}
-				hint="Words that are nearly mastered are asked by typing the word."
+				hint="Once a word is well known (about a week and a half after it is first met), it is asked by typing the word. A misspelling sends it back only one step."
 			/>
 			<CheckField
 				label="Move up a grade automatically"

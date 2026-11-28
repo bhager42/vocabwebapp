@@ -107,6 +107,43 @@ describe('a wrong answer', () => {
 	});
 });
 
+describe('a wrong spelling', () => {
+	const misspelled = { ...wrong, spelling: true };
+
+	it.each([4, 5])('sends box %i back only to box 3, due tomorrow', (box) => {
+		expect(applyAnswer(due(box), misspelled)).toEqual({
+			box: 3,
+			dueAt: midnight(1),
+			mastered: false,
+			change: 'demoted'
+		});
+	});
+
+	it('keeps a box 3 word in box 3 (spelled as extra practice), due tomorrow', () => {
+		expect(applyAnswer(notDue(3), misspelled)).toEqual({
+			box: 3,
+			dueAt: midnight(1),
+			mastered: false,
+			change: 'unchanged'
+		});
+	});
+
+	it('takes away mastery, still only back to box 3', () => {
+		expect(applyAnswer(due(5, true), misspelled)).toMatchObject({
+			box: 3,
+			mastered: false,
+			change: 'demoted'
+		});
+	});
+
+	it('moves up as usual when right', () => {
+		expect(applyAnswer(due(4), { ...right, spelling: true })).toMatchObject({
+			box: 5,
+			change: 'promoted'
+		});
+	});
+});
+
 describe('a correct answer that is only extra practice', () => {
 	it('changes nothing when the word is not due yet', () => {
 		const state = notDue(3);

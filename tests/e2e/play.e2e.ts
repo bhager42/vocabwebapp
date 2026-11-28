@@ -420,6 +420,12 @@ test.describe('kinds of question', () => {
 	});
 
 	test('fill-in-the-blank shows the sentence with the word taken out', async ({ page }) => {
+		// With spelling on, box 4 is a spelling question; with it off, fill in the blank.
+		withDb((db) =>
+			db
+				.prepare('update child set settings_json = ?')
+				.run(JSON.stringify({ spellingEnabled: false }))
+		);
 		await begin(page);
 		await answerCurrent(page);
 		await nextButton(page).click();
@@ -491,6 +497,7 @@ test.describe('kinds of question', () => {
 		await expect(page.getByRole('status')).toContainText(
 			'You typed enormus. It is spelled enormous.'
 		);
+		// A misspelling sends the word back only to box 3: Sam still knows what it means.
 		expect(
 			withDb((db) =>
 				db
@@ -499,7 +506,7 @@ test.describe('kinds of question', () => {
 					)
 					.get()
 			)
-		).toEqual({ box: 1 });
+		).toEqual({ box: 3 });
 	});
 
 	test('spelling questions are not asked when the parent has turned them off', async ({ page }) => {
@@ -735,14 +742,14 @@ test.describe('accessibility and layout of the child pages', () => {
 			await expectAccessible(page);
 			await nextButton(page).click();
 
-			// Fill-in-the-blank, then a right answer.
-			await expect(page.getByText('Which word fits in the blank?')).toBeVisible();
+			// Spelling (box 4), then a right answer.
+			await expect(page.getByText('Type the word that means this.')).toBeVisible();
 			await expectAccessible(page);
 			await answerCurrent(page);
 			await expectAccessible(page);
 			await nextButton(page).click();
 
-			// Spelling, answered wrongly.
+			// Spelling (box 5), answered wrongly.
 			await expect(page.getByText('Type the word that means this.')).toBeVisible();
 			await expectAccessible(page);
 			await answerCurrent(page, false);
@@ -762,6 +769,26 @@ test.describe('accessibility and layout of the child pages', () => {
 
 			await finishSession(page);
 			await expect(page.getByRole('heading', { name: 'Great work, Sam!' })).toBeVisible();
+			await expectAccessible(page);
+		});
+	}
+
+	for (const theme of ['light', 'dark'] as const) {
+		test(`fill-in-the-blank has no axe violations in the ${theme} theme`, async ({
+			page,
+			context,
+			baseURL
+		}) => {
+			await context.addCookies([{ name: 'theme', value: theme, url: baseURL! }]);
+			// With spelling off, a box 4 word is asked as fill in the blank.
+			const samId = createChild('Sam', 3, { spellingEnabled: false });
+			placeWords(samId, { fragile: 4 });
+
+			await enterAs(page, 'Sam');
+			await startButton(page).click();
+			await expect(page.getByText('Which word fits in the blank?')).toBeVisible();
+			await expectAccessible(page);
+			await answerCurrent(page);
 			await expectAccessible(page);
 		});
 	}

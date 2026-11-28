@@ -31,13 +31,19 @@ export function shuffle<T>(items: readonly T[], rng: Rng): T[] {
 	return result;
 }
 
-/** Harder kinds of question as a word becomes familiar. */
+/**
+ * Harder kinds of question as a word becomes familiar. Spelling starts at box 4, about
+ * eleven days after a word is first met, so there is real spelling practice before a word
+ * can be mastered; with spelling off, boxes 4 and 5 fill in the blank instead.
+ */
 export function typeForBox(box: number, spellingEnabled: boolean): QuestionType {
 	if (box <= 2) return 'word_to_def';
 	if (box === 3) return 'def_to_word';
-	if (box === 4) return 'cloze';
 	return spellingEnabled ? 'spell' : 'cloze';
 }
+
+/** Spelling is offered as extra practice only for words whose meaning is known (box 3 up). */
+export const SPELLING_EXTRA_MIN_BOX = 3;
 
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -217,14 +223,19 @@ export function composePlan(input: PlanInput): PlanItem[] {
 		plan.push({ wordId, type: typeFor(box) });
 	}
 
-	// Newest words get the extra looks first: they need them most.
+	// Newest words get the extra looks first: they need them most. Words whose meaning is
+	// already known (box 3 and up) may also be asked to spell; new words never are.
 	const words = [
 		...newWords,
 		...plan.map((item) => item.wordId).filter((id) => !newWords.includes(id))
 	];
-	for (const type of ['def_to_word', 'cloze'] as const) {
+	const boxOf = new Map([...input.due, ...input.early].map((entry) => [entry.wordId, entry.box]));
+	const canSpell = (wordId: number) =>
+		input.spellingEnabled && (boxOf.get(wordId) ?? 0) >= SPELLING_EXTRA_MIN_BOX;
+	for (const type of ['def_to_word', 'spell', 'cloze'] as const) {
 		for (const wordId of words) {
 			if (room() <= 0) return plan;
+			if (type === 'spell' && !canSpell(wordId)) continue;
 			if (plan.some((item) => item.wordId === wordId && item.type === type)) continue;
 			plan.push({ wordId, type });
 		}

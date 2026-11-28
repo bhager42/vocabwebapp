@@ -46,12 +46,12 @@ describe('typeForBox', () => {
 			'word_to_def',
 			'word_to_def',
 			'def_to_word',
-			'cloze',
+			'spell',
 			'spell'
 		]);
 	});
 
-	it('uses fill-in-the-blank for box 5 when spelling is turned off', () => {
+	it('uses fill-in-the-blank for boxes 4 and 5 when spelling is turned off', () => {
 		expect(typeForBox(5, false)).toBe('cloze');
 		expect(typeForBox(4, false)).toBe('cloze');
 	});
@@ -376,11 +376,25 @@ describe('composePlan', () => {
 		expect(plan.slice(0, 4)).toEqual([
 			{ wordId: 1, type: 'word_to_def' },
 			{ wordId: 2, type: 'def_to_word' },
-			{ wordId: 3, type: 'cloze' },
+			{ wordId: 3, type: 'spell' },
 			{ wordId: 4, type: 'spell' }
 		]);
 		expect(plan.slice(4, 8).map((item) => item.wordId)).toEqual([101, 102, 103, 104]);
 		expect(plan).toHaveLength(10);
+	});
+
+	it('offers spelling as extra practice only for words whose meaning is known', () => {
+		const early = [
+			{ wordId: 1, box: 2 },
+			{ wordId: 2, box: 3 }
+		];
+		const plan = composePlan({ ...base, early, fresh: [101] });
+		const spelled = plan.filter((item) => item.type === 'spell').map((item) => item.wordId);
+
+		expect(spelled).toEqual([2]);
+		// And never with spelling turned off.
+		const off = composePlan({ ...base, early, fresh: [101], spellingEnabled: false });
+		expect(off.some((item) => item.type === 'spell')).toBe(false);
 	});
 
 	it('leaves out new words when reviews fill the session', () => {

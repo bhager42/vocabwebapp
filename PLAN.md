@@ -37,12 +37,12 @@ This plan is written to be executed by Claude Code one phase at a time. Each pha
 
 Definition plus multiple choice is the right foundation for this age, but on its own it only trains recognition. The app uses four question types and introduces the harder ones as a word becomes familiar:
 
-| Type          | Prompt                                                                 | Answer                              | Used when                                               |
-| ------------- | ---------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------- |
-| `word_to_def` | The word                                                               | Pick the definition (4 choices)     | Word is new                                             |
-| `def_to_word` | The definition                                                         | Pick the word (4 choices)           | Word is somewhat known                                  |
-| `cloze`       | Example sentence with a blank                                          | Pick the word that fits (4 choices) | Word is mostly known                                    |
-| `spell`       | Definition, the sentence with a blank, the first letter and the length | Type the word                       | Word is nearly mastered (parent can turn this type off) |
+| Type          | Prompt                                                                 | Answer                              | Used when                                          |
+| ------------- | ---------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------- |
+| `word_to_def` | The word                                                               | Pick the definition (4 choices)     | Word is new                                        |
+| `def_to_word` | The definition                                                         | Pick the word (4 choices)           | Word is somewhat known                             |
+| `cloze`       | Example sentence with a blank                                          | Pick the word that fits (4 choices) | Word is mostly known                               |
+| `spell`       | Definition, the sentence with a blank, the first letter and the length | Type the word                       | Word is well known (parent can turn this type off) |
 
 Rules for wrong choices (distractors): same grade list, same part of speech, never a synonym of the correct answer, shuffled order on every serve.
 
@@ -55,14 +55,15 @@ Each child/word pair sits in a box from 1 to 5.
 | 1   | Later in the same session, then next day | `word_to_def`                           |
 | 2   | 1 day                                    | `word_to_def`                           |
 | 3   | 3 days                                   | `def_to_word`                           |
-| 4   | 7 days                                   | `cloze`                                 |
+| 4   | 7 days                                   | `spell` (or `cloze` if spelling is off) |
 | 5   | 21 days                                  | `spell` (or `cloze` if spelling is off) |
 
-- Correct: move up one box. Wrong: back to box 1, and the word is asked again later in the same session.
+- Correct: move up one box. Wrong: back to box 1, and the word is asked again later in the same session. A wrong **spelling** goes back only to box 3, due the next day: the child usually still knows the meaning, so the word just climbs back through `def_to_word` before it is spelled again.
+- Spelling starts at box 4 (changed in 1.7.0; it was box 5 only), so the first spelling comes about 11 days after a word is first met instead of about 32. `cloze` is still used as extra practice, and for boxes 4 and 5 when spelling is off.
 - A word is **mastered** when it is answered correctly out of box 5. A mastered word comes back every 60 days so it is not forgotten; a wrong answer sends it back to box 1 like any other.
 - Due dates fall on local midnight in the app's time zone, so a word answered on Monday evening is due first thing Tuesday, not 24 hours later.
 - A session is 10 questions: due reviews first, then at most 4 new words. Both numbers are parent settings.
-- When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back to box 1. Words already asked earlier the same day are used only as a last resort, so a second session straight after the first brings new words rather than the same ones again.
+- When reviews and new words do not fill a session (as in the first days), it is filled with extra practice: words that are nearly due, then a second and third look at the session's own words asked in a different way. Extra practice never moves a word up a box, though a wrong answer still sends it back (to box 1, or box 3 for a spelling). Extra looks are `def_to_word`, then `spell` for words already at box 3 or above (never for new words, and only when spelling is on), then `cloze`. Words already asked earlier the same day are used only as a last resort, so a second session straight after the first brings new words rather than the same ones again.
 - A missed word is added to the session again two questions later, unless it is already coming up, and a word is asked at most four times in one session.
 - The spelling question has no "hear it" button: reading the word aloud would mean sending the answer to the browser before it is given. The first letter and the length point to the wanted word instead. Phase 10 adds dictation, with audio made ahead of time and served so the word never reaches the page.
 

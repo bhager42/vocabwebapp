@@ -160,7 +160,7 @@
 					label="Spelling questions"
 					name="sg-spelling"
 					checked={true}
-					hint="Words that are nearly mastered are asked by typing the word."
+					hint="Once a word is well known (about a week and a half after it is first met), it is asked by typing the word. A misspelling sends it back only one step."
 				/>
 				<p class="notice" role="alert">Nothing was saved. Please fix the problem above.</p>
 				<p class="notice notice-ok">Saved.</p>

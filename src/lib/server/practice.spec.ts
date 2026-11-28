@@ -409,7 +409,7 @@ describe('boxes', () => {
 			} while (answerNext(true) === 'question');
 		}
 
-		expect(types).toEqual(['word_to_def', 'def_to_word', 'cloze', 'spell']);
+		expect(types).toEqual(['word_to_def', 'def_to_word', 'spell', 'spell']);
 	});
 
 	it('does not bring a word back before it is due', () => {

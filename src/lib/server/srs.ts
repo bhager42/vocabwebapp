@@ -14,6 +14,13 @@ export const BOX_INTERVAL_DAYS: Record<number, number> = { 1: 1, 2: 1, 3: 3, 4: 
 /** Mastered words still come back now and then, so they are not forgotten. */
 export const MASTERED_INTERVAL_DAYS = 60;
 
+/**
+ * Where a missed spelling sends a word. A child who misspells a word usually still knows
+ * what it means, so it does not go all the way back to box 1; it only has to climb back
+ * through "pick the word" before it is spelled again.
+ */
+export const SPELLING_MISS_BOX = 3;
+
 export interface WordState {
 	box: number;
 	dueAt: Date;
@@ -24,6 +31,8 @@ export interface AnswerContext {
 	correct: boolean;
 	/** False when this word was already asked earlier in the same session. */
 	firstAskInSession: boolean;
+	/** True when the question was "spell the word". */
+	spelling?: boolean;
 	now: Date;
 	timeZone: string;
 }
@@ -38,20 +47,31 @@ export interface Outcome extends WordState {
  * @param state the word's current box, or null if the child has never seen it.
  *
  * - Wrong: back to box 1, due tomorrow. (It is also asked again later in the session;
- *   that is the session plan's job, not this function's.)
+ *   that is the session plan's job, not this function's.) A wrong spelling goes back only
+ *   to box 3 (SPELLING_MISS_BOX), also due tomorrow.
  * - Correct, and the word was due and not yet asked this session: up one box. A correct
  *   answer out of box 5 makes the word mastered.
  * - Correct, but asked early or for the second time in a session: nothing changes.
  *   Getting it right twice in five minutes is not evidence of remembering it.
  */
 export function applyAnswer(state: WordState | null, context: AnswerContext): Outcome {
-	const { correct, firstAskInSession, now, timeZone } = context;
+	const { correct, firstAskInSession, spelling = false, now, timeZone } = context;
 	const dueIn = (days: number) => startOfLocalDay(now, timeZone, days);
 
 	if (!state) {
 		// A new word starts in box 1; a right first answer moves it straight to box 2.
 		const box = correct ? 2 : 1;
 		return { box, dueAt: dueIn(BOX_INTERVAL_DAYS[box]), mastered: false, change: 'introduced' };
+	}
+
+	if (!correct && spelling) {
+		const box = Math.min(state.box, SPELLING_MISS_BOX);
+		return {
+			box,
+			dueAt: dueIn(BOX_INTERVAL_DAYS[1]),
+			mastered: false,
+			change: box < state.box || state.mastered ? 'demoted' : 'unchanged'
+		};
 	}
 
 	if (!correct) {
